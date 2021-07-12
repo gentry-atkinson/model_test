@@ -14,7 +14,8 @@
 #   -low noise NNAR
 #   -high noise NNAR
 
-
+from utils.gen_ts_data import generate_pattern_data_as_dataframe
+import numpy as np
 
 #Create Synthetic Set 1
 #Create label sets for SS1

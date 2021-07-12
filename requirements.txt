@@ -1,0 +1,7 @@
+tensorflow==2.3.0
+tsfresh==0.17.1
+scipy==1.5.2
+numpy==1.19.1
+sklearn==0.23.2
+matplotlib==3.3.2
+pandas==1.3.0
