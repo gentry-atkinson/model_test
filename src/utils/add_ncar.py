@@ -23,7 +23,7 @@ def add_ncar(clean_labels, filename, num_classes):
     l_flipped_counter = 0
     h_flipped_counter = 0
 
-    for i,l in enum(clean_labels):
+    for i,l in enumerate(clean_labels):
         total_counter += 1
         if randint(0,100)<5:
             low_noise_labels.write('{}\n'.format(new_label(l, num_classes)))
@@ -48,6 +48,6 @@ def add_ncar(clean_labels, filename, num_classes):
     print('Low noise labels flipped: ', l_flipped_counter)
     print('High noise labels flipped: ', h_flipped_counter)
     print('Lines written to low noise file: ')
-    os.system('cat data/ncar_labels_5percent.csv | wc -l')
+    os.system('cat {} | wc -l'.format(filename + '_ncar5.csv'))
     print('Lines written to high noise file: ')
-    os.system('cat data/ncar_labels_10percent.csv | wc -l')
+    os.system('cat {} | wc -l'.format(filename + '_ncar10.csv'))
