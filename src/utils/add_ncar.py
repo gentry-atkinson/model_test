@@ -43,6 +43,7 @@ def add_ncar(clean_labels, filename, num_classes):
     high_noise_labels.close()
 
     #sanity checks
+    print('---NCAR---')
     print('Total labels on file: ', len(clean_labels))
     print('Total labels processed: ', total_counter)
     print('Low noise labels flipped: ', l_flipped_counter)

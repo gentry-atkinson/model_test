@@ -7,12 +7,6 @@ import numpy as np
 from random import randint
 import os
 
-def new_label(old_label, num_classes):
-    n = old_label
-    while(n==old_label):
-        n = randint(0, num_classes)
-        return n
-
 def add_nar(clean_labels, filename, num_classes):
     low_noise_labels = open(filename + '_nar5.csv', 'w+')
     high_noise_labels = open(filename + '_nar10.csv', 'w+')
@@ -26,8 +20,8 @@ def add_nar(clean_labels, filename, num_classes):
     counts = [np.count_nonzero(clean_labels==i) for i in range(num_classes)]
     MAJ_LABEL = np.argmax(counts)
     MIN_LABEL = np.argmin(counts)
-    print('Majority label: ', MAJ_LABEL)
-    print('Minority label: ', MIN_LABEL)
+    print('Major label: ', MAJ_LABEL)
+    print('Minor label: ', MIN_LABEL)
     imbalance = len(clean_labels)/counts[MAJ_LABEL]
     print('Class imbalance: ', imbalance)
 
@@ -52,6 +46,7 @@ def add_nar(clean_labels, filename, num_classes):
     high_noise_labels.close()
 
     #sanity checks
+    print('---NAR---')
     print('Total labels processed: ', total_counter)
     print('Low noise labels flipped: ', l_flipped_counter)
     print('High noise labels flipped: ', h_flipped_counter)

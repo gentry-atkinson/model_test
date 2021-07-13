@@ -17,6 +17,7 @@
 from utils.gen_ts_data import generate_pattern_data_as_dataframe
 from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
+from utils.add_nnar import add_nnar
 import numpy as np
 
 PATH = 'src/data/processed_datasets/'
@@ -31,8 +32,9 @@ if(__name__ == "__main__"):
     np.savetxt(PATH + 'ss1_labels_clean.csv', ss1_labels_clean, delimiter=',', fmt='%d')
 
     #Create label sets for SS1
-    add_ncar(ss1_labels_clean, PATH + 's1_labels', 2)
-    add_nar(ss1_labels_clean, PATH + 's1_labels', 2)
+    add_ncar(ss1_labels_clean, PATH + 'ss1_labels', 2)
+    add_nar(ss1_labels_clean, PATH + 'ss1_labels', 2)
+    add_nnar(ss1_attributes, ss1_labels_clean, PATH + 'ss1_labels', 2)
 
     #Create Synthetic Set 2
     #Create label sets for SS2
