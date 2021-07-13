@@ -15,22 +15,32 @@
 #   -high noise NNAR
 
 from utils.gen_ts_data import generate_pattern_data_as_dataframe
+from utils.add_ncar import add_ncar
 import numpy as np
 
-#Create Synthetic Set 1
-#Create label sets for SS1
+if(__name__ == "__main__"):
 
-#Create Synthetic Set 2
-#Create label sets for SS2
+    #Create Synthetic Set 1
+    print("### Preparing Dataset: SS1 ###")
+    ss1_attributes, ss1_labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=10000, numClasses=2, percentError=0)
+    ss1_attributes = np.reshape(np.array(ss1_attributes['x']),(10000, 150))
+    np.savetxt('data/processed_datasets/ss1_attributes.csv', ss1_attributes,  delimiter=',')
+    np.savetxt('data/processed_datasets/ss1_labels_clean.csv', ss1_labels_clean, delimiter=',', fmt='%d')
 
-#Use Lee's files to get HAR Set 1
-#Create label sets for HAR1
+    #Create label sets for SS1
+    
 
-#Process UCI HAR inertial signals into a good file
-#Create label sets for HAR2
+    #Create Synthetic Set 2
+    #Create label sets for SS2
 
-#Process Sleep Apnea set into BioSignal Set 1
-#Create label sets for BS1
+    #Use Lee's files to get HAR Set 1
+    #Create label sets for HAR1
 
-#Process PD Gait set into BioSignal Set 2
-#Create label sets for BS2
+    #Process UCI HAR inertial signals into a good file
+    #Create label sets for HAR2
+
+    #Process Sleep Apnea set into BioSignal Set 1
+    #Create label sets for BS1
+
+    #Process PD Gait set into BioSignal Set 2
+    #Create label sets for BS2

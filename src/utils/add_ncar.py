@@ -7,25 +7,34 @@ import numpy as np
 from random import randint
 import os
 
-if __name__ == "__main__":
-    clean_labels = np.genfromtxt('data/clean_labels.csv')
-    low_noise_labels = open('data/ncar_labels_5percent.csv', 'w+')
-    high_noise_labels = open('data/ncar_labels_10percent.csv', 'w+')
+def new_label(old_label, num_classes):
+    n = old_label
+    while(n==old_label):
+        n = randint(0, num_classes)
+        return n
+
+def add_ncar(clean_labels, filename, num_classes):
+    low_noise_labels = open(filename + '_ncar5.csv', 'w+')
+    high_noise_labels = open(filename + '_ncar10.csv', 'w+')
+    low_indexes = open(filename + '_ncar5_indexes.csv', 'w+')
+    high_indexes = open(filename + '_ncar10_indexes.csv', 'w+')
 
     total_counter = 0
     l_flipped_counter = 0
     h_flipped_counter = 0
 
-    for l in clean_labels:
+    for i,l in enum(clean_labels):
         total_counter += 1
         if randint(0,100)<5:
-            low_noise_labels.write('{}\n'.format(1 if l==0 else 0))
+            low_noise_labels.write('{}\n'.format(new_label(l, num_classes)))
+            low_indexes.write('{}\n'.format(i))
             l_flipped_counter += 1
         else:
             low_noise_labels.write('{}\n'.format(l))
 
         if randint(0,100)<10:
-            high_noise_labels.write('{}\n'.format(1 if l==0 else 0))
+            high_noise_labels.write('{}\n'.format(new_label(l, num_classes)))
+            high_indexes.write('{}\n'.format(i))
             h_flipped_counter += 1
         else:
             high_noise_labels.write('{}\n'.format(l))
@@ -34,6 +43,7 @@ if __name__ == "__main__":
     high_noise_labels.close()
 
     #sanity checks
+    print('Total labels on file: ', len(clean_labels))
     print('Total labels processed: ', total_counter)
     print('Low noise labels flipped: ', l_flipped_counter)
     print('High noise labels flipped: ', h_flipped_counter)
