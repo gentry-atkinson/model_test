@@ -19,6 +19,7 @@ from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
 from utils.add_nnar import add_nnar
 from data.e4_wristband_Nov2019.e4_get_x_y_sub import get_X_y_sub
+from import_datasets import get_uci_data
 import numpy as np
 
 PATH = 'src/data/processed_datasets/'
@@ -86,7 +87,9 @@ if(__name__ == "__main__"):
         add_ncar(labels_clean, PATH + 'har1_labels', 7)
         add_nar(labels_clean, PATH + 'har1_labels', 7)
         add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7, num_channels=4)
+
         #Process UCI HAR inertial signals into a good file
+        attributes, labels_clean, labels = get_uci_data()
         #Create label sets for HAR2
 
     #Process Sleep Apnea set into BioSignal Set 1

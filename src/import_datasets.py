@@ -22,16 +22,16 @@ def get_unimib_data(s="acc"):
 
 def get_uci_data():
     print("Loading UCI HAR Dataset")
-    X_x = np.genfromtxt("data/UCI HAR Dataset/train/Inertial Signals/total_acc_x_train.txt" )
-    X_y = np.genfromtxt("data/UCI HAR Dataset/train/Inertial Signals/total_acc_y_train.txt" )
-    X_z = np.genfromtxt("data/UCI HAR Dataset/train/Inertial Signals/total_acc_z_train.txt" )
+    X_x = np.genfromtxt("src/data/UCI HAR Dataset/train/Inertial Signals/total_acc_x_train.txt" )
+    X_y = np.genfromtxt("src/data/UCI HAR Dataset/train/Inertial Signals/total_acc_y_train.txt" )
+    X_z = np.genfromtxt("src/data/UCI HAR Dataset/train/Inertial Signals/total_acc_z_train.txt" )
     X = np.zeros((7352, 3, 128))
     X[:,0,:]=X_x[:,:]
     X[:,1,:]=X_y[:,:]
     X[:,2,:]=X_z[:,:]
-    y = np.genfromtxt("data/UCI HAR Dataset/train/y_train.txt")
+    y = np.genfromtxt("src/data/UCI HAR Dataset/train/y_train.txt")
     y = np.array(y - 1)
-    with open("data/UCI HAR Dataset/activity_labels.txt") as f:
+    with open("src/data/UCI HAR Dataset/activity_labels.txt") as f:
         labels = f.read().split('\n')
     labels = labels[:-1]
     return X, y, labels
