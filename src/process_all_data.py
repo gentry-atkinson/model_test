@@ -85,7 +85,7 @@ if(__name__ == "__main__"):
         #Create label sets for HAR1
         add_ncar(labels_clean, PATH + 'har1_labels', 7)
         add_nar(labels_clean, PATH + 'har1_labels', 7)
-        add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7)
+        add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7, num_channels=4)
         #Process UCI HAR inertial signals into a good file
         #Create label sets for HAR2
 
