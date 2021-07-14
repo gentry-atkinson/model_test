@@ -25,8 +25,8 @@ import numpy as np
 PATH = 'src/data/processed_datasets/'
 
 RUN_SS = False
-RUN_HAR = True
-RUN_BS = False
+RUN_HAR = False
+RUN_BS = True
 
 if(__name__ == "__main__"):
 
@@ -88,12 +88,21 @@ if(__name__ == "__main__"):
         add_nar(labels_clean, PATH + 'har1_labels', 7)
         add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7, num_channels=4)
 
+        print("##### Preparing Dataset: HAR2 #####")
         #Process UCI HAR inertial signals into a good file
         attributes, labels_clean, labels = get_uci_data()
+        attributes = np.reshape(np.array(attributes), (7352*3, 128))
+        np.savetxt(PATH + 'har2_attributes.csv', attributes,  delimiter=',')
+        np.savetxt(PATH + 'har2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
         #Create label sets for HAR2
+        add_ncar(labels_clean, PATH + 'har2_labels', 6)
+        add_nar(labels_clean, PATH + 'har2_labels', 6)
+        add_nnar(attributes, labels_clean, PATH + 'har2_labels', 6, num_channels=3)
 
-    #Process Sleep Apnea set into BioSignal Set 1
-    #Create label sets for BS1
+    if RUN_BS:
+        print("##### Preparing Dataset: BS1 #####")
+        #Process Sleep Apnea set into BioSignal Set 1
+        #Create label sets for BS1
 
-    #Process PD Gait set into BioSignal Set 2
-    #Create label sets for BS2
+        #Process PD Gait set into BioSignal Set 2
+        #Create label sets for BS2
