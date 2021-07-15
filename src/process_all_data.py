@@ -22,6 +22,7 @@ from data.e4_wristband_Nov2019.e4_get_x_y_sub import get_X_y_sub
 from import_datasets import get_uci_data
 import numpy as np
 import os
+import wfdb
 
 PATH = 'src/data/processed_datasets/'
 
@@ -118,15 +119,17 @@ if(__name__ == "__main__"):
                 f = f.strip()
                 if f != '\n':
                     os.system('rdann -r src/data/apnea-ecg-database-1.0.0/{0} -a apn -f 0 > src/data/apnea-ecg-database-1.0.0/temp/{0}.txt'.format(f))
-                    att = np.fromfile('src/data/apnea-ecg-database-1.0.0/{}.dat'.format(f), dtype=np.int16)
-                    attributes.append(att)
+                    att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f))
+                    print(att)
                     print("Read: ", len(att), " values from ", f)
                     with open('src/data/apnea-ecg-database-1.0.0/temp/{}.txt'.format(f)) as g_list:
                         for g in g_list:
                             g = g.strip().split(' ')
                             g = [i for i in g if i != '']
-                            #print(g)
-        np.savetxt(PATH + 'bs1_attributes.csv', np.array(attributes),  delimiter=',')
+                            attributes.append(np.array(att[int(g[1]):int(g[1])+6000]))
+        #print(attributes)
+        attributes = np.array(attributes)
+        #np.savetxt(PATH + 'bs1_attributes.csv', np.array(attributes),  delimiter=',')
 
         #Create label sets for BS1
 
