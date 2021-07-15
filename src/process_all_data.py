@@ -106,6 +106,20 @@ if(__name__ == "__main__"):
     if RUN_BS:
         print("##### Preparing Dataset: BS1 #####")
         #Process Sleep Apnea set into BioSignal Set 1
+        with open('src/data/apnea-ecg-database-1.0.0/list') as file_list:
+            if not os.path.isdir('src/data/apnea-ecg-database-1.0.0/temp'):
+                os.system('mkdir src/data/apnea-ecg-database-1.0.0/temp')
+            try:
+                system.os('rdann -h')
+            except:
+                print("Must install rdann from Physionet")
+            f = file_list.readline(3)
+            while f:
+                if f != '\n':
+                    #print('rdann -r {0} -a apn -f 0 > temp/{0}.txt'.format(f))
+                    os.system('rdann -r src/data/apnea-ecg-database-1.0.0/{0} -a apn -f 0 > src/data/apnea-ecg-database-1.0.0/temp/{0}.txt'.format(f))
+                f = file_list.readline(3)
+
         #Create label sets for BS1
 
         #Process PD Gait set into BioSignal Set 2
