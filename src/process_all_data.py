@@ -21,6 +21,7 @@ from utils.add_nnar import add_nnar
 from data.e4_wristband_Nov2019.e4_get_x_y_sub import get_X_y_sub
 from import_datasets import get_uci_data
 import numpy as np
+import os
 
 PATH = 'src/data/processed_datasets/'
 
@@ -29,6 +30,9 @@ RUN_HAR = False
 RUN_BS = True
 
 if(__name__ == "__main__"):
+
+    if not os.path.isdir(PATH):
+            os.system('mkdir src/data/processed_datasets')
 
     if RUN_SS:
         #Create Synthetic Set 1
