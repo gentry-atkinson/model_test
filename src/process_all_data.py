@@ -106,6 +106,7 @@ if(__name__ == "__main__"):
     if RUN_BS:
         print("##### Preparing Dataset: BS1 #####")
         #Process Sleep Apnea set into BioSignal Set 1
+        attributes = []
         with open('src/data/apnea-ecg-database-1.0.0/list') as file_list:
             if not os.path.isdir('src/data/apnea-ecg-database-1.0.0/temp'):
                 os.system('mkdir src/data/apnea-ecg-database-1.0.0/temp')
@@ -113,15 +114,19 @@ if(__name__ == "__main__"):
                 system.os('rdann -h')
             except:
                 print("Must install rdann from Physionet")
-            f = file_list.readline(3)
-            while f:
+            for f in file_list:
+                f = f.strip()
                 if f != '\n':
-                    #print('rdann -r {0} -a apn -f 0 > temp/{0}.txt'.format(f))
                     os.system('rdann -r src/data/apnea-ecg-database-1.0.0/{0} -a apn -f 0 > src/data/apnea-ecg-database-1.0.0/temp/{0}.txt'.format(f))
-                    att = np.fromfile('src/data/apnea-ecg-database-1.0.0/{}.dat'.format(f))
-                    print(att[0])
-
-                f = file_list.readline(3)
+                    att = np.fromfile('src/data/apnea-ecg-database-1.0.0/{}.dat'.format(f), dtype=np.int16)
+                    attributes.append(att)
+                    print("Read: ", len(att), " values from ", f)
+                    with open('src/data/apnea-ecg-database-1.0.0/temp/{}.txt'.format(f)) as g_list:
+                        for g in g_list:
+                            g = g.strip().split(' ')
+                            g = [i for i in g if i != '']
+                            #print(g)
+        np.savetxt(PATH + 'bs1_attributes.csv', np.array(attributes),  delimiter=',')
 
         #Create label sets for BS1
 
