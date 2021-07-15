@@ -118,6 +118,9 @@ if(__name__ == "__main__"):
                 if f != '\n':
                     #print('rdann -r {0} -a apn -f 0 > temp/{0}.txt'.format(f))
                     os.system('rdann -r src/data/apnea-ecg-database-1.0.0/{0} -a apn -f 0 > src/data/apnea-ecg-database-1.0.0/temp/{0}.txt'.format(f))
+                    att = np.fromfile('src/data/apnea-ecg-database-1.0.0/{}.dat'.format(f))
+                    print(att[0])
+
                 f = file_list.readline(3)
 
         #Create label sets for BS1
