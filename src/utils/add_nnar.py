@@ -8,9 +8,13 @@ from random import randint
 import os
 from sklearn.neighbors import NearestNeighbors
 
-def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1):
+def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, att_file=""):
     low_noise_labels = np.copy(clean_labels)
     high_noise_labels = np.copy(clean_labels)
+
+    if attributes == []:
+        print("reading attribute file")
+        attributes = np.genfromtxt(att_file, delimiter=',')
 
     low_indexes = open(filename + '_nnar5_indexes.csv', 'w+')
     high_indexes = open(filename + '_nnar10_indexes.csv', 'w+')

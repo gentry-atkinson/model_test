@@ -23,6 +23,7 @@ from import_datasets import get_uci_data
 import numpy as np
 import os
 import wfdb
+from scipy.signal import resample
 
 PATH = 'src/data/processed_datasets/'
 
@@ -105,33 +106,94 @@ if(__name__ == "__main__"):
         add_nnar(attributes, labels_clean, PATH + 'har2_labels', 6, num_channels=3)
 
     if RUN_BS:
-        print("##### Preparing Dataset: BS1 #####")
-        #Process Sleep Apnea set into BioSignal Set 1
-        attributes = []
-        with open('src/data/apnea-ecg-database-1.0.0/list') as file_list:
-            if not os.path.isdir('src/data/apnea-ecg-database-1.0.0/temp'):
-                os.system('mkdir src/data/apnea-ecg-database-1.0.0/temp')
-            try:
-                system.os('rdann -h')
-            except:
-                print("Must install rdann from Physionet")
-            for f in file_list:
-                f = f.strip()
-                if f != '\n':
-                    os.system('rdann -r src/data/apnea-ecg-database-1.0.0/{0} -a apn -f 0 > src/data/apnea-ecg-database-1.0.0/temp/{0}.txt'.format(f))
-                    att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f))
-                    print(att)
-                    print("Read: ", len(att), " values from ", f)
-                    with open('src/data/apnea-ecg-database-1.0.0/temp/{}.txt'.format(f)) as g_list:
-                        for g in g_list:
-                            g = g.strip().split(' ')
-                            g = [i for i in g if i != '']
-                            attributes.append(np.array(att[int(g[1]):int(g[1])+6000]))
-        #print(attributes)
-        attributes = np.array(attributes)
-        #np.savetxt(PATH + 'bs1_attributes.csv', np.array(attributes),  delimiter=',')
-
-        #Create label sets for BS1
+        # print("##### Preparing Dataset: BS1 #####")
+        # #Process Sleep Apnea set into BioSignal Set 1
+        # #The instances get downsampled from 6000 to 600 because otherwise it all
+        # #falls apart
+        # attributes = []
+        # labels_clean = []
+        # os.system('rm {}'.format(PATH + 'bs1_attributes.csv'))
+        # os.system('rm {}'.format(PATH + 'bs1_labels_clean.csv'))
+        # att_file = open(PATH + 'bs1_attributes.csv', 'a+')
+        # lab_file = open(PATH + 'bs1_labels_clean.csv', 'a+')
+        # with open('src/data/apnea-ecg-database-1.0.0/list') as file_list:
+        #     if not os.path.isdir('src/data/apnea-ecg-database-1.0.0/temp'):
+        #         os.system('mkdir src/data/apnea-ecg-database-1.0.0/temp')
+        #     try:
+        #         system.os('rdann -h')
+        #     except:
+        #         print("Must install rdann from Physionet")
+        #     for f in file_list:
+        #         f = f.strip()
+        #         if f != '\n' and f[0]!='x':
+        #             os.system('rdann -r src/data/apnea-ecg-database-1.0.0/{0} -a apn -f 0 > src/data/apnea-ecg-database-1.0.0/temp/{0}.txt'.format(f))
+        #             att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f))
+        #             SIG_LEN = len(att)
+        #             print("Read: ", SIG_LEN, " values from ", f)
+        #             att = np.reshape(att, (SIG_LEN,1))
+        #             with open('src/data/apnea-ecg-database-1.0.0/temp/{}.txt'.format(f)) as g_list:
+        #                 for g in g_list:
+        #                     g = g.strip().split(' ')
+        #                     g = [i for i in g if i != '']
+        #                     #att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f), sampfrom=int(g[1]), sampto=int(g[1])+5999, warn_empty=True)
+        #                     if (int(g[1])+6000) < SIG_LEN:
+        #                         att_file.write('{}\n'.format(','.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 600)])))
+        #                         lab_file.write('{}\n'.format(0 if g[2] == 'N' else 1))
+        #                         #attributes = np.append(attributes, att[int(g[1]):int(g[1])+5999])
+        #                         labels_clean = np.append(labels_clean, [0 if g[2] == 'N' else 1])
+        # attributes = np.array(attributes)
+        # labels_clean = np.array(labels_clean)
+        # att_file.close()
+        #
+        # #Create label sets for BS1
+        # add_ncar(labels_clean, PATH + 'bs1_labels', 2)
+        # add_nar(labels_clean, PATH + 'bs1_labels', 2)
+        # add_nnar([], labels_clean, PATH + 'bs1_labels', 2, att_file=PATH+'bs1_attributes.csv')
 
         #Process PD Gait set into BioSignal Set 2
+        #window the data to 5 second segments
+        attributes = []
+        labels_clean = []
+        os.system('rm {}'.format(PATH + 'bs2_attributes.csv'))
+        att_file = open(PATH + 'bs2_attributes.csv', 'a+')
+        file_list = os.listdir('src/data/gait-in-parkinsons-disease-1.0.0')
+        skip_file = [
+            'SHA256SUMS.txt', 'gaitpd.png', 'demographics.html',
+            'format.txt', 'demographics.xls', 'demographics.txt'
+        ]
+        counter = 0
+        for f in file_list:
+            if f in skip_file:
+                continue
+            print(f)
+            counter += 1
+            with open('src/data/gait-in-parkinsons-disease-1.0.0/' + f) as gait_file:
+                gait = gait_file.read()
+                gait = gait.strip().split('\n')
+                print("Number of samples in gait", len(gait))
+                for i in range(0, len(gait)-500, 500):
+                    counter += 1
+                    left_walk = []
+                    right_walk = []
+                    for j in range(i, i+500):
+                        left_walk = np.append(left_walk, gait[j].split('\t')[17])
+                        right_walk = np.append(right_walk, gait[j].split('\t')[18])
+                    labels_clean = np.append(labels_clean, 0 if 'Co' in f else 1)
+                    #attributes = np.append(attributes, left_walk)
+                    #attributes = np.append(attributes, right_walk)
+                    att_file.write('{}\n'.format(','.join([str(i) for i in left_walk])))
+                    att_file.write('{}\n'.format(','.join([str(i) for i in right_walk])))
+
+        labels_clean = np.array(labels_clean)
+        att_file.close()
+        print("Number of files read: ", counter)
+        print("Number of walks: ", len(attributes))
+        print("Number of labels: ", len(labels_clean))
+        print("Number of controls in gait dataset: ", np.count_nonzero(labels_clean==0))
+        print("Number of PD in gait dataset: ", np.count_nonzero(labels_clean==1))
+        np.savetxt(PATH + 'bs2_attributes.csv', attributes,  delimiter=',')
+        np.savetxt(PATH + 'bs2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
+
+
+
         #Create label sets for BS2
