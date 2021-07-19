@@ -30,8 +30,8 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     MAJ_LABEL = np.argmax(counts)
     MIN_LABEL = np.argmin(counts)
     SET_LENGTH = len(clean_labels)
-    print('Majority label: ', MAJ_LABEL)
-    print('Minority label: ', MIN_LABEL)
+    print('Major label: ', MAJ_LABEL)
+    print('Minor label: ', MIN_LABEL)
     print('Number of labels: ', SET_LENGTH)
 
     nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)

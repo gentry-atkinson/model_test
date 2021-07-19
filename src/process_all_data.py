@@ -19,7 +19,7 @@ from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
 from utils.add_nnar import add_nnar
 from data.e4_wristband_Nov2019.e4_get_x_y_sub import get_X_y_sub
-from import_datasets import get_uci_data
+from import_datasets import get_uci_data, get_uci_test
 import numpy as np
 import os
 import wfdb
@@ -28,8 +28,8 @@ from scipy.signal import resample
 PATH = 'src/data/processed_datasets/'
 
 RUN_SS = False
-RUN_HAR = False
-RUN_BS = True
+RUN_HAR = True
+RUN_BS = False
 
 if(__name__ == "__main__"):
 
@@ -41,25 +41,29 @@ if(__name__ == "__main__"):
         print("##### Preparing Dataset: SS1 #####")
         attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=10000, numClasses=2, percentError=0)
         attributes = np.reshape(np.array(attributes['x']),(10000, 150))
-        np.savetxt(PATH + 'ss1_attributes.csv', attributes,  delimiter=',')
-        np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'ss1_attributes_train.csv', attributes[0:8000],  delimiter=',')
+        np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean[0:8000], delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'ss1_attributes_test.csv', attributes[8000:10000],  delimiter=',')
+        np.savetxt(PATH + 'ss1_labels_test.csv', labels_clean[8000:10000], delimiter=',', fmt='%d')
 
         #Create label sets for SS1
-        add_ncar(labels_clean, PATH + 'ss1_labels', 2)
-        add_nar(labels_clean, PATH + 'ss1_labels', 2)
-        add_nnar(attributes, labels_clean, PATH + 'ss1_labels', 2)
+        add_ncar(labels_clean[0:8000], PATH + 'ss1_labels', 2)
+        add_nar(labels_clean[0:8000], PATH + 'ss1_labels', 2)
+        add_nnar(attributes[0:8000], labels_clean[0:8000], PATH + 'ss1_labels', 2)
 
         #Create Synthetic Set 2
         print("##### Preparing Dataset: SS2 #####")
         attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=30000, numClasses=5, percentError=0)
         attributes = np.reshape(np.array(attributes['x']),(30000, 150))
-        np.savetxt(PATH + 'ss2_attributes.csv', attributes,  delimiter=',')
-        np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'ss2_attributes.csv', attributes[0:24000],  delimiter=',')
+        np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'ss2_attributes_test.csv', attributes[24000:30000],  delimiter=',')
+        np.savetxt(PATH + 'ss2_labels_test.csv', labels_clean[24000:30000], delimiter=',', fmt='%d')
 
         #Create label sets for SS2
-        add_ncar(labels_clean, PATH + 'ss2_labels', 5)
-        add_nar(labels_clean, PATH + 'ss2_labels', 5)
-        add_nnar(attributes, labels_clean, PATH + 'ss2_labels', 5)
+        add_ncar(labels_clean[0:24000], PATH + 'ss2_labels', 5)
+        add_nar(labels_clean[0:24000], PATH + 'ss2_labels', 5)
+        add_nnar(attributes[0:24000], labels_clean[0:24000], PATH + 'ss2_labels', 5)
 
     if RUN_HAR:
         print("##### Preparing Dataset: HAR1 #####")
@@ -98,12 +102,19 @@ if(__name__ == "__main__"):
         #Process UCI HAR inertial signals into a good file
         attributes, labels_clean, labels = get_uci_data()
         attributes = np.reshape(np.array(attributes), (7352*3, 128))
-        np.savetxt(PATH + 'har2_attributes.csv', attributes,  delimiter=',')
+        np.savetxt(PATH + 'har2_attributes_train.csv', attributes,  delimiter=',')
         np.savetxt(PATH + 'har2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
+
         #Create label sets for HAR2
         add_ncar(labels_clean, PATH + 'har2_labels', 6)
         add_nar(labels_clean, PATH + 'har2_labels', 6)
         add_nnar(attributes, labels_clean, PATH + 'har2_labels', 6, num_channels=3)
+
+        #Create test sets for HAR2
+        attributes, labels_clean, labels = get_uci_test()
+        attributes = np.reshape(attributes,(2947*3, 128))
+        np.savetxt(PATH + 'har2_attributes_test.csv', attributes,  delimiter=',')
+        np.savetxt(PATH + 'har2_labels_test.csv', labels_clean, delimiter=',', fmt='%d')
 
     if RUN_BS:
         print("##### Preparing Dataset: BS1 #####")
@@ -165,12 +176,12 @@ if(__name__ == "__main__"):
         for f in file_list:
             if f in skip_file:
                 continue
-            print(f)
+            #print(f)
             counter += 1
             with open('src/data/gait-in-parkinsons-disease-1.0.0/' + f) as gait_file:
                 gait = gait_file.read()
                 gait = gait.strip().split('\n')
-                print("Number of samples in gait", len(gait))
+                #print("Number of samples in gait", len(gait))
                 for i in range(0, len(gait)-500, 500):
                     left_walk = []
                     right_walk = []

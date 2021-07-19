@@ -36,6 +36,22 @@ def get_uci_data():
     labels = labels[:-1]
     return X, y, labels
 
+def get_uci_test():
+    print("Loading UCI HAR test set")
+    X_x = np.genfromtxt("src/data/UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt" )
+    X_y = np.genfromtxt("src/data/UCI HAR Dataset/test/Inertial Signals/total_acc_y_test.txt" )
+    X_z = np.genfromtxt("src/data/UCI HAR Dataset/test/Inertial Signals/total_acc_z_test.txt" )
+    X = np.zeros((2947, 3, 128))
+    X[:,0,:]=X_x[:,:]
+    X[:,1,:]=X_y[:,:]
+    X[:,2,:]=X_z[:,:]
+    y = np.genfromtxt("src/data/UCI HAR Dataset/test/y_test.txt")
+    y = np.array(y - 1)
+    with open("src/data/UCI HAR Dataset/activity_labels.txt") as f:
+        labels = f.read().split('\n')
+    labels = labels[:-1]
+    return X, y, labels
+
 def get_synthetic_set(num):
     filename = "data/synthetic/synthetic_set{}".format(num)
     #print(filename)
