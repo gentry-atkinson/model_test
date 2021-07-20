@@ -46,7 +46,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         if low_noise_labels[rand_instance_index] == MAJ_LABEL:
             if randint(0,100) < 3+(30 if low_noise_labels[i[rand_instance_index][1]//num_channels]!=MAJ_LABEL else 0):
                 #print('Mislabel rate: ', 3+(30 if low_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
-                low_noise_labels[rand_instance_index] = MIN_LABEL
+                low_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]//num_channels]
                 l_flipped_counter += 1
                 low_indexes.write('{}\n'.format(rand_instance_index))
                 #print("Low noise flips: ", l_flipped_counter)
@@ -57,7 +57,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         if high_noise_labels[rand_instance_index] == MAJ_LABEL:
             if randint(0,100) < 5+(50 if high_noise_labels[i[rand_instance_index][1]//num_channels]!=MAJ_LABEL else 0):
                 #print('Mislabel rate: ', 5+(50 if high_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
-                high_noise_labels[rand_instance_index] = MIN_LABEL
+                high_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]//num_channels]
                 h_flipped_counter += 1
                 high_indexes.write('{}\n'.format(rand_instance_index))
                 #print("High noise flips: ", h_flipped_counter)
