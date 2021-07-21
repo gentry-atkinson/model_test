@@ -30,7 +30,7 @@ losses = [
 ]
 
 chan_dic = {
-    'bs1':1, 'bs2':2, 'har1':4, 'har2':3, 'ss1':1, 'ss2':1
+    'bs1':1, 'bs2':2, 'har1':1, 'har2':3, 'ss1':1, 'ss2':1
 }
 
 class_dic = {
@@ -41,8 +41,7 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        Reshape((num_channels, X.shape[1])),
-        BatchNormalization(scale=False),
+#        Reshape((num_channels, X.shape[2])),
         Conv1D(filters=128, kernel_size=32, activation='relu', padding='same'),
         MaxPooling1D(pool_size=(16), data_format='channels_first'),
         Conv1D(filters=128, kernel_size=16, activation='relu', padding='same'),
@@ -57,7 +56,7 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
     return model
 
 def train_cnn(model, X, y):
-    es = EarlyStopping(monitor='val_categorical_accuracy', mode='max', verbose=1, patience=5)
+    es = EarlyStopping(monitor='val_categorical_accuracy', mode='max', verbose=1, patience=7)
     model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=10, workers=8)
     return model
 
@@ -69,22 +68,23 @@ def evaluate_cnn(model, X, y):
 
 if __name__ == "__main__":
     print("Testing CNN")
-    f = 'ss2'
+    f = 'bs2'
     results_file = open('results/CNN_results', 'w+')
     X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
+    print("Shape of X: ", X.shape)
     NUM_INSTANCES = len(X)
+    print("NUM_INSTANCES is ", NUM_INSTANCES)
+    print("instances should be ", NUM_INSTANCES/chan_dic[f])
     SAMP_LEN = len(X[0])
-    if chan_dic[f] != 1:
-        X = np.reshape(X, (NUM_INSTANCES, chan_dic[f], SAMP_LEN))
+    X = np.reshape(X, (int(NUM_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
     y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_clean.csv', delimiter=',', dtype=int)
     y = to_categorical(y)
     X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
-    TEST_INSTANCES = len(X)
-    if chan_dic[f] != 1:
-        X_test = np.reshape(X_test, (TEST_INSTANCES, chan_dic[f], SAMP_LEN))
+    TEST_INSTANCES = len(X_test)
+    X_test = np.reshape(X_test, (int(TEST_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
     y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test.csv', delimiter=',', dtype=int)
     y_test = to_categorical(y_test)
-    model = build_cnn(X, class_dic[f], opt='adam')
+    model = build_cnn(X, class_dic[f], opt='adam', loss='categorical_crossentropy')
     model = train_cnn(model, X, y)
     score = evaluate_cnn(model, X_test, y_test)
     print("Score for this model: \n", score)

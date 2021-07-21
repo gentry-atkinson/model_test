@@ -29,8 +29,8 @@ from scipy.signal import resample
 PATH = 'src/data/processed_datasets/'
 
 RUN_SS = False
-RUN_HAR = False
-RUN_BS = True
+RUN_HAR = True
+RUN_BS = False
 
 if(__name__ == "__main__"):
 
@@ -92,6 +92,8 @@ if(__name__ == "__main__"):
         num_instances = attributes.shape[0]
         num_samples = attributes.shape[1]
         num_channels = attributes.shape[2]
+        print('Shape of e4 data: ', attributes.shape)
+        print('Shape of e4 labels: ', labels_clean.shape)
         print('Number of e4 instances: ', len(attributes))
         print('Number of e4 labels: ', len(labels_clean))
         print('Shape of  e4 attributes: ', np.array(attributes).shape)
@@ -111,11 +113,13 @@ if(__name__ == "__main__"):
         #Create label sets for HAR1
         add_ncar(labels_clean, PATH + 'har1_labels', 7)
         add_nar(labels_clean, PATH + 'har1_labels', 7)
-        add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7, num_channels=4)
+        add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7, num_channels=1)
 
         print("##### Preparing Dataset: HAR2 #####")
         #Process UCI HAR inertial signals into a good file
         attributes, labels_clean, labels = get_uci_data()
+        print("Shape of UCI data: ", attributes.shape)
+        print("Shape of UCI labels: ", labels_clean.shape)
         attributes = np.reshape(np.array(attributes), (7352*3, 128))
         np.savetxt(PATH + 'har2_attributes_train.csv', attributes,  delimiter=',')
         np.savetxt(PATH + 'har2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
