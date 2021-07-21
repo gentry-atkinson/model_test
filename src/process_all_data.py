@@ -28,8 +28,8 @@ from scipy.signal import resample
 
 PATH = 'src/data/processed_datasets/'
 
-RUN_SS = True
-RUN_HAR = True
+RUN_SS = False
+RUN_HAR = False
 RUN_BS = True
 
 if(__name__ == "__main__"):
@@ -272,4 +272,4 @@ if(__name__ == "__main__"):
         #Create label sets for BS2
         add_ncar(labels_clean, PATH + 'bs2_labels', 2)
         add_nar(labels_clean, PATH + 'bs2_labels', 2)
-        add_nnar([], labels_clean, PATH + 'bs2_labels', 2, att_file=PATH+'bs2_attributes.csv', num_channels=2)
+        add_nnar([], labels_clean, PATH + 'bs2_labels', 2, att_file=PATH+'bs2_attributes_train.csv', num_channels=2)
