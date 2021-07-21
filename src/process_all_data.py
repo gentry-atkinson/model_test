@@ -2,7 +2,7 @@
 #Organization: Texas University
 #Data: 12 July, 2021
 #Read the 6 datasets, write in nice format, and then write noisy label settings
-#This is going to be a big one_hot_encode
+#This is going to be a big one (Narrator: it was)
 
 #6 Datasets: 2 synthetic, 2 HAR, 2 BioSignal
 #Each dataset will have 7 label sets:
@@ -219,7 +219,8 @@ if(__name__ == "__main__"):
         attributes = []
         labels_clean = []
         lab_test = []
-        os.system('rm {}'.format(PATH + 'bs2_attributes.csv'))
+        os.system('rm {}'.format(PATH + 'bs2_attributes_train.csv'))
+        os.system('rm {}'.format(PATH + 'bs2_attributes_test.csv'))
         att_file = open(PATH + 'bs2_attributes_train.csv', 'a+')
         att_test = open(PATH + 'bs2_attributes_test.csv', 'a+')
         file_list = os.listdir('src/data/gait-in-parkinsons-disease-1.0.0')
