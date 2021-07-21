@@ -48,7 +48,7 @@ def add_nar(clean_labels, filename, num_classes):
     print('---NAR---')
     print('Major label: ', MAJ_LABEL)
     print('Minor label: ', MIN_LABEL)
-    print('Class imbalance: ', counts[MAJ_LABEL]/counts[MIN_LABEL])
+    print('Class imbalance: ', counts[MAJ_LABEL]/(counts[MIN_LABEL] if counts[MIN_LABEL] != 0 else 1)
     print('Total labels processed: ', total_counter)
     print('Low noise labels flipped: ', l_flipped_counter)
     print('High noise labels flipped: ', h_flipped_counter)
