@@ -29,8 +29,8 @@ from scipy.signal import resample
 PATH = 'src/data/processed_datasets/'
 
 RUN_SS = True
-RUN_HAR = False
-RUN_BS = False
+RUN_HAR = True
+RUN_BS = True
 
 if(__name__ == "__main__"):
 
@@ -56,7 +56,7 @@ if(__name__ == "__main__"):
         print("##### Preparing Dataset: SS2 #####")
         attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=30000, numClasses=5, percentError=0)
         attributes = np.reshape(np.array(attributes['x']),(30000, 150))
-        np.savetxt(PATH + 'ss2_attributes.csv', attributes[0:24000],  delimiter=',')
+        np.savetxt(PATH + 'ss2_attributes_train.csv', attributes[0:24000],  delimiter=',')
         np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
         np.savetxt(PATH + 'ss2_attributes_test.csv', attributes[24000:30000],  delimiter=',')
         np.savetxt(PATH + 'ss2_labels_test.csv', labels_clean[24000:30000], delimiter=',', fmt='%d')
@@ -213,11 +213,15 @@ if(__name__ == "__main__"):
 
         #Process PD Gait set into BioSignal Set 2
         #window the data to 5 second segments
+        #I'm going to use Si as the test set, which has 64 walks
+        #Ga has 113 and Ju has 129
         print("##### Preparing Dataset: BS2 #####")
         attributes = []
         labels_clean = []
+        lab_test = []
         os.system('rm {}'.format(PATH + 'bs2_attributes.csv'))
-        att_file = open(PATH + 'bs2_attributes.csv', 'a+')
+        att_file = open(PATH + 'bs2_attributes_train.csv', 'a+')
+        att_test = open(PATH + 'bs2_attributes_test.csv', 'a+')
         file_list = os.listdir('src/data/gait-in-parkinsons-disease-1.0.0')
         skip_file = [
             'SHA256SUMS.txt', 'gaitpd.png', 'demographics.html',
@@ -239,12 +243,19 @@ if(__name__ == "__main__"):
                     for j in range(i, i+500):
                         left_walk = np.append(left_walk, gait[j].split('\t')[17])
                         right_walk = np.append(right_walk, gait[j].split('\t')[18])
-                    labels_clean = np.append(labels_clean, 0 if 'Co' in f else 1)
+
                     #attributes = np.append(attributes, left_walk)
                     #attributes = np.append(attributes, right_walk)
-                    att_file.write('{}\n'.format(','.join([str(i) for i in left_walk])))
-                    att_file.write('{}\n'.format(','.join([str(i) for i in right_walk])))
-                    att_file.flush()
+                    if 'Si' in f:
+                        att_test.write('{}\n'.format(','.join([str(i) for i in left_walk])))
+                        att_test.write('{}\n'.format(','.join([str(i) for i in right_walk])))
+                        att_test.flush()
+                        lab_test = np.append(lab_test, 0 if 'Co' in f else 1)
+                    else:
+                        att_file.write('{}\n'.format(','.join([str(i) for i in left_walk])))
+                        att_file.write('{}\n'.format(','.join([str(i) for i in right_walk])))
+                        att_file.flush()
+                        labels_clean = np.append(labels_clean, 0 if 'Co' in f else 1)
 
         labels_clean = np.array(labels_clean)
         att_file.close()
@@ -253,7 +264,9 @@ if(__name__ == "__main__"):
         print("Number of controls in gait dataset: ", np.count_nonzero(labels_clean==0))
         print("Number of PD in gait dataset: ", np.count_nonzero(labels_clean==1))
         np.savetxt(PATH + 'bs2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
-
+        np.savetxt(PATH + 'bs2_labels_test.csv', lab_test, delimiter=',', fmt='%d')
+        att_test.close()
+        att_file.close()
 
 
         #Create label sets for BS2

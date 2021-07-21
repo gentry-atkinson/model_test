@@ -20,10 +20,9 @@ def add_nar(clean_labels, filename, num_classes):
     counts = [np.count_nonzero(clean_labels==i) for i in range(num_classes)]
     MAJ_LABEL = np.argmax(counts)
     MIN_LABEL = np.argmin(counts)
-    print('Major label: ', MAJ_LABEL)
-    print('Minor label: ', MIN_LABEL)
+
     imbalance = len(clean_labels)/counts[MAJ_LABEL]
-    print('Class imbalance: ', imbalance)
+
 
     for i,l in enumerate(clean_labels):
         total_counter += 1
@@ -47,6 +46,9 @@ def add_nar(clean_labels, filename, num_classes):
 
     #sanity checks
     print('---NAR---')
+    print('Major label: ', MAJ_LABEL)
+    print('Minor label: ', MIN_LABEL)
+    print('Class imbalance: ', counts[MAJ_LABEL]/counts[MIN_LABEL])
     print('Total labels processed: ', total_counter)
     print('Low noise labels flipped: ', l_flipped_counter)
     print('High noise labels flipped: ', h_flipped_counter)

@@ -11,7 +11,7 @@ def new_label(old_label, num_classes):
     n = old_label
     while(n==old_label):
         n = randint(0, num_classes)
-        return n
+    return n
 
 def add_ncar(clean_labels, filename, num_classes):
     low_noise_labels = open(filename + '_ncar5.csv', 'w+')

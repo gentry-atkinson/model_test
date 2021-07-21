@@ -30,14 +30,11 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     MAJ_LABEL = np.argmax(counts)
     MIN_LABEL = np.argmin(counts)
     SET_LENGTH = len(clean_labels)
-    print('Major label: ', MAJ_LABEL)
-    print('Minor label: ', MIN_LABEL)
-    print('Number of labels: ', SET_LENGTH)
+
 
     nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)
     d, i = nbrs.kneighbors(attributes)
-    print('Number of entries in neighbor table: ', len(i))
-    print('Size of neighbor vector: ', len(i[0]))
+
 
     #TODO figure out multi channel data!!!
     while l_flipped_counter < 0.05*SET_LENGTH:
@@ -74,6 +71,11 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
 
     #sanity checks
     print('---NNAR---')
+    print('Major label: ', MAJ_LABEL)
+    print('Minor label: ', MIN_LABEL)
+    print('Number of labels: ', SET_LENGTH)
+    print('Number of entries in neighbor table: ', len(i))
+    print('Size of neighbor vector: ', len(i[0]))
     print('Total labels processed: ', total_counter)
     print('Low noise labels flipped: ', l_flipped_counter)
     print('High noise labels flipped: ', h_flipped_counter)
