@@ -12,6 +12,7 @@ from tensorflow.keras.layers import Reshape, BatchNormalization
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import classification_report
+from sklearn.preprocessing import normalize
 
 sets = [
     'bs1', 'bs2', 'har1', 'har2', 'ss1', 'ss2'
@@ -68,19 +69,21 @@ def evaluate_cnn(model, X, y):
 
 if __name__ == "__main__":
     print("Testing CNN")
-    f = 'bs2'
     results_file = open('results/CNN_results', 'w+')
+    f = 'har2'
     X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
     print("Shape of X: ", X.shape)
     NUM_INSTANCES = len(X)
     print("NUM_INSTANCES is ", NUM_INSTANCES)
     print("instances should be ", NUM_INSTANCES/chan_dic[f])
     SAMP_LEN = len(X[0])
+    X = normalize(X, norm='max')
     X = np.reshape(X, (int(NUM_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
     y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_clean.csv', delimiter=',', dtype=int)
     y = to_categorical(y)
     X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
     TEST_INSTANCES = len(X_test)
+    X_test = normalize(X_test, norm='max')
     X_test = np.reshape(X_test, (int(TEST_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
     y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test.csv', delimiter=',', dtype=int)
     y_test = to_categorical(y_test)

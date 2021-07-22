@@ -28,9 +28,9 @@ from scipy.signal import resample
 
 PATH = 'src/data/processed_datasets/'
 
-RUN_SS = False
+RUN_SS = True
 RUN_HAR = True
-RUN_BS = False
+RUN_BS = True
 
 if(__name__ == "__main__"):
 
