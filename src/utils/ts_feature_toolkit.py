@@ -36,11 +36,12 @@ def get_features_from_one_signal(X, sample_rate=50):
     c, v = zip(*spectral_density)
     v = np.asarray(v)
 
-    return [mean,
-        stdev,
-        abs_energy,
-        sum_of_changes,
-        autoc,
+    return [
+        0 if np.isnan(mean) else mean,
+        0 if np.isnan(stdev) else stdev,
+        0 if np.isnan(abs_energy) else abs_energy,
+        0 if np.isnan(sum_of_changes) else sum_of_changes,
+        0 if np.isnan(autoc) else autoc,
         count_above_mean,
         count_below_mean,
         kurtosis,
