@@ -36,7 +36,7 @@ def avgChannels(X, num_channels):
 if __name__ == "__main__":
     print("Making Pictures")
 
-    f = 'bs2'
+    f = 'ss1'
 
     X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
     print("Shape of X: ", X.shape)
@@ -56,5 +56,5 @@ if __name__ == "__main__":
     vis = tsne(n_components=2).fit_transform(transform)
 
     for i in range(class_dic[f]):
-        plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], c=color_pallette_small[i])
+        plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=color_pallette_small[i])
     plt.show()
