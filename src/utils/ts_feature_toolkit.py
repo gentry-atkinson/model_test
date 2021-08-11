@@ -9,6 +9,8 @@ from scipy import signal
 import numpy as np
 from tsfresh.feature_extraction import feature_calculators as fc
 from tsfresh.utilities.dataframe_functions import impute
+from joblib import Parallel, delayed
+from functools import reduce
 
 def get_normalized_signal_energy(X):
     return np.mean(np.square(X))
@@ -52,9 +54,18 @@ def get_features_from_one_signal(X, sample_rate=50):
         v[0], v[1], v[2], v[3], v[4], v[5]
     ]
 
-def get_features_for_set(X, sample_rate=50, num_samples=100):
+"""
+Get Features for Set
+Parameters:
+    X: a raw attribut set
+    sample_rate: the collection rate of sensor data (currently unused)
+    num_instances: the number of instances in the set
+Returns: the extracted feature set as a 2D array
+"""
+def get_features_for_set(X, sample_rate=50, num_instances=None):
     sample_length = len(X[0])
-    fet = np.zeros((num_samples, 18))
-    for i in range(num_samples):
-        fet[i, :] = get_features_from_one_signal(X[i, :])
-    return fet
+    if num_instances is None:
+        num_instances = len(X)
+    fet = np.zeros((num_instances, 18))
+    fet = Parallel(n_jobs=4)(delayed(get_features_from_one_signal)(i) for i in X)
+    return np.array(fet)

@@ -7,8 +7,10 @@ import numpy as np
 from sklearn.manifold import TSNE as tsne
 from sklearn.preprocessing import normalize
 from matplotlib import pyplot as plt
-from utils.color_pal import color_pallette_small
+from utils.color_pal import color_pallette_small, color_pallette_big
 from utils.ts_feature_toolkit import get_features_for_set
+from fastdist import fastdist
+import gc
 
 sets = [
     'bs1', 'bs2', 'har1', 'har2', 'ss1', 'ss2'
@@ -26,6 +28,7 @@ class_dic = {
     'bs1':2, 'bs2':2, 'har1':7, 'har2':6, 'ss1':2, 'ss2':5
 }
 
+
 def avgChannels(X, num_channels):
     X_avg = np.zeros((len(X)//num_channels, len(X[0])))
     for i in range(0, len(X_avg)):
@@ -35,26 +38,36 @@ def avgChannels(X, num_channels):
 
 if __name__ == "__main__":
     print("Making Pictures")
+    files = ["ss1", "ss2", "har1", "har2", "bs1", "bs2"]
+    for f in files:
+        print("Set: ", f)
+        X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
+        print("Shape of X: ", X.shape)
+        NUM_INSTANCES = len(X)
+        print("NUM_INSTANCES is ", NUM_INSTANCES)
+        print("instances should be ", NUM_INSTANCES/chan_dic[f])
+        SAMP_LEN = len(X[0])
 
-    f = 'ss1'
+        X = normalize(X, norm='max')
+        X = avgChannels(X, chan_dic[f])
+        #transform = np.real(np.fft.rfft2(X))
+        transform = get_features_for_set(X)
+        print("Size of feature set: ", transform.shape)
+        y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_clean.csv', delimiter=',', dtype=int)
 
-    X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
-    print("Shape of X: ", X.shape)
-    NUM_INSTANCES = len(X)
-    print("NUM_INSTANCES is ", NUM_INSTANCES)
-    print("instances should be ", NUM_INSTANCES/chan_dic[f])
-    SAMP_LEN = len(X[0])
 
-    X = normalize(X, norm='max')
-    X = avgChannels(X, chan_dic[f])
-    #transform = np.real(np.fft.rfft2(X))
-    transform = get_features_for_set(X, num_samples=len(X))
-    print("Size of FFT transform: ", transform.shape)
-    print(transform)
-    y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_clean.csv', delimiter=',', dtype=int)
+        #dis = fastdist.matrix_pairwise_distance(transform, fastdist.cosine, "cosine", return_matrix=True)
 
-    vis = tsne(n_components=2).fit_transform(transform)
+        vis = tsne(n_components=2, metric='euclidean', n_iter_without_progress=100).fit_transform(transform)
 
-    for i in range(class_dic[f]):
-        plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=color_pallette_small[i])
-    plt.show()
+        if class_dic[f] > 5:
+            pal = color_pallette_big
+        else:
+            pal = color_pallette_small
+
+        plt.figure()
+        plt.axis('off')
+        for i in range(class_dic[f]):
+            plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=pal[i])
+        plt.savefig("imgs/"+f+"_tsne.pdf")
+        gc.collect()
