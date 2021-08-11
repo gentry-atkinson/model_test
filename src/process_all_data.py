@@ -25,11 +25,12 @@ import numpy as np
 import os
 import wfdb
 from scipy.signal import resample
+from sklearn.utils import shuffle
 
 PATH = 'src/data/processed_datasets/'
 
-RUN_SS = True
-RUN_HAR = True
+RUN_SS = False
+RUN_HAR = False
 RUN_BS = True
 
 if(__name__ == "__main__"):
@@ -42,6 +43,7 @@ if(__name__ == "__main__"):
         print("##### Preparing Dataset: SS1 #####")
         attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=10000, numClasses=2, percentError=0)
         attributes = np.reshape(np.array(attributes['x']),(10000, 150))
+        attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
         np.savetxt(PATH + 'ss1_attributes_train.csv', attributes[0:8000],  delimiter=',')
         np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean[0:8000], delimiter=',', fmt='%d')
         np.savetxt(PATH + 'ss1_attributes_test.csv', attributes[8000:10000],  delimiter=',')
@@ -56,6 +58,7 @@ if(__name__ == "__main__"):
         print("##### Preparing Dataset: SS2 #####")
         attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=30000, numClasses=5, percentError=0)
         attributes = np.reshape(np.array(attributes['x']),(30000, 150))
+        attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
         np.savetxt(PATH + 'ss2_attributes_train.csv', attributes[0:24000],  delimiter=',')
         np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
         np.savetxt(PATH + 'ss2_attributes_test.csv', attributes[24000:30000],  delimiter=',')
@@ -118,6 +121,7 @@ if(__name__ == "__main__"):
         print("##### Preparing Dataset: HAR2 #####")
         #Process UCI HAR inertial signals into a good file
         attributes, labels_clean, labels = get_uci_data()
+        attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
         print("Shape of UCI data: ", attributes.shape)
         print("Shape of UCI labels: ", labels_clean.shape)
         attributes = np.reshape(np.array(attributes), (7352*3, 128))
@@ -228,6 +232,7 @@ if(__name__ == "__main__"):
         att_file = open(PATH + 'bs2_attributes_train.csv', 'a+')
         att_test = open(PATH + 'bs2_attributes_test.csv', 'a+')
         file_list = os.listdir('src/data/gait-in-parkinsons-disease-1.0.0')
+        file_list = shuffle(file_list, random_state=1899)
         skip_file = [
             'SHA256SUMS.txt', 'gaitpd.png', 'demographics.html',
             'format.txt', 'demographics.xls', 'demographics.txt'

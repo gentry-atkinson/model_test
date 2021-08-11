@@ -31,7 +31,8 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     MIN_LABEL = np.argmin(counts)
     SET_LENGTH = len(clean_labels)
 
-
+    #TODO: use features for KNN?
+    #feats = get_features_for_set(X)
     nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)
     d, i = nbrs.kneighbors(attributes)
 
