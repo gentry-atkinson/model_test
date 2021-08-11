@@ -13,6 +13,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
+import gc
 
 sets = [
     'bs1', 'bs2', 'har1', 'har2', 'ss1', 'ss2'
@@ -44,10 +45,11 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
         Input(shape=X[0].shape),
 #        Reshape((num_channels, X.shape[2])),
         Conv1D(filters=128, kernel_size=32, activation='relu', padding='same'),
-        MaxPooling1D(pool_size=(16), data_format='channels_first'),
+        MaxPooling1D(pool_size=(8), data_format='channels_first'),
         Conv1D(filters=128, kernel_size=16, activation='relu', padding='same'),
-        MaxPooling1D(pool_size=(16), data_format='channels_first'),
+        MaxPooling1D(pool_size=(4), data_format='channels_first'),
         Flatten(),
+        Dense(128, activation='relu'),
         Dense(128, activation='relu'),
         Dense(64, activation='relu'),
         Dense(num_classes, activation='softmax')
@@ -70,24 +72,32 @@ def evaluate_cnn(model, X, y):
 if __name__ == "__main__":
     print("Testing CNN")
     results_file = open('results/CNN_results', 'w+')
-    f = 'har2'
-    X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
-    print("Shape of X: ", X.shape)
-    NUM_INSTANCES = len(X)
-    print("NUM_INSTANCES is ", NUM_INSTANCES)
-    print("instances should be ", NUM_INSTANCES/chan_dic[f])
-    SAMP_LEN = len(X[0])
-    X = normalize(X, norm='max')
-    X = np.reshape(X, (int(NUM_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
-    y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_clean.csv', delimiter=',', dtype=int)
-    y = to_categorical(y)
-    X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
-    TEST_INSTANCES = len(X_test)
-    X_test = normalize(X_test, norm='max')
-    X_test = np.reshape(X_test, (int(TEST_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
-    y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test.csv', delimiter=',', dtype=int)
-    y_test = to_categorical(y_test)
-    model = build_cnn(X, class_dic[f], opt='adam', loss='categorical_crossentropy')
-    model = train_cnn(model, X, y)
-    score = evaluate_cnn(model, X_test, y_test)
-    print("Score for this model: \n", score)
+    counter = 1
+    for f in sets:
+        print ('Experiment: ', counter, " Set: ", f)
+        results_file.write('############Experiment {}############\n'.format(counter))
+        results_file.write('Set: {}\n'.format(f))
+        X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
+        print("Shape of X: ", X.shape)
+        NUM_INSTANCES = len(X)
+        print("NUM_INSTANCES is ", NUM_INSTANCES)
+        print("instances should be ", NUM_INSTANCES/chan_dic[f])
+        SAMP_LEN = len(X[0])
+        X = normalize(X, norm='max')
+        X = np.reshape(X, (int(NUM_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
+        y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_clean.csv', delimiter=',', dtype=int)
+        y = to_categorical(y)
+        X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
+        TEST_INSTANCES = len(X_test)
+        X_test = normalize(X_test, norm='max')
+        X_test = np.reshape(X_test, (int(TEST_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
+        y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test.csv', delimiter=',', dtype=int)
+        y_test = to_categorical(y_test)
+        model = build_cnn(X, class_dic[f], opt='adam', loss='categorical_crossentropy')
+        model = train_cnn(model, X, y)
+        score = evaluate_cnn(model, X_test, y_test)
+        print("Score for this model: \n", score)
+        results_file.write(score)
+        results_file.write('\n\n')
+        counter += 1
+        gc.collect()
