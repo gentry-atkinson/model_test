@@ -29,8 +29,8 @@ from sklearn.utils import shuffle
 
 PATH = 'src/data/processed_datasets/'
 
-RUN_SS = False
-RUN_HAR = False
+RUN_SS = True
+RUN_HAR = True
 RUN_BS = True
 
 if(__name__ == "__main__"):

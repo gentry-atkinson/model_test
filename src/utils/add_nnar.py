@@ -14,7 +14,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
 
     if attributes == []:
         print("reading attribute file")
-        attributes = np.genfromtxt(att_file, delimiter=',')
+        attributes = np.genfromtxt(att_file, delimiter=',', dtype=int)
 
     low_indexes = open(filename + '_nnar5_indexes.csv', 'w+')
     high_indexes = open(filename + '_nnar10_indexes.csv', 'w+')
@@ -27,8 +27,8 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     h_flipped_counter = 0
 
     counts = [np.count_nonzero(clean_labels==i) for i in range(num_classes)]
-    MAJ_LABEL = np.argmax(counts)
-    MIN_LABEL = np.argmin(counts)
+    MAJ_LABEL = int(np.argmax(counts))
+    MIN_LABEL = int(np.argmin(counts))
     SET_LENGTH = len(clean_labels)
 
     #TODO: use features for KNN?
@@ -61,8 +61,8 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
                 #print("High noise flips: ", h_flipped_counter)
 
 
-    low_noise_file.write('\n'.join([str(i) for i in low_noise_labels]))
-    high_noise_file.write('\n'.join([str(i) for i in high_noise_labels]))
+    low_noise_file.write('\n'.join([str(int(i)) for i in low_noise_labels]))
+    high_noise_file.write('\n'.join([str(int(i)) for i in high_noise_labels]))
     low_noise_file.write('\n')
     high_noise_file.write('\n')
 

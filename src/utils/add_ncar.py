@@ -10,7 +10,7 @@ import os
 def new_label(old_label, num_classes):
     n = old_label
     while(n==old_label):
-        n = randint(0, num_classes)
+        n = randint(0, num_classes-1)
     return n
 
 def add_ncar(clean_labels, filename, num_classes):
@@ -27,17 +27,17 @@ def add_ncar(clean_labels, filename, num_classes):
         total_counter += 1
         if randint(0,100)<5:
             low_noise_labels.write('{}\n'.format(new_label(l, num_classes)))
-            low_indexes.write('{}\n'.format(i))
+            low_indexes.write('{}\n'.format(int(i)))
             l_flipped_counter += 1
         else:
-            low_noise_labels.write('{}\n'.format(l))
+            low_noise_labels.write('{}\n'.format(int(l)))
 
         if randint(0,100)<10:
             high_noise_labels.write('{}\n'.format(new_label(l, num_classes)))
-            high_indexes.write('{}\n'.format(i))
+            high_indexes.write('{}\n'.format(int(i)))
             h_flipped_counter += 1
         else:
-            high_noise_labels.write('{}\n'.format(l))
+            high_noise_labels.write('{}\n'.format(int(l)))
 
     low_noise_labels.close()
     high_noise_labels.close()

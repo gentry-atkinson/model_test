@@ -14,6 +14,7 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
 import gc
+from sklearn.utils import shuffle
 
 sets = [
     'bs1', 'bs2', 'har1', 'har2', 'ss1', 'ss2'
@@ -98,7 +99,9 @@ if __name__ == "__main__":
             X_test = np.reshape(X_test, (int(TEST_INSTANCES/chan_dic[f]), chan_dic[f], SAMP_LEN))
             y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test.csv', delimiter=',', dtype=int)
             y_test = to_categorical(y_test)
-            model = build_cnn(X, class_dic[f], opt='adam', loss='categorical_crossentropy')
+            X, y,  = shuffle(X, y, random_state=1899)
+            X_test, y_test = shuffle(X_test, y_test, random_state=1899)
+            model = build_cnn(X, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
             model = train_cnn(model, X, y)
             score = evaluate_cnn(model, X_test, y_test)
             print("Score for this model: \n", score)
