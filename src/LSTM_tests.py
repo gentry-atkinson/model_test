@@ -7,7 +7,7 @@ import numpy as np
 import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import LSTM, Input, Dense
 from tensorflow.keras.layers import Reshape, BatchNormalization
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.utils import to_categorical
@@ -67,8 +67,8 @@ def evaluate_cnn(model, X, y):
     return classification_report(y_true, y_pred)
 
 if __name__ == "__main__":
-    print("Testing CNN")
-    results_file = open('results/CNN_results.txt', 'w+')
+    print("Testing LSTM")
+    results_file = open('results/LSTM_results.txt', 'w+')
     counter = 1
     for f in sets:
         for l in labels:
