@@ -8,7 +8,7 @@ import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
-from tensorflow.keras.layers import Reshape, BatchNormalization
+from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import classification_report
@@ -17,7 +17,7 @@ import gc
 from sklearn.utils import shuffle
 
 sets = [
-    'bs1', 'bs2', 'har1', 'har2', 'ss1', 'ss2'
+    'ss1', 'ss2', 'bs1', 'bs2', 'har1', 'har2'
 ]
 
 labels = [
@@ -47,14 +47,16 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
         Input(shape=X[0].shape),
 #        Reshape((num_channels, X.shape[2])),
         Conv1D(filters=128, kernel_size=32, activation='relu', padding='same'),
-        Conv1D(filters=128, kernel_size=32, activation='relu', padding='same'),
-        MaxPooling1D(pool_size=(4), data_format='channels_first'),
+        #Conv1D(filters=128, kernel_size=16, activation='relu', padding='same'),
+        MaxPooling1D(pool_size=(2), data_format='channels_first'),
+        Dropout(0.25),
+        #Conv1D(filters=64, kernel_size=32, activation='relu', padding='same'),
         Conv1D(filters=64, kernel_size=16, activation='relu', padding='same'),
-        Conv1D(filters=64, kernel_size=16, activation='relu', padding='same'),
-        MaxPooling1D(pool_size=(8), data_format='channels_first'),
+        MaxPooling1D(pool_size=(2), data_format='channels_first'),
+        Dropout(0.25),
         Flatten(),
         Dense(128, activation='relu'),
-        Dense(128, activation='relu'),
+        #Dense(128, activation='relu'),
         Dense(64, activation='relu'),
         Dense(num_classes, activation='softmax')
     ])
@@ -64,7 +66,7 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
 
 def train_cnn(model, X, y):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=7)
-    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=10, workers=8)
+    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=8)
     return model
 
 def evaluate_cnn(model, X, y):

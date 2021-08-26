@@ -8,7 +8,7 @@ import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import LSTM, Input, Dense
-from tensorflow.keras.layers import Reshape, BatchNormalization
+from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import classification_report
@@ -46,6 +46,7 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
     model = Sequential([
         Input(shape=X[0].shape),
         LSTM(32),
+        Dropout(0.25),
         Dense(128, activation='relu'),
         Dense(128, activation='relu'),
         Dense(64, activation='relu'),
@@ -57,7 +58,7 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
 
 def train_cnn(model, X, y):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=7)
-    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=10, workers=8)
+    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=8)
     return model
 
 def evaluate_cnn(model, X, y):

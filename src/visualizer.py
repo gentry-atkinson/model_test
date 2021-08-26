@@ -36,6 +36,12 @@ def avgChannels(X, num_channels):
         X_avg[i, :] /= num_channels
     return X_avg
 
+def absChannels(X, num_channels):
+    X_avg = np.zeros((len(X)//num_channels, len(X[0])))
+    for i in range(0, len(X_avg)):
+        X_avg[i, :] = np.linalg.norm(X[num_channels*i:num_channels*i+num_channels, :], axis=0)
+    return X_avg
+
 if __name__ == "__main__":
     print("Making Pictures")
     files = ["ss1", "ss2", "har1", "har2", "bs1", "bs2"]
@@ -49,7 +55,7 @@ if __name__ == "__main__":
         SAMP_LEN = len(X[0])
 
         X = normalize(X, norm='max')
-        X = avgChannels(X, chan_dic[f])
+        X = absChannels(X, chan_dic[f])
         #transform = np.real(np.fft.rfft2(X))
         transform = get_features_for_set(X)
         print("Size of feature set: ", transform.shape)
@@ -68,6 +74,7 @@ if __name__ == "__main__":
         plt.figure()
         plt.axis('off')
         for i in range(class_dic[f]):
-            plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=pal[i])
+            plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=pal[i], label=str(i))
+        plt.legend()
         plt.savefig("imgs/"+f+"_tsne.pdf")
         gc.collect()
