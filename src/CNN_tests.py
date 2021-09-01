@@ -90,7 +90,7 @@ if __name__ == "__main__":
                 mlr = 0.05
             elif '10' in l:
                 mlr = 0.1
-            else
+            else:
                 mlr = 0.
             print ('Experiment: ', counter, " Set: ", f, "Labels: ", l)
             results_file.write('############Experiment {}############\n'.format(counter))
