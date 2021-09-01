@@ -23,6 +23,10 @@ def add_nar(clean_labels, filename, num_classes):
 
     imbalance = len(clean_labels)/counts[MAJ_LABEL]
 
+    if imbalance > 10:
+        print("ERROR: imbalance is to high")
+        return
+
 
     for i,l in enumerate(clean_labels):
         total_counter += 1

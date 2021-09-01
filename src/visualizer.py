@@ -17,7 +17,7 @@ sets = [
 ]
 
 labels = [
-    'labels_clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10'
+    'clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10'
 ]
 
 chan_dic = {
@@ -44,8 +44,7 @@ def absChannels(X, num_channels):
 
 if __name__ == "__main__":
     print("Making Pictures")
-    files = ["ss1", "ss2", "har1", "har2", "bs1", "bs2"]
-    for f in files:
+    for f in sets:
         print("Set: ", f)
         X = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
         print("Shape of X: ", X.shape)
@@ -59,11 +58,6 @@ if __name__ == "__main__":
         #transform = np.real(np.fft.rfft2(X))
         transform = get_features_for_set(X)
         print("Size of feature set: ", transform.shape)
-        y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_clean.csv', delimiter=',', dtype=int)
-
-
-        #dis = fastdist.matrix_pairwise_distance(transform, fastdist.cosine, "cosine", return_matrix=True)
-
         vis = tsne(n_components=2, metric='euclidean', n_iter_without_progress=100).fit_transform(transform)
 
         if class_dic[f] > 5:
@@ -71,10 +65,13 @@ if __name__ == "__main__":
         else:
             pal = color_pallette_small
 
-        plt.figure()
-        plt.axis('off')
-        for i in range(class_dic[f]):
-            plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=pal[i], label=str(i))
-        plt.legend()
-        plt.savefig("imgs/"+f+"_tsne.pdf")
-        gc.collect()
+        for l in labels:
+            y = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l+'.csv', delimiter=',', dtype=int)
+
+            plt.figure()
+            plt.axis('off')
+            for i in range(class_dic[f]):
+                plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=pal[i], label=str(i))
+            plt.legend()
+            plt.savefig("imgs/"+f+"_"+l+"_tsne.pdf")
+            gc.collect()
