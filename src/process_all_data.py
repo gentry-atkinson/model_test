@@ -30,8 +30,8 @@ from sklearn.utils import shuffle
 PATH = 'src/data/processed_datasets/'
 
 RUN_SS = False
-RUN_HAR = True
-RUN_BS = False
+RUN_HAR = False
+RUN_BS = True
 
 if(__name__ == "__main__"):
 
@@ -207,9 +207,9 @@ if(__name__ == "__main__"):
         attributes = []
         labels_clean = []
         os.system('rm {}'.format(PATH + 'bs1_attributes_test.csv'))
-        os.system('rm {}'.format(PATH + 'bs1_labels_test.csv'))
+        os.system('rm {}'.format(PATH + 'bs1_labels_test_clean.csv'))
         att_file = open(PATH + 'bs1_attributes_test.csv', 'a+')
-        lab_file = open(PATH + 'bs1_labels_test.csv', 'a+')
+        lab_file = open(PATH + 'bs1_labels_test_clean.csv', 'a+')
         with open('src/data/apnea-ecg-database-1.0.0/list') as file_list:
             if not os.path.isdir('src/data/apnea-ecg-database-1.0.0/temp'):
                 os.system('mkdir src/data/apnea-ecg-database-1.0.0/temp')
@@ -237,6 +237,10 @@ if(__name__ == "__main__"):
                                 labels_clean = np.append(labels_clean, [0 if g[2] == 'N' else 1])
         att_file.close()
         lab_file.close()
+
+        add_ncar(labels_clean, PATH + 'bs1_labels_test', 2)
+        add_nar(labels_clean, PATH + 'bs1_labels_test', 2)
+        add_nnar([], labels_clean, PATH + 'bs1_labels_test', 2, att_file=PATH+'bs1_attributes_test.csv')
 
         #Process PD Gait set into BioSignal Set 2
         #window the data to 5 second segments
@@ -293,7 +297,7 @@ if(__name__ == "__main__"):
         print("Number of controls in gait dataset: ", np.count_nonzero(labels_clean==0))
         print("Number of PD in gait dataset: ", np.count_nonzero(labels_clean==1))
         np.savetxt(PATH + 'bs2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'bs2_labels_test.csv', lab_test, delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'bs2_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
         att_test.close()
         att_file.close()
 
@@ -302,4 +306,8 @@ if(__name__ == "__main__"):
         add_ncar(labels_clean, PATH + 'bs2_labels', 2)
         add_nar(labels_clean, PATH + 'bs2_labels', 2)
         add_nnar([], labels_clean, PATH + 'bs2_labels', 2, att_file=PATH+'bs2_attributes_train.csv', num_channels=2)
+
+        add_ncar(lab_test, PATH + 'bs2_labels_test', 2)
+        add_nar(lab_test, PATH + 'bs2_labels_test', 2)
+        add_nnar([], lab_test, PATH + 'bs2_labels_test', 2, att_file=PATH+'bs2_attributes_test.csv', num_channels=2)
         print("Done with BS")

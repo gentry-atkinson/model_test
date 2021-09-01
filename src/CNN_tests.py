@@ -18,11 +18,11 @@ from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     sets = [
-        'har1', 'har2'
+        'ss1', 'ss2'
     ]
 else:
     sets = [
@@ -150,7 +150,7 @@ if __name__ == "__main__":
                 results_file.write('\nColumns are predictions, rows are labels\n')
                 results_file.write(str(mat))
                 results_file.write('\n')
-                results_file.write('AER: {} MLR_train: {} MLR_test TER: {}'.format(aer, mlr_train, mlr_test, ter))
+                results_file.write('AER: {:.3f} MLR_train: {} MLR_test:{} TER: {:.3f}'.format(aer, mlr_train, mlr_test, ter))
                 results_file.write('\n\n')
                 counter += 1
                 gc.collect()
@@ -158,9 +158,16 @@ if __name__ == "__main__":
         results_file.write("Summary of {}\n".format(f))
         results_file.write('Apparent Error Rates. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
-        results_file.write(str(aer_mat))
+        for row in aer_mat:
+            for item in row:
+                results_file.write('{:.3f}\t'.format(item))
+            results_file.write('\n')
         results_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
-        results_file.write(str(ter_mat))
+        for row in ter_mat:
+            for item in row:
+                results_file.write('{:.3f}\t'.format(item))
+            results_file.write('\n')
         results_file.write('\n\n')
+        results_file.flush()
     results_file.close()
