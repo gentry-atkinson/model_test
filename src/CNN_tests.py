@@ -16,6 +16,7 @@ from sklearn.preprocessing import normalize
 import gc
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
+from utils.ts_feature_toolkit import calc_AER, calc_TER
 
 sets = [
     'ss1', 'ss2', 'bs1', 'bs2', 'har1', 'har2'
@@ -70,10 +71,13 @@ def train_cnn(model, X, y):
     model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=8)
     return model
 
-def evaluate_cnn(model, X, y):
+def evaluate_cnn(model, X, y, mlr):
     y_pred = model.predict(X)
     y_pred = np.argmax(y_pred, axis=-1)
     y_true = np.argmax(y, axis=-1)
+    aer = calc_AER(y_true, y_pred)
+    ter = calc_TER(aer, mlr)
+    error_rate = 'AER: ' + str(aer)  + '\nTER: ' + str(ter) + '\n'
     return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred)
 
 if __name__ == "__main__":
@@ -82,6 +86,12 @@ if __name__ == "__main__":
     counter = 1
     for f in sets:
         for l in labels:
+            if '5' in l:
+                mlr = 0.05
+            elif '10' in l:
+                mlr = 0.1
+            else
+                mlr = 0.
             print ('Experiment: ', counter, " Set: ", f, "Labels: ", l)
             results_file.write('############Experiment {}############\n'.format(counter))
             results_file.write('Set: {}\n'.format(f))
@@ -106,13 +116,14 @@ if __name__ == "__main__":
             X_test, y_test = shuffle(X_test, y_test, random_state=1899)
             model = build_cnn(X, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
             model = train_cnn(model, X, y)
-            score, mat = evaluate_cnn(model, X_test, y_test)
+            score, mat, rates = evaluate_cnn(model, X_test, y_test)
             print("Score for this model: \n", score)
             print("Confusion Matrix for this model: \n", mat)
             results_file.write(score)
             results_file.write('\nColumns are predictions, rows are labels\n')
-
             results_file.write(str(mat))
+            results_file.write('\n')
+            results_file.write(rates)
             results_file.write('\n\n')
             counter += 1
             gc.collect()
