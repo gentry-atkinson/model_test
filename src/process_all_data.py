@@ -109,6 +109,7 @@ if(__name__ == "__main__"):
         print('Number of e4 instances: ', len(attributes))
         print('Number of e4 labels: ', len(labels_clean))
         print('Shape of  e4 attributes: ', np.array(attributes).shape)
+
         attributes = np.reshape(attributes,(num_instances*num_channels, num_samples))
         num_instances = att_test.shape[0]
         num_samples = att_test.shape[1]
@@ -150,12 +151,12 @@ if(__name__ == "__main__"):
         attributes, labels_clean, labels = get_uci_test()
         attributes = np.reshape(attributes,(2947*3, 128))
         np.savetxt(PATH + 'har2_attributes_test.csv', attributes,  delimiter=',')
-        np.savetxt(PATH + 'har2_labels_test.csv', labels_clean, delimiter=',', fmt='%d')
-        print("Done with HAR")
+        np.savetxt(PATH + 'har2_labels_test_clean.csv', labels_clean, delimiter=',', fmt='%d')
 
         add_ncar(labels_clean, PATH + 'har2_labels_test', 6)
         add_nar(labels_clean, PATH + 'har2_labels_test', 6)
         add_nnar(attributes, labels_clean, PATH + 'har2_labels_test', 6, num_channels=3)
+        print("Done with HAR")
 
     if RUN_BS:
         print("##### Preparing Dataset: BS1 #####")

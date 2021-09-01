@@ -8,6 +8,12 @@ from random import randint
 import os
 from sklearn.neighbors import NearestNeighbors
 
+def absChannels(X, num_channels):
+    X_avg = np.zeros((len(X)//num_channels, len(X[0])))
+    for i in range(0, len(X_avg)):
+        X_avg[i, :] = np.linalg.norm(X[num_channels*i:num_channels*i+num_channels, :], axis=0)
+    return X_avg
+
 def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, att_file=""):
     low_noise_labels = np.copy(clean_labels)
     high_noise_labels = np.copy(clean_labels)
@@ -15,6 +21,11 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     if attributes == []:
         print("reading attribute file")
         attributes = np.genfromtxt(att_file, delimiter=',', dtype=int)
+
+    if num_channels != 1:
+        X = absChannels(attributes, num_channels)
+    else:
+        X = attributes
 
     low_indexes = open(filename + '_nnar5_indexes.csv', 'w+')
     high_indexes = open(filename + '_nnar10_indexes.csv', 'w+')
@@ -33,8 +44,8 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
 
     #TODO: use features for KNN?
     #feats = get_features_for_set(X)
-    nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)
-    d, i = nbrs.kneighbors(attributes)
+    nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(X)
+    d, i = nbrs.kneighbors(X)
 
 
     #TODO figure out multi channel data!!!
@@ -42,7 +53,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         rand_instance_index = randint(0, SET_LENGTH-1)
         total_counter += 1
         if low_noise_labels[rand_instance_index] == MAJ_LABEL:
-            if randint(0,100) < 3+(30 if low_noise_labels[i[rand_instance_index][1]//num_channels]!=MAJ_LABEL else 0):
+            if randint(0,100) < 3+(30 if low_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL else 0):
                 #print('Mislabel rate: ', 3+(30 if low_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
                 low_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]//num_channels]
                 l_flipped_counter += 1
@@ -53,9 +64,9 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         rand_instance_index = randint(0, SET_LENGTH-1)
         total_counter += 1
         if high_noise_labels[rand_instance_index] == MAJ_LABEL:
-            if randint(0,100) < 5+(50 if high_noise_labels[i[rand_instance_index][1]//num_channels]!=MAJ_LABEL else 0):
+            if randint(0,100) < 5+(50 if high_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL else 0):
                 #print('Mislabel rate: ', 5+(50 if high_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
-                high_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]//num_channels]
+                high_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]]
                 h_flipped_counter += 1
                 high_indexes.write('{}\n'.format(rand_instance_index))
                 #print("High noise flips: ", h_flipped_counter)

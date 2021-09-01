@@ -22,7 +22,7 @@ DEBUG = True
 
 if DEBUG:
     sets = [
-        'ss1', 'ss2'
+        'har1', 'har2'
     ]
 else:
     sets = [
@@ -155,12 +155,12 @@ if __name__ == "__main__":
                 counter += 1
                 gc.collect()
                 results_file.flush()
-            results_file.write("Summary of {}\n".format(f))
-            results_file.write('Apparent Error Rates. Row->Train Column->Test\n')
-            results_file.write('Label Sets: {}\n'.format(labels))
-            results_file.write(str(aer_mat))
-            results_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
-            results_file.write('Label Sets: {}\n'.format(labels))
-            results_file.write(str(ter_mat))
-            results_file.write('\n\n')
+        results_file.write("Summary of {}\n".format(f))
+        results_file.write('Apparent Error Rates. Row->Train Column->Test\n')
+        results_file.write('Label Sets: {}\n'.format(labels))
+        results_file.write(str(aer_mat))
+        results_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
+        results_file.write('Label Sets: {}\n'.format(labels))
+        results_file.write(str(ter_mat))
+        results_file.write('\n\n')
     results_file.close()
