@@ -12,6 +12,18 @@ from tsfresh.utilities.dataframe_functions import impute
 from joblib import Parallel, delayed
 from functools import reduce
 
+def calc_AER(y_true, y_pred):
+    assert y_true.ndim == 1, "AER received labels with {} dimension".format(y_true.ndim)
+    assert len(y_true) == len(y_pred), "y_true and y_pred must have the same length"
+    wrong = np.sum(y_true != y_pred)
+    total = len(y_true)
+    return wrong/total
+
+def calc_TER(aer, mlr):
+    assert aer<=1 and mlr<=1, "Why would an error rate be greater than 1???"
+    assert mlr != 0.5, "Sorry, MLR can't be one half"
+    return (aer-mlr)/(1-2*mlr)
+
 def get_normalized_signal_energy(X):
     return np.mean(np.square(X))
 
@@ -69,3 +81,13 @@ def get_features_for_set(X, sample_rate=50, num_instances=None):
     fet = np.zeros((num_instances, 18))
     fet = Parallel(n_jobs=4)(delayed(get_features_from_one_signal)(i) for i in X)
     return np.array(fet)
+
+if __name__ == "__main__":
+    y_true = np.array([0,1,0,1,0,1,0,1,0,1])
+    y_pred = np.array([0,1,1,1,0,1,0,1,0,1])
+    aer = calc_AER(y_true, y_pred)
+    mlr = 0.05
+    ter = calc_TER(aer, mlr)
+    print("My apparent error rate: ", aer)
+    print("My mislabel rate is: ", mlr)
+    print("My true error rate is: ", ter)
