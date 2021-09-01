@@ -29,9 +29,9 @@ from sklearn.utils import shuffle
 
 PATH = 'src/data/processed_datasets/'
 
-RUN_SS = True
+RUN_SS = False
 RUN_HAR = True
-RUN_BS = True
+RUN_BS = False
 
 if(__name__ == "__main__"):
 
@@ -47,12 +47,16 @@ if(__name__ == "__main__"):
         np.savetxt(PATH + 'ss1_attributes_train.csv', attributes[0:8000],  delimiter=',')
         np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean[0:8000], delimiter=',', fmt='%d')
         np.savetxt(PATH + 'ss1_attributes_test.csv', attributes[8000:10000],  delimiter=',')
-        np.savetxt(PATH + 'ss1_labels_test.csv', labels_clean[8000:10000], delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'ss1_labels_test_clean.csv', labels_clean[8000:10000], delimiter=',', fmt='%d')
 
         #Create label sets for SS1
         add_ncar(labels_clean[0:8000], PATH + 'ss1_labels', 2)
         add_nar(labels_clean[0:8000], PATH + 'ss1_labels', 2)
         add_nnar(attributes[0:8000], labels_clean[0:8000], PATH + 'ss1_labels', 2)
+
+        add_ncar(labels_clean[8000:10000], PATH + 'ss1_labels_test', 2)
+        add_nar(labels_clean[8000:10000], PATH + 'ss1_labels_test', 2)
+        add_nnar(attributes[8000:10000], labels_clean[8000:10000], PATH + 'ss1_labels_test', 2)
 
         #Create Synthetic Set 2
         print("##### Preparing Dataset: SS2 #####")
@@ -62,12 +66,17 @@ if(__name__ == "__main__"):
         np.savetxt(PATH + 'ss2_attributes_train.csv', attributes[0:24000],  delimiter=',')
         np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
         np.savetxt(PATH + 'ss2_attributes_test.csv', attributes[24000:30000],  delimiter=',')
-        np.savetxt(PATH + 'ss2_labels_test.csv', labels_clean[24000:30000], delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'ss2_labels_test_clean.csv', labels_clean[24000:30000], delimiter=',', fmt='%d')
 
         #Create label sets for SS2
         add_ncar(labels_clean[0:24000], PATH + 'ss2_labels', 5)
         add_nar(labels_clean[0:24000], PATH + 'ss2_labels', 5)
         add_nnar(attributes[0:24000], labels_clean[0:24000], PATH + 'ss2_labels', 5)
+
+        add_ncar(labels_clean[24000:30000], PATH + 'ss2_labels_test', 5)
+        add_nar(labels_clean[24000:30000], PATH + 'ss2_labels_test', 5)
+        add_nnar(attributes[24000:30000], labels_clean[24000:30000], PATH + 'ss2_labels_test', 5)
+        print("Done with SS")
 
     if RUN_HAR:
         print("##### Preparing Dataset: HAR1 #####")
@@ -111,12 +120,16 @@ if(__name__ == "__main__"):
         np.savetxt(PATH + 'har1_attributes_train.csv', attributes,  delimiter=',')
         np.savetxt(PATH + 'har1_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
         np.savetxt(PATH + 'har1_attributes_test.csv', att_test,  delimiter=',')
-        np.savetxt(PATH + 'har1_labels_test.csv', lab_test, delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'har1_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
 
         #Create label sets for HAR1
         add_ncar(labels_clean, PATH + 'har1_labels', 7)
         add_nar(labels_clean, PATH + 'har1_labels', 7)
         add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7, num_channels=1)
+
+        add_ncar(lab_test, PATH + 'har1_labels_test', 7)
+        add_nar(lab_test, PATH + 'har1_labels_test', 7)
+        add_nnar(att_test, lab_test, PATH + 'har1_labels_test', 7, num_channels=1)
 
         print("##### Preparing Dataset: HAR2 #####")
         #Process UCI HAR inertial signals into a good file
@@ -138,6 +151,11 @@ if(__name__ == "__main__"):
         attributes = np.reshape(attributes,(2947*3, 128))
         np.savetxt(PATH + 'har2_attributes_test.csv', attributes,  delimiter=',')
         np.savetxt(PATH + 'har2_labels_test.csv', labels_clean, delimiter=',', fmt='%d')
+        print("Done with HAR")
+
+        add_ncar(labels_clean, PATH + 'har2_labels_test', 6)
+        add_nar(labels_clean, PATH + 'har2_labels_test', 6)
+        add_nnar(attributes, labels_clean, PATH + 'har2_labels_test', 6, num_channels=3)
 
     if RUN_BS:
         print("##### Preparing Dataset: BS1 #####")
@@ -283,3 +301,4 @@ if(__name__ == "__main__"):
         add_ncar(labels_clean, PATH + 'bs2_labels', 2)
         add_nar(labels_clean, PATH + 'bs2_labels', 2)
         add_nnar([], labels_clean, PATH + 'bs2_labels', 2, att_file=PATH+'bs2_attributes_train.csv', num_channels=2)
+        print("Done with BS")
