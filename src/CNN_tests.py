@@ -15,6 +15,7 @@ from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
 import gc
 from sklearn.utils import shuffle
+from sklearn.metrics import confusion_matrix
 
 sets = [
     'ss1', 'ss2', 'bs1', 'bs2', 'har1', 'har2'
@@ -73,7 +74,7 @@ def evaluate_cnn(model, X, y):
     y_pred = model.predict(X)
     y_pred = np.argmax(y_pred, axis=-1)
     y_true = np.argmax(y, axis=-1)
-    return classification_report(y_true, y_pred)
+    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred)
 
 if __name__ == "__main__":
     print("Testing CNN")
@@ -105,9 +106,13 @@ if __name__ == "__main__":
             X_test, y_test = shuffle(X_test, y_test, random_state=1899)
             model = build_cnn(X, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
             model = train_cnn(model, X, y)
-            score = evaluate_cnn(model, X_test, y_test)
+            score, mat = evaluate_cnn(model, X_test, y_test)
             print("Score for this model: \n", score)
+            print("Confusion Matrix for this model: \n", mat)
             results_file.write(score)
+            results_file.write('\nColumns are predictions, rows are labels\n')
+
+            results_file.write(str(mat))
             results_file.write('\n\n')
             counter += 1
             gc.collect()
