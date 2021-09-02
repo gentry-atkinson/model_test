@@ -75,7 +75,8 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
 
 def train_cnn(model, X, y):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=7)
-    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=8)
+    NUM_CORES = os.cpu_count()
+    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=NUM_CORES)
     return model
 
 def evaluate_cnn(model, X, y, mlr):

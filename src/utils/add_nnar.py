@@ -7,6 +7,7 @@ import numpy as np
 from random import randint
 import os
 from sklearn.neighbors import NearestNeighbors
+from utils.ts_feature_toolkit import get_features_for_set
 
 def absChannels(X, num_channels):
     X_avg = np.zeros((len(X)//num_channels, len(X[0])))
@@ -42,19 +43,16 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     MIN_LABEL = int(np.argmin(counts))
     SET_LENGTH = len(clean_labels)
 
-    #TODO: use features for KNN?
-    #feats = get_features_for_set(X)
+    X = get_features_for_set(X)
+    print("feature extraction done")
     nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(X)
     d, i = nbrs.kneighbors(X)
 
-
-    #TODO figure out multi channel data!!!
     while l_flipped_counter < 0.05*SET_LENGTH:
         rand_instance_index = randint(0, SET_LENGTH-1)
         total_counter += 1
         if low_noise_labels[rand_instance_index] == MAJ_LABEL:
-            if randint(0,100) < 3+(30 if low_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL else 0):
-                #print('Mislabel rate: ', 3+(30 if low_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
+            if low_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL or randint(0,99)<3:
                 low_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]//num_channels]
                 l_flipped_counter += 1
                 low_indexes.write('{}\n'.format(rand_instance_index))
@@ -64,9 +62,8 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         rand_instance_index = randint(0, SET_LENGTH-1)
         total_counter += 1
         if high_noise_labels[rand_instance_index] == MAJ_LABEL:
-            if randint(0,100) < 5+(50 if high_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL else 0):
-                #print('Mislabel rate: ', 5+(50 if high_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
-                high_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]]
+            if high_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL or randint(0,99)<3:
+                high_noise_labels[rand_instance_index] = high_noise_labels[i[rand_instance_index][1]]
                 h_flipped_counter += 1
                 high_indexes.write('{}\n'.format(rand_instance_index))
                 #print("High noise flips: ", h_flipped_counter)

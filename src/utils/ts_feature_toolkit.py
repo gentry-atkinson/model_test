@@ -11,6 +11,7 @@ from tsfresh.feature_extraction import feature_calculators as fc
 from tsfresh.utilities.dataframe_functions import impute
 from joblib import Parallel, delayed
 from functools import reduce
+import os
 
 def calc_AER(y_true, y_pred):
     assert y_true.ndim == 1, "AER received labels with {} dimension".format(y_true.ndim)
@@ -79,7 +80,8 @@ def get_features_for_set(X, sample_rate=50, num_instances=None):
     if num_instances is None:
         num_instances = len(X)
     fet = np.zeros((num_instances, 18))
-    fet = Parallel(n_jobs=4)(delayed(get_features_from_one_signal)(i) for i in X)
+    NUM_CORES = os.cpu_count()
+    fet = Parallel(n_jobs=NUM_CORES)(delayed(get_features_from_one_signal)(i) for i in X)
     return np.array(fet)
 
 if __name__ == "__main__":
