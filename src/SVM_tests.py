@@ -14,7 +14,7 @@ import gc
 import os
 from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     sets = [
@@ -55,10 +55,8 @@ def train_svm(model, X, y):
     model.fit(X, y)
     return model
 
-def evaluate_svm(model, X, y, mlr):
+def evaluate_svm(model, X, y_true, mlr):
     y_pred = model.predict(X)
-    y_pred = np.argmax(y_pred, axis=-1)
-    y_true = np.argmax(y, axis=-1)
     print('Shape of y true: '.format(y_true))
     print('Shape of y predicted: '.format(y_pred))
     aer = calc_AER(y_true, y_pred)
@@ -67,8 +65,8 @@ def evaluate_svm(model, X, y, mlr):
 
 if __name__ == "__main__":
     if __name__ == "__main__":
-        print("Testing LSTM")
-        results_file = open('results/LSTM_results.txt', 'w+')
+        print("Testing SVM")
+        results_file = open('results/SVM_results.txt', 'w+')
         counter = 1
 
         for f in sets:
@@ -82,8 +80,8 @@ if __name__ == "__main__":
             TEST_INSTANCES = len(X_test)
             SAMP_LEN = len(X_test[0])
             X_train_feat = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
-            X_train_feat = get_features_for_set(X_train)
-            X_train_feat = normalize(X_train, norm='max')
+            X_train_feat = get_features_for_set(X_train_feat)
+            X_train_feat = normalize(X_train_feat, norm='max')
             for i, l_train in enumerate(labels):
                 if '5' in l_train:
                     mlr_train = 0.05
