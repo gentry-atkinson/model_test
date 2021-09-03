@@ -63,6 +63,12 @@ def evaluate_svm(model, X, y_true, mlr):
     ter = calc_TER(aer, mlr)
     return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter
 
+def absChannels(X, num_channels):
+    X_avg = np.zeros((len(X)//num_channels, len(X[0])))
+    for i in range(0, len(X_avg)):
+        X_avg[i, :] = np.linalg.norm(X[num_channels*i:num_channels*i+num_channels, :], axis=0)
+    return X_avg
+
 if __name__ == "__main__":
     if __name__ == "__main__":
         print("Testing SVM")
@@ -77,11 +83,13 @@ if __name__ == "__main__":
             X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
             X_test = get_features_for_set(X_test)
             X_test = normalize(X_test, norm='max')
+            X_test = absChannels(X_test, chan_dic[f])
             TEST_INSTANCES = len(X_test)
             SAMP_LEN = len(X_test[0])
             X_train_feat = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
             X_train_feat = get_features_for_set(X_train_feat)
             X_train_feat = normalize(X_train_feat, norm='max')
+            X_train_feat = absChannels(X_train_feat, chan_dic[f])
             for i, l_train in enumerate(labels):
                 if '5' in l_train:
                     mlr_train = 0.05
