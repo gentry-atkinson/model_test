@@ -5,21 +5,16 @@
 
 import numpy as np
 import tensorflow.keras.metrics as met
-from tensorflow.keras import Sequential
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.layers import LSTM, Input, Dense
-from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout
-from tensorflow.keras.callbacks import EarlyStopping
-from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
-import gc
-import os
+from sklearn import svm
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
-from utils.ts_feature_toolkit import calc_AER, calc_TER
+import gc
+import os
+from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     sets = [
@@ -51,13 +46,13 @@ class_dic = {
     'bs1':2, 'bs2':2, 'har1':7, 'har2':6, 'ss1':2, 'ss2':5
 }
 
-def build_svm(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
+def build_svm(X, num_classes):
     print("Input Shape: ", X.shape)
-
+    model = svm.SVC()
     return model
 
 def train_svm(model, X, y):
-
+    model.fit(X, y)
     return model
 
 def evaluate_svm(model, X, y, mlr):
@@ -82,10 +77,13 @@ if __name__ == "__main__":
             ter_mat = np.zeros((7, 7))
             #load the attributes for a test dataset
             X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
+            X_test = get_features_for_set(X_test)
             X_test = normalize(X_test, norm='max')
             TEST_INSTANCES = len(X_test)
             SAMP_LEN = len(X_test[0])
-            X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+            X_train_feat = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
+            X_train_feat = get_features_for_set(X_train)
+            X_train_feat = normalize(X_train, norm='max')
             for i, l_train in enumerate(labels):
                 if '5' in l_train:
                     mlr_train = 0.05
@@ -94,15 +92,12 @@ if __name__ == "__main__":
                 else:
                     mlr_train = 0.
                 #load the training label and attribute sets
-                X_train = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
-                X_train = normalize(X_train, norm='max')
+                X_train = np.copy(X_train_feat)
                 NUM_INSTANCES = len(X_train)
-                X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
                 y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
-                y_train = to_categorical(y_train)
                 X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-                model = build_lstm(X_train, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
-                model = train_lstm(model, X_train, y_train)
+                model = build_svm(X_train, class_dic[f])
+                model = train_svm(model, X_train, y_train)
                 for j, l_test in enumerate(labels):
                     if '5' in l_test:
                         mlr_test = 0.05
@@ -117,14 +112,13 @@ if __name__ == "__main__":
                     results_file.write('Test Labels: {}\n'.format(l_test))
                     #load the test attribute set
                     y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test_'+l_test+'.csv', delimiter=',', dtype=int)
-                    y_test = to_categorical(y_test)
                     print("Shape of X_train: ", X_train.shape)
                     print("Shape of X_test: ", X_test.shape)
                     print("Shape of y_train: ", y_train.shape)
                     print("Shape of y_test: ", y_test.shape)
                     print("NUM_INSTANCES is ", NUM_INSTANCES)
                     print("instances should be ", NUM_INSTANCES//chan_dic[f])
-                    score, mat, aer, ter = evaluate_lstm(model, X_test, y_test, mlr_test)
+                    score, mat, aer, ter = evaluate_svm(model, X_test, y_test, mlr_test)
                     aer_mat[i, j] = aer
                     ter_mat[i, j] = ter
                     print("Score for this model: \n", score)

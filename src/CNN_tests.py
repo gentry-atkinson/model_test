@@ -10,7 +10,6 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
 from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
-from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
 import gc
