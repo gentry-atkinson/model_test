@@ -1,7 +1,7 @@
 #Author: Gentry Atkinson
 #Organization: Texas University
-#Data: 23 August, 2021
-#Train and test an LSTM on the 6 datasets with their many label sets
+#Data: 2 September, 2021
+#Train and test an SVM on the 6 datasets with their many label sets
 
 import numpy as np
 import tensorflow.keras.metrics as met
@@ -51,28 +51,16 @@ class_dic = {
     'bs1':2, 'bs2':2, 'har1':7, 'har2':6, 'ss1':2, 'ss2':5
 }
 
-def build_lstm(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
+def build_svm(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
-    model = Sequential([
-        Input(shape=X[0].shape),
-        LSTM(32),
-        Dropout(0.25),
-        Dense(128, activation='relu'),
-        Dense(128, activation='relu'),
-        Dense(64, activation='relu'),
-        Dense(num_classes, activation='softmax')
-    ])
-    model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
-    model.summary()
+
     return model
 
-def train_lstm(model, X, y):
-    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=7)
-    NUM_CORES = os.cpu_count()
-    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=NUM_CORES)
+def train_svm(model, X, y):
+
     return model
 
-def evaluate_lstm(model, X, y, mlr):
+def evaluate_svm(model, X, y, mlr):
     y_pred = model.predict(X)
     y_pred = np.argmax(y_pred, axis=-1)
     y_true = np.argmax(y, axis=-1)
