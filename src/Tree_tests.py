@@ -14,7 +14,7 @@ import gc
 import os
 from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     sets = [
