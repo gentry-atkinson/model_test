@@ -161,7 +161,7 @@ if(__name__ == "__main__"):
     if RUN_BS:
         print("##### Preparing Dataset: BS1 #####")
         #Process Sleep Apnea set into BioSignal Set 1
-        #The instances get downsampled from 6000 to 600 because otherwise it all
+        #The instances get downsampled from 6000 to 1000 because otherwise it all
         #falls apart
         attributes = []
         labels_clean = []

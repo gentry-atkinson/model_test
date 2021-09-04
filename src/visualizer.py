@@ -42,7 +42,7 @@ def absChannels(X, num_channels):
         X_avg[i, :] = np.linalg.norm(X[num_channels*i:num_channels*i+num_channels, :], axis=0)
     return X_avg
 
-RUN_TSNE = False
+RUN_TSNE = True
 RUN_WF = True
 
 if __name__ == "__main__":
@@ -56,10 +56,8 @@ if __name__ == "__main__":
             print("NUM_INSTANCES is ", NUM_INSTANCES)
             print("instances should be ", NUM_INSTANCES/chan_dic[f])
             SAMP_LEN = len(X[0])
-
             X = normalize(X, norm='max')
             X = absChannels(X, chan_dic[f])
-            #transform = np.real(np.fft.rfft2(X))
             transform = get_features_for_set(X)
             print("Size of feature set: ", transform.shape)
             vis = tsne(n_components=2, metric='euclidean', n_iter_without_progress=100).fit_transform(transform)
@@ -79,6 +77,7 @@ if __name__ == "__main__":
                 plt.legend()
                 plt.savefig("imgs/"+f+"_"+l+"_tsne.pdf")
                 gc.collect()
+                plt.close()
 
     if RUN_WF:
         for f in sets:
@@ -101,3 +100,5 @@ if __name__ == "__main__":
                     i = X[np.where(y==l)][0]
                     plt.plot(range(SAMP_LEN), i, c=pal[l])
             plt.savefig("imgs/"+f+"_waveforms.pdf")
+            gc.collect()
+            plt.close()
