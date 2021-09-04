@@ -14,7 +14,8 @@ from functools import reduce
 import os
 
 def calc_AER(y_true, y_pred):
-    assert y_true.ndim == 1, "AER received labels with {} dimension".format(y_true.ndim)
+    assert y_true.ndim == 1, "AER received labels with {} dimensions".format(y_true.ndim)
+    assert y_pred.ndim == 1, "AER received labels with {} dimensions".format(y_pred.ndim)
     assert len(y_true) == len(y_pred), "y_true and y_pred must have the same length"
     wrong = np.sum(y_true != y_pred)
     total = len(y_true)
