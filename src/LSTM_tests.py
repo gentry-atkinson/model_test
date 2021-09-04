@@ -17,6 +17,7 @@ import os
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER
+from datetime import date
 
 DEBUG = False
 
@@ -84,6 +85,7 @@ def evaluate_lstm(model, X, y, mlr):
 if __name__ == "__main__":
     if __name__ == "__main__":
         print("Testing LSTM")
+        print(date.today())
         results_file = open('results/LSTM_results.txt', 'w+')
         counter = 1
 

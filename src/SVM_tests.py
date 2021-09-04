@@ -13,6 +13,7 @@ from sklearn.metrics import confusion_matrix
 import gc
 import os
 from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set
+from datetime import date
 
 DEBUG = False
 
@@ -72,6 +73,7 @@ def absChannels(X, num_channels):
 if __name__ == "__main__":
     if __name__ == "__main__":
         print("Testing SVM")
+        print(date.today())
         results_file = open('results/SVM_results.txt', 'w+')
         counter = 1
 
