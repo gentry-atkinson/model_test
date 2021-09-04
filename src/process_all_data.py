@@ -190,7 +190,7 @@ if(__name__ == "__main__"):
                             g = [i for i in g if i != '']
                             #att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f), sampfrom=int(g[1]), sampto=int(g[1])+5999, warn_empty=True)
                             if (int(g[1])+6000) < SIG_LEN:
-                                att_file.write('{}\n'.format(','.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 600)])))
+                                att_file.write('{}\n'.format(','.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 1000)])))
                                 lab_file.write('{}\n'.format(0 if g[2] == 'N' else 1))
                                 #attributes = np.append(attributes, att[int(g[1]):int(g[1])+5999])
                                 labels_clean = np.append(labels_clean, [0 if g[2] == 'N' else 1])
@@ -231,7 +231,7 @@ if(__name__ == "__main__"):
                             g = [i for i in g if i != '']
                             #att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f), sampfrom=int(g[1]), sampto=int(g[1])+5999, warn_empty=True)
                             if (int(g[1])+6000) < SIG_LEN:
-                                att_file.write('{}\n'.format(','.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 600)])))
+                                att_file.write('{}\n'.format(','.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 1000)])))
                                 lab_file.write('{}\n'.format(0 if g[2] == 'N' else 1))
                                 #attributes = np.append(attributes, att[int(g[1]):int(g[1])+5999])
                                 labels_clean = np.append(labels_clean, [0 if g[2] == 'N' else 1])
@@ -243,7 +243,7 @@ if(__name__ == "__main__"):
         add_nnar([], labels_clean, PATH + 'bs1_labels_test', 2, att_file=PATH+'bs1_attributes_test.csv')
 
         #Process PD Gait set into BioSignal Set 2
-        #window the data to 5 second segments
+        #window the data to 10 second segments
         #I'm going to use Si as the test set, which has 64 walks
         #Ga has 113 and Ju has 129
         print("##### Preparing Dataset: BS2 #####")
@@ -270,10 +270,10 @@ if(__name__ == "__main__"):
                 gait = gait_file.read()
                 gait = gait.strip().split('\n')
                 #print("Number of samples in gait", len(gait))
-                for i in range(0, len(gait)-500, 500):
+                for i in range(0, len(gait)-1000, 1000):
                     left_walk = []
                     right_walk = []
-                    for j in range(i, i+500):
+                    for j in range(i, i+1000):
                         left_walk = np.append(left_walk, gait[j].split('\t')[17])
                         right_walk = np.append(right_walk, gait[j].split('\t')[18])
 

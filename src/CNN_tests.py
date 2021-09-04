@@ -8,8 +8,8 @@ import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
-from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout
-from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout, ReLU
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
 import gc
@@ -54,18 +54,18 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-#        Reshape((num_channels, X.shape[2])),
-        Conv1D(filters=128, kernel_size=32, activation='relu', padding='same'),
-        #Conv1D(filters=128, kernel_size=16, activation='relu', padding='same'),
+        Conv1D(filters=64, kernel_size=32, padding='same'),
         MaxPooling1D(pool_size=(2), data_format='channels_first'),
-        Dropout(0.25),
-        #Conv1D(filters=64, kernel_size=32, activation='relu', padding='same'),
-        Conv1D(filters=64, kernel_size=16, activation='relu', padding='same'),
+        ReLU(),
+        Conv1D(filters=64, kernel_size=16, padding='same'),
         MaxPooling1D(pool_size=(2), data_format='channels_first'),
+        ReLU(),
+        Conv1D(filters=64, kernel_size=8, padding='same'),
+        MaxPooling1D(pool_size=(2), data_format='channels_first'),
+        ReLU(),
         Dropout(0.25),
         Flatten(),
         Dense(128, activation='relu'),
-        #Dense(128, activation='relu'),
         Dense(64, activation='relu'),
         Dense(num_classes, activation='softmax')
     ])
@@ -74,9 +74,10 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
     return model
 
 def train_cnn(model, X, y):
-    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=7)
+    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=50)
+    rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
-    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=NUM_CORES)
+    model.fit(X, y, epochs=500, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, workers=NUM_CORES)
     return model
 
 def evaluate_cnn(model, X, y, mlr):
