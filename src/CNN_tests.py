@@ -95,6 +95,7 @@ if __name__ == "__main__":
     print("Testing CNN")
     print(date.today())
     results_file = open('results/CNN_results.txt', 'w+')
+    results_file.write('{}\n'.format(date.today()))
     counter = 1
 
     for f in sets:

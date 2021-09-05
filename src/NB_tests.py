@@ -1,22 +1,18 @@
 #Author: Gentry Atkinson
 #Organization: Texas University
-#Data: 23 August, 2021
-#Train and test an LSTM on the 6 datasets with their many label sets
+#Data: 4 September, 2021
+#Train and test a naive bayes classifier on the 6 datasets with their many label sets
 
 import numpy as np
 import tensorflow.keras.metrics as met
-from tensorflow.keras import Sequential
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.layers import LSTM, Input, Dense
-from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout
-from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
-import gc
-import os
+from sklearn.naive_bayes import GaussianNB
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
-from utils.ts_feature_toolkit import calc_AER, calc_TER
+import gc
+import os
+from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set
 from datetime import date
 
 DEBUG = False
@@ -51,42 +47,34 @@ class_dic = {
     'bs1':2, 'bs2':2, 'har1':7, 'har2':6, 'ss1':2, 'ss2':5
 }
 
-def build_lstm(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
+def build_nb(X, num_classes):
     print("Input Shape: ", X.shape)
-    model = Sequential([
-        Input(shape=X[0].shape),
-        LSTM(32),
-        Dropout(0.25),
-        Dense(128, activation='relu'),
-        Dense(128, activation='relu'),
-        Dense(64, activation='relu'),
-        Dense(num_classes, activation='softmax')
-    ])
-    model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
-    model.summary()
+    model =  GaussianNB()
     return model
 
-def train_lstm(model, X, y):
-    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=7)
-    NUM_CORES = os.cpu_count()
-    model.fit(X, y, epochs=100, verbose=1, callbacks=[es], validation_split=0.1, batch_size=100, workers=NUM_CORES)
+def train_nb(model, X, y):
+    model.fit(X, y)
     return model
 
-def evaluate_lstm(model, X, y, mlr):
+def evaluate_nb(model, X, y_true, mlr):
     y_pred = model.predict(X)
-    y_pred = np.argmax(y_pred, axis=-1)
-    y_true = np.argmax(y, axis=-1)
     print('Shape of y true: '.format(y_true))
     print('Shape of y predicted: '.format(y_pred))
     aer = calc_AER(y_true, y_pred)
     ter = calc_TER(aer, mlr)
     return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter
 
+def absChannels(X, num_channels):
+    X_avg = np.zeros((len(X)//num_channels, len(X[0])))
+    for i in range(0, len(X_avg)):
+        X_avg[i, :] = np.linalg.norm(X[num_channels*i:num_channels*i+num_channels, :], axis=0)
+    return X_avg
+
 if __name__ == "__main__":
     if __name__ == "__main__":
-        print("Testing LSTM")
+        print("Testing Naive Bayes")
         print(date.today())
-        results_file = open('results/LSTM_results.txt', 'w+')
+        results_file = open('results/NB_results.txt', 'w+')
         results_file.write('{}\n'.format(date.today()))
         counter = 1
 
@@ -96,10 +84,15 @@ if __name__ == "__main__":
             ter_mat = np.zeros((7, 7))
             #load the attributes for a test dataset
             X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
+            X_test = get_features_for_set(X_test)
             X_test = normalize(X_test, norm='max')
+            X_test = absChannels(X_test, chan_dic[f])
             TEST_INSTANCES = len(X_test)
             SAMP_LEN = len(X_test[0])
-            X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+            X_train_feat = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
+            X_train_feat = get_features_for_set(X_train_feat)
+            X_train_feat = normalize(X_train_feat, norm='max')
+            X_train_feat = absChannels(X_train_feat, chan_dic[f])
             for i, l_train in enumerate(labels):
                 if '5' in l_train:
                     mlr_train = 0.05
@@ -108,15 +101,12 @@ if __name__ == "__main__":
                 else:
                     mlr_train = 0.
                 #load the training label and attribute sets
-                X_train = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
-                X_train = normalize(X_train, norm='max')
+                X_train = np.copy(X_train_feat)
                 NUM_INSTANCES = len(X_train)
-                X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
                 y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
-                y_train = to_categorical(y_train)
                 X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-                model = build_lstm(X_train, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
-                model = train_lstm(model, X_train, y_train)
+                model = build_nb(X_train, class_dic[f])
+                model = train_nb(model, X_train, y_train)
                 for j, l_test in enumerate(labels):
                     if '5' in l_test:
                         mlr_test = 0.05
@@ -131,14 +121,13 @@ if __name__ == "__main__":
                     results_file.write('Test Labels: {}\n'.format(l_test))
                     #load the test attribute set
                     y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test_'+l_test+'.csv', delimiter=',', dtype=int)
-                    y_test = to_categorical(y_test)
                     print("Shape of X_train: ", X_train.shape)
                     print("Shape of X_test: ", X_test.shape)
                     print("Shape of y_train: ", y_train.shape)
                     print("Shape of y_test: ", y_test.shape)
                     print("NUM_INSTANCES is ", NUM_INSTANCES)
                     print("instances should be ", NUM_INSTANCES//chan_dic[f])
-                    score, mat, aer, ter = evaluate_lstm(model, X_test, y_test, mlr_test)
+                    score, mat, aer, ter = evaluate_nb(model, X_test, y_test, mlr_test)
                     aer_mat[i, j] = aer
                     ter_mat[i, j] = ter
                     print("Score for this model: \n", score)

@@ -75,6 +75,7 @@ if __name__ == "__main__":
         print("Testing SVM")
         print(date.today())
         results_file = open('results/SVM_results.txt', 'w+')
+        results_file.write('{}\n'.format(date.today()))
         counter = 1
 
         for f in sets:

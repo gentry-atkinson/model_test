@@ -75,6 +75,7 @@ if __name__ == "__main__":
         print("Testing Random Forrest")
         print(date.today())
         results_file = open('results/Tree_results.txt', 'w+')
+        results_file.write('{}\n'.format(date.today()))
         counter = 1
 
         for f in sets:
