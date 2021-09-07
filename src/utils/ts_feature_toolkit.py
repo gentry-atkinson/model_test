@@ -85,6 +85,7 @@ def get_features_for_set(X, sample_rate=50, num_instances=None):
     fet = Parallel(n_jobs=NUM_CORES)(delayed(get_features_from_one_signal)(i) for i in X)
     return np.array(fet)
 
+#just a little testing section down here
 if __name__ == "__main__":
     y_true = np.array([0,1,0,1,0,1,0,1,0,1])
     y_pred = np.array([0,1,1,1,0,1,0,1,0,1])
