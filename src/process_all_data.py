@@ -237,7 +237,7 @@ if(__name__ == "__main__"):
                             g = [i for i in g if i != '']
                             #att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f), sampfrom=int(g[1]), sampto=int(g[1])+5999, warn_empty=True)
                             if (int(g[1])+6000) < SIG_LEN:
-                                att_file.write('{}\n'.format(','.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 1000)])))
+                                att_file.write('{}\n'.format(', '.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 1000)])))
                                 lab_file.write('{}\n'.format(0 if g[2] == 'N' else 1))
                                 #attributes = np.append(attributes, att[int(g[1]):int(g[1])+5999])
                                 labels_clean = np.append(labels_clean, [0 if g[2] == 'N' else 1])
@@ -278,7 +278,7 @@ if(__name__ == "__main__"):
                             g = [i for i in g if i != '']
                             #att, ident = wfdb.rdsamp('src/data/apnea-ecg-database-1.0.0/{0}'.format(f), sampfrom=int(g[1]), sampto=int(g[1])+5999, warn_empty=True)
                             if (int(g[1])+6000) < SIG_LEN:
-                                att_file.write('{}\n'.format(','.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 1000)])))
+                                att_file.write('{}\n'.format(', '.join([str(i[0]) for i in resample(att[int(g[1]):int(g[1])+6000], 1000)])))
                                 lab_file.write('{}\n'.format(0 if g[2] == 'N' else 1))
                                 #attributes = np.append(attributes, att[int(g[1]):int(g[1])+5999])
                                 labels_clean = np.append(labels_clean, [0 if g[2] == 'N' else 1])
