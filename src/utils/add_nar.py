@@ -7,6 +7,13 @@ import numpy as np
 from random import randint
 import os
 
+"""
+Noise at Random-> The mislabeling rate is influenced by class
+
+Mislabel only instances from the majority class. The total mislabeling rate of the
+low noise label set will be 5% and the total mislabeling rate of the high noise
+set will be 10%.
+"""
 def add_nar(clean_labels, filename, num_classes):
     low_noise_labels = open(filename + '_nar5.csv', 'w+')
     high_noise_labels = open(filename + '_nar10.csv', 'w+')
@@ -21,12 +28,11 @@ def add_nar(clean_labels, filename, num_classes):
     MAJ_LABEL = int(np.argmax(counts))
     MIN_LABEL = int(np.argmin(counts))
 
+    assert MAJ_LABEL != MIN_LABEL, "Calculating class imbalance has gone horribly wrong"
+
     imbalance = len(clean_labels)/counts[MAJ_LABEL]
 
-    if imbalance > 10:
-        print("ERROR: imbalance is to high")
-        return
-
+    assert imbalance < 10, "ERROR: imbalance is to high for NAR"
 
     for i,l in enumerate(clean_labels):
         total_counter += 1

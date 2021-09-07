@@ -13,6 +13,14 @@ def new_label(old_label, num_classes):
         n = randint(0, num_classes-1)
     return n
 
+"""
+Noise Completely at Random-> the mislabeling rate is independent of class and features
+
+Apply a flat mislabeling rate to all instances in a dataset. The low noise label set
+will have a uniform 5% mislabeling rate. The high noise label set will have a uniform
+10% mislabel rate.
+"""
+
 def add_ncar(clean_labels, filename, num_classes):
     low_noise_labels = open(filename + '_ncar5.csv', 'w+')
     high_noise_labels = open(filename + '_ncar10.csv', 'w+')

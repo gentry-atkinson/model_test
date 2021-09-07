@@ -15,6 +15,14 @@ def absChannels(X, num_channels):
         X_avg[i, :] = np.linalg.norm(X[num_channels*i:num_channels*i+num_channels, :], axis=0)
     return X_avg
 
+"""
+Noise Not at Random-> the mislabeling rate is affected by class and features
+
+Find instances of the majority class whose nearest neighbor in the extracted feature
+space is not from the majority class. Relabel those instances as being from the minor
+class. Other instances of the major class will have a uniform 3% mislabeling rate.
+"""
+
 def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, att_file=""):
     low_noise_labels = np.copy(clean_labels)
     high_noise_labels = np.copy(clean_labels)
@@ -53,7 +61,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         total_counter += 1
         if low_noise_labels[rand_instance_index] == MAJ_LABEL:
             if low_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL or randint(0,99)<3:
-                low_noise_labels[rand_instance_index] = low_noise_labels[i[rand_instance_index][1]//num_channels]
+                low_noise_labels[rand_instance_index] = MIN_LABEL
                 l_flipped_counter += 1
                 low_indexes.write('{}\n'.format(rand_instance_index))
                 #print("Low noise flips: ", l_flipped_counter)
@@ -63,7 +71,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         total_counter += 1
         if high_noise_labels[rand_instance_index] == MAJ_LABEL:
             if high_noise_labels[i[rand_instance_index][1]]!=MAJ_LABEL or randint(0,99)<3:
-                high_noise_labels[rand_instance_index] = high_noise_labels[i[rand_instance_index][1]]
+                high_noise_labels[rand_instance_index] = MIN_LABEL
                 h_flipped_counter += 1
                 high_indexes.write('{}\n'.format(rand_instance_index))
                 #print("High noise flips: ", h_flipped_counter)
