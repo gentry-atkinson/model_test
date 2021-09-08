@@ -304,8 +304,8 @@ if(__name__ == "__main__"):
         2 classes
         2 channel
         1000 samples in every instance
-        2467 train instances
-        768 test instances
+        4757 train instances
+        1472 test instances
         """
         attributes = []
         labels_clean = []
