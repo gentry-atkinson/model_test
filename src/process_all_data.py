@@ -332,8 +332,8 @@ if(__name__ == "__main__"):
                         att_test.flush()
                         lab_test = np.append(lab_test, 0 if 'Co' in f else 1)
                     else:
-                        att_file.write('{}\n'.format(','.join([str(i) for i in left_walk])))
-                        att_file.write('{}\n'.format(','.join([str(i) for i in right_walk])))
+                        att_file.write('{}\n'.format(', '.join([str(i) for i in left_walk])))
+                        att_file.write('{}\n'.format(', '.join([str(i) for i in right_walk])))
                         att_file.flush()
                         labels_clean = np.append(labels_clean, 0 if 'Co' in f else 1)
 
