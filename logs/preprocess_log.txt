@@ -1,96 +1,245 @@
-8000
-8000
-8000
-8000
-##### Preparing Dataset: SS1 #####
-0  incorrect labels in data
+425
+425
+425
+425
+##### Preparing Dataset: HAR1 #####
+Processing  1574621345_A01F11.zip
+Unzipping e4 file in local directory src/temp
+src/temp/ACC.csv Sample frequency =  32.0  Hz
+File start time =  Sun, 24 Nov 2019 12:49:05
+File end time   =  Sun, 24 Nov 2019 12:58:11
+Tag info (button presses) from tags.csv
+    UTC_time          Local Time
+0 1574621375.17 Sun, 24 Nov 2019 12:49:35
+1 1574621774.22 Sun, 24 Nov 2019 12:56:14
+Warning: Multiple subjects detected in csv, unusual for e4 data.
+Label Counts
+ Upstairs      6208
+Downstairs    5889
+Undefined     5405
+Name: label, dtype: int64
+No NaN entries found
+shapes call broke when making the function - not sure why
+Processing  1574622389_A01F11.zip
+Unzipping e4 file in local directory src/temp
+src/temp/ACC.csv Sample frequency =  32.0  Hz
+File start time =  Sun, 24 Nov 2019 13:06:29
+File end time   =  Sun, 24 Nov 2019 13:15:03
+Tag info (button presses) from tags.csv
+    UTC_time          Local Time
+0 1574622432.21 Sun, 24 Nov 2019 13:07:12
+1 1574622822.72 Sun, 24 Nov 2019 13:13:42
+Warning: Multiple subjects detected in csv, unusual for e4 data.
+Label Counts
+ Walking      5793
+Jogging      5792
+Undefined    4885
+Name: label, dtype: int64
+No NaN entries found
+shapes call broke when making the function - not sure why
+Processing  1574624998_A01F11.zip
+Unzipping e4 file in local directory src/temp
+src/temp/ACC.csv Sample frequency =  32.0  Hz
+File start time =  Sun, 24 Nov 2019 13:49:58
+File end time   =  Sun, 24 Nov 2019 13:57:15
+Tag info (button presses) from tags.csv
+    UTC_time          Local Time
+0 1574625042.71 Sun, 24 Nov 2019 13:50:42
+1 1574625419.43 Sun, 24 Nov 2019 13:56:59
+Warning: Multiple subjects detected in csv, unusual for e4 data.
+Label Counts
+ Sitting      5857
+Standing     5632
+Undefined    2503
+Name: label, dtype: int64
+No NaN entries found
+shapes call broke when making the function - not sure why
+Processing  1574625540_A01F11.zip
+Unzipping e4 file in local directory src/temp
+src/temp/ACC.csv Sample frequency =  32.0  Hz
+File start time =  Sun, 24 Nov 2019 13:59:00
+File end time   =  Sun, 24 Nov 2019 14:10:59
+Tag info (button presses) from tags.csv
+    UTC_time          Local Time
+0 1574625579.24 Sun, 24 Nov 2019 13:59:39
+1 1574626246.7 Sun, 24 Nov 2019 14:10:46
+Label Counts
+ Not_Labeled    21345
+Undefined       1683
+Name: label, dtype: int64
+No NaN entries found
+shapes call broke when making the function - not sure why
+shapes call broke when making the function - not sure why
+Final Label Counts
+[['Downstairs' '97']
+ ['Jogging' '106']
+ ['Not_Labeled' '424']
+ ['Sitting' '110']
+ ['Standing' '103']
+ ['Upstairs' '104']
+ ['Walking' '108']]
+e4 November 2019 zip files
+1574621345_A01F11.zip 1574622389_A01F11.zip 1574624998_A01F11.zip 1574625540_A01F11.zip
+Time steps =150, Step =50, no resample
+Final Shapes
+shapes call broke when making the function - not sure why
+Removing component accel
+One-hot-encoding: category names -> int -> one-hot
+{'Downstairs': 0, 'Jogging': 1, 'Not_Labeled': 2, 'Sitting': 3, 'Standing': 4, 'Upstairs': 5, 'Walking': 6}
+One-hot-encoding [array([0, 1, 2, 3, 4, 5, 6])]
+Shape of e4 data:  (425, 150, 1)
+Shape of e4 labels:  (425,)
+Number of e4 instances:  425
+Number of e4 labels:  425
+Shape of  e4 attributes:  (425, 150, 1)
+Number of test instances:  203
+Number of test labels:  203
+Shape of test attributes:  (425, 150)
 ---NCAR---
-Total labels on file:  8000
-Total labels processed:  8000
-Low noise labels flipped:  434
-High noise labels flipped:  796
+Total labels on file:  425
+Total labels processed:  425
+Low noise labels flipped:  14
+High noise labels flipped:  46
 Lines written to low noise file: 
 Lines written to high noise file: 
 ---NAR---
-Major label:  0
-Minor label:  1
-Class imbalance:  1.005012531328321
-Total labels processed:  8000
-Low noise labels flipped:  409
-High noise labels flipped:  826
+Major label:  5
+Minor label:  2
+Class imbalance:  74.0
+Total labels processed:  425
+Low noise labels flipped:  14
+High noise labels flipped:  43
 Lines written to low noise file: 
 Lines written to high noise file: 
-8000
-8000
-2000
-2000
-2000
-2000
-2000
-2000
-24000
-24000
-24000
-24000
+425
+425
+203
+203
+203
+203
+203
+203
+7352
+7352
+7352
+7352
+7352
+7352
+2947
+2947
+2947
+2947
+2947
+2947
 feature extraction done
 ---NNAR---
-Major label:  0
-Minor label:  1
-Number of labels:  8000
-Number of entries in neighbor table:  8000
+Major label:  5
+Minor label:  2
+Number of labels:  425
+Number of entries in neighbor table:  425
 Size of neighbor vector:  2
-Total labels processed:  26798
-Low noise labels flipped:  400
-High noise labels flipped:  800
-Length of low noise label set 8000
-Length of high noise label set 8000
+Total labels processed:  5750
+Low noise labels flipped:  22
+High noise labels flipped:  43
+Length of low noise label set 425
+Length of high noise label set 425
 Lines written to low noise file: 
 Lines written to high noise file: 
 ---NCAR---
-Total labels on file:  2000
-Total labels processed:  2000
-Low noise labels flipped:  97
-High noise labels flipped:  213
-Lines written to low noise file: 
-Lines written to high noise file: 
----NAR---
-Major label:  0
-Minor label:  1
-Class imbalance:  1.0242914979757085
-Total labels processed:  2000
-Low noise labels flipped:  107
-High noise labels flipped:  202
-Lines written to low noise file: 
-Lines written to high noise file: 
-feature extraction done
----NNAR---
-Major label:  0
-Minor label:  1
-Number of labels:  2000
-Number of entries in neighbor table:  2000
-Size of neighbor vector:  2
-Total labels processed:  6762
-Low noise labels flipped:  100
-High noise labels flipped:  200
-Length of low noise label set 2000
-Length of high noise label set 2000
-Lines written to low noise file: 
-Lines written to high noise file: 
-##### Preparing Dataset: SS2 #####
-0  incorrect labels in data
----NCAR---
-Total labels on file:  24000
-Total labels processed:  24000
-Low noise labels flipped:  1145
-High noise labels flipped:  2415
+Total labels on file:  203
+Total labels processed:  203
+Low noise labels flipped:  12
+High noise labels flipped:  9
 Lines written to low noise file: 
 Lines written to high noise file: 
 ---NAR---
 Major label:  3
-Minor label:  1
-Class imbalance:  1.0240404892450443
-Total labels processed:  24000
-Low noise labels flipped:  1223
-High noise labels flipped:  2398
+Minor label:  2
+Class imbalance:  38.0
+Total labels processed:  203
+Low noise labels flipped:  15
+High noise labels flipped:  25
 Lines written to low noise file: 
 Lines written to high noise file: 
+feature extraction done
+---NNAR---
+Major label:  3
+Minor label:  2
+Number of labels:  203
+Number of entries in neighbor table:  203
+Size of neighbor vector:  2
+Total labels processed:  1770
+Low noise labels flipped:  11
+High noise labels flipped:  21
+Length of low noise label set 203
+Length of high noise label set 203
+Lines written to low noise file: 
+Lines written to high noise file: 
+##### Preparing Dataset: HAR2 #####
+Loading UCI HAR Dataset
+Shape of UCI data:  (7352, 3, 128)
+Shape of UCI labels:  (7352,)
+---NCAR---
+Total labels on file:  7352
+Total labels processed:  7352
+Low noise labels flipped:  416
+High noise labels flipped:  747
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  5
+Minor label:  2
+Class imbalance:  1.4269776876267748
+Total labels processed:  7352
+Low noise labels flipped:  367
+High noise labels flipped:  710
+Lines written to low noise file: 
+Lines written to high noise file: 
+feature extraction done
+---NNAR---
+Major label:  5
+Minor label:  2
+Number of labels:  7352
+Number of entries in neighbor table:  7352
+Size of neighbor vector:  2
+Total labels processed:  47757
+Low noise labels flipped:  368
+High noise labels flipped:  736
+Length of low noise label set 7352
+Length of high noise label set 7352
+Lines written to low noise file: 
+Lines written to high noise file: 
+Loading UCI HAR test set
+Shape of UCI test:  (2947, 3, 128)
+Shape of UCI test:  (2947,)
+---NCAR---
+Total labels on file:  2947
+Total labels processed:  2947
+Low noise labels flipped:  143
+High noise labels flipped:  316
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  5
+Minor label:  2
+Class imbalance:  1.2785714285714285
+Total labels processed:  2947
+Low noise labels flipped:  169
+High noise labels flipped:  295
+Lines written to low noise file: 
+Lines written to high noise file: 
+feature extraction done
+---NNAR---
+Major label:  5
+Minor label:  2
+Number of labels:  2947
+Number of entries in neighbor table:  2947
+Size of neighbor vector:  2
+Total labels processed:  21774
+Low noise labels flipped:  148
+High noise labels flipped:  295
+Length of low noise label set 2947
+Length of high noise label set 2947
+Lines written to low noise file: 
+Lines written to high noise file: 
+Done with HAR

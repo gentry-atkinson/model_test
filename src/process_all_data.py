@@ -32,9 +32,9 @@ import wfdb
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = True
+RUN_SS = False
 RUN_HAR = True
-RUN_BS = True
+RUN_BS = False
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
@@ -110,7 +110,8 @@ if(__name__ == "__main__"):
         203 test instances
         """
         #Use Lee's files to get HAR Set 1
-        attributes, labels_clean, att_test, lab_test = map(np.array, e4_load_dataset(verbose=False, one_hot_encode = False))
+        #Use one_hot_encode to get numerical labels
+        attributes, labels_clean, att_test, lab_test = map(np.array, e4_load_dataset(verbose=False, one_hot_encode = True))
         # attributes = np.array(attributes)
         # att_test = np.array(att_test)
         # label_dic = {
@@ -124,8 +125,8 @@ if(__name__ == "__main__"):
         # }
         # labels_clean = np.array([label_dic[i[0]] for i in labels_clean])
         # lab_test = np.array([label_dic[i[0]] for i in lab_test])
-        # labels_clean = np.argmax(labels_clean, axis=-1)
-        # lab_test = np.argmax(lab_test, axis=-1)
+        labels_clean = np.argmax(labels_clean, axis=-1)
+        lab_test = np.argmax(lab_test, axis=-1)
         num_instances = attributes.shape[0]
         num_samples = attributes.shape[1]
         num_channels = attributes.shape[2]
