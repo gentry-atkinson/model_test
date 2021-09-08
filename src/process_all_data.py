@@ -33,8 +33,8 @@ PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
 RUN_SS = False
-RUN_HAR = True
-RUN_BS = False
+RUN_HAR = False
+RUN_BS = True
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
@@ -295,6 +295,18 @@ if(__name__ == "__main__"):
         #I'm going to use Si as the test set, which has 64 walks
         #Ga has 113 and Ju has 129
         print("##### Preparing Dataset: BS2 #####")
+        """
+        BioSignal Set 2
+        Gait in Parkinsons: measures of foot preassure while subjects walk
+        Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000).
+        PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals.
+        Circulation [Online]. 101 (23), pp. e215–e220.
+        2 classes
+        2 channel
+        1000 samples in every instance
+        2467 train instances
+        768 test instances
+        """
         attributes = []
         labels_clean = []
         lab_test = []
@@ -318,7 +330,7 @@ if(__name__ == "__main__"):
                 gait = gait_file.read()
                 gait = gait.strip().split('\n')
                 #print("Number of samples in gait", len(gait))
-                for i in range(0, len(gait)-1000, 1000):
+                for i in range(0, len(gait)-1000, 500):
                     left_walk = []
                     right_walk = []
                     for j in range(i, i+1000):
@@ -328,8 +340,8 @@ if(__name__ == "__main__"):
                     #attributes = np.append(attributes, left_walk)
                     #attributes = np.append(attributes, right_walk)
                     if 'Si' in f:
-                        att_test.write('{}\n'.format(','.join([str(i) for i in left_walk])))
-                        att_test.write('{}\n'.format(','.join([str(i) for i in right_walk])))
+                        att_test.write('{}\n'.format(', '.join([str(i) for i in left_walk])))
+                        att_test.write('{}\n'.format(', '.join([str(i) for i in right_walk])))
                         att_test.flush()
                         lab_test = np.append(lab_test, 0 if 'Co' in f else 1)
                     else:
@@ -344,8 +356,8 @@ if(__name__ == "__main__"):
         print("Number of labels: ", len(labels_clean))
         print("Number of controls in gait dataset: ", np.count_nonzero(labels_clean==0))
         print("Number of PD in gait dataset: ", np.count_nonzero(labels_clean==1))
-        np.savetxt(PATH + 'bs2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'bs2_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'bs2_labels_clean.csv', labels_clean, delimiter=', ', fmt='%d')
+        np.savetxt(PATH + 'bs2_labels_test_clean.csv', lab_test, delimiter=', ', fmt='%d')
         att_test.close()
         att_file.close()
 
