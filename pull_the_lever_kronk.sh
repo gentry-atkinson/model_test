@@ -15,13 +15,13 @@ echo "CNN Tests"
 python3 src/CNN_tests.py > logs/CNN_log.txt
 
 echo "LSTM Tests"
-python3 src/CNN_tests.py > logs/LSTM_log.txt
+python3 src/LSTM_tests.py > logs/LSTM_log.txt
 
 echo "SVM Tests"
-python3 src/CNN_tests.py > logs/SVM_log.txt
+python3 src/SVM_tests.py > logs/SVM_log.txt
 
 echo "NB Tests"
-python3 src/CNN_tests.py > logs/NB_log.txt
+python3 src/NB_tests.py > logs/NB_log.txt
 
 echo "NB Tests"
 python3 src/Tree_tests.py > logs/Tree_log.txt

@@ -1,7 +1,164 @@
+8000
+8000
+8000
+8000
+##### Preparing Dataset: SS1 #####
+0  incorrect labels in data
+---NCAR---
+Total labels on file:  8000
+Total labels processed:  8000
+Low noise labels flipped:  429
+High noise labels flipped:  761
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  0
+Minor label:  1
+Class imbalance:  1.0176544766708702
+Total labels processed:  8000
+Low noise labels flipped:  401
+High noise labels flipped:  790
+Lines written to low noise file: 
+Lines written to high noise file: 
+8000
+8000
+2000
+2000
+2000
+2000
+2000
+2000
+24000
+24000
+24000
+24000
+24000
+24000
+6000
+6000
+6000
+6000
+6000
+6000
 425
 425
 425
 425
+425
+425
+203
+203
+203
+203
+203
+203
+feature extraction done
+---NNAR---
+Major label:  0
+Minor label:  1
+Number of labels:  8000
+Number of entries in neighbor table:  8000
+Size of neighbor vector:  2
+Total labels processed:  27424
+Low noise labels flipped:  400
+High noise labels flipped:  800
+Length of low noise label set 8000
+Length of high noise label set 8000
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NCAR---
+Total labels on file:  2000
+Total labels processed:  2000
+Low noise labels flipped:  95
+High noise labels flipped:  205
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  0
+Minor label:  1
+Class imbalance:  1.028397565922921
+Total labels processed:  2000
+Low noise labels flipped:  87
+High noise labels flipped:  186
+Lines written to low noise file: 
+Lines written to high noise file: 
+feature extraction done
+---NNAR---
+Major label:  0
+Minor label:  1
+Number of labels:  2000
+Number of entries in neighbor table:  2000
+Size of neighbor vector:  2
+Total labels processed:  8022
+Low noise labels flipped:  100
+High noise labels flipped:  200
+Length of low noise label set 2000
+Length of high noise label set 2000
+Lines written to low noise file: 
+Lines written to high noise file: 
+##### Preparing Dataset: SS2 #####
+0  incorrect labels in data
+---NCAR---
+Total labels on file:  24000
+Total labels processed:  24000
+Low noise labels flipped:  1105
+High noise labels flipped:  2396
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  2
+Minor label:  3
+Class imbalance:  1.0423584504044274
+Total labels processed:  24000
+Low noise labels flipped:  1166
+High noise labels flipped:  2398
+Lines written to low noise file: 
+Lines written to high noise file: 
+feature extraction done
+---NNAR---
+Major label:  2
+Minor label:  3
+Number of labels:  24000
+Number of entries in neighbor table:  24000
+Size of neighbor vector:  2
+Total labels processed:  62882
+Low noise labels flipped:  1200
+High noise labels flipped:  2400
+Length of low noise label set 24000
+Length of high noise label set 24000
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NCAR---
+Total labels on file:  6000
+Total labels processed:  6000
+Low noise labels flipped:  308
+High noise labels flipped:  575
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  0
+Minor label:  1
+Class imbalance:  1.0515463917525774
+Total labels processed:  6000
+Low noise labels flipped:  304
+High noise labels flipped:  620
+Lines written to low noise file: 
+Lines written to high noise file: 
+feature extraction done
+---NNAR---
+Major label:  0
+Minor label:  1
+Number of labels:  6000
+Number of entries in neighbor table:  6000
+Size of neighbor vector:  2
+Total labels processed:  66957
+Low noise labels flipped:  300
+High noise labels flipped:  600
+Length of low noise label set 6000
+Length of high noise label set 6000
+Lines written to low noise file: 
+Lines written to high noise file: 
+Done with SS
 ##### Preparing Dataset: HAR1 #####
 Processing  1574621345_A01F11.zip
 Unzipping e4 file in local directory src/temp
@@ -98,8 +255,8 @@ Shape of test attributes:  (425, 150)
 ---NCAR---
 Total labels on file:  425
 Total labels processed:  425
-Low noise labels flipped:  14
-High noise labels flipped:  46
+Low noise labels flipped:  18
+High noise labels flipped:  37
 Lines written to low noise file: 
 Lines written to high noise file: 
 ---NAR---
@@ -107,30 +264,10 @@ Major label:  5
 Minor label:  2
 Class imbalance:  74.0
 Total labels processed:  425
-Low noise labels flipped:  14
-High noise labels flipped:  43
+Low noise labels flipped:  17
+High noise labels flipped:  41
 Lines written to low noise file: 
 Lines written to high noise file: 
-425
-425
-203
-203
-203
-203
-203
-203
-7352
-7352
-7352
-7352
-7352
-7352
-2947
-2947
-2947
-2947
-2947
-2947
 feature extraction done
 ---NNAR---
 Major label:  5
@@ -138,7 +275,7 @@ Minor label:  2
 Number of labels:  425
 Number of entries in neighbor table:  425
 Size of neighbor vector:  2
-Total labels processed:  5750
+Total labels processed:  6967
 Low noise labels flipped:  22
 High noise labels flipped:  43
 Length of low noise label set 425
@@ -148,8 +285,8 @@ Lines written to high noise file:
 ---NCAR---
 Total labels on file:  203
 Total labels processed:  203
-Low noise labels flipped:  12
-High noise labels flipped:  9
+Low noise labels flipped:  13
+High noise labels flipped:  20
 Lines written to low noise file: 
 Lines written to high noise file: 
 ---NAR---
@@ -157,8 +294,8 @@ Major label:  3
 Minor label:  2
 Class imbalance:  38.0
 Total labels processed:  203
-Low noise labels flipped:  15
-High noise labels flipped:  25
+Low noise labels flipped:  9
+High noise labels flipped:  23
 Lines written to low noise file: 
 Lines written to high noise file: 
 feature extraction done
@@ -168,7 +305,7 @@ Minor label:  2
 Number of labels:  203
 Number of entries in neighbor table:  203
 Size of neighbor vector:  2
-Total labels processed:  1770
+Total labels processed:  1355
 Low noise labels flipped:  11
 High noise labels flipped:  21
 Length of low noise label set 203
@@ -182,8 +319,44 @@ Shape of UCI labels:  (7352,)
 ---NCAR---
 Total labels on file:  7352
 Total labels processed:  7352
-Low noise labels flipped:  416
-High noise labels flipped:  747
+Low noise labels flipped:  343
+7352
+7352
+7352
+7352
+7352
+7352
+2947
+2947
+2947
+2947
+2947
+2947
+17020
+17020
+17020
+17020
+17020
+17020
+17243
+17243
+17243
+17243
+17243
+17243
+4757
+4757
+4757
+4757
+4757
+4757
+1472
+1472
+1472
+1472
+1472
+1472
+High noise labels flipped:  769
 Lines written to low noise file: 
 Lines written to high noise file: 
 ---NAR---
@@ -191,8 +364,8 @@ Major label:  5
 Minor label:  2
 Class imbalance:  1.4269776876267748
 Total labels processed:  7352
-Low noise labels flipped:  367
-High noise labels flipped:  710
+Low noise labels flipped:  394
+High noise labels flipped:  732
 Lines written to low noise file: 
 Lines written to high noise file: 
 feature extraction done
@@ -202,7 +375,7 @@ Minor label:  2
 Number of labels:  7352
 Number of entries in neighbor table:  7352
 Size of neighbor vector:  2
-Total labels processed:  47757
+Total labels processed:  46340
 Low noise labels flipped:  368
 High noise labels flipped:  736
 Length of low noise label set 7352
@@ -215,8 +388,8 @@ Shape of UCI test:  (2947,)
 ---NCAR---
 Total labels on file:  2947
 Total labels processed:  2947
-Low noise labels flipped:  143
-High noise labels flipped:  316
+Low noise labels flipped:  156
+High noise labels flipped:  315
 Lines written to low noise file: 
 Lines written to high noise file: 
 ---NAR---
@@ -224,8 +397,8 @@ Major label:  5
 Minor label:  2
 Class imbalance:  1.2785714285714285
 Total labels processed:  2947
-Low noise labels flipped:  169
-High noise labels flipped:  295
+Low noise labels flipped:  152
+High noise labels flipped:  320
 Lines written to low noise file: 
 Lines written to high noise file: 
 feature extraction done
@@ -235,7 +408,7 @@ Minor label:  2
 Number of labels:  2947
 Number of entries in neighbor table:  2947
 Size of neighbor vector:  2
-Total labels processed:  21774
+Total labels processed:  23361
 Low noise labels flipped:  148
 High noise labels flipped:  295
 Length of low noise label set 2947
@@ -243,3 +416,206 @@ Length of high noise label set 2947
 Lines written to low noise file: 
 Lines written to high noise file: 
 Done with HAR
+##### Preparing Dataset: BS1 #####
+Must install rdann from Physionet
+Read:  2957000  values from  a01
+Read:  3182000  values from  a02
+Read:  3135000  values from  a03
+Read:  2980000  values from  a04
+Read:  2719500  values from  a05
+Read:  3058000  values from  a06
+Read:  3060500  values from  a07
+Read:  3002500  values from  a08
+Read:  2988000  values from  a09
+Read:  3101500  values from  a10
+Read:  2808000  values from  a11
+Read:  3462000  values from  a12
+Read:  2965500  values from  a13
+Read:  3135000  values from  a14
+Read:  3056000  values from  a15
+Read:  2888000  values from  a16
+Read:  2904500  values from  a17
+Read:  2957000  values from  a18
+Read:  3012000  values from  a19
+Read:  3060000  values from  a20
+Read:  2917000  values from  b01
+Read:  3170500  values from  b02
+Read:  2643000  values from  b03
+Read:  2573000  values from  b04
+Read:  2593500  values from  b05
+Read:  2899000  values from  c01
+Read:  3007000  values from  c02
+Read:  2720000  values from  c03
+Read:  2887000  values from  c04
+Read:  2793000  values from  c05
+Read:  2804000  values from  c06
+Read:  2569000  values from  c07
+Read:  3084000  values from  c08
+Read:  2805000  values from  c09
+Read:  2585000  values from  c10
+---NCAR---
+Total labels on file:  17020
+Total labels processed:  17020
+Low noise labels flipped:  838
+High noise labels flipped:  1653
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  0
+Minor label:  1
+Class imbalance:  1.6148409893992932
+Total labels processed:  17020
+Low noise labels flipped:  922
+High noise labels flipped:  1807
+Lines written to low noise file: 
+Lines written to high noise file: 
+reading attribute file
+feature extraction done
+---NNAR---
+Major label:  0
+Minor label:  1
+Number of labels:  17020
+Number of entries in neighbor table:  17020
+Size of neighbor vector:  2
+Total labels processed:  4461
+Low noise labels flipped:  851
+High noise labels flipped:  1702
+Length of low noise label set 17020
+Length of high noise label set 17020
+Lines written to low noise file: 
+Lines written to high noise file: 
+Must install rdann from Physionet
+Read:  3137000  values from  x01
+Read:  2833000  values from  x02
+Read:  2790000  values from  x03
+Read:  2891000  values from  x04
+Read:  3027000  values from  x05
+Read:  2697000  values from  x06
+Read:  3050000  values from  x07
+Read:  3102000  values from  x08
+Read:  3047000  values from  x09
+Read:  3057500  values from  x10
+Read:  2736500  values from  x11
+Read:  3221000  values from  x12
+Read:  3049000  values from  x13
+Read:  2985000  values from  x14
+Read:  3120000  values from  x15
+Read:  3089000  values from  x16
+Read:  2430000  values from  x17
+Read:  2753000  values from  x18
+Read:  2944000  values from  x19
+Read:  3074500  values from  x20
+Read:  3057500  values from  x21
+Read:  2887000  values from  x22
+Read:  3196000  values from  x23
+Read:  2571000  values from  x24
+Read:  3055000  values from  x25
+Read:  3119000  values from  x26
+Read:  2985500  values from  x27
+Read:  2970000  values from  x28
+Read:  2821000  values from  x29
+Read:  3204500  values from  x30
+Read:  3342000  values from  x31
+Read:  3228000  values from  x32
+Read:  2834000  values from  x33
+Read:  2845000  values from  x34
+Read:  2893000  values from  x35
+---NCAR---
+Total labels on file:  17243
+Total labels processed:  17243
+Low noise labels flipped:  838
+High noise labels flipped:  1738
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  0
+Minor label:  1
+Class imbalance:  1.6349327628361858
+Total labels processed:  17243
+Low noise labels flipped:  912
+High noise labels flipped:  1852
+Lines written to low noise file: 
+Lines written to high noise file: 
+reading attribute file
+feature extraction done
+---NNAR---
+Major label:  0
+Minor label:  1
+Number of labels:  17243
+Number of entries in neighbor table:  17243
+Size of neighbor vector:  2
+Total labels processed:  120153
+Low noise labels flipped:  863
+High noise labels flipped:  1725
+Length of low noise label set 17243
+Length of high noise label set 17243
+Lines written to low noise file: 
+Lines written to high noise file: 
+##### Preparing Dataset: BS2 #####
+Number of files read:  306
+Number of labels:  4757
+Number of controls in gait dataset:  1242
+Number of PD in gait dataset:  3515
+---NCAR---
+Total labels on file:  4757
+Total labels processed:  4757
+Low noise labels flipped:  247
+High noise labels flipped:  493
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  1
+Minor label:  0
+Class imbalance:  2.8301127214170694
+Total labels processed:  4757
+Low noise labels flipped:  242
+High noise labels flipped:  481
+Lines written to low noise file: 
+Lines written to high noise file: 
+reading attribute file
+feature extraction done
+---NNAR---
+Major label:  1
+Minor label:  0
+Number of labels:  4757
+Number of entries in neighbor table:  4757
+Size of neighbor vector:  2
+Total labels processed:  4102
+Low noise labels flipped:  238
+High noise labels flipped:  476
+Length of low noise label set 4757
+Length of high noise label set 4757
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NCAR---
+Total labels on file:  1472
+Total labels processed:  1472
+Low noise labels flipped:  78
+High noise labels flipped:  145
+Lines written to low noise file: 
+Lines written to high noise file: 
+---NAR---
+Major label:  1
+Minor label:  0
+Class imbalance:  1.206896551724138
+Total labels processed:  1472
+Low noise labels flipped:  66
+High noise labels flipped:  170
+Lines written to low noise file: 
+Lines written to high noise file: 
+reading attribute file
+feature extraction done
+---NNAR---
+Major label:  1
+Minor label:  0
+Number of labels:  1472
+Number of entries in neighbor table:  1472
+Size of neighbor vector:  2
+Total labels processed:  959
+Low noise labels flipped:  74
+High noise labels flipped:  148
+Length of low noise label set 1472
+Length of high noise label set 1472
+Lines written to low noise file: 
+Lines written to high noise file: 
+Done with BS

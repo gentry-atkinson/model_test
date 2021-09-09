@@ -20,7 +20,6 @@ from utils.gen_ts_data import generate_pattern_data_as_dataframe
 from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
 from utils.add_nnar import add_nnar
-#from data.e4_wristband_Nov2019.e4_get_x_y_sub import get_X_y_sub
 from data.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
 from import_datasets import get_uci_data, get_uci_test
 import numpy as np
@@ -32,8 +31,8 @@ import wfdb
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = False
-RUN_HAR = False
+RUN_SS = True
+RUN_HAR = True
 RUN_BS = True
 
 if(__name__ == "__main__"):
