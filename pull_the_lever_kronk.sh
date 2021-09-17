@@ -23,5 +23,5 @@ python3 src/SVM_tests.py > logs/SVM_log.txt
 echo "NB Tests"
 python3 src/NB_tests.py > logs/NB_log.txt
 
-echo "NB Tests"
+echo "NB Test"
 python3 src/Tree_tests.py > logs/Tree_log.txt
