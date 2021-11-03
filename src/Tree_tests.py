@@ -81,7 +81,15 @@ if __name__ == "__main__":
         for f in sets:
             #matrix of true and apparent error rates
             aer_mat = np.zeros((7, 7))
-            ter_mat = np.zeros((7, 7))
+            ter_mat = [
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""],
+                ["","","","","","",""]
+            ]
             #load the attributes for a test dataset
             X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
             X_test = get_features_for_set(X_test)
@@ -129,14 +137,14 @@ if __name__ == "__main__":
                     print("instances should be ", NUM_INSTANCES//chan_dic[f])
                     score, mat, aer, ter = evaluate_rf(model, X_test, y_test, mlr_test)
                     aer_mat[i, j] = aer
-                    ter_mat[i, j] = ter
+                    ter_mat[i][j] = ter
                     print("Score for this model: \n", score)
                     print("Confusion Matrix for this model: \n", mat)
                     results_file.write(score)
                     results_file.write('\nColumns are predictions, rows are labels\n')
                     results_file.write(str(mat))
                     results_file.write('\n')
-                    results_file.write('AER: {:.3f} MLR_train: {} MLR_test:{} TER: {:.3f}'.format(aer, mlr_train, mlr_test, ter))
+                    results_file.write('AER: {:.3f} MLR_train: {} MLR_test:{} TER: {}'.format(aer, mlr_train, mlr_test, ter))
                     results_file.write('\n\n')
                     counter += 1
                     gc.collect()
@@ -152,7 +160,7 @@ if __name__ == "__main__":
             results_file.write('Label Sets: {}\n'.format(labels))
             for row in ter_mat:
                 for item in row:
-                    results_file.write('{:.3f}\t'.format(item))
+                    results_file.write('{}\t'.format(item))
                 results_file.write('\n')
             results_file.write('\n\n')
             results_file.flush()

@@ -13,6 +13,13 @@ from joblib import Parallel, delayed
 from functools import reduce
 import os
 
+"""
+Calculate Apparent Error Rate
+Parameters:
+    y_true: assigned labels
+    y_pred: predicted labels
+Returns: the probabilty that a predicted label does not equal the assigned label
+"""
 def calc_AER(y_true, y_pred):
     assert y_true.ndim == 1, "AER received labels with {} dimensions".format(y_true.ndim)
     assert y_pred.ndim == 1, "AER received labels with {} dimensions".format(y_pred.ndim)
@@ -21,10 +28,20 @@ def calc_AER(y_true, y_pred):
     total = len(y_true)
     return wrong/total
 
+"""
+Calculate True Error Rate
+Parameters:
+    aer: probability that assigend label does not equal predicted label
+    mlr: probability that assigned label does not equal true class
+Returns: the probabilty that a predicted label does not equal the true class
+    exact, low, high
+Note: the exact value can be used when mlr and aer are independent
+"""
 def calc_TER(aer, mlr):
     assert aer<=1 and mlr<=1, "Why would an error rate be greater than 1???"
     assert mlr != 0.5, "Sorry, MLR can't be one half"
-    return (aer-mlr)/(1-2*mlr)
+    #return '(' + str((aer-mlr)/(1-2*mlr)) + ', ' + str(aer-mlr) + ', ' +  str(aer+mlr) + ')'
+    return ('({:.3f}, {:.3f}, {:.3f})'.format((aer-mlr)/(1-2*mlr), aer-mlr, aer+mlr))
 
 def get_normalized_signal_energy(X):
     return np.mean(np.square(X))

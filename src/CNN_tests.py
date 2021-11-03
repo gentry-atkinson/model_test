@@ -75,7 +75,7 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
     return model
 
 def train_cnn(model, X, y):
-    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=50)
+    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=15)
     rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
     model.fit(X, y, epochs=500, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, workers=NUM_CORES)
@@ -85,8 +85,8 @@ def evaluate_cnn(model, X, y, mlr):
     y_pred = model.predict(X)
     y_pred = np.argmax(y_pred, axis=-1)
     y_true = np.argmax(y, axis=-1)
-    print('Shape of y true: '.format(y_true))
-    print('Shape of y predicted: '.format(y_pred))
+    print('Shape of y true: {}'.format(y_true.shape))
+    print('Shape of y predicted: {}'.format(y_pred.shape))
     aer = calc_AER(y_true, y_pred)
     ter = calc_TER(aer, mlr)
     return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter
@@ -101,7 +101,15 @@ if __name__ == "__main__":
     for f in sets:
         #matrix of true and apparent error rates
         aer_mat = np.zeros((7, 7))
-        ter_mat = np.zeros((7, 7))
+        ter_mat = [
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""]
+        ]
         #load the attributes for a test dataset
         X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
         X_test = normalize(X_test, norm='max')
@@ -147,15 +155,18 @@ if __name__ == "__main__":
                 print("NUM_INSTANCES is ", NUM_INSTANCES)
                 print("instances should be ", NUM_INSTANCES//chan_dic[f])
                 score, mat, aer, ter = evaluate_cnn(model, X_test, y_test, mlr_test)
+                print("Recording results in matrix at {} {}".format(i, j))
+                print("AER: ", aer)
+                print("TER: ", ter)
                 aer_mat[i, j] = aer
-                ter_mat[i, j] = ter
+                ter_mat[i][j] = ter
                 print("Score for this model: \n", score)
                 print("Confusion Matrix for this model: \n", mat)
                 results_file.write(score)
                 results_file.write('\nColumns are predictions, rows are labels\n')
                 results_file.write(str(mat))
                 results_file.write('\n')
-                results_file.write('AER: {:.3f} MLR_train: {} MLR_test:{} TER: {:.3f}'.format(aer, mlr_train, mlr_test, ter))
+                results_file.write('AER: {:.3f} MLR_train: {} MLR_test:{} TER: {}'.format(aer, mlr_train, mlr_test, ter))
                 results_file.write('\n\n')
                 counter += 1
                 gc.collect()
@@ -171,7 +182,7 @@ if __name__ == "__main__":
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in ter_mat:
             for item in row:
-                results_file.write('{:.3f}\t'.format(item))
+                results_file.write('{}\t'.format(item))
             results_file.write('\n')
         results_file.write('\n\n')
         results_file.flush()
