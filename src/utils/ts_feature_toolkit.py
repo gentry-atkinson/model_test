@@ -65,7 +65,7 @@ def my_special_variance(error_rates):
     my_special_mean = error_rates.sum(axis=0)/[len(error_rates), len(error_rates)]
     sum_of_squares = 0
     for e in error_rates:
-    sum_of_squares += ((my_special_mean[0]-e[0])**2 + (my_special_mean[1]-e[1])**2)
+        sum_of_squares += ((my_special_mean[0]-e[0])**2 + (my_special_mean[1]-e[1])**2)
     return sum_of_squares/len(error_rates)
 
 def dis_from_sym(p):
