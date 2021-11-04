@@ -12,7 +12,7 @@ from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 import gc
 import os
-from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set
+from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set, calc_bias_metrics, calc_error_rates
 from datetime import date
 
 DEBUG = False
@@ -56,13 +56,20 @@ def train_rf(model, X, y):
     model.fit(X, y)
     return model
 
-def evaluate_rf(model, X, y_true, mlr):
+def evaluate_rf(model, X, y_true, mlr, base_fpr, base_fnr):
     y_pred = model.predict(X)
-    print('Shape of y true: '.format(y_true))
-    print('Shape of y predicted: '.format(y_pred))
+    print('Shape of y true: {}'.format(y_true.shape))
+    print('Shape of y predicted: {}'.format(y_pred.shape))
     aer = calc_AER(y_true, y_pred)
     ter = calc_TER(aer, mlr)
-    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter
+    cev, sde = 0.0, 0.0
+    print(base_fpr, base_fnr)
+    if (base_fpr is None) or (base_fnr is None):
+        pass
+    else:
+        fpr, fnr = calc_error_rates(y_true, y_pred)
+        cev, sde = calc_bias_metrics(base_fpr, base_fnr, fpr, fnr)
+    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter, cev, sde
 
 def absChannels(X, num_channels):
     X_avg = np.zeros((len(X)//num_channels, len(X[0])))
@@ -90,6 +97,9 @@ if __name__ == "__main__":
                 ["","","","","","",""],
                 ["","","","","","",""]
             ]
+            #matrix of bias measures
+            cev_mat = np.zeros((7, 7))
+            sde_mat = np.zeros((7, 7))
             #load the attributes for a test dataset
             X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
             X_test = get_features_for_set(X_test)
@@ -101,6 +111,8 @@ if __name__ == "__main__":
             X_train_feat = get_features_for_set(X_train_feat)
             X_train_feat = normalize(X_train_feat, norm='max')
             X_train_feat = absChannels(X_train_feat, chan_dic[f])
+            base_fpr = None
+            base_fnr = None
             for i, l_train in enumerate(labels):
                 if '5' in l_train:
                     mlr_train = 0.05
@@ -135,9 +147,18 @@ if __name__ == "__main__":
                     print("Shape of y_test: ", y_test.shape)
                     print("NUM_INSTANCES is ", NUM_INSTANCES)
                     print("instances should be ", NUM_INSTANCES//chan_dic[f])
-                    score, mat, aer, ter = evaluate_rf(model, X_test, y_test, mlr_test)
+                    score, mat, aer, ter, cev, sde = evaluate_rf(model, X_test, y_test, mlr_test, base_fpr, base_fnr)
+                    if i==0 and j==0:
+                        FP = mat.sum(axis=0) - np.diag(mat)
+                        FN = mat.sum(axis=1) - np.diag(mat)
+                        TP = np.diag(mat)
+                        TN = mat.sum() - (FP + FN + TP)
+                        base_fpr = FP / (FP  + TN)
+                        base_fnr = FN / (FN + TP)
                     aer_mat[i, j] = aer
                     ter_mat[i][j] = ter
+                    cev_mat[i, j] = cev
+                    sde_mat[i, j] = sde
                     print("Score for this model: \n", score)
                     print("Confusion Matrix for this model: \n", mat)
                     results_file.write(score)
@@ -159,6 +180,20 @@ if __name__ == "__main__":
             results_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
             results_file.write('Label Sets: {}\n'.format(labels))
             for row in ter_mat:
+                for item in row:
+                    results_file.write('{}\t'.format(item))
+                results_file.write('\n')
+            results_file.write('\n\n')
+            results_file.write('\n\nCEV. Row->Train Column->Test\n')
+            results_file.write('Label Sets: {}\n'.format(labels))
+            for row in cev_mat:
+                for item in row:
+                    results_file.write('{}\t'.format(item))
+                results_file.write('\n')
+            results_file.write('\n\n')
+            results_file.write('\n\nSDE. Row->Train Column->Test\n')
+            results_file.write('Label Sets: {}\n'.format(labels))
+            for row in sde_mat:
                 for item in row:
                     results_file.write('{}\t'.format(item))
                 results_file.write('\n')

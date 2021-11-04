@@ -31,9 +31,9 @@ import wfdb
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = False
+RUN_SS = True
 RUN_HAR = True
-RUN_BS = False
+RUN_BS = True
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
