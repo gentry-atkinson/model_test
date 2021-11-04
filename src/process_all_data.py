@@ -21,7 +21,7 @@ from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
 from utils.add_nnar import add_nnar
 from data.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
-from import_datasets import get_uci_data, get_uci_test
+from utils.import_datasets import get_uci_data, get_uci_test
 import numpy as np
 from scipy.signal import resample
 from sklearn.utils import shuffle

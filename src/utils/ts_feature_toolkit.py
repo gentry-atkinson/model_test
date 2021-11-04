@@ -43,6 +43,54 @@ def calc_TER(aer, mlr):
     #return '(' + str((aer-mlr)/(1-2*mlr)) + ', ' + str(aer-mlr) + ', ' +  str(aer+mlr) + ')'
     return ('({:.3f}, {:.3f}, {:.3f})'.format((aer-mlr)/(1-2*mlr), aer-mlr, aer+mlr))
 
+"""
+Calculate Error Rates
+Parameters:
+    y_true: assigned labels
+    y_pred: predicted labels
+Returns: the false positive rate and false negative rate
+"""
+def calc_error_rates(y_true, y_pred):
+  conf_matrix = confusion_matrix(y_true, y_pred)
+  FP = conf_matrix.sum(axis=0) - np.diag(conf_matrix)
+  FN = conf_matrix.sum(axis=1) - np.diag(conf_matrix)
+  TP = np.diag(conf_matrix)
+  TN = conf_matrix.sum() - (FP + FN + TP)
+  FPR = FP / (FP  + TN)
+  FNR = FN / (FN + TP)
+  return FPR, FNR
+
+def my_special_variance(error_rates):
+    assert error_rates.ndim == 2, 'Error rates must be 2 dimensional'
+    my_special_mean = error_rates.sum(axis=0)/[len(error_rates), len(error_rates)]
+    sum_of_squares = 0
+    for e in error_rates:
+    sum_of_squares += ((my_special_mean[0]-e[0])**2 + (my_special_mean[1]-e[1])**2)
+    return sum_of_squares/len(error_rates)
+
+def dis_from_sym(p):
+    return np.mean(np.abs(p[:, 0] - p[:, 1]))
+
+"""
+Calculate Bias Metrics
+Parameters:
+    base_fpr: false positive rate of base model
+    base_fnr: false negative rate of base model
+    fpr: false positive rate of comparison model
+    fnr: false negative rate of comparison model
+Returns: CEV and SDE bias measures
+Note: see Measure Twice Cut Once https://arxiv.org/pdf/2110.04397.pdf for
+    an explanation of CEV and SDE
+"""
+def calc_bias_metrics(base_fpr, base_fnr, fpr, fnr):
+    # get method stats
+    FPR_change = (fpr - base_fpr)/base_fpr
+    FNR_change = (fnr - base_fnr)/base_fnr
+    # make class points
+    points = np.dstack((FPR_change, FNR_change))[0]
+    #we should use my hand-coded variance, or mse
+    return my_special_variance(points), dis_from_sym(points)
+
 def get_normalized_signal_energy(X):
     return np.mean(np.square(X))
 
