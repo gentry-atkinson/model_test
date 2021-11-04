@@ -16,7 +16,7 @@ import gc
 import os
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
-from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics
+from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
 from datetime import date
 
 DEBUG = False
@@ -51,6 +51,9 @@ class_dic = {
     'bs1':2, 'bs2':2, 'har1':7, 'har2':6, 'ss1':2, 'ss2':5
 }
 
+FPR = 0
+FNR = 0
+
 def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
@@ -78,10 +81,10 @@ def train_cnn(model, X, y):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=15)
     rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
-    model.fit(X, y, epochs=500, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, workers=NUM_CORES)
+    model.fit(X, y, epochs=500, verbose=0, callbacks=[es, rlr], validation_split=0.1, batch_size=32, workers=NUM_CORES)
     return model
 
-def evaluate_cnn(model, X, y, mlr):
+def evaluate_cnn(model, X, y, mlr, base_fpr, base_fnr):
     y_pred = model.predict(X)
     y_pred = np.argmax(y_pred, axis=-1)
     y_true = np.argmax(y, axis=-1)
@@ -89,7 +92,15 @@ def evaluate_cnn(model, X, y, mlr):
     print('Shape of y predicted: {}'.format(y_pred.shape))
     aer = calc_AER(y_true, y_pred)
     ter = calc_TER(aer, mlr)
-    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter
+    cev, sde = 0.0, 0.0
+    print(base_fpr, base_fnr)
+    if (base_fpr is None) or (base_fnr is None):
+        pass
+    else:
+        fpr, fnr = calc_error_rates(y_true, y_pred)
+        cev, sde = calc_bias_metrics(base_fpr, base_fnr, fpr, fnr)
+    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter, cev, sde
+
 
 if __name__ == "__main__":
     print("Testing CNN")
@@ -110,12 +121,17 @@ if __name__ == "__main__":
             ["","","","","","",""],
             ["","","","","","",""]
         ]
+        #matrix of bias measures
+        cev_mat = np.zeros((7, 7))
+        sde_mat = np.zeros((7, 7))
         #load the attributes for a test dataset
         X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
         X_test = normalize(X_test, norm='max')
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
         X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+        base_fpr = None
+        base_fnr = None
         for i, l_train in enumerate(labels):
             if '5' in l_train:
                 mlr_train = 0.05
@@ -154,12 +170,21 @@ if __name__ == "__main__":
                 print("Shape of y_test: ", y_test.shape)
                 print("NUM_INSTANCES is ", NUM_INSTANCES)
                 print("instances should be ", NUM_INSTANCES//chan_dic[f])
-                score, mat, aer, ter = evaluate_cnn(model, X_test, y_test, mlr_test)
+                score, mat, aer, ter, cev, sde = evaluate_cnn(model, X_test, y_test, mlr_test, base_fpr, base_fnr)
+                if i==0 and j==0:
+                    FP = mat.sum(axis=0) - np.diag(mat)
+                    FN = mat.sum(axis=1) - np.diag(mat)
+                    TP = np.diag(mat)
+                    TN = mat.sum() - (FP + FN + TP)
+                    base_fpr = FP / (FP  + TN)
+                    base_fnr = FN / (FN + TP)
                 print("Recording results in matrix at {} {}".format(i, j))
                 print("AER: ", aer)
                 print("TER: ", ter)
                 aer_mat[i, j] = aer
                 ter_mat[i][j] = ter
+                cev_mat[i, j] = cev
+                sde_mat[i, j] = sde
                 print("Score for this model: \n", score)
                 print("Confusion Matrix for this model: \n", mat)
                 results_file.write(score)
@@ -181,6 +206,20 @@ if __name__ == "__main__":
         results_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in ter_mat:
+            for item in row:
+                results_file.write('{}\t'.format(item))
+            results_file.write('\n')
+        results_file.write('\n\n')
+        results_file.write('\n\nCEV. Row->Train Column->Test\n')
+        results_file.write('Label Sets: {}\n'.format(labels))
+        for row in cev_mat:
+            for item in row:
+                results_file.write('{}\t'.format(item))
+            results_file.write('\n')
+        results_file.write('\n\n')
+        results_file.write('\n\nSDE. Row->Train Column->Test\n')
+        results_file.write('Label Sets: {}\n'.format(labels))
+        for row in sde_mat:
             for item in row:
                 results_file.write('{}\t'.format(item))
             results_file.write('\n')
