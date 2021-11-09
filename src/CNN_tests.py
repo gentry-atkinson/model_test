@@ -107,6 +107,10 @@ if __name__ == "__main__":
     print(date.today())
     results_file = open('results/CNN_results.txt', 'w+')
     results_file.write('{}\n'.format(date.today()))
+    readable_file = open('results/all_results.txt', 'w+')
+    readable_file.write('{}\n'.format(date.today()))
+    readable_file.write('######  CNN #####\n')
+
     counter = 1
 
     for f in sets:
@@ -198,31 +202,42 @@ if __name__ == "__main__":
                 results_file.flush()
         results_file.write("Summary of {}\n".format(f))
         results_file.write('Apparent Error Rates. Row->Train Column->Test\n')
+        reaqdable_file.write('Apparent Error Rates. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in aer_mat:
             for item in row:
                 results_file.write('{:.3f}\t'.format(item))
+                readable_file.write('{:.3f}\t'.format(item))
             results_file.write('\n')
+            readable_file.write('\n')
         results_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
+        readable_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in ter_mat:
             for item in row:
-                results_file.write('{}\t'.format(item))
+                results_file.write('{:.3f}\t'.format(item))
+                readable_file.write('{:.3f}\t'.format(item))
             results_file.write('\n')
-        results_file.write('\n\n')
+            readable_file.write('\n')
         results_file.write('\n\nCEV. Row->Train Column->Test\n')
+        readable_file.write('\n\nCEV. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in cev_mat:
             for item in row:
-                results_file.write('{}\t'.format(item))
+                results_file.write('{:.3f}\t'.format(item))
+                readable_file.write('{:.3f}\t'.format(item))
             results_file.write('\n')
+            readable_file.write('\n')
         results_file.write('\n\n')
         results_file.write('\n\nSDE. Row->Train Column->Test\n')
+        readable_file.write('\n\nSDE. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in sde_mat:
             for item in row:
-                results_file.write('{}\t'.format(item))
+                results_file.write('{:.3f}\t'.format(item))
+                readable_file.write('{:.3f}\t'.format(item))
             results_file.write('\n')
+            readable_file.write('\n')
         results_file.write('\n\n')
         results_file.flush()
     results_file.close()
