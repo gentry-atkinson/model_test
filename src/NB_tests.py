@@ -214,4 +214,6 @@ if __name__ == "__main__":
                 readable_file.write('\n')
             results_file.write('\n\n')
             results_file.flush()
+            readable_file.flush()
         results_file.close()
+        readable_file.close()
