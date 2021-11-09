@@ -201,8 +201,9 @@ if __name__ == "__main__":
                 gc.collect()
                 results_file.flush()
         results_file.write("Summary of {}\n".format(f))
+        readable_file.write("Summary of {}\n".format(f))
         results_file.write('Apparent Error Rates. Row->Train Column->Test\n')
-        reaqdable_file.write('Apparent Error Rates. Row->Train Column->Test\n')
+        readable_file.write('Apparent Error Rates. Row->Train Column->Test\n')
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in aer_mat:
             for item in row:
