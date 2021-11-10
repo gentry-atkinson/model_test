@@ -44,7 +44,7 @@ chan_dic = {
 }
 
 class_dic = {
-    'bs1':2, 'bs2':2, 'har1':7, 'har2':6, 'ss1':2, 'ss2':5
+    'bs1':2, 'bs2':2, 'har1':6, 'har2':6, 'ss1':2, 'ss2':5
 }
 
 def build_rf(X, num_classes):
@@ -189,8 +189,8 @@ if __name__ == "__main__":
             results_file.write('Label Sets: {}\n'.format(labels))
             for row in ter_mat:
                 for item in row:
-                    results_file.write('{:.3f}\t'.format(item))
-                    readable_file.write('{:.3f}\t'.format(item))
+                    results_file.write('{}\t'.format(item))
+                    readable_file.write('{}\t'.format(item))
                 results_file.write('\n')
                 readable_file.write('\n')
             results_file.write('\n\nCEV. Row->Train Column->Test\n')

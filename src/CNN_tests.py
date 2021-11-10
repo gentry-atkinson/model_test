@@ -8,7 +8,7 @@ import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
-from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout, ReLU
+from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout, ReLU, GlobalAveragePooling1D
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
@@ -23,7 +23,7 @@ DEBUG = False
 
 if DEBUG:
     sets = [
-        'ss1', 'ss2'
+        'har1', 'har2'
     ]
 else:
     sets = [
@@ -48,7 +48,7 @@ chan_dic = {
 }
 
 class_dic = {
-    'bs1':2, 'bs2':2, 'har1':7, 'har2':6, 'ss1':2, 'ss2':5
+    'bs1':2, 'bs2':2, 'har1':6, 'har2':6, 'ss1':2, 'ss2':5
 }
 
 FPR = 0
@@ -58,7 +58,7 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        Conv1D(filters=64, kernel_size=32, padding='same'),
+        Conv1D(filters=128, kernel_size=16, padding='same'),
         MaxPooling1D(pool_size=(2), data_format='channels_first'),
         ReLU(),
         Conv1D(filters=64, kernel_size=16, padding='same'),
@@ -68,9 +68,10 @@ def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_erro
         MaxPooling1D(pool_size=(2), data_format='channels_first'),
         ReLU(),
         Dropout(0.25),
-        Flatten(),
-        Dense(128, activation='relu'),
-        Dense(64, activation='relu'),
+        # Flatten(),
+        # Dense(128, activation='relu'),
+        # Dense(64, activation='relu'),
+        GlobalAveragePooling1D(),
         Dense(num_classes, activation='softmax')
     ])
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
@@ -216,8 +217,8 @@ if __name__ == "__main__":
         results_file.write('Label Sets: {}\n'.format(labels))
         for row in ter_mat:
             for item in row:
-                results_file.write('{:.3f}\t'.format(item))
-                readable_file.write('{:.3f}\t'.format(item))
+                results_file.write('{}\t'.format(item))
+                readable_file.write('{}\t'.format(item))
             results_file.write('\n')
             readable_file.write('\n')
         results_file.write('\n\nCEV. Row->Train Column->Test\n')

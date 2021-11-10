@@ -31,9 +31,9 @@ import wfdb
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = True
+RUN_SS = False
 RUN_HAR = True
-RUN_BS = True
+RUN_BS = False
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
@@ -149,13 +149,13 @@ if(__name__ == "__main__"):
         np.savetxt(PATH + 'har1_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
 
         #Create label sets for HAR1
-        add_ncar(labels_clean, PATH + 'har1_labels', 7)
-        add_nar(labels_clean, PATH + 'har1_labels', 7)
-        add_nnar(attributes, labels_clean, PATH + 'har1_labels', 7, num_channels=1)
+        add_ncar(labels_clean, PATH + 'har1_labels', 6)
+        add_nar(labels_clean, PATH + 'har1_labels', 6)
+        add_nnar(attributes, labels_clean, PATH + 'har1_labels', 6, num_channels=1)
 
-        add_ncar(lab_test, PATH + 'har1_labels_test', 7)
-        add_nar(lab_test, PATH + 'har1_labels_test', 7)
-        add_nnar(att_test, lab_test, PATH + 'har1_labels_test', 7, num_channels=1)
+        add_ncar(lab_test, PATH + 'har1_labels_test', 6)
+        add_nar(lab_test, PATH + 'har1_labels_test', 6)
+        add_nnar(att_test, lab_test, PATH + 'har1_labels_test', 6, num_channels=1)
 
         print("##### Preparing Dataset: HAR2 #####")
         """
