@@ -7,6 +7,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 import seaborn as sb
 
+LABEL_TILT = 25
+
 cnn_all_avg_aer = [
     0.3083,	0.3320,	0.3588,	0.3427,	0.3795,	0.3370,	0.3717,
     0.3288,	0.3515,	0.3753,	0.3637,	0.3968,	0.3568,	0.3927,
@@ -154,7 +156,7 @@ def plot1():
 
     ax = plt.gca()
     ax.set_ylim([0.1, 0.6])
-    plt.xticks(rotation=25)
+    plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Model")
     plt.savefig("imgs/plots/aer_for_all_models.pdf")
 
@@ -190,14 +192,14 @@ def plot2():
 
     ax = plt.gca()
     ax.set_ylim([0.1, 0.6])
-    plt.xticks(rotation=25)
+    plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Noise Class")
     plt.savefig("imgs/plots/aer_for_all_noise.pdf")
 
 def plotHeatMap(data, title, filename):
     cols = ['Clean', 'NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
     ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=cols)
-    plt.xticks(rotation=25)
+    plt.xticks(rotation=LABEL_TILT)
     plt.title(title)
     plt.savefig(filename)
 
@@ -315,7 +317,7 @@ def plot10():
 
     ax = plt.gca()
     ax.set_ylim([0.1, 0.6])
-    plt.xticks(rotation=25)
+    plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Dataset")
     plt.savefig("imgs/plots/aer_for_all_datasets.pdf")
 
@@ -323,14 +325,16 @@ def plot10():
 Plot 11
 Bar Plot
 Min, Avg, Max Delta AER for each dataset
-TODO
 """
 def plot11():
     plt.figure()
     data = [
-        all_model_ss1_avg_aer, all_model_ss2_avg_aer,
-        all_model_bs1_avg_aer, all_model_bs2_avg_aer,
-        all_model_har1_avg_aer, all_model_har2_avg_aer,
+        [all_model_ss1_avg_aer[i] - all_model_ss1_avg_aer[0] for i in range(1, 49)],
+        [all_model_ss2_avg_aer[i] - all_model_ss2_avg_aer[0] for i in range(1, 49)],
+        [all_model_bs1_avg_aer[i] - all_model_bs1_avg_aer[0] for i in range(1, 49)],
+        [all_model_bs2_avg_aer[i] - all_model_bs2_avg_aer[0] for i in range(1, 49)],
+        [all_model_har1_avg_aer[i] - all_model_har1_avg_aer[0] for i in range(1, 49)],
+        [all_model_har2_avg_aer[i] - all_model_har2_avg_aer[0] for i in range(1, 49)],
     ]
 
     n_cols = len(data)
@@ -347,27 +351,28 @@ def plot11():
         plt.bar(cols[i], min(data[i]), width=WIDTH, bottom=0, align='center', color=colors[0])
 
     ax = plt.gca()
-    ax.set_ylim([0.1, 0.6])
-    plt.xticks(rotation=25)
+    ax.set_ylim([0.0, 0.15])
+    plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Dataset")
-    plt.savefig("imgs/plots/aer_for_all_datasets.pdf")
+    plt.savefig("imgs/plots/delta_aer_for_all_datasets.pdf")
 
 """
 Plot 12
 Bar Plot
 Min, Avg, Max Delta AER for each model
-TODO
 """
 def plot12():
     plt.figure()
     data = [
-        all_model_ss1_avg_aer, all_model_ss2_avg_aer,
-        all_model_bs1_avg_aer, all_model_bs2_avg_aer,
-        all_model_har1_avg_aer, all_model_har2_avg_aer,
+        [cnn_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
+        [lstm_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
+        [svm_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
+        [nb_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
+        [rf_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
     ]
 
     n_cols = len(data)
-    cols = ['Synthetic 1', 'Synthetic 2', 'Apnea-ECG', 'Gait Parkinsons', 'TXState HAR', 'UCI HAR']
+    cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
     colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
     WIDTH = 0.8
 
@@ -380,10 +385,10 @@ def plot12():
         plt.bar(cols[i], min(data[i]), width=WIDTH, bottom=0, align='center', color=colors[0])
 
     ax = plt.gca()
-    ax.set_ylim([0.1, 0.6])
-    plt.xticks(rotation=25)
+    ax.set_ylim([0.0, 0.15])
+    plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Dataset")
-    plt.savefig("imgs/plots/aer_for_all_datasets.pdf")
+    plt.savefig("imgs/plots/delta_aer_for_all_models.pdf")
 
 """
 Plot 13
@@ -393,18 +398,40 @@ TODO
 """
 def plot13():
     plt.figure()
+    deltas = [
+        [all_model_ss1_avg_aer[i] - all_model_ss1_avg_aer[0] for i in range(1, 49)],
+        [all_model_ss2_avg_aer[i] - all_model_ss2_avg_aer[0] for i in range(1, 49)],
+        [all_model_bs1_avg_aer[i] - all_model_bs1_avg_aer[0] for i in range(1, 49)],
+        [all_model_bs2_avg_aer[i] - all_model_bs2_avg_aer[0] for i in range(1, 49)],
+        [all_model_har1_avg_aer[i] - all_model_har1_avg_aer[0] for i in range(1, 49)],
+        [all_model_har2_avg_aer[i] - all_model_har2_avg_aer[0] for i in range(1, 49)],
+    ]
+
+    divisors = [
+        5, 10, 5, 10, 5, 10,
+        1, 5, 10, 5, 10, 5, 10,
+        1, 5, 10, 5, 10, 5, 10,
+        1, 5, 10, 5, 10, 5, 10,
+        1, 5, 10, 5, 10, 5, 10,
+        1, 5, 10, 5, 10, 5, 10,
+        1, 5, 10, 5, 10, 5, 10
+    ]
+
+    deltas = np.array([np.array(i)/np.array(divisors) for i in deltas])
+    #print(np.append(deltas[:, range(1, 49, 7)], deltas[:, range(2, 49, 7)]))
     data = [
-        all_model_ss1_avg_aer, all_model_ss2_avg_aer,
-        all_model_bs1_avg_aer, all_model_bs2_avg_aer,
-        all_model_har1_avg_aer, all_model_har2_avg_aer,
+        np.append(deltas[:,range(0,48,7)], deltas[:,range(1,48,7)]),
+        np.append(deltas[:,range(2,48,7)], deltas[:,range(3,48,7)]),
+        np.append(deltas[:,range(4,48,7)], deltas[:,range(5,48,7)]),
     ]
 
     n_cols = len(data)
-    cols = ['Synthetic 1', 'Synthetic 2', 'Apnea-ECG', 'Gait Parkinsons', 'TXState HAR', 'UCI HAR']
+    cols = ['NCAR', 'NAR', 'NNAR']
     colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
     WIDTH = 0.8
-
+    print("Number of columns: ", n_cols)
     for i in range(n_cols):
+        print(data[i])
         #plt max bar
         plt.bar(cols[i], max(data[i]), width=WIDTH, bottom=0, align='center', color=colors[2])
         # #plt avg bar
@@ -413,21 +440,25 @@ def plot13():
         plt.bar(cols[i], min(data[i]), width=WIDTH, bottom=0, align='center', color=colors[0])
 
     ax = plt.gca()
-    ax.set_ylim([0.1, 0.6])
-    plt.xticks(rotation=25)
-    plt.title("Min/Avg/Max Error for Each Dataset")
-    plt.savefig("imgs/plots/aer_for_all_datasets.pdf")
+    ax.set_ylim([0.0, 0.05])
+    plt.xticks(rotation=LABEL_TILT)
+    plt.title("Min/Avg/Max Change Error per 1% Label Noise")
+    plt.show()
+    # plt.savefig("imgs/plots/aer_for_all_datasets.pdf")
 
 
 
 if __name__ == '__main__':
-    plot1()
-    plot2()
-    plot3()
-    plot4()
-    plot5()
-    plot6()
-    plot7()
-    plot8()
-    plot9()
-    plot10()
+    # plot1()
+    # plot2()
+    # plot3()
+    # plot4()
+    # plot5()
+    # plot6()
+    # plot7()
+    # plot8()
+    # plot9()
+    # plot10()
+    # plot11()
+    # plot12()
+    plot13()
