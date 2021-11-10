@@ -1,5 +1,5 @@
 #Author: Gentry Atkinson
-#Organization: Texas University
+#Organization: Texas State University
 #Data: 2 September, 2021
 #Train and test an SVM on the 6 datasets with their many label sets
 

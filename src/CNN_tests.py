@@ -1,5 +1,5 @@
 #Author: Gentry Atkinson
-#Organization: Texas University
+#Organization: Texas State University
 #Data: 21 July, 2021
 #Train and test a CNN on the 6 datasets with their many label sets
 

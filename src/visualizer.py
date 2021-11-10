@@ -1,5 +1,5 @@
 #Author: Gentry Atkinson
-#Organization: Texas University
+#Organization: Texas State University
 #Data: 21 July, 2021
 #Visualize 6 datasets with all their various label sets
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Author: Gentry Atkinson
-#Organization: Texas University
+#Organization: Texas State University
 #Data: 04 September, 2021
 #Run every script in the model test
 

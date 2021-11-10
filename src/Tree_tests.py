@@ -1,5 +1,5 @@
 #Author: Gentry Atkinson
-#Organization: Texas University
+#Organization: Texas State University
 #Data: 4 September, 2021
 #Train and test a classification tree on the 6 datasets with their many label sets
 
