@@ -5,6 +5,7 @@
 
 from matplotlib import pyplot as plt
 import numpy as np
+import seaborn as sb
 
 cnn_all_avg_aer = [
     0.3083,	0.3320,	0.3588,	0.3427,	0.3795,	0.3370,	0.3717,
@@ -68,17 +69,17 @@ Clean, Avg, and Max AER for all models
 Following: https://matplotlib.org/stable/gallery/misc/table_demo.html#sphx-glr-gallery-misc-table-demo-py
 """
 def plot1():
+    plt.figure()
     clean = [cnn_all_avg_aer[0], lstm_all_avg_aer[0],svm_all_avg_aer[0],nb_all_avg_aer[0],rf_all_avg_aer[0]]
     avgs = [sum(cnn_all_avg_aer)/49, sum(lstm_all_avg_aer)/49,sum(svm_all_avg_aer)/49,sum(nb_all_avg_aer)/49,sum(rf_all_avg_aer)/49]
     maxs = [max(cnn_all_avg_aer), max(lstm_all_avg_aer),max(svm_all_avg_aer),max(nb_all_avg_aer),max(rf_all_avg_aer)]
 
-    n_cols = len(mins)
+    n_cols = len(clean)
     cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
     colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
     WIDTH = 0.8
 
     for i in range(n_cols):
-        print('m:{} c:{} a:{} M:{}'.format(mins[i], clean[i], avgs[i], maxs[i]))
         #plt max bar
         plt.bar(cols[i], maxs[i], width=WIDTH, bottom=0, align='center', color=colors[2])
         # #plt avg bar
@@ -89,6 +90,7 @@ def plot1():
 
     ax = plt.gca()
     ax.set_ylim([0.2, 0.5])
+    plt.xticks(rotation=25)
     plt.title("Min/Avg/Max Error for Each Model")
     plt.savefig("imgs/plots/aer_for_all_models.pdf")
 
@@ -98,6 +100,7 @@ Bar Plot
 Min, Avg, and Max AER for all symetrical noise
 """
 def plot2():
+    plt.figure()
     data = [
         [cnn_all_avg_aer[0], lstm_all_avg_aer[0], svm_all_avg_aer[0], nb_all_avg_aer[0], rf_all_avg_aer[0]],
         [cnn_all_avg_aer[8], lstm_all_avg_aer[8], svm_all_avg_aer[8], nb_all_avg_aer[8], rf_all_avg_aer[8]],
@@ -123,9 +126,99 @@ def plot2():
 
     ax = plt.gca()
     ax.set_ylim([0.2, 0.5])
+    plt.xticks(rotation=25)
     plt.title("Min/Avg/Max Error for Each Noise Class")
     plt.savefig("imgs/plots/aer_for_all_noise.pdf")
+
+def plotHeatMap(data, title, filename):
+    cols = ['Clean', 'NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
+    ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=cols)
+    plt.xticks(rotation=25)
+    plt.title(title)
+    plt.savefig(filename)
+
+"""
+Plot 3
+Heat Map
+Average AER for all train/test pairs
+"""
+def plot3():
+    plt.figure()
+    data = np.reshape(np.array(all_all_avg_aer), (7, 7))
+    title = "All Model Avg AER for Each Train/Test"
+    filename = "imgs/plots/all_aer_for_test_train_pairs.pdf"
+    plotHeatMap(data, title, filename)
+
+"""
+Plot 4
+Heat Map
+CNN AER for all train/test pairs
+"""
+def plot4():
+    plt.figure()
+    data = np.reshape(np.array(cnn_all_avg_aer), (7, 7))
+    title = "CNN AER for Each Train/Test"
+    filename = "imgs/plots/cnn_aer_for_test_train_pairs.pdf"
+    plotHeatMap(data, title, filename)
+
+
+
+"""
+Plot 5
+Heat Map
+LSTM AER for all train/test pairs
+"""
+def plot5():
+    plt.figure()
+    data = np.reshape(np.array(lstm_all_avg_aer), (7, 7))
+    title = "LSTM AER for Each Train/Test"
+    filename = "imgs/plots/lstm_aer_for_test_train_pairs.pdf"
+    plotHeatMap(data, title, filename)
+
+"""
+Plot 6
+Heat Map
+SVM AER for all train/test pairs
+"""
+def plot6():
+    plt.figure()
+    data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    title = "SVM AER for Each Train/Test"
+    filename = "imgs/plots/svm_aer_for_test_train_pairs.pdf"
+    plotHeatMap(data, title, filename)
+
+"""
+Plot 7
+Heat Map
+Naive Bayes AER for all train/test pairs
+"""
+def plot7():
+    plt.figure()
+    data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    title = "N.Bayes AER for Each Train/Test"
+    filename = "imgs/plots/nb_aer_for_test_train_pairs.pdf"
+    plotHeatMap(data, title, filename)
+
+"""
+Plot 8
+Heat Map
+Naive Bayes AER for all train/test pairs
+"""
+def plot8():
+    plt.figure()
+    data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    title = "R. Forest AER for Each Train/Test"
+    filename = "imgs/plots/rf_aer_for_test_train_pairs.pdf"
+    plotHeatMap(data, title, filename)
+
+
 
 if __name__ == '__main__':
     plot1()
     plot2()
+    plot3()
+    plot4()
+    plot5()
+    plot6()
+    plot7()
+    plot8()
