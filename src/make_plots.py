@@ -431,34 +431,36 @@ def plot13():
     WIDTH = 0.8
     print("Number of columns: ", n_cols)
     for i in range(n_cols):
-        print(data[i])
         #plt max bar
+        print(max(data[i]))
         plt.bar(cols[i], max(data[i]), width=WIDTH, bottom=0, align='center', color=colors[2])
         # #plt avg bar
+        print(np.mean(data[i]))
         plt.bar(cols[i], np.mean(data[i]), width=WIDTH, bottom=0, align='center', color=colors[1])
         #plt clean bar
+        print(min(data[i]))
         plt.bar(cols[i], min(data[i]), width=WIDTH, bottom=0, align='center', color=colors[0])
+    plt.axhline(y=0.0, color='black', linestyle='-')
 
     ax = plt.gca()
-    ax.set_ylim([0.0, 0.05])
+    ax.set_ylim([-0.015, 0.025])
     plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Change Error per 1% Label Noise")
-    plt.show()
-    # plt.savefig("imgs/plots/aer_for_all_datasets.pdf")
+    plt.savefig("imgs/plots/delta_aer_per_percent_for_all_noises.pdf")
 
 
 
 if __name__ == '__main__':
-    # plot1()
-    # plot2()
-    # plot3()
-    # plot4()
-    # plot5()
-    # plot6()
-    # plot7()
-    # plot8()
-    # plot9()
-    # plot10()
-    # plot11()
-    # plot12()
+    plot1()
+    plot2()
+    plot3()
+    plot4()
+    plot5()
+    plot6()
+    plot7()
+    plot8()
+    plot9()
+    plot10()
+    plot11()
+    plot12()
     plot13()
