@@ -142,8 +142,8 @@ def plot1():
 
     n_cols = len(clean)
     cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
-    colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
-    WIDTH = 0.8
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.6, 3))
+    WIDTH = 0.4
 
     for i in range(n_cols):
         #plt max bar
@@ -158,7 +158,7 @@ def plot1():
     ax.set_ylim([0.1, 0.6])
     plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Model")
-    plt.savefig("imgs/plots/aer_for_all_models.pdf")
+    plt.savefig("imgs/plots/aer_for_all_models.pdf", bbox_inches='tight')
 
 """
 Plot 2
@@ -179,8 +179,8 @@ def plot2():
 
     n_cols = len(data)
     cols = ['Clean', 'NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
-    colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
-    WIDTH = 0.8
+    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    WIDTH = 0.4
 
     for i in range(n_cols):
         #plt max bar
@@ -194,14 +194,14 @@ def plot2():
     ax.set_ylim([0.1, 0.6])
     plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Noise Class")
-    plt.savefig("imgs/plots/aer_for_all_noise.pdf")
+    plt.savefig("imgs/plots/aer_for_all_noise.pdf", bbox_inches='tight')
 
 def plotHeatMap(data, title, filename):
     cols = ['Clean', 'NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
     ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=cols)
     plt.xticks(rotation=LABEL_TILT)
     plt.title(title)
-    plt.savefig(filename)
+    plt.savefig(filename, bbox_inches='tight')
 
 """
 Plot 3
@@ -304,8 +304,8 @@ def plot10():
 
     n_cols = len(data)
     cols = ['Synthetic 1', 'Synthetic 2', 'Apnea-ECG', 'Gait Parkinsons', 'TXState HAR', 'UCI HAR']
-    colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
-    WIDTH = 0.8
+    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    WIDTH = 0.4
 
     for i in range(n_cols):
         #plt max bar
@@ -319,7 +319,7 @@ def plot10():
     ax.set_ylim([0.1, 0.6])
     plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Dataset")
-    plt.savefig("imgs/plots/aer_for_all_datasets.pdf")
+    plt.savefig("imgs/plots/aer_for_all_datasets.pdf", bbox_inches='tight')
 
 """
 Plot 11
@@ -339,8 +339,8 @@ def plot11():
 
     n_cols = len(data)
     cols = ['Synthetic 1', 'Synthetic 2', 'Apnea-ECG', 'Gait Parkinsons', 'TXState HAR', 'UCI HAR']
-    colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
-    WIDTH = 0.8
+    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    WIDTH = 0.4
 
     for i in range(n_cols):
         #plt max bar
@@ -354,7 +354,7 @@ def plot11():
     ax.set_ylim([0.0, 0.15])
     plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Error for Each Dataset")
-    plt.savefig("imgs/plots/delta_aer_for_all_datasets.pdf")
+    plt.savefig("imgs/plots/delta_aer_for_all_datasets.pdf", bbox_inches='tight')
 
 """
 Plot 12
@@ -373,8 +373,8 @@ def plot12():
 
     n_cols = len(data)
     cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
-    colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
-    WIDTH = 0.8
+    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    WIDTH = 0.4
 
     for i in range(n_cols):
         #plt max bar
@@ -387,8 +387,8 @@ def plot12():
     ax = plt.gca()
     ax.set_ylim([0.0, 0.15])
     plt.xticks(rotation=LABEL_TILT)
-    plt.title("Min/Avg/Max Error for Each Dataset")
-    plt.savefig("imgs/plots/delta_aer_for_all_models.pdf")
+    plt.title("Min/Avg/Max Error for Each Model")
+    plt.savefig("imgs/plots/delta_aer_for_all_models.pdf", bbox_inches='tight')
 
 """
 Plot 13
@@ -399,16 +399,16 @@ TODO
 def plot13():
     plt.figure()
     deltas = [
-        [all_model_ss1_avg_aer[i] - all_model_ss1_avg_aer[0] for i in range(1, 49)],
-        [all_model_ss2_avg_aer[i] - all_model_ss2_avg_aer[0] for i in range(1, 49)],
-        [all_model_bs1_avg_aer[i] - all_model_bs1_avg_aer[0] for i in range(1, 49)],
-        [all_model_bs2_avg_aer[i] - all_model_bs2_avg_aer[0] for i in range(1, 49)],
-        [all_model_har1_avg_aer[i] - all_model_har1_avg_aer[0] for i in range(1, 49)],
-        [all_model_har2_avg_aer[i] - all_model_har2_avg_aer[0] for i in range(1, 49)],
+        [all_model_ss1_avg_aer[i] - all_model_ss1_avg_aer[0] for i in range(0, 49)],
+        [all_model_ss2_avg_aer[i] - all_model_ss2_avg_aer[0] for i in range(0, 49)],
+        [all_model_bs1_avg_aer[i] - all_model_bs1_avg_aer[0] for i in range(0, 49)],
+        [all_model_bs2_avg_aer[i] - all_model_bs2_avg_aer[0] for i in range(0, 49)],
+        [all_model_har1_avg_aer[i] - all_model_har1_avg_aer[0] for i in range(0, 49)],
+        [all_model_har2_avg_aer[i] - all_model_har2_avg_aer[0] for i in range(0, 49)],
     ]
 
     divisors = [
-        5, 10, 5, 10, 5, 10,
+        1, 5, 10, 5, 10, 5, 10,
         1, 5, 10, 5, 10, 5, 10,
         1, 5, 10, 5, 10, 5, 10,
         1, 5, 10, 5, 10, 5, 10,
@@ -420,37 +420,72 @@ def plot13():
     deltas = np.array([np.array(i)/np.array(divisors) for i in deltas])
     #print(np.append(deltas[:, range(1, 49, 7)], deltas[:, range(2, 49, 7)]))
     data = [
-        np.append(deltas[:,range(0,48,7)], deltas[:,range(1,48,7)]),
-        np.append(deltas[:,range(2,48,7)], deltas[:,range(3,48,7)]),
-        np.append(deltas[:,range(4,48,7)], deltas[:,range(5,48,7)]),
+        #ncar
+        np.reshape([deltas[:,8], deltas[:,9], deltas[:,15], deltas[:,16]], (24)),
+        #nar
+        np.reshape([deltas[:,24], deltas[:,25], deltas[:,31], deltas[:,32]], (24)),
+        #nnar
+        np.reshape([deltas[:,40], deltas[:,41], deltas[:,47], deltas[:,48]], (24))
     ]
-
     n_cols = len(data)
     cols = ['NCAR', 'NAR', 'NNAR']
-    colors =  plt.cm.BuPu(np.linspace(0.2, 0.4, 3))
+    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
     WIDTH = 0.8
-    print("Number of columns: ", n_cols)
     for i in range(n_cols):
         #plt max bar
-        print(max(data[i]))
+        #print(max(data[i]))
         plt.bar(cols[i], max(data[i]), width=WIDTH, bottom=0, align='center', color=colors[2])
         # #plt avg bar
-        print(np.mean(data[i]))
+        #print(np.mean(data[i]))
         plt.bar(cols[i], np.mean(data[i]), width=WIDTH, bottom=0, align='center', color=colors[1])
         #plt clean bar
-        print(min(data[i]))
+        #print(min(data[i]))
         plt.bar(cols[i], min(data[i]), width=WIDTH, bottom=0, align='center', color=colors[0])
     plt.axhline(y=0.0, color='black', linestyle='-')
 
     ax = plt.gca()
-    ax.set_ylim([-0.015, 0.025])
+    ax.set_ylim([-0.01, 0.02])
     plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Change Error per 1% Label Noise")
-    plt.savefig("imgs/plots/delta_aer_per_percent_for_all_noises.pdf")
+    plt.savefig("imgs/plots/delta_aer_per_percent_for_all_noises.pdf", bbox_inches='tight')
 
+"""
+Plot 14
+Horizontal Bar Plot
+Clean, Avg, and Max AER for all models
+Following: https://matplotlib.org/stable/gallery/misc/table_demo.html#sphx-glr-gallery-misc-table-demo-py
+"""
+def plot14():
+    plt.figure()
+    clean = [cnn_all_avg_aer[0], lstm_all_avg_aer[0],svm_all_avg_aer[0],nb_all_avg_aer[0],rf_all_avg_aer[0]]
+    avgs = [sum(cnn_all_avg_aer)/49, sum(lstm_all_avg_aer)/49,sum(svm_all_avg_aer)/49,sum(nb_all_avg_aer)/49,sum(rf_all_avg_aer)/49]
+    maxs = [max(cnn_all_avg_aer), max(lstm_all_avg_aer),max(svm_all_avg_aer),max(nb_all_avg_aer),max(rf_all_avg_aer)]
+
+    n_cols = len(clean)
+    cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
+    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    WIDTH = 0.4
+
+    for i in range(n_cols):
+        #plt max bar
+        plt.barh(i, maxs[i], height=WIDTH, color=colors[2])
+        # #plt avg bar
+        plt.barh(i, avgs[i], height=WIDTH, color=colors[1])
+        #plt clean bar
+        plt.barh(i, clean[i], height=WIDTH, color=colors[0])
+
+
+    ax = plt.gca()
+    ax.set_yticks(range(len(cols)))
+    ax.set_yticklabels(cols)
+    plt.xticks(rotation=LABEL_TILT)
+    ax.set_xlim([0.1, 0.6])
+    plt.title("Min/Avg/Max Error for Each Model")
+    plt.savefig("imgs/plots/aer_for_all_models_horizontal.pdf", bbox_inches='tight')
 
 
 if __name__ == '__main__':
+    plt.rcParams.update({'font.size': 16})
     plot1()
     plot2()
     plot3()
@@ -464,3 +499,4 @@ if __name__ == '__main__':
     plot11()
     plot12()
     plot13()
+    plot14()
