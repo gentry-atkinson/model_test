@@ -42,7 +42,7 @@ def calc_TER(aer, mlr):
     assert aer<=1 and mlr<=1, "Why would an error rate be greater than 1???"
     assert mlr != 0.5, "Sorry, MLR can't be one half"
     #return '(' + str((aer-mlr)/(1-2*mlr)) + ', ' + str(aer-mlr) + ', ' +  str(aer+mlr) + ')'
-    return ('({:.3f}, {:.3f}, {:.3f})'.format((aer-mlr)/(1-2*mlr), aer-mlr, aer+mlr))
+    return ('{:.3f}, {:.3f}, {:.3f}'.format((aer-mlr)/(1-2*mlr), aer-mlr, aer+mlr))
 
 """
 Calculate Error Rates
