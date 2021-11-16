@@ -65,31 +65,55 @@ all_dic = {
     "NNAR 10%":["0.278-0.478"]
 }
 
-"""
-Table 1
-Verticle
-CNN TER for symetrical train/test pairs
-"""
-def tab1():
-    tab = pd.DataFrame.from_dict({"Noise Type":cnn_dic.keys(), "TER":cnn_dic.values()})
+
+def hor_tab(mod_dic):
+    tab = pd.DataFrame.from_dict(mod_dic)
+    return tab.to_latex()
+def ver_tab(mod_dic):
+    tab = pd.DataFrame.from_dict({"Noise Type":mod_dic.keys(), "TER":mod_dic.values()})
     return tab.to_latex()
 
-"""
-Table 2
-Horizontal
-CNN TER for symetrical train/test pairs
-"""
-def tab2():
-    tab = pd.DataFrame.from_dict(cnn_dic)
-    return tab.to_latex()
+
 
 if __name__ == "__main__":
     outfile = open("tables_latex.txt", 'w+')
 
-    outfile.write('### Table 1 ###\n\n')
-    outfile.write(tab1())
+    outfile.write('### Table 1: CNN Horizontal ###\n\n')
+    outfile.write(hor_tab(cnn_dic))
     outfile.write('\n######\n')
 
-    outfile.write('### Table 2 ###\n\n')
-    outfile.write(tab2())
+    outfile.write('### Table 2: CNN Vertical ###\n\n')
+    outfile.write(ver_tab(cnn_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 3: LSTM Horizontal ###\n\n')
+    outfile.write(hor_tab(lstm_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 4: LSTM Vertical ###\n\n')
+    outfile.write(ver_tab(lstm_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 5: SVM Horizontal ###\n\n')
+    outfile.write(hor_tab(svm_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 6: SVM Vertical ###\n\n')
+    outfile.write(ver_tab(svm_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 7: NB Horizontal ###\n\n')
+    outfile.write(hor_tab(nb_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 8: NB Vertical ###\n\n')
+    outfile.write(ver_tab(nb_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 9: RF Horizontal ###\n\n')
+    outfile.write(hor_tab(rf_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 10: RF Vertical ###\n\n')
+    outfile.write(ver_tab(rf_dic))
     outfile.write('\n######\n')
