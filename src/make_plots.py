@@ -1,7 +1,7 @@
 #Author: Gentry Atkinson
 #Organization: Texas State University
-#Data: 21 July, 2021
-#Train and test a CNN on the 6 datasets with their many label sets
+#Data: 09 November, 2021
+#Make some nice pyplots for the paper
 
 from matplotlib import pyplot as plt
 import numpy as np
