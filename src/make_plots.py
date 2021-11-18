@@ -125,53 +125,116 @@ all_model_har2_avg_aer = [
 all_all_avg_aer_2 = [(
     all_model_ss1_avg_aer [i]+all_model_ss2_avg_aer [i]+ all_model_bs1_avg_aer [i]+ all_model_bs2_avg_aer [i]+all_model_har1_avg_aer [i]+ all_model_har2_avg_aer [i])/6 for i in range(49)]
 
-cev_ss1_dic = {
-    'CNN':[1.240, 0.954, 0.001, 0.072, 0.093, 0.025],
-    'LSTM': [0.096, 0.149, 0.009, 0.507, 0.046, 0.096],
-    'SVM': [],
-    'NB': [],
-    'RF': []
+#   Model[0] -> CEV values
+#   Model[1] -> SDE values
+bias_ss1_dic = {
+    'CNN':[[1.240, 0.954, 0.001, 0.072, 0.093, 0.025],
+            [1.575, 1.381, 0.035, 0.379, 0.432, 0.225]
+        ],
+    'LSTM': [[0.096, 0.149, 0.009, 0.507, 0.046, 0.096],
+            [0.439, 0.546, 0.134, 1.007, 0.304, 0.438]
+        ],
+    'SVM': [[0.003, 0.051, 0.772, 2.975, 0.256, 1.557],
+            [0.080, 0.320, 1.243, 2.439, 0.716, 1.765]
+        ],
+    'NB': [[0.591, 2.063, 1.768, 6.273, 1.390, 4.001],
+            [1.087, 2.031, 1.880, 3.542, 1.667, 2.829]
+        ],
+    'RF': [[0.131, 0.432, 0.263, 0.328, 0.164, 0.084],
+            [0.512, 0.930, 0.726, 0.810, 0.573, 0.410]
+        ]
 }
 
-cev_ss2_dic = {
-    'CNN':[0.048, 0.092, 0.147, 0.686, 0.218, 0.763],
-    'LSTM': [0.161, 0.447, 0.274, 0.849, 0.130, 0.481],
-    'SVM': [],
-    'NB': [],
-    'RF': []
+bias_ss2_dic = {
+    'CNN':[[0.048, 0.092, 0.147, 0.686, 0.218, 0.763],
+            [0.202, 0.279, 0.430, 0.911, 0.548, 1.070]
+        ],
+    'LSTM': [[0.161, 0.447, 0.274, 0.849, 0.130, 0.481],
+            [0.390, 0.685, 0.555, 0.986, 0.485, 0.782]
+        ],
+    'SVM': [[0.367, 1.623, 0.710, 14.183, 0.800, 2.699],
+            [0.219, 0.415, 0.668, 3.009, 0.724, 1.422]
+        ],
+    'NB': [[3.704, 1.702, 0.284, 0.602, 0.442, 1.141],
+            [2.182, 0.670, 0.470, 0.651, 0.620, 1.037]
+        ],
+    'RF': [[0.198, 0.961, 1.476, 12.703, 1.286, 9.326],
+            [0.251, 0.356, 1.022, 2.853, 1.009, 2.492]
+        ]
 }
 
-cev_bs1_dic = {
-    'CNN':[0.009, 0.002, 0.136, 0.220, 0.027, 0.102],
-    'LSTM': [0.043, 0.000, 0.006, 0.025, 0.003, 0.041],
-    'SVM': [],
-    'NB': [],
-    'RF': []
+bias_bs1_dic = {
+    'CNN':[[0.009, 0.002, 0.136, 0.220, 0.027, 0.102],
+            [0.131, 0.069, 0.521, 0.664, 0.233, 0.452]
+        ],
+    'LSTM': [[0.043, 0.000, 0.006, 0.025, 0.003, 0.041],
+            [0.293, 0.030, 0.114, 0.224, 0.083, 0.287]
+        ],
+    'SVM': [[0.007, 0.030, 0.089, 0.235, 0.081, 0.212],
+            [0.117, 0.245, 0.422, 0.685, 0.403, 0.651]
+        ],
+    'NB': [[0.052, 0.048, 0.041, 0.017, 0.001, 0.026],
+            [0.322, 0.311, 0.285, 0.185, 0.053, 0.230]
+        ],
+    'RF': [[0.000, 0.010, 0.076, 0.372, 0.041, 0.261],
+            [0.004, 0.139, 0.390, 0.863, 0.288, 0.723]
+        ]
 }
 
-cev_bs2_dic = {
-    'CNN':[14.123, 5.190, 1.216, 4.678, 0.126, 9.111],
-    'LSTM': [0.692, 0.160, 0.001, 0.000, 0.019, 0.047],
-    'SVM': [],
-    'NB': [],
-    'RF': []
+bias_bs2_dic = {
+    'CNN':[[14.123, 5.190, 1.216, 4.678, 0.126, 9.111],
+            [5.315, 3.222, 1.559, 3.059, 0.502, 4.269]
+        ],
+    'LSTM': [[0.692, 0.160, 0.001, 0.000, 0.019, 0.047],
+            [1.176, 0.566, 0.038, 0.025, 0.196, 0.307]
+        ],
+    'SVM': [[], #Values missing
+            []  #Values missing
+        ],
+    'NB': [[0.487, 1.237, 0.005, 0.026, 0.102, 0.024],
+            [0.987, 1.573, 0.096, 0.226, 0.452, 0.219]
+        ],
+    'RF': [[0.001, 0.000, 0.000, 0.037, 0.002, 0.022],
+            [0.041, 0.018, 0.031, 0.273, 0.057, 0.210]
+        ]
 }
 
-cev_har1_dic = {
-    'CNN':[0.121, 3.097, 0.906, 4.672, 1.144, 2.336],
-    'LSTM': [0.254, 1.194, 0.373, 2.738, 0.201, 3.162],
-    'SVM': [],
-    'NB': [],
-    'RF': []
+bias_har1_dic = {
+    'CNN':[[0.121, 3.097, 0.906, 4.672, 1.144, 2.336],
+            [0.270, 1.305, 1.087, 1.776, 0.816, 1.326]
+        ],
+    'LSTM': [[0.254, 1.194, 0.373, 2.738, 0.201, 3.162],
+            [0.581, 1.001, 0.437, 1.612, 0.323, 1.646]
+        ],
+    'SVM': [[], #Values missing
+            []  #Values missing
+        ],
+    'NB': [[],  #Values missing
+            []  #Values missing
+        ],
+    'RF': [[1.516, 4.354, 0.656, 5.701, 2.978, 3.028],
+            [1.056, 1.851, 0.586, 2.164, 1.600, 1.642]
+        ]
 }
 
-cev_har2_dic = {
-    'CNN':[8.764, 33.409, 81.898, 1644.171, 71.722, 296.200],
-    'LSTM': [],
-    'SVM': [],
-    'NB': [],
-    'RF': []
+bias_har2_dic = {
+    'CNN':[[8.764, 33.409, 81.898, 1644.171, 71.722, 296.200],
+            [1.642, 0.932, 3.860, 17.439, 1.499, 1.513]
+        ],
+    'LSTM': [[],    #Values missing
+            []      #Values missing
+        ],
+    'SVM': [[0.172, 0.673, 0.349, 11.237, 0.263, 10.413],
+            [0.298, 0.614, 0.479, 2.077, 0.412, 1.925]
+        ],
+    'NB': [[0.428, 2.858, 0.479, 1.257, 0.585, 2.139],
+            [0.557, 1.309, 0.648, 1.087, 0.713, 1.332]
+        ],
+    'RF': [[1.790, 4.224, 0.288, 2.614, 0.498, 2.108],
+            [0.777, 1.075, 0.163, 0.897, 0.323, 0.738]
+        ],
 }
+
 
 
 
@@ -531,20 +594,123 @@ def plot14():
     plt.title("Min/Avg/Max Error for Each Model")
     plt.savefig("imgs/plots/aer_for_all_models_horizontal.pdf", bbox_inches='tight')
 
+"""
+Plot 15
+Scatter Plot
+CEV and SDE for all models on SS1
+"""
+def plot15():
+    plt.figure()
+    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+    for i in range(len(models)):
+        plt.scatter(bias_ss1_dic[models[i]][0], bias_ss1_dic[models[i]][1], label=models[i])
+    plt.title("CEV/SDE")
+    plt.legend()
+    plt.savefig("imgs/plots/cev_and_sde_on_ss1.pdf", bbox_inches='tight')
+
+"""
+Plot 16
+Scatter Plot
+CEV and SDE for all models on SS2
+"""
+def plot16():
+    plt.figure()
+    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+    for i in range(len(models)):
+        plt.scatter(bias_ss2_dic[models[i]][0], bias_ss2_dic[models[i]][1], label=models[i])
+    plt.title("CEV/SDE")
+    plt.legend()
+    plt.savefig("imgs/plots/cev_and_sde_on_ss2.pdf", bbox_inches='tight')
+
+"""
+Plot 17
+Scatter Plot
+CEV and SDE for all models on BS1
+"""
+def plot17():
+    plt.figure()
+    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+    for i in range(len(models)):
+        plt.scatter(bias_bs1_dic[models[i]][0], bias_bs1_dic[models[i]][1], label=models[i])
+    plt.title("CEV/SDE")
+    plt.legend()
+    plt.savefig("imgs/plots/cev_and_sde_on_bs1.pdf", bbox_inches='tight')
+
+"""
+Plot 18
+Scatter Plot
+CEV and SDE for all models on BS2
+"""
+def plot18():
+    plt.figure()
+    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+    for i in range(len(models)):
+        plt.scatter(bias_bs2_dic[models[i]][0], bias_bs2_dic[models[i]][1], label=models[i])
+    plt.title("CEV/SDE")
+    plt.legend()
+    plt.savefig("imgs/plots/cev_and_sde_on_bs2.pdf", bbox_inches='tight')
+
+"""
+Plot 19
+Scatter Plot
+CEV and SDE for all models on HAR1
+"""
+def plot19():
+    plt.figure()
+    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+    for i in range(len(models)):
+        plt.scatter(bias_har1_dic[models[i]][0], bias_har1_dic[models[i]][1], label=models[i])
+    plt.title("CEV/SDE")
+    plt.legend()
+    plt.savefig("imgs/plots/cev_and_sde_on_har1.pdf", bbox_inches='tight')
+
+"""
+Plot 20
+Scatter Plot
+CEV and SDE for all models on HAR2
+"""
+def plot20():
+    plt.figure()
+    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+    for i in range(len(models)):
+        plt.scatter(bias_har2_dic[models[i]][0], bias_har2_dic[models[i]][1], label=models[i])
+    plt.title("CEV/SDE")
+    plt.legend()
+    plt.savefig("imgs/plots/cev_and_sde_on_har2.pdf", bbox_inches='tight')
+
+def plot21_temp():
+    plt.figure()
+    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+    for i in range(len(models)):
+        plt.scatter(bias_ss1_dic[models[i]][0], bias_ss1_dic[models[i]][1], label=models[i])
+    for i in range(len(models)):
+        plt.scatter(bias_bs1_dic[models[i]][0], bias_bs1_dic[models[i]][1], label=models[i])
+    for i in range(len(models)):
+        plt.scatter(bias_bs2_dic[models[i]][0], bias_bs2_dic[models[i]][1], label=models[i])
+    plt.title("CEV/SDE")
+    plt.savefig("imgs/plots/cev_and_sde_on_all_binayry_datasets.pdf", bbox_inches='tight')
+
 
 if __name__ == '__main__':
     plt.rcParams.update({'font.size': 16})
-    plot1()
-    plot2()
-    plot3()
-    plot4()
-    plot5()
-    plot6()
-    plot7()
-    plot8()
-    plot9()
-    plot10()
-    plot11()
-    plot12()
-    plot13()
-    plot14()
+    # plot1()
+    # plot2()
+    # plot3()
+    # plot4()
+    # plot5()
+    # plot6()
+    # plot7()
+    # plot8()
+    # plot9()
+    # plot10()
+    # plot11()
+    # plot12()
+    # plot13()
+    # plot14()
+    # plot15()
+    # plot16()
+    # plot17()
+    # plot18()
+    # plot19()
+    # plot20()
+    plot21_temp()
