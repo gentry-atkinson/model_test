@@ -125,6 +125,54 @@ all_model_har2_avg_aer = [
 all_all_avg_aer_2 = [(
     all_model_ss1_avg_aer [i]+all_model_ss2_avg_aer [i]+ all_model_bs1_avg_aer [i]+ all_model_bs2_avg_aer [i]+all_model_har1_avg_aer [i]+ all_model_har2_avg_aer [i])/6 for i in range(49)]
 
+cev_ss1_dic = {
+    'CNN':[1.240, 0.954, 0.001, 0.072, 0.093, 0.025],
+    'LSTM': [0.096, 0.149, 0.009, 0.507, 0.046, 0.096],
+    'SVM': [],
+    'NB': [],
+    'RF': []
+}
+
+cev_ss2_dic = {
+    'CNN':[0.048, 0.092, 0.147, 0.686, 0.218, 0.763],
+    'LSTM': [0.161, 0.447, 0.274, 0.849, 0.130, 0.481],
+    'SVM': [],
+    'NB': [],
+    'RF': []
+}
+
+cev_bs1_dic = {
+    'CNN':[0.009, 0.002, 0.136, 0.220, 0.027, 0.102],
+    'LSTM': [0.043, 0.000, 0.006, 0.025, 0.003, 0.041],
+    'SVM': [],
+    'NB': [],
+    'RF': []
+}
+
+cev_bs2_dic = {
+    'CNN':[14.123, 5.190, 1.216, 4.678, 0.126, 9.111],
+    'LSTM': [0.692, 0.160, 0.001, 0.000, 0.019, 0.047],
+    'SVM': [],
+    'NB': [],
+    'RF': []
+}
+
+cev_har1_dic = {
+    'CNN':[0.121, 3.097, 0.906, 4.672, 1.144, 2.336],
+    'LSTM': [0.254, 1.194, 0.373, 2.738, 0.201, 3.162],
+    'SVM': [],
+    'NB': [],
+    'RF': []
+}
+
+cev_har2_dic = {
+    'CNN':[8.764, 33.409, 81.898, 1644.171, 71.722, 296.200],
+    'LSTM': [],
+    'SVM': [],
+    'NB': [],
+    'RF': []
+}
+
 
 
 
@@ -142,7 +190,7 @@ def plot1():
 
     n_cols = len(clean)
     cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
-    colors =  plt.cm.Blues(np.linspace(0.3, 0.6, 3))
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
     for i in range(n_cols):
@@ -179,7 +227,7 @@ def plot2():
 
     n_cols = len(data)
     cols = ['Clean', 'NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
-    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
     for i in range(n_cols):
@@ -304,7 +352,7 @@ def plot10():
 
     n_cols = len(data)
     cols = ['Synthetic 1', 'Synthetic 2', 'Apnea-ECG', 'Gait Parkinsons', 'TXState HAR', 'UCI HAR']
-    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
     for i in range(n_cols):
@@ -339,7 +387,7 @@ def plot11():
 
     n_cols = len(data)
     cols = ['Synthetic 1', 'Synthetic 2', 'Apnea-ECG', 'Gait Parkinsons', 'TXState HAR', 'UCI HAR']
-    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
     for i in range(n_cols):
@@ -373,7 +421,7 @@ def plot12():
 
     n_cols = len(data)
     cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
-    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
     for i in range(n_cols):
@@ -429,7 +477,7 @@ def plot13():
     ]
     n_cols = len(data)
     cols = ['NCAR', 'NAR', 'NNAR']
-    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.8
     for i in range(n_cols):
         #plt max bar
@@ -463,7 +511,7 @@ def plot14():
 
     n_cols = len(clean)
     cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
-    colors =  plt.cm.Blues(np.linspace(0.2, 0.4, 3))
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
     for i in range(n_cols):

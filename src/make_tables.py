@@ -65,13 +65,20 @@ all_dic = {
     "NNAR 10%":["0.278-0.478"]
 }
 
+train_test_comparison_dic = {
+    'Model': ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"],
+    'Clean -> Noisy': [0.0453, 0.0364, 0.0383, 0.0315, 0.0410],
+    'Noisy -> Clean': [0.0294, 0.0197, 0.0143, 0.0000, 0.0108],
+    'Noisy -> Noisy': [0.0655, 0.0484, 0.0462, 0.0308, 0.0438]
+}
+
 
 def hor_tab(mod_dic):
     tab = pd.DataFrame.from_dict(mod_dic)
-    return tab.to_latex()
+    return tab.to_latex(index=False)
 def ver_tab(mod_dic):
     tab = pd.DataFrame.from_dict({"Noise Type":mod_dic.keys(), "TER":mod_dic.values()})
-    return tab.to_latex()
+    return tab.to_latex(index=False)
 
 
 
@@ -116,4 +123,30 @@ if __name__ == "__main__":
 
     outfile.write('### Table 10: RF Vertical ###\n\n')
     outfile.write(ver_tab(rf_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 11: All Model Horizontal ###\n\n')
+    outfile.write(hor_tab(all_dic))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 12: All Model Vertical ###\n\n')
+    outfile.write(ver_tab(all_dic))
+    outfile.write('\n######\n')
+
+    #dics = [cnn_dic, lstm_dic, svm_dic, nb_dic, rf_dic]
+    big_table_dic = {
+        "Noise Type":cnn_dic.keys(),
+        "CNN":cnn_dic.values(),
+        "LSTM":lstm_dic.values(),
+        "SVM":svm_dic.values(),
+        "N. Bayes":nb_dic.values(),
+        "R. Forest":rf_dic.values(),
+        "Averaged":all_dic.values()
+    }
+    outfile.write('### Table 13: TER big table ###\n\n')
+    outfile.write(pd.DataFrame.from_dict(big_table_dic).to_latex(index=False))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 14: Train -> Test Table ###\n\n')
+    outfile.write(pd.DataFrame.from_dict(train_test_comparison_dic).to_latex(index=False))
     outfile.write('\n######\n')
