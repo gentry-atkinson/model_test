@@ -235,7 +235,17 @@ bias_har2_dic = {
         ],
 }
 
-
+prec_rec_cnn_dic = {
+    'SS1':[
+        [0.8700,	0.8300]
+        [0.7400,	0.8200]
+        [0.7000,	0.7400]
+        [0.7800,	0.7900]
+        [0.6900,	0.7800]
+        [0.8200,	0.7900]
+        [0.7200,	0.8200]
+    ],
+}
 
 
 
@@ -678,23 +688,65 @@ def plot20():
     plt.legend()
     plt.savefig("imgs/plots/cev_and_sde_on_har2.pdf", bbox_inches='tight')
 
-def plot21_temp():
-    plt.figure()
-    models = ["CNN", "LSTM", "SVM", "NB", "RF"]
-    for i in range(len(models)):
-        plt.scatter(bias_ss1_dic[models[i]][0], bias_ss1_dic[models[i]][1], label=models[i])
-    for i in range(len(models)):
-        plt.scatter(bias_bs1_dic[models[i]][0], bias_bs1_dic[models[i]][1], label=models[i])
-    for i in range(len(models)):
-        plt.scatter(bias_bs2_dic[models[i]][0], bias_bs2_dic[models[i]][1], label=models[i])
-    plt.title("CEV/SDE")
-    plt.savefig("imgs/plots/cev_and_sde_on_all_binayry_datasets.pdf", bbox_inches='tight')
+# def plot21_temp():
+#     plt.figure()
+#     models = ["CNN", "LSTM", "SVM", "NB", "RF"]
+#     for i in range(len(models)):
+#         plt.scatter(bias_ss1_dic[models[i]][0], bias_ss1_dic[models[i]][1], label=models[i])
+#     for i in range(len(models)):
+#         plt.scatter(bias_bs1_dic[models[i]][0], bias_bs1_dic[models[i]][1], label=models[i])
+#     for i in range(len(models)):
+#         plt.scatter(bias_bs2_dic[models[i]][0], bias_bs2_dic[models[i]][1], label=models[i])
+#     plt.title("CEV/SDE")
+#     plt.savefig("imgs/plots/cev_and_sde_on_all_binary_datasets.pdf", bbox_inches='tight')
 
+"""
+Plot 21
+Heat Map
+CNN CEV for dataset/noise type pairs
+"""
+def plot21():
+    plt.figure()
+    data = [
+        bias_ss1_dic['CNN'][0],
+        bias_ss2_dic['CNN'][0],
+        bias_har1_dic['CNN'][0],
+        bias_har2_dic['CNN'][0],
+        bias_bs1_dic['CNN'][0],
+        bias_bs2_dic['CNN'][0]
+    ]
+    cols = ['NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
+    rows = ['SS1', 'SS2','HAR1','HAR2','BS1','BS2']
+    ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=rows, fmt='.2f')
+    plt.xticks(rotation=LABEL_TILT)
+    plt.savefig("imgs/plots/cev_on_CNN.pdf", bbox_inches='tight')
+
+"""
+Plot 22
+Heat Map
+LSTM CEV for dataset/noise type pairs
+"""
+def plot22():
+    plt.figure()
+    data = [
+        bias_ss1_dic['LSTM'][0],
+        bias_ss2_dic['LSTM'][0],
+        bias_har1_dic['LSTM'][0],
+        #bias_har2_dic['LSTM'][0],
+        bias_bs1_dic['LSTM'][0],
+        bias_bs2_dic['LSTM'][0]
+    ]
+    cols = ['NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
+    rows = ['SS1', 'SS2','HAR1','BS1','BS2']
+    ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=rows, fmt='.2f')
+    plt.xticks(rotation=LABEL_TILT)
+    plt.savefig("imgs/plots/cev_on_LSTM.pdf", bbox_inches='tight')
 
 if __name__ == '__main__':
     plt.rcParams.update({'font.size': 16})
     # plot1()
     # plot2()
+    plt.rcParams.update({'font.size': 11})
     # plot3()
     # plot4()
     # plot5()
@@ -702,6 +754,7 @@ if __name__ == '__main__':
     # plot7()
     # plot8()
     # plot9()
+    plt.rcParams.update({'font.size': 16})
     # plot10()
     # plot11()
     # plot12()
@@ -713,4 +766,6 @@ if __name__ == '__main__':
     # plot18()
     # plot19()
     # plot20()
-    plot21_temp()
+    plt.rcParams.update({'font.size': 11})
+    plot21()
+    plot22()
