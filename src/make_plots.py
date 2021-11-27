@@ -237,13 +237,48 @@ bias_har2_dic = {
 
 prec_rec_cnn_dic = {
     'SS1':[
-        [0.8700,	0.8300]
-        [0.7400,	0.8200]
-        [0.7000,	0.7400]
-        [0.7800,	0.7900]
-        [0.6900,	0.7800]
-        [0.8200,	0.7900]
-        [0.7200,	0.8200]
+        #Precision
+        [
+            [0.87,	0.83],
+            [0.74,	0.82],
+            [0.70,	0.74],
+            [0.78,	0.79],
+            [0.69,	0.78],
+            [0.82,	0.79],
+            [0.72,	0.82]
+        ],
+        #Recall
+        [
+            [0.82,	0.88],
+            [0.85,	0.70],
+            [0.77,	0.67],
+            [0.74,	0.82],
+            [0.65,	0.81],
+            [0.72,	0.86],
+            [0.75,	0.80]
+        ]
+    ],
+    'SS2':[
+        #Precision
+        [
+            [0.83,	0.64,	0.58,	0.58,	0.70],
+            [0.79,	0.61,	0.57,	0.55,	0.70],
+            [0.77,	0.58,	0.53,	0.46,	0.61],
+            [0.78,	0.68,	0.61,	0.43,	0.71],
+            [0.71,	0.71,	0.62,	0.31,	0.75],
+            [0.77,	0.68,	0.60,	0.44,	0.75],
+            [0.71,	0.71,	0.60,	0.31,	0.77]
+        ],
+        #Recall
+        [
+            [0.82,	0.66,	0.59,	0.53,	0.74],
+            [0.75,	0.63,	0.56,	0.55,	0.70],
+            [0.67,	0.57,	0.51,	0.49,	0.69],
+            [0.86,	0.47,	0.62,	0.54,	0.75],
+            [0.93,	0.30,	0.64,	0.59,	0.76],
+            [0.87,	0.44,	0.62,	0.57,	0.75],
+            [0.89,	0.31,	0.63,	0.70,	0.67]
+        ]
     ],
 }
 
@@ -742,6 +777,26 @@ def plot22():
     plt.xticks(rotation=LABEL_TILT)
     plt.savefig("imgs/plots/cev_on_LSTM.pdf", bbox_inches='tight')
 
+"""
+Plot 23
+Scatter Plot
+prec/rec for all datasets and noise types for CNN
+"""
+def plot23():
+    #prec_rec_cnn_dic
+    marker_dic = {
+        'SS1':'o', 'SS2':'x'
+    }
+    noises = ['Clean', 'NCAR05','NCAR10','NAR05','NAR10','NNAR05','NNAR10',]
+    plt.figure()
+    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 7))
+    for key in prec_rec_cnn_dic.keys():
+        for i in range(len(prec_rec_cnn_dic[key][0])):
+            plt.scatter(prec_rec_cnn_dic[key][0][i], prec_rec_cnn_dic[key][1][i], c=[colors[i]]*len(prec_rec_cnn_dic[key][0][i]), marker=marker_dic[key], label=noises[i])
+    plt.savefig("imgs/plots/prec_rec_CNN.pdf", bbox_inches='tight')
+
+
+
 if __name__ == '__main__':
     plt.rcParams.update({'font.size': 16})
     # plot1()
@@ -767,5 +822,7 @@ if __name__ == '__main__':
     # plot19()
     # plot20()
     plt.rcParams.update({'font.size': 11})
-    plot21()
-    plot22()
+    # plot21()
+    # plot22()
+    plt.rcParams.update({'font.size': 16})
+    plot23()
