@@ -280,6 +280,94 @@ prec_rec_cnn_dic = {
             [0.89,	0.31,	0.63,	0.70,	0.67]
         ]
     ],
+    'BS1':[
+        #Precision
+        [
+            [0.64,	0.41],
+            [0.62,	0.40],
+            [0.61,	0.43],
+            [0.58,	0.45],
+            [0.54,	0.50],
+            [0.59,	0.46],
+            [0.53,	0.49]
+        ],
+        #Recall
+        [
+            [0.65,	0.39],
+            [0.62,	0.40],
+            [0.64,	0.40],
+            [0.54,	0.50],
+            [0.51,	0.53],
+            [0.60,	0.44],
+            [0.55,	0.47]
+        ]
+    ],
+    'BS2':[
+        #Precision
+        [
+            [0.55,	0.55],
+            [0.49,	0.56],
+            [0.48,	0.53],
+            [0.58,	0.56],
+            [0.61,	0.45],
+            [0.50,	0.50],
+            [0.56,	0.45]
+        ],
+        #Recall
+        [
+            [0.04,	0.97],
+            [0.22,	0.81],
+            [0.13,	0.87],
+            [0.14,	0.92],
+            [0.15,	0.88],
+            [0.02,	0.98],
+            [0.16,	0.84]
+        ]
+    ],
+    'HAR1':[
+        #Precision
+        [
+            [0.71,	0.96,	0.61,	0.71,	0.62,	0.69],
+            [0.68,	0.91,	0.48,	0.72,	0.55,	0.69],
+            [0.58,	0.80,	0.60,	0.61,	0.57,	0.66],
+            [0.58,	0.94,	0.75,	0.53,	0.44,	0.70],
+            [0.42,	0.87,	0.48,	0.73,	0.29,	0.72],
+            [0.46,	0.91,	0.48,	0.77,	0.49,	0.75],
+            [0.48,	0.95,	0.57,	0.73,	0.36,	0.64]
+        ],
+        #Recall
+        [
+            [0.40,	0.67,	0.82,	0.65,	0.70,	0.92],
+            [0.49,	0.57,	0.59,	0.66,	0.62,	0.77],
+            [0.43,	0.68,	0.71,	0.52,	0.61,	0.84],
+            [0.51,	0.34,	0.61,	0.72,	0.59,	0.93],
+            [0.73,	0.26,	0.52,	0.61,	0.16,	0.88],
+            [0.46,	0.28,	0.64,	0.57,	0.69,	0.91],
+            [0.68,	0.55,	0.52,	0.56,	0.33,	0.91]
+        ]
+    ],
+    'HAR1':[
+        #Precision
+        [
+            [0.82,	0.86,	0.83,	0.79,	0.72,	0.99],
+            [0.65,	0.76,	0.83,	0.79,	0.68,	0.96],
+            [0.70,	0.71,	0.80,	0.71,	0.62,	0.86],
+            [0.83,	0.90,	0.88,	0.80,	0.79,	0.70],
+            [0.75,	0.86,	0.73,	0.82,	0.71,	0.43],
+            [0.80,	0.87,	0.79,	0.84,	0.74,	0.73],
+            [0.75,	0.75,	0.81,	0.77,	0.72,	0.45]
+        ],
+        #Recall
+        [
+            [0.86,	0.71,	0.89,	0.68,	0.86,	0.99],
+            [0.81,	0.67,	0.65,	0.61,	0.87,	0.93],
+            [0.71,	0.70,	0.64,	0.56,	0.80,	0.91],
+            [0.91,	0.78,	0.63,	0.76,	0.87,	0.96],
+            [0.94,	0.73,	0.79,	0.76,	0.71,	0.80],
+            [0.90,	0.69,	0.72,	0.66,	0.90,	0.90],
+            [0.91,	0.60,	0.51,	0.73,	0.89,	0.73]
+        ]
+    ]
 }
 
 
@@ -777,6 +865,20 @@ def plot22():
     plt.xticks(rotation=LABEL_TILT)
     plt.savefig("imgs/plots/cev_on_LSTM.pdf", bbox_inches='tight')
 
+def prec_rec_scatter(prec_rec_dic):
+    marker_dic = {
+        'SS1':'.', 'SS2':'o', 'BS1':'x', 'BS2':'X', 'HAR1':'d', 'HAR2':'D'
+    }
+    noises = ['Clean', 'NCAR05','NCAR10','NAR05','NAR10','NNAR05','NNAR10']
+    plt.figure()
+    colors =  ['black', 'cornflowerblue', 'blue', 'mediumpurple', 'purple', 'palegreen', 'seagreen']
+    for key in prec_rec_dic.keys():
+        for i in range(len(prec_rec_dic[key][0])):
+            plt.scatter(prec_rec_dic[key][0][i], prec_rec_dic[key][1][i], c=[colors[i]]*len(prec_rec_dic[key][0][i]), marker=marker_dic[key], label=noises[i])
+    plt.xlabel("Precision")
+    plt.ylabel("Recall")
+    plt.savefig("imgs/plots/prec_rec_CNN.pdf", bbox_inches='tight')
+
 """
 Plot 23
 Scatter Plot
@@ -784,16 +886,7 @@ prec/rec for all datasets and noise types for CNN
 """
 def plot23():
     #prec_rec_cnn_dic
-    marker_dic = {
-        'SS1':'o', 'SS2':'x'
-    }
-    noises = ['Clean', 'NCAR05','NCAR10','NAR05','NAR10','NNAR05','NNAR10',]
-    plt.figure()
-    colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 7))
-    for key in prec_rec_cnn_dic.keys():
-        for i in range(len(prec_rec_cnn_dic[key][0])):
-            plt.scatter(prec_rec_cnn_dic[key][0][i], prec_rec_cnn_dic[key][1][i], c=[colors[i]]*len(prec_rec_cnn_dic[key][0][i]), marker=marker_dic[key], label=noises[i])
-    plt.savefig("imgs/plots/prec_rec_CNN.pdf", bbox_inches='tight')
+    prec_rec_scatter(prec_rec_cnn_dic)
 
 
 
