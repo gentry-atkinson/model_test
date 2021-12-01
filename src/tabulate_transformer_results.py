@@ -3,12 +3,18 @@
 #Data: 1 Dec, 2021
 #Process transformer results
 
-import numpy
+import numpy as np
+from math import floor
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
 
 def read_file(filename):
     file = open(filename, 'r')
-    results = [i.split(',') for i in  file.read().split('\n')]
-    print(results)
+    #Dear lord forgive me for this line of code
+    results = [list(map(float, i.split(','))) for i in  file.read().split('\n') if i != '']
+    true_labels = np.array([floor(i[0]) for i in results], dtype='int')
+    pred_labels = np.array([floor(i[1]) for i in results], dtype='int')
+    return true_labels, pred_labels
 
 
 if __name__ == '__main__':
@@ -19,4 +25,8 @@ if __name__ == '__main__':
     for s in sets:
         for n in noise:
             print ('Set: '+s, ' Noise Type: '+n)
-            read_file('results/transformer/'+s+'_'+n+'_results.csv')
+            y_true, y_pred = read_file('results/transformer/'+s+'_'+n+'_results.csv')
+            mat = confusion_matrix(y_true, y_pred)
+            print(mat)
+            rep = classification_report(y_true, y_pred)
+            print(rep)
