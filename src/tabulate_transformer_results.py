@@ -18,7 +18,7 @@ def read_file(filename):
 
 
 if __name__ == '__main__':
-    sets = ['har1', 'ss1', 'ss2', 'bs1']
+    sets = ['har1', 'ss1', 'ss2', 'bs1', 'bs2']
     noise = ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
 
     print('### Reading All Transformer Results ###\n')
