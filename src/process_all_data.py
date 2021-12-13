@@ -102,11 +102,11 @@ if(__name__ == "__main__"):
         """
         Human Activity Recognition Set 1
         Collected using an E4 data collection device at Texas State University.
-        7 classes
+        6 classes
         1 channel (total acceleration)
         150 samples in every instance
-        425 train instances
-        203 test instances
+        2077 train instances
+        1091 test instances
         """
         #Use Lee's files to get HAR Set 1
         #Use one_hot_encode to get numerical labels
@@ -169,7 +169,7 @@ if(__name__ == "__main__"):
         """
         #Process UCI HAR inertial signals into a good file
         attributes, labels_clean, labels = get_uci_data()
-        attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
+        #attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
         print("Shape of UCI data: ", attributes.shape)
         print("Shape of UCI labels: ", labels_clean.shape)
         attributes = np.reshape(np.array(attributes), (7352*3, 128))

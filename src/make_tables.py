@@ -72,6 +72,14 @@ train_test_comparison_dic = {
     'Noisy -> Noisy': [0.0655, 0.0484, 0.0462, 0.0308, 0.0438]
 }
 
+dataset_dic = {
+    'Name' : ['Synthetic 1', 'Synthtic 2', 'Apnea-ECG Database', 'Gait in Parkinsons', 'Texas State HAR', 'UCI HAR'],
+    'Short Title' : ['SS1', 'SS2', 'BS1', 'BS2', 'HAR1', 'HAR'],
+    '# Classes' : [2, 5, 2, 2, 6, 6],
+    '# Channels' : [1, 1, 1, 2, 1, 3],
+    '# Train Instances' : [8000, 24000, 17020, 4757 ,2077, 7352],
+    '# Train Instances' : [2000, 6000, 17243 , 1472 , 1091 , 2947]
+}
 
 def hor_tab(mod_dic):
     tab = pd.DataFrame.from_dict(mod_dic)
@@ -149,4 +157,8 @@ if __name__ == "__main__":
 
     outfile.write('### Table 14: Train -> Test Table ###\n\n')
     outfile.write(pd.DataFrame.from_dict(train_test_comparison_dic).to_latex(index=False))
+    outfile.write('\n######\n')
+
+    outfile.write('### Table 15: Datasets ###\n\n')
+    outfile.write(pd.DataFrame.from_dict(dataset_dic).to_latex(index=False))
     outfile.write('\n######\n')
