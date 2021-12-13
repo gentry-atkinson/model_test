@@ -73,7 +73,7 @@ train_test_comparison_dic = {
 }
 
 dataset_dic = {
-    'Name' : ['Synthetic 1', 'Synthtic 2', 'Apnea-ECG Database', 'Gait in Parkinsons', 'Texas State HAR', 'UCI HAR'],
+    'Name' : ['Synthetic 1', 'Synthtic 2', 'Apnea-ECG Database', 'Gait in Parkinsons', 'TX State Wrist HAR', 'UCI HAR'],
     'Short Title' : ['SS1', 'SS2', 'BS1', 'BS2', 'HAR1', 'HAR'],
     '# Classes' : [2, 5, 2, 2, 6, 6],
     '# Channels' : [1, 1, 1, 2, 1, 3],
