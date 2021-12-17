@@ -18,15 +18,19 @@ def read_file(filename):
 
 
 if __name__ == '__main__':
-    sets = ['har1', 'ss1', 'ss2', 'bs1', 'bs2']
+    sets = ['ss1', 'ss2', 'bs1', 'bs2', 'har1', 'har2']
     noise = ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+
+    outFile = open('results/Tran_results.txt', 'w+')
 
     print('### Reading All Transformer Results ###\n')
     for s in sets:
         for n in noise:
-            print ('Set: '+s, ' Noise Type: '+n)
+            outFile.write('Set: '+s+' Noise Type: '+n+'\n')
             y_true, y_pred = read_file('results/transformer/'+s+'_'+n+'_results.csv')
             mat = confusion_matrix(y_true, y_pred)
-            print(mat)
+            outFile.write(str(mat))
+            outFile.write('\n')
             rep = classification_report(y_true, y_pred)
-            print(rep)
+            outFile.write(str(rep))
+            outFile.write('\n')
