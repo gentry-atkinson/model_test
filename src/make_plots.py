@@ -1138,7 +1138,7 @@ def plot11():
     ax = plt.gca()
     ax.set_ylim([0.0, 0.15])
     plt.xticks(rotation=LABEL_TILT)
-    plt.title("Min/Avg/Max Error for Each Dataset")
+    plt.title("Min/Avg/Max Change in Error")
     plt.savefig("imgs/plots/delta_aer_for_all_datasets.pdf", bbox_inches='tight')
 
 """
@@ -1172,7 +1172,7 @@ def plot12():
     ax = plt.gca()
     ax.set_ylim([0.0, 0.15])
     plt.xticks(rotation=LABEL_TILT)
-    plt.title("Min/Avg/Max Error for Each Model")
+    plt.title("Min/Avg/Max Change in Error")
     plt.savefig("imgs/plots/delta_aer_for_all_models.pdf", bbox_inches='tight')
 
 """
@@ -1231,7 +1231,7 @@ def plot13():
     ax = plt.gca()
     ax.set_ylim([-0.01, 0.02])
     plt.xticks(rotation=LABEL_TILT)
-    plt.title("Min/Avg/Max Change Error per 1% Label Noise")
+    plt.title("Change in Error per 1% Label Noise")
     plt.savefig("imgs/plots/delta_aer_per_percent_for_all_noises.pdf", bbox_inches='tight')
 
 """
@@ -1472,8 +1472,8 @@ def plot27():
 
 if __name__ == '__main__':
     plt.rcParams.update({'font.size': 16})
-    # plot1()
-    # plot2()
+    plot1()
+    plot2()
     plt.rcParams.update({'font.size': 11})
     # plot3()
     # plot4()
@@ -1483,17 +1483,17 @@ if __name__ == '__main__':
     # plot8()
     # plot9()
     plt.rcParams.update({'font.size': 16})
-    # plot10()
-    # plot11()
-    # plot12()
-    # plot13()
-    # plot14()
-    # plot15()
-    # plot16()
-    # plot17()
-    # plot18()
-    # plot19()
-    # plot20()
+    plot10()
+    plot11()
+    plot12()
+    plot13()
+    plot14()
+    plot15()
+    plot16()
+    plot17()
+    plot18()
+    plot19()
+    plot20()
     plt.rcParams.update({'font.size': 11})
     # plot21()
     # plot22()
