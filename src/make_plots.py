@@ -1739,6 +1739,15 @@ def plot27():
     #prec_rec_cnn_dic
     prec_rec_scatter(prec_rec_rf_dic, "imgs/plots/prec_rec_RF.pdf")
 
+"""
+Plot 28
+Scatter Plot
+prec/rec for all datasets and noise types for Transfore
+"""
+def plot28():
+    #prec_rec_cnn_dic
+    prec_rec_scatter(prec_rec_trans_dic, "imgs/plots/prec_rec_Trans.pdf")
+
 
 
 if __name__ == '__main__':
@@ -1774,3 +1783,4 @@ if __name__ == '__main__':
     plot25()
     plot26()
     plot27()
+    plot28()
