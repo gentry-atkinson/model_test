@@ -4,6 +4,8 @@
 #Avoiding divide by zeros errors with the greatest of ease
 
 import numpy as np
+import seaborn as sb
+from matplotlib import pyplot as plt
 
 cnn_cm_dic = {
     'SS1 Clean':
@@ -1522,6 +1524,15 @@ def calc_bias_metrics(base_fpr, base_fnr, fpr, fnr):
     #we should use my hand-coded variance, or mse
     return my_special_variance(points), dis_from_sym(points)
 
+def plotHeatMap(data, title, filename):
+    plt.figure()
+    cols = ['NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
+    rows = ['SS1', 'SS2', 'BS1', 'BS2', 'HAR1' ,'HAR2']
+    ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=rows)
+    plt.xticks(rotation=25)
+    plt.title(title)
+    plt.savefig(filename, bbox_inches='tight')
+
 if __name__ == '__main__':
     dic_list = [cnn_cm_dic, lstm_cm_dic, svm_cm_dic, nb_cm_dic, rf_cm_dic, trans_cm_dic]
     mod_list = ['CNN', 'LSTM', 'SVM', 'NB', 'RF', 'Transformer']
@@ -1547,3 +1558,123 @@ if __name__ == '__main__':
                 bias_dic[mod_list[i]+' '+s+' '+n] = [cev/divisor_cev, sde/divisor_sde]
     for k in bias_dic.keys():
         print(k, ' ', bias_dic[k])
+
+    #CNN CEV plot
+    plotHeatMap([
+        [bias_dic['CNN SS1 '+i][0] for i in noise_list],
+        [bias_dic['CNN SS2 '+i][0] for i in noise_list],
+        [bias_dic['CNN BS1 '+i][0] for i in noise_list],
+        [bias_dic['CNN BS2 '+i][0] for i in noise_list],
+        [bias_dic['CNN HAR1 '+i][0] for i in noise_list],
+        [bias_dic['CNN HAR2 '+i][0] for i in noise_list],
+    ], '', 'imgs/plots/CEV_CNN.pdf')
+
+    #LSTM CEV plot
+    plotHeatMap([
+        [bias_dic['LSTM SS1 '+i][0] for i in noise_list],
+        [bias_dic['LSTM SS2 '+i][0] for i in noise_list],
+        [bias_dic['LSTM BS1 '+i][0] for i in noise_list],
+        [bias_dic['LSTM BS2 '+i][0] for i in noise_list],
+        [bias_dic['LSTM HAR1 '+i][0] for i in noise_list],
+        [bias_dic['LSTM HAR2 '+i][0] for i in noise_list],
+    ], '', 'imgs/plots/CEV_LSTM.pdf')
+
+    #Transformer CEV plot
+    plotHeatMap([
+        [bias_dic['Transformer SS1 '+i][0] for i in noise_list],
+        [bias_dic['Transformer SS2 '+i][0] for i in noise_list],
+        [bias_dic['Transformer BS1 '+i][0] for i in noise_list],
+        [bias_dic['Transformer BS2 '+i][0] for i in noise_list],
+        [bias_dic['Transformer HAR1 '+i][0] for i in noise_list],
+        [bias_dic['Transformer HAR2 '+i][0] for i in noise_list],
+    ], '', 'imgs/plots/CEV_Transformer.pdf')
+
+    #SVM CEV plot
+    plotHeatMap([
+        [bias_dic['SVM SS1 '+i][0] for i in noise_list],
+        [bias_dic['SVM SS2 '+i][0] for i in noise_list],
+        [bias_dic['SVM BS1 '+i][0] for i in noise_list],
+        [bias_dic['SVM BS2 '+i][0] for i in noise_list],
+        [bias_dic['SVM HAR1 '+i][0] for i in noise_list],
+        [bias_dic['SVM HAR2 '+i][0] for i in noise_list],
+    ], '', 'imgs/plots/CEV_SVM.pdf')
+
+    #NB CEV plot
+    plotHeatMap([
+        [bias_dic['NB SS1 '+i][0] for i in noise_list],
+        [bias_dic['NB SS2 '+i][0] for i in noise_list],
+        [bias_dic['NB BS1 '+i][0] for i in noise_list],
+        [bias_dic['NB BS2 '+i][0] for i in noise_list],
+        [bias_dic['NB HAR1 '+i][0] for i in noise_list],
+        [bias_dic['NB HAR2 '+i][0] for i in noise_list],
+    ], '', 'imgs/plots/CEV_NB.pdf')
+
+    #RF CEV plot
+    plotHeatMap([
+        [bias_dic['RF SS1 '+i][0] for i in noise_list],
+        [bias_dic['RF SS2 '+i][0] for i in noise_list],
+        [bias_dic['RF BS1 '+i][0] for i in noise_list],
+        [bias_dic['RF BS2 '+i][0] for i in noise_list],
+        [bias_dic['RF HAR1 '+i][0] for i in noise_list],
+        [bias_dic['RF HAR2 '+i][0] for i in noise_list],
+    ], '', 'imgs/plots/CEV_RF.pdf')
+
+    #CNN SDE plot
+    plotHeatMap([
+        [bias_dic['CNN SS1 '+i][1] for i in noise_list],
+        [bias_dic['CNN SS2 '+i][1] for i in noise_list],
+        [bias_dic['CNN BS1 '+i][1] for i in noise_list],
+        [bias_dic['CNN BS2 '+i][1] for i in noise_list],
+        [bias_dic['CNN HAR1 '+i][1] for i in noise_list],
+        [bias_dic['CNN HAR2 '+i][1] for i in noise_list],
+    ], '', 'imgs/plots/SDE_CNN.pdf')
+
+    #LSTM SDE plot
+    plotHeatMap([
+        [bias_dic['LSTM SS1 '+i][1] for i in noise_list],
+        [bias_dic['LSTM SS2 '+i][1] for i in noise_list],
+        [bias_dic['LSTM BS1 '+i][1] for i in noise_list],
+        [bias_dic['LSTM BS2 '+i][1] for i in noise_list],
+        [bias_dic['LSTM HAR1 '+i][1] for i in noise_list],
+        [bias_dic['LSTM HAR2 '+i][1] for i in noise_list],
+    ], '', 'imgs/plots/SDE_LSTM.pdf')
+
+    #Transformer SDE plot
+    plotHeatMap([
+        [bias_dic['Transformer SS1 '+i][1] for i in noise_list],
+        [bias_dic['Transformer SS2 '+i][1] for i in noise_list],
+        [bias_dic['Transformer BS1 '+i][1] for i in noise_list],
+        [bias_dic['Transformer BS2 '+i][1] for i in noise_list],
+        [bias_dic['Transformer HAR1 '+i][1] for i in noise_list],
+        [bias_dic['Transformer HAR2 '+i][1] for i in noise_list],
+    ], '', 'imgs/plots/SDE_Transformer.pdf')
+
+    #SVM SDE plot
+    plotHeatMap([
+        [bias_dic['SVM SS1 '+i][1] for i in noise_list],
+        [bias_dic['SVM SS2 '+i][1] for i in noise_list],
+        [bias_dic['SVM BS1 '+i][1] for i in noise_list],
+        [bias_dic['SVM BS2 '+i][1] for i in noise_list],
+        [bias_dic['SVM HAR1 '+i][1] for i in noise_list],
+        [bias_dic['SVM HAR2 '+i][1] for i in noise_list],
+    ], '', 'imgs/plots/SDE_SVM.pdf')
+
+    #NB SDE plot
+    plotHeatMap([
+        [bias_dic['NB SS1 '+i][1] for i in noise_list],
+        [bias_dic['NB SS2 '+i][1] for i in noise_list],
+        [bias_dic['NB BS1 '+i][1] for i in noise_list],
+        [bias_dic['NB BS2 '+i][1] for i in noise_list],
+        [bias_dic['NB HAR1 '+i][1] for i in noise_list],
+        [bias_dic['NB HAR2 '+i][1] for i in noise_list],
+    ], '', 'imgs/plots/SDE_NB.pdf')
+
+    #RF SDE plot
+    plotHeatMap([
+        [bias_dic['RF SS1 '+i][1] for i in noise_list],
+        [bias_dic['RF SS2 '+i][1] for i in noise_list],
+        [bias_dic['RF BS1 '+i][1] for i in noise_list],
+        [bias_dic['RF BS2 '+i][1] for i in noise_list],
+        [bias_dic['RF HAR1 '+i][1] for i in noise_list],
+        [bias_dic['RF HAR2 '+i][1] for i in noise_list],
+    ], '', 'imgs/plots/SDE_RF.pdf')
