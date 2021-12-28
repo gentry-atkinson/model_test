@@ -12,8 +12,12 @@ from utils.ts_feature_toolkit import get_features_for_set
 #from fastdist import fastdist
 import gc
 
+# sets = [
+#     'bs1', 'bs2', 'har1', 'har2', 'ss1', 'ss2'
+# ]
+
 sets = [
-    'bs1', 'bs2', 'har1', 'har2', 'ss1', 'ss2'
+    'har2'
 ]
 
 labels = [
@@ -43,7 +47,7 @@ def absChannels(X, num_channels):
     return X_avg
 
 RUN_TSNE = True
-RUN_WF = True
+RUN_WF = False
 
 if __name__ == "__main__":
     print("Making Pictures")
@@ -74,7 +78,7 @@ if __name__ == "__main__":
                 plt.axis('off')
                 for i in range(class_dic[f]):
                     plt.scatter(vis[np.where(y==i), 0], vis[np.where(y==i), 1], s=2, c=pal[i], label=str(i))
-                plt.legend()
+                #plt.legend()
                 plt.savefig("imgs/"+f+"_"+l+"_tsne.pdf")
                 gc.collect()
                 plt.close()

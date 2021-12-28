@@ -6,6 +6,8 @@
 from matplotlib import pyplot as plt
 import numpy as np
 import seaborn as sb
+import matplotlib.patches as mpatches
+import matplotlib.lines as mlines
 
 LABEL_TILT = 25
 
@@ -57,6 +59,20 @@ rf_all_avg_aer = [
     0.3173,	0.3425,	0.3662,	0.3325,	0.3472,	0.3278,	0.3388,
     0.2962,	0.3210,	0.3490,	0.3193,	0.3397,	0.3118,	0.3330,
     0.3413,	0.3630,	0.3868,	0.3568,	0.3707,	0.3485,	0.3615,
+]
+
+#transformer avg aers
+#different shape from alex's result
+#row-> noise type
+#col-> dataset
+tran_all_aer = [
+    [0.10, 0.28, 0.38, 0.57, 0.27, 0.29],
+    [0.16, 0.34, 0.39, 0.10, 0.37, 0.31],
+    [0.21, 0.39, 0.41, 0.56, 0.39, 0.36],
+    [0.16, 0.33, 0.44, 0.51, 0.36, 0.37],
+    [0.21, 0.38, 0.49, 0.46, 0.37, 0.41],
+    [0.10, 0.30, 0.38, 0.54, 0.30, 0.37],
+    [0.10, 0.31, 0.38, 0.47, 0.42, 0.44]
 ]
 
 all_all_avg_aer = [(
@@ -1192,12 +1208,12 @@ Following: https://matplotlib.org/stable/gallery/misc/table_demo.html#sphx-glr-g
 """
 def plot1():
     plt.figure()
-    clean = [cnn_all_avg_aer[0], lstm_all_avg_aer[0],svm_all_avg_aer[0],nb_all_avg_aer[0],rf_all_avg_aer[0]]
-    avgs = [sum(cnn_all_avg_aer)/49, sum(lstm_all_avg_aer)/49,sum(svm_all_avg_aer)/49,sum(nb_all_avg_aer)/49,sum(rf_all_avg_aer)/49]
-    maxs = [max(cnn_all_avg_aer), max(lstm_all_avg_aer),max(svm_all_avg_aer),max(nb_all_avg_aer),max(rf_all_avg_aer)]
+    clean = [cnn_all_avg_aer[0], lstm_all_avg_aer[0], np.mean(tran_all_aer[0]),svm_all_avg_aer[0],nb_all_avg_aer[0],rf_all_avg_aer[0]]
+    avgs = [sum(cnn_all_avg_aer)/49, sum(lstm_all_avg_aer)/49, np.mean(np.mean(tran_all_aer)), sum(svm_all_avg_aer)/49,sum(nb_all_avg_aer)/49,sum(rf_all_avg_aer)/49]
+    maxs = [max(cnn_all_avg_aer), max(lstm_all_avg_aer),max(max(tran_all_aer)), max(svm_all_avg_aer),max(nb_all_avg_aer),max(rf_all_avg_aer)]
 
     n_cols = len(clean)
-    cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
+    cols = ["CNN", "LSTM", 'Transformer', "SVM", "N. Bayes", "R. Forest"]
     colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
@@ -1748,12 +1764,36 @@ def plot28():
     #prec_rec_cnn_dic
     prec_rec_scatter(prec_rec_trans_dic, "imgs/plots/prec_rec_Trans.pdf")
 
+"""
+Plot 29
+Prec/Rec Legend
+"""
+def plot29():
+    fig = plt.figure()
+    colors =  ['black', 'cornflowerblue', 'blue', 'mediumpurple', 'purple', 'palegreen', 'seagreen']
+    labels = ['Clean', 'NCAR05','NCAR10','NAR05','NAR10','NNAR05','NNAR10']
+    marker_dic = {
+        'SS1':'.', 'SS2':'o', 'BS1':'x', 'BS2':'X', 'HAR1':'d', 'HAR2':'D'
+    }
+    patches = [
+        mpatches.Patch(color=color, label=label)
+        for label, color in zip(labels, colors)]
+    fig.legend(patches, labels, loc='center', frameon=True)
+    plt.savefig('imgs/plots/prec_rec_legend_color.pdf', bbox_inches='tight')
+
+    fig = plt.figure()
+    # patches = [ plt.plot([],[], marker=marker_dic[k], ms=10, ls="", mec=None, color='black',
+    #         label="{:s}".format(k) )[0]  for k in marker_dic.keys() ]
+    patches = [mlines.Line2D([], [], color='black', marker=marker_dic[k], linestyle='None', markersize=10, label=k) for k in marker_dic.keys()]
+    fig.legend(patches, marker_dic.keys(),loc='center', frameon=True )
+    plt.savefig('imgs/plots/prec_rec_legend_marker.pdf', bbox_inches='tight')
+
 
 
 if __name__ == '__main__':
     plt.rcParams.update({'font.size': 16})
     plot1()
-    plot2()
+    # plot2()
     plt.rcParams.update({'font.size': 11})
     # plot3()
     # plot4()
@@ -1763,24 +1803,25 @@ if __name__ == '__main__':
     # plot8()
     # plot9()
     plt.rcParams.update({'font.size': 16})
-    plot10()
-    plot11()
-    plot12()
-    plot13()
-    plot14()
-    plot15()
-    plot16()
-    plot17()
-    plot18()
-    plot19()
-    plot20()
+    # plot10()
+    # plot11()
+    # plot12()
+    # plot13()
+    # plot14()
+    # plot15()
+    # plot16()
+    # plot17()
+    # plot18()
+    # plot19()
+    # plot20()
     plt.rcParams.update({'font.size': 11})
     # plot21()
     # plot22()
     plt.rcParams.update({'font.size': 16})
-    plot23()
-    plot24()
-    plot25()
-    plot26()
-    plot27()
-    plot28()
+    # plot23()
+    # plot24()
+    # plot25()
+    # plot26()
+    # plot27()
+    # plot28()
+    plot29()
