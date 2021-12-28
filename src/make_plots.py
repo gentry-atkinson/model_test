@@ -1270,7 +1270,8 @@ def plot2():
 
 def plotHeatMap(data, title, filename):
     cols = ['Clean', 'NCAR05', 'NCAR10', 'NAR05', 'NAR10', 'NNAR05', 'NNAR10']
-    ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=cols)
+    rows = ['SS1','SS2','BS1','BS2','HAR1','HAR2']
+    ax = sb.heatmap(data, annot=True,  cmap="YlGnBu", xticklabels=cols, yticklabels=rows)
     plt.xticks(rotation=LABEL_TILT)
     plt.title(title)
     plt.savefig(filename, bbox_inches='tight')
@@ -1294,10 +1295,18 @@ CNN AER for all train/test pairs
 """
 def plot4():
     plt.figure()
-    data = np.reshape(np.array(cnn_all_avg_aer), (7, 7))
+    #data = np.reshape(np.array(cnn_all_avg_aer), (7, 7))
+    data = [
+        [0.1510, 0.2240,0.2810, 0.2140, 0.2530, 0.2010, 0.2200],
+        [0.3310, 0.3590, 0.4140, 0.3550, 0.3860, 0.3540, 0.4000],
+        [0.4470, 0.4660,0.4590, 0.4790, 0.4810, 0.4670, 0.4880],
+        [0.4500, 0.4550, 0.4750, 0.4720, 0.5250, 0.5030, 0.5350],
+        [0.3040, 0.3710, 0.3680, 0.3770, 0.4390, 0.4040, 0.3900],
+        [0.1670, 0.2340, 0.2750, 0.1900, 0.2510, 0.2100, 0.2850]
+    ]
     title = "CNN AER for Each Train/Test"
     filename = "imgs/plots/cnn_aer_for_test_train_pairs.pdf"
-    plotHeatMap(data, title, filename)
+    plotHeatMap(data, '', filename)
 
 
 
@@ -1308,10 +1317,31 @@ LSTM AER for all train/test pairs
 """
 def plot5():
     plt.figure()
-    data = np.reshape(np.array(lstm_all_avg_aer), (7, 7))
+    #data = np.reshape(np.array(lstm_all_avg_aer), (7, 7))
+    data = [
+        [0.2430, 0.2810, 0.3170, 0.2630, 0.2910, 0.2330, 0.2590],
+        [0.3570, 0.4000, 0.4320, 0.4310, 0.4690, 0.4090, 0.4380],
+        [0.4650, 0.4600, 0.4740, 0.4790, 0.4880, 0.4840, 0.4830],
+        [0.4610, 0.4480, 0.4870, 0.4920, 0.5350, 0.5170, 0.5090],
+        [0.3580, 0.3510, 0.3520, 0.3190, 0.3750, 0.3990, 0.3870],
+        [0.1550, 0.2210, 0.2830, 0.2490, 0.2540, 0.2470, 0.2440]
+    ]
     title = "LSTM AER for Each Train/Test"
     filename = "imgs/plots/lstm_aer_for_test_train_pairs.pdf"
-    plotHeatMap(data, title, filename)
+    plotHeatMap(data, '', filename)
+
+"""
+Plot 5.5
+Heat Map
+Trans AER for all train/test pairs
+"""
+def plot5andAHalf():
+    plt.figure()
+    #data = np.reshape(np.array(lstm_all_avg_aer), (7, 7))
+    data = np.transpose(tran_all_aer)
+    title = "Transformer AER for Each Train/Test"
+    filename = "imgs/plots/trans_aer_for_test_train_pairs.pdf"
+    plotHeatMap(data, '', filename)
 
 """
 Plot 6
@@ -1320,10 +1350,18 @@ SVM AER for all train/test pairs
 """
 def plot6():
     plt.figure()
-    data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    #data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    data = [
+        [0.0440, 0.0850, 0.1370, 0.0900, 0.1420, 0.0670, 0.1020],
+        [0.2690, 0.2960, 0.3330, 0.2980, 0.4030, 0.2990, 0.3300],
+        [0.4630, 0.4710, 0.4700, 0.4570, 0.4300, 0.4550, 0.4360],
+        [0.4530, 0.4500, 0.4700, 0.5030, 0.5560, 0.5030, 0.5540],
+        [0.2000, 0.2290, 0.2360, 0.2430, 0.2510, 0.2380, 0.2530],
+        [0.3660, 0.3980, 0.4280, 0.4010, 0.4180, 0.4030, 0.4180]
+    ]
     title = "SVM AER for Each Train/Test"
     filename = "imgs/plots/svm_aer_for_test_train_pairs.pdf"
-    plotHeatMap(data, title, filename)
+    plotHeatMap(data, '', filename)
 
 """
 Plot 7
@@ -1332,7 +1370,15 @@ Naive Bayes AER for all train/test pairs
 """
 def plot7():
     plt.figure()
-    data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    #data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    data = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+    ]
     title = "N.Bayes AER for Each Train/Test"
     filename = "imgs/plots/nb_aer_for_test_train_pairs.pdf"
     plotHeatMap(data, title, filename)
@@ -1340,7 +1386,7 @@ def plot7():
 """
 Plot 8
 Heat Map
-Naive Bayes AER for all train/test pairs
+Random Forest AER for all train/test pairs
 """
 def plot8():
     plt.figure()
@@ -1435,16 +1481,17 @@ Min, Avg, Max Delta AER for each model
 """
 def plot12():
     plt.figure()
+    transformer_data = np.mean(tran_all_aer, axis=1)
     data = [
         [cnn_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
         [lstm_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
+        [transformer_data[i//7] - transformer_data[0] for i in range(1, 49)],
         [svm_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
         [nb_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
         [rf_all_avg_aer[i] - cnn_all_avg_aer[0] for i in range(1, 49)],
     ]
-
     n_cols = len(data)
-    cols = ["CNN", "LSTM", "SVM", "N. Bayes", "R. Forest"]
+    cols = ["CNN", "LSTM", "Transformer", "SVM", "N. Bayes", "R. Forest"]
     colors =  plt.cm.Blues(np.linspace(0.3, 0.8, 3))
     WIDTH = 0.4
 
@@ -1796,16 +1843,17 @@ if __name__ == '__main__':
     # plot2()
     plt.rcParams.update({'font.size': 11})
     # plot3()
-    # plot4()
-    # plot5()
-    # plot6()
-    # plot7()
+    plot4()
+    plot5()
+    plot5andAHalf()
+    plot6()
+    plot7()
     # plot8()
     # plot9()
     plt.rcParams.update({'font.size': 16})
     # plot10()
     # plot11()
-    # plot12()
+    plot12()
     # plot13()
     # plot14()
     # plot15()
