@@ -1372,12 +1372,12 @@ def plot7():
     plt.figure()
     #data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
     data = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
+        [0.0520, 0.0900, 0.1400, 0.0960, 0.1470, 0.0670, 0.1010],
+        [0.3730, 0.4560, 0.4290, 0.4140, 0.4550, 0.4120, 0.4540],
+        [0.5870, 0.5800, 0.5670, 0.5450, 0.5020, 0.5480, 0.5100],
+        [0.4390, 0.4390, 0.4610, 0.4880, 0.5420, 0.4880, 0.5390],
+        [0.3480, 0.2950, 0.2930, 0.4010, 0.3980, 0.3600, 0.4030],
+        [0.3660, 0.3810, 0.4050, 0.4120, 0.4390, 0.4160, 0.4410]
     ]
     title = "N.Bayes AER for Each Train/Test"
     filename = "imgs/plots/nb_aer_for_test_train_pairs.pdf"
@@ -1390,7 +1390,15 @@ Random Forest AER for all train/test pairs
 """
 def plot8():
     plt.figure()
-    data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    #data = np.reshape(np.array(svm_all_avg_aer), (7, 7))
+    data = [
+        [0.0480, 0.0920, 0.1460, 0.0930, 0.1540, 0.0690, 0.1150],
+        [0.2240, 0.2590, 0.2990, 0.2770, 0.3770, 0.2630, 0.3500],
+        [0.3390, 0.3620, 0.3790, 0.3870, 0.4060, 0.3750, 0.3950],
+        [0.5480, 0.5690, 0.5610, 0.5660, 0.5500, 0.5670, 0.5570],
+        [0.3080, 0.2280, 0.2620, 0.3540, 0.2430, 0.2600, 0.4120],
+        [0.2910, 0.3250, 0.3550, 0.3320, 0.3530, 0.3370, 0.3400]
+    ]
     title = "R. Forest AER for Each Train/Test"
     filename = "imgs/plots/rf_aer_for_test_train_pairs.pdf"
     plotHeatMap(data, title, filename)
@@ -1848,7 +1856,7 @@ if __name__ == '__main__':
     plot5andAHalf()
     plot6()
     plot7()
-    # plot8()
+    plot8()
     # plot9()
     plt.rcParams.update({'font.size': 16})
     # plot10()

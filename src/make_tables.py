@@ -4,6 +4,7 @@
 #Make some nice tables for the paper
 
 import pandas as pd
+import numpy as np
 
 cnn_dic = {
     "Clean":["0.308"],
@@ -81,6 +82,30 @@ dataset_dic = {
     '# Train Instances' : [2000, 6000, 17243 , 1472 , 1091 , 2947]
 }
 
+#transformer avg aers
+#different shape from alex's result
+#row-> noise type
+#col-> dataset
+tran_all_aer = [
+    [0.10, 0.28, 0.38, 0.57, 0.27, 0.29],
+    [0.16, 0.34, 0.39, 0.10, 0.37, 0.31],
+    [0.21, 0.39, 0.41, 0.56, 0.39, 0.36],
+    [0.16, 0.33, 0.44, 0.51, 0.36, 0.37],
+    [0.21, 0.38, 0.49, 0.46, 0.37, 0.41],
+    [0.10, 0.30, 0.38, 0.54, 0.30, 0.37],
+    [0.10, 0.31, 0.38, 0.47, 0.42, 0.44]
+]
+
+trans_dic = {
+    "Clean":[str(np.mean(tran_all_aer[0]))],
+    "NCAR 5%":[str((np.mean(tran_all_aer[1]) - 0.05)/(0.9))],
+    "NCAR 10%":[str((np.mean(tran_all_aer[2]) - 0.1)/(0.8))],
+    "NAR 5%":[str(np.mean(tran_all_aer[3])-0.05)+'-'+str(np.mean(tran_all_aer[3])+0.05)],
+    "NAR 10%":[str(np.mean(tran_all_aer[4])-0.1)+'-'+str(np.mean(tran_all_aer[4])+0.1)],
+    "NNAR 5%":[str(np.mean(tran_all_aer[5])-0.05)+'-'+str(np.mean(tran_all_aer[5])+0.05)],
+    "NNAR 10%":[str(np.mean(tran_all_aer[6])-0.1)+'-'+str(np.mean(tran_all_aer[6])+0.1)]
+}
+
 def hor_tab(mod_dic):
     tab = pd.DataFrame.from_dict(mod_dic)
     return tab.to_latex(index=False)
@@ -146,10 +171,10 @@ if __name__ == "__main__":
         "Noise Type":cnn_dic.keys(),
         "CNN":cnn_dic.values(),
         "LSTM":lstm_dic.values(),
+        "Transformer":trans_dic.values(),
         "SVM":svm_dic.values(),
         "N. Bayes":nb_dic.values(),
         "R. Forest":rf_dic.values(),
-        "Averaged":all_dic.values()
     }
     outfile.write('### Table 13: TER big table ###\n\n')
     outfile.write(pd.DataFrame.from_dict(big_table_dic).to_latex(index=False))
