@@ -209,13 +209,15 @@ if(__name__ == "__main__"):
         """
         print("##### Preparing Dataset: SN1 #####")
         weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
-        locations = []
+        locations = {}
         with open(weather_file) as input:
             print(input.readline().split(','))
             for l in input:
                 l = l.split(',')
                 if len(l)>1:
                     if l[1] not in locations:
-                        locations.append(l[1])
-        print('\n'.join(sorted(locations)))
-        print('Number of locations: ', len(locations))
+                        locations[l[1]] = 1
+                    else:
+                        locations[l[1]] += 1
+        print('\n'.join([k + ': ' + str(locations[k]) for k in sorted(locations.keys())]))
+        print('Number of locations: ', len(locations.keys()))
