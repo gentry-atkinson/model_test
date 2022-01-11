@@ -23,10 +23,11 @@ from utils.add_nnar import add_nnar
 from data.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
 from utils.import_datasets import get_uci_data, get_uci_test
 import numpy as np
+import pandas as pd
 from scipy.signal import resample
 from sklearn.utils import shuffle
 import os
-#import wfdb
+
 
 PATH = 'src/data/processed_datasets/'
 
@@ -35,6 +36,11 @@ RUN_SS = False
 RUN_HAR = False
 #RUN_BS = False
 RUN_SN = True
+
+def record_sn_instance(att_array, table, feature_list, start_index, end_index):
+    for f in feature_list:
+        att_array.append((table[f][start_index:end_index]))
+    
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
@@ -202,22 +208,49 @@ if(__name__ == "__main__"):
         Rainfall in Australia dataset from:
             http://www.bom.gov.au/climate/change/datasets/datasets.shtml
         2 classes
-        # channel
-        # samples in every instance
-        # train instances
-        # test instances
+        6 channel
+        30 samples in every instance
+        113899 train instances
+        30091 test instances
         """
         print("##### Preparing Dataset: SN1 #####")
         weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
-        locations = {}
-        with open(weather_file) as input:
-            print(input.readline().split(','))
-            for l in input:
-                l = l.split(',')
-                if len(l)>1:
-                    if l[1] not in locations:
-                        locations[l[1]] = 1
-                    else:
-                        locations[l[1]] += 1
-        print('\n'.join([k + ': ' + str(locations[k]) for k in sorted(locations.keys())]))
-        print('Number of locations: ', len(locations.keys()))
+
+        weather_table = pd.read_csv(weather_file)
+        locations = set(weather_table['Location'])
+        num_train_locs = int(0.8*len(locations))
+        print('Number of locations: ', len(locations))
+        print('Train Locations:', list(locations)[0:num_train_locs])
+        print('Test Locations:', list(locations)[num_train_locs:])
+
+        feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
+
+        attributes = []
+        test_att = []
+
+        train_count = 0
+        test_count = 0
+        i = 0
+        while i < len(weather_table['Location'])-30:
+            if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
+                #Record this instance
+                if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
+                    train_count += 1
+                    for f in feature_list:
+                        attributes.append((weather_table[f][i:i+30]))
+                else:
+                    for f in feature_list:
+                        test_att.append((weather_table[f][i:i+30]))
+                    test_count += 1
+                i+=1
+            else:
+                #Skip to next location
+                j = i+1
+                print('Next Location ', i)
+                while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
+                    j+= 1
+                i=j
+        print ("Number of train instances: ", train_count)
+        print ("Number of test instances: ", test_count)
+        print ("Number of train array: ", len(attributes))
+        print ("Number of test array: ", len(test_att))
