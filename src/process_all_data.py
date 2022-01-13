@@ -230,6 +230,8 @@ if(__name__ == "__main__"):
 
         attributes = []
         test_att = []
+        labels_clean = []
+        labels_test = []
 
         #Prepare an ordinal value for wind direction
         wind_dirs = set(weather_table['WindGustDir'])
@@ -251,6 +253,7 @@ if(__name__ == "__main__"):
                             attributes.append(([dir_dic[k] for k in weather_table[f][i:i+30]]))
                         else:
                              attributes.append((weather_table[f][i:i+30]))
+                    labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 else:
                     for f in feature_list:
                         if f == 'WindGustDir':
@@ -258,6 +261,7 @@ if(__name__ == "__main__"):
                         else:
                             test_att.append((weather_table[f][i:i+30]))
                     test_count += 1
+                    labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 i+=1
             else:
                 #Skip to next location
@@ -289,4 +293,6 @@ if(__name__ == "__main__"):
         #write attributes to file
         np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
         np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
+        np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
        
