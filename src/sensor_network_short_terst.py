@@ -19,15 +19,14 @@ from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
 from datetime import date
 
-def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
+def build_cnn(X, num_classes, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        Conv1D(filters=128, kernel_size=16, padding='same'),
+        BatchNormalization(),
+        Conv1D(filters=32, kernel_size=8, padding='same'),
         MaxPooling1D(pool_size=(2), data_format='channels_first'),
-        Conv1D(filters=64, kernel_size=16, padding='same'),
-        MaxPooling1D(pool_size=(2), data_format='channels_first'),
-        Conv1D(filters=64, kernel_size=8, padding='same'),
+        Conv1D(filters=16, kernel_size=4, padding='same'),
         MaxPooling1D(pool_size=(2), data_format='channels_first'),
         Dropout(0.25),
         GlobalAveragePooling1D(),
@@ -44,23 +43,6 @@ def train_cnn(model, X, y):
     model.fit(X, y, epochs=500, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, workers=NUM_CORES)
     return model
 
-def evaluate_cnn(model, X, y, mlr, base_fpr, base_fnr):
-    y_pred = model.predict(X)
-    y_pred = np.argmax(y_pred, axis=-1)
-    y_true = np.argmax(y, axis=-1)
-    print('Shape of y true: {}'.format(y_true.shape))
-    print('Shape of y predicted: {}'.format(y_pred.shape))
-    aer = calc_AER(y_true, y_pred)
-    ter = calc_TER(aer, mlr)
-    cev, sde = 0.0, 0.0
-    print(base_fpr, base_fnr)
-    if (base_fpr is None) or (base_fnr is None):
-        pass
-    else:
-        fpr, fnr = calc_error_rates(y_true, y_pred)
-        cev, sde = calc_bias_metrics(base_fpr, base_fnr, fpr, fnr)
-    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer, ter, cev, sde
-
 if __name__ == '__main__':
     print('Read Files')
     X_train = np.genfromtxt('src/data/processed_datasets/sn1_attributes_train.csv', delimiter=',')
@@ -71,11 +53,13 @@ if __name__ == '__main__':
     X_train = np.reshape(X_train, (len(X_train)//6, 6, 30))
     X_test = np.reshape(X_test, (len(X_test)//6, 6, 30))
 
+    print('Instance 1: ', X_train[0])
+
     y_train = to_categorical(y_train)
     #y_test = to_categorical(y_test)
 
     print('Construct Model')
-    mod = build_cnn(X_train, 2, num_channels=6, opt='ADAM', loss='binary_crossentropy')
+    mod = build_cnn(X_train, num_classes=2, opt='RMSProp', loss='mse')
 
     print('Train model')
     train_cnn(mod, X_train, y_train)

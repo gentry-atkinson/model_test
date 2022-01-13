@@ -16,6 +16,7 @@ Each dataset will have 7 label sets:
   -high noise NNAR
 """
 
+from cmath import isinf
 from utils.gen_ts_data import generate_pattern_data_as_dataframe
 from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
@@ -246,21 +247,32 @@ if(__name__ == "__main__"):
         while i < len(weather_table['Location'])-30:
             if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
                 #Record this instance
+                
                 if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
                     train_count += 1
                     for f in feature_list:
+                        line = list()
                         if f == 'WindGustDir':
-                            attributes.append(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
                         else:
-                             attributes.append((weather_table[f][i:i+30]))
+                             line = np.array((weather_table[f][i:i+30]))
+                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+                        max_val = np.max(line)
+                        line = np.divide(line, max_val if max_val != 0 else 1)
+                        attributes.append(line)
                     labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 else:
-                    for f in feature_list:
-                        if f == 'WindGustDir':
-                            test_att.append(([dir_dic[k] for k in weather_table[f][i:i+30]]))
-                        else:
-                            test_att.append((weather_table[f][i:i+30]))
                     test_count += 1
+                    for f in feature_list:
+                        line = []
+                        if f == 'WindGustDir':
+                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                        else:
+                             line = np.array((weather_table[f][i:i+30]))
+                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+                        max_val = abs(np.max(line))
+                        line = np.divide(line, max_val if max_val != 0 else 1)
+                        test_att.append(line)
                     labels_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 i+=1
             else:
@@ -270,13 +282,6 @@ if(__name__ == "__main__"):
                 while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
                     j+= 1
                 i=j
-
-        #clean NaN and NA out of attributes
-        for row in attributes:
-            row = [i if i not in ['NaN', 'NA', 'na', 'nan'] else 0 for i in row ]
-        #clean NaN and NA out of test_att
-        for row in test_att:
-            row = [i if i not in ['NaN', 'NA', 'na', 'nan'] else 0 for i in row ]
 
         print ("Number of train instances: ", train_count)
         print ("Number of test instances: ", test_count)
