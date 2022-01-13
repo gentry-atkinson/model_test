@@ -213,12 +213,15 @@ if(__name__ == "__main__"):
         113899 train instances
         30091 test instances
         """
+        INSTANCE_LEN = 30
+        TRAIN_SPLIT = 0.8
+
         print("##### Preparing Dataset: SN1 #####")
         weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
 
         weather_table = pd.read_csv(weather_file)
         locations = set(weather_table['Location'])
-        num_train_locs = int(0.8*len(locations))
+        num_train_locs = int(TRAIN_SPLIT*len(locations))
         print('Number of locations: ', len(locations))
         print('Train Locations:', list(locations)[0:num_train_locs])
         print('Test Locations:', list(locations)[num_train_locs:])
@@ -227,6 +230,13 @@ if(__name__ == "__main__"):
 
         attributes = []
         test_att = []
+
+        #Prepare an ordinal value for wind direction
+        wind_dirs = set(weather_table['WindGustDir'])
+        dir_dic = {}
+        for i,d in enumerate(list(wind_dirs)):
+            dir_dic[d] = i
+        print('Wind direction dictionary: ', dir_dic)
 
         train_count = 0
         test_count = 0
@@ -237,20 +247,46 @@ if(__name__ == "__main__"):
                 if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
                     train_count += 1
                     for f in feature_list:
-                        attributes.append((weather_table[f][i:i+30]))
+                        if f == 'WindGustDir':
+                            attributes.append(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                        else:
+                             attributes.append((weather_table[f][i:i+30]))
                 else:
                     for f in feature_list:
-                        test_att.append((weather_table[f][i:i+30]))
+                        if f == 'WindGustDir':
+                            test_att.append(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                        else:
+                            test_att.append((weather_table[f][i:i+30]))
                     test_count += 1
                 i+=1
             else:
                 #Skip to next location
                 j = i+1
-                print('Next Location ', i)
+                #print('Next Location ', i)
                 while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
                     j+= 1
                 i=j
+
+        #clean NaN and NA out of attributes
+        for row in attributes:
+            row = [i if i not in ['NaN', 'NA', 'na', 'nan'] else 0 for i in row ]
+        #clean NaN and NA out of test_att
+        for row in test_att:
+            row = [i if i not in ['NaN', 'NA', 'na', 'nan'] else 0 for i in row ]
+
         print ("Number of train instances: ", train_count)
         print ("Number of test instances: ", test_count)
         print ("Number of train array: ", len(attributes))
         print ("Number of test array: ", len(test_att))
+
+        # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
+        # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
+        # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
+        # print('WindGustSpeed: ', ', '.join([str(i) for i in attributes[3]]))
+        # print('Pressure9am: ', ', '.join([str(i) for i in attributes[4]]))
+        # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
+
+        #write attributes to file
+        np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
+        np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
+       
