@@ -19,14 +19,18 @@ from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
 from datetime import date
 
+import wandb
+
+wandb.init(project="model_test", entity="gentry-atkinson")
+
 def build_cnn(X, num_classes, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
         BatchNormalization(),
         Conv1D(filters=32, kernel_size=8, padding='same'),
-        MaxPooling1D(pool_size=(2), data_format='channels_first'),
-        Conv1D(filters=16, kernel_size=4, padding='same'),
+        # MaxPooling1D(pool_size=(2), data_format='channels_first'),
+        # Conv1D(filters=16, kernel_size=4, padding='same'),
         MaxPooling1D(pool_size=(2), data_format='channels_first'),
         Dropout(0.25),
         GlobalAveragePooling1D(),

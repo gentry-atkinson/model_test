@@ -16,7 +16,7 @@ Each dataset will have 7 label sets:
   -high noise NNAR
 """
 
-from cmath import isinf
+#from cmath import isinf
 from utils.gen_ts_data import generate_pattern_data_as_dataframe
 from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
@@ -25,9 +25,10 @@ from data.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
 from utils.import_datasets import get_uci_data, get_uci_test
 import numpy as np
 import pandas as pd
-from scipy.signal import resample
+#from scipy.signal import resample
 from sklearn.utils import shuffle
 import os
+from sklearn.preprocessing import normalize
 
 
 PATH = 'src/data/processed_datasets/'
@@ -257,8 +258,8 @@ if(__name__ == "__main__"):
                         else:
                              line = np.array((weather_table[f][i:i+30]))
                         line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-                        max_val = np.max(line)
-                        line = np.divide(line, max_val if max_val != 0 else 1)
+                        # max_val = np.max(line)
+                        # line = np.divide(line, max_val if max_val != 0 else 1)
                         attributes.append(line)
                     labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 else:
@@ -270,8 +271,8 @@ if(__name__ == "__main__"):
                         else:
                              line = np.array((weather_table[f][i:i+30]))
                         line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-                        max_val = abs(np.max(line))
-                        line = np.divide(line, max_val if max_val != 0 else 1)
+                        # max_val = abs(np.max(line))
+                        # line = np.divide(line, max_val if max_val != 0 else 1)
                         test_att.append(line)
                     labels_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 i+=1
@@ -282,6 +283,9 @@ if(__name__ == "__main__"):
                 while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
                     j+= 1
                 i=j
+
+        normalize(attributes, axis=1, copy=False)
+        normalize(test_att, axis=1, copy=False)
 
         print ("Number of train instances: ", train_count)
         print ("Number of test instances: ", test_count)
