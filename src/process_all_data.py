@@ -304,4 +304,18 @@ if(__name__ == "__main__"):
         np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
         np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
         np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+
+        #Create Synthetic Set 1
+        """
+        Sensor Network Set 2
+        Occupancy Detection Data Set dataset from:
+            Accurate occupancy detection of an office room from light, temperature, humidity and CO2 
+            measurements using statistical learning models. Luis M. Candanedo, VÃ©ronique Feldheim. 
+            Energy and Buildings. Volume 112, 15 January 2016, Pages 28-39.
+        2 classes
+        5 channel
+        30 samples in every instance, one sample per minute
+        # train instances
+        # test instances
+        """
        
