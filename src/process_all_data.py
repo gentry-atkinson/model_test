@@ -215,97 +215,97 @@ if(__name__ == "__main__"):
         113899 train instances
         30091 test instances
         """
-        INSTANCE_LEN = 30
-        TRAIN_SPLIT = 0.8
+        # INSTANCE_LEN = 30
+        # TRAIN_SPLIT = 0.8
 
-        print("##### Preparing Dataset: SN1 #####")
-        weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
+        # print("##### Preparing Dataset: SN1 #####")
+        # weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
 
-        weather_table = pd.read_csv(weather_file)
-        locations = set(weather_table['Location'])
-        num_train_locs = int(TRAIN_SPLIT*len(locations))
-        print('Number of locations: ', len(locations))
-        print('Train Locations:', list(locations)[0:num_train_locs])
-        print('Test Locations:', list(locations)[num_train_locs:])
+        # weather_table = pd.read_csv(weather_file)
+        # locations = set(weather_table['Location'])
+        # num_train_locs = int(TRAIN_SPLIT*len(locations))
+        # print('Number of locations: ', len(locations))
+        # print('Train Locations:', list(locations)[0:num_train_locs])
+        # print('Test Locations:', list(locations)[num_train_locs:])
 
-        feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
+        # feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
 
-        attributes = []
-        test_att = []
-        labels_clean = []
-        labels_test = []
+        # attributes = []
+        # test_att = []
+        # labels_clean = []
+        # labels_test = []
 
-        #Prepare an ordinal value for wind direction
-        wind_dirs = set(weather_table['WindGustDir'])
-        dir_dic = {}
-        for i,d in enumerate(list(wind_dirs)):
-            dir_dic[d] = i
-        print('Wind direction dictionary: ', dir_dic)
+        # #Prepare an ordinal value for wind direction
+        # wind_dirs = set(weather_table['WindGustDir'])
+        # dir_dic = {}
+        # for i,d in enumerate(list(wind_dirs)):
+        #     dir_dic[d] = i
+        # print('Wind direction dictionary: ', dir_dic)
 
-        train_count = 0
-        test_count = 0
-        i = 0
-        while i < len(weather_table['Location'])-30:
-            if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
-                #Record this instance
+        # train_count = 0
+        # test_count = 0
+        # i = 0
+        # while i < len(weather_table['Location'])-30:
+        #     if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
+        #         #Record this instance
                 
-                if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
-                    train_count += 1
-                    for f in feature_list:
-                        line = list()
-                        if f == 'WindGustDir':
-                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
-                        else:
-                             line = np.array((weather_table[f][i:i+30]))
-                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-                        # max_val = np.max(line)
-                        # line = np.divide(line, max_val if max_val != 0 else 1)
-                        attributes.append(line)
-                    labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
-                else:
-                    test_count += 1
-                    for f in feature_list:
-                        line = []
-                        if f == 'WindGustDir':
-                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
-                        else:
-                             line = np.array((weather_table[f][i:i+30]))
-                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-                        # max_val = abs(np.max(line))
-                        # line = np.divide(line, max_val if max_val != 0 else 1)
-                        test_att.append(line)
-                    labels_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
-                i+=1
-            else:
-                #Skip to next location
-                j = i+1
-                #print('Next Location ', i)
-                while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
-                    j+= 1
-                i=j
+        #         if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
+        #             train_count += 1
+        #             for f in feature_list:
+        #                 line = list()
+        #                 if f == 'WindGustDir':
+        #                     line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+        #                 else:
+        #                      line = np.array((weather_table[f][i:i+30]))
+        #                 line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+        #                 # max_val = np.max(line)
+        #                 # line = np.divide(line, max_val if max_val != 0 else 1)
+        #                 attributes.append(line)
+        #             labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+        #         else:
+        #             test_count += 1
+        #             for f in feature_list:
+        #                 line = []
+        #                 if f == 'WindGustDir':
+        #                     line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+        #                 else:
+        #                      line = np.array((weather_table[f][i:i+30]))
+        #                 line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+        #                 # max_val = abs(np.max(line))
+        #                 # line = np.divide(line, max_val if max_val != 0 else 1)
+        #                 test_att.append(line)
+        #             labels_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+        #         i+=1
+        #     else:
+        #         #Skip to next location
+        #         j = i+1
+        #         #print('Next Location ', i)
+        #         while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
+        #             j+= 1
+        #         i=j
 
-        normalize(attributes, axis=1, copy=False)
-        normalize(test_att, axis=1, copy=False)
+        # normalize(attributes, axis=1, copy=False)
+        # normalize(test_att, axis=1, copy=False)
 
-        print ("Number of train instances: ", train_count)
-        print ("Number of test instances: ", test_count)
-        print ("Number of train array: ", len(attributes))
-        print ("Number of test array: ", len(test_att))
+        # print ("Number of train instances: ", train_count)
+        # print ("Number of test instances: ", test_count)
+        # print ("Number of train array: ", len(attributes))
+        # print ("Number of test array: ", len(test_att))
 
-        del weather_table
+        # del weather_table
 
-        # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
-        # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
-        # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
-        # print('WindGustSpeed: ', ', '.join([str(i) for i in attributes[3]]))
-        # print('Pressure9am: ', ', '.join([str(i) for i in attributes[4]]))
-        # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
+        # # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
+        # # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
+        # # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
+        # # print('WindGustSpeed: ', ', '.join([str(i) for i in attributes[3]]))
+        # # print('Pressure9am: ', ', '.join([str(i) for i in attributes[4]]))
+        # # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
 
-        #write attributes to file
-        np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
-        np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
-        np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+        # #write attributes to file
+        # np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
+        # np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
+        # np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+        # np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
 
         #Create Synthetic Set 1
         """
@@ -321,6 +321,43 @@ if(__name__ == "__main__"):
         # test instances
         """
 
-        room_train__file = "src/data/occupancy/datatraining.txt"
-        room_test__file = "src/data/occupancy/datatest.txt"
+        INSTANCE_LEN = 30
+
+        room_train_file = "src/data/occupancy/datatraining.txt"
+        room_test_file = "src/data/occupancy/datatest.txt"
        
+        room_train_table = pd.read_csv(room_train_file)
+        room_test_table = pd.read_csv(room_test_file)
+
+        features = ['Temperature',  'Humidity',  'Light', 'CO2',  'HumidityRatio']
+        key = 'Occupancy'
+
+        attributes = []
+        test_att = []
+        labels_clean = []
+        labels_test = []
+
+        for i in range(1, len(room_train_table['Temperature'])-INSTANCE_LEN):
+            for f in features:
+                line = []
+                line.append(room_train_table[f][i:i+INSTANCE_LEN])
+                attributes.append(line)
+            if sum(room_train_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
+                labels_clean.append(1)
+            else:
+                labels_clean.append(0)
+
+        # print('Number of samples in dataset: ', len(room_train_table['Temperature']))
+        # print('Length of attribute array: ', len(attributes))
+        # print('Legth of instance: ', len(attributes[0]))
+        # print(attributes[0])
+
+        for i in range(1, len(room_train_table['Temperature'])-INSTANCE_LEN):
+            for f in features:
+                line = []
+                line.append(room_train_table[f][i:i+INSTANCE_LEN])
+                test_att.append(line)
+            if sum(room_test_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
+                labels_clean.append(1)
+            else:
+                labels_clean.append(0)
