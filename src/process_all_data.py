@@ -361,3 +361,15 @@ if(__name__ == "__main__"):
                 labels_clean.append(1)
             else:
                 labels_clean.append(0)
+
+        attributes = np.reshape(np.array(attributes), (len(attributes), INSTANCE_LEN))
+        test_att =  np.reshape(np.array(test_att), (len(test_att), INSTANCE_LEN))
+
+        print('Train data shape: ', attributes.shape)
+        print('Test data shape: ', test_att.shape)
+
+        #write attributes to file
+        np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
+        np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
+        np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
