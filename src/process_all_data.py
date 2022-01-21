@@ -292,6 +292,8 @@ if(__name__ == "__main__"):
         print ("Number of train array: ", len(attributes))
         print ("Number of test array: ", len(test_att))
 
+        del weather_table
+
         # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
         # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
         # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
@@ -318,4 +320,7 @@ if(__name__ == "__main__"):
         # train instances
         # test instances
         """
+
+        room_train__file = "src/data/occupancy/datatraining.txt"
+        room_test__file = "src/data/occupancy/datatest.txt"
        
