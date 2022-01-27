@@ -105,7 +105,7 @@ def clean_nan_and_inf(X):
     max_val = np.nanmax(X, axis=None)
     clean_count = 0
     for row in range(len(X)):
-        for col in range(len(row)):
+        for col in range(len(X[0])):
             if np.isnan(X[row][col]):
                 X[row][col] = 0
             elif np.isposinf(X[row][col]):

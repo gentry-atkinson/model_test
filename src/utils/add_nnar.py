@@ -36,7 +36,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
 
     if num_channels != 1:
         #X = absChannels(attributes, num_channels)
-        X = np.reshape(X, (len(attributes//num_channels, num_channels, len(attributes[0]))))
+        X = np.reshape(attributes, (len(attributes//num_channels, num_channels, len(attributes[0]))))
     else:
         X = attributes
 
