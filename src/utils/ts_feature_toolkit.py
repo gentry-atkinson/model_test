@@ -100,6 +100,22 @@ def get_zero_crossing_rate(X):
     zero_mean_signal = np.subtract(X, mean)
     return np.mean(np.absolute(np.edif1d(np.sign(X))))
 
+def clean_nan_and_inf(X):
+    assert X.ndim == 2, "Please only d-nan 2D setsw"
+    max_val = np.nanmax(X, axis=None)
+    clean_count = 0
+    for row in range(len(X)):
+        for col in range(len(row)):
+            if np.isnan(X[row][col]):
+                X[row][col] = 0
+            elif np.isposinf(X[row][col]):
+                X[row][col] = max_val
+            elif np.isposinf(X[row][col]):
+                X[row][col] = -1*max_val
+    print(clean_count, " nans or infs cleaned")
+    return X
+
+
 def get_features_from_one_signal(X, sample_rate=50):
     assert X.ndim ==1, "Expected single signal in feature extraction"
     mean = np.mean(X)
@@ -124,13 +140,13 @@ def get_features_from_one_signal(X, sample_rate=50):
         0 if np.isnan(abs_energy) else abs_energy,
         0 if np.isnan(sum_of_changes) else sum_of_changes,
         0 if np.isnan(autoc) else autoc,
-        count_above_mean,
-        count_below_mean,
-        kurtosis,
-        longest_above,
-        zero_crossing,
-        num_peaks,
-        sample_entropy,
+        0 if np.isnan(count_above_mean) else count_above_mean,
+        0 if np.isnan(count_below_mean) else count_below_mean,
+        0 if np.isnan(kurtosis) else kurtosis,
+        0 if np.isnan(longest_above) else longest_above,
+        0 if np.isnan(zero_crossing) else zero_crossing,
+        0 if np.isnan(num_peaks) else num_peaks,
+        0 if np.isnan(sample_entropy) else sample_entropy,
         v[0], v[1], v[2], v[3], v[4], v[5]
     ]
 

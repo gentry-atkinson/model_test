@@ -21,7 +21,10 @@ from datetime import date
 
 import wandb
 
-wandb.init(project="model_test", entity="gentry-atkinson")
+#wandb.init(project="model_test", entity="gentry-atkinson")
+#wandb.log({"loss": loss})
+
+NUM_CHANNELS = 5
 
 def build_cnn(X, num_classes, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
@@ -49,13 +52,13 @@ def train_cnn(model, X, y):
 
 if __name__ == '__main__':
     print('Read Files')
-    X_train = np.genfromtxt('src/data/processed_datasets/sn1_attributes_train.csv', delimiter=',')
-    X_test = np.genfromtxt('src/data/processed_datasets/sn1_attributes_test.csv', delimiter=',')
-    y_train = np.genfromtxt('src/data/processed_datasets/sn1_labels_clean.csv', delimiter=',', dtype=int)
-    y_test = np.genfromtxt('src/data/processed_datasets/sn1_labels_test_clean.csv', delimiter=',', dtype=int)
+    X_train = np.genfromtxt('src/data/processed_datasets/sn2_attributes_train.csv', delimiter=',')
+    X_test = np.genfromtxt('src/data/processed_datasets/sn2_attributes_test.csv', delimiter=',')
+    y_train = np.genfromtxt('src/data/processed_datasets/sn2_labels_clean.csv', delimiter=',', dtype=int)
+    y_test = np.genfromtxt('src/data/processed_datasets/sn2_labels_test_clean.csv', delimiter=',', dtype=int)
 
-    X_train = np.reshape(X_train, (len(X_train)//6, 6, 30))
-    X_test = np.reshape(X_test, (len(X_test)//6, 6, 30))
+    X_train = np.reshape(X_train, (len(X_train)//NUM_CHANNELS, NUM_CHANNELS, 30))
+    X_test = np.reshape(X_test, (len(X_test)//NUM_CHANNELS, NUM_CHANNELS, 30))
 
     print('Instance 1: ', X_train[0])
 

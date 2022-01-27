@@ -10,6 +10,9 @@ from sklearn.neighbors import NearestNeighbors
 from utils.ts_feature_toolkit import get_features_for_set
 
 def absChannels(X, num_channels):
+    print("Length of attribute list in add_nnar: ", len(X))
+    print("Length of signal in nnar: ", len(X[0]))
+    print("Number of channels in nnar: ", num_channels)
     X_avg = np.zeros((len(X)//num_channels, len(X[0])))
     for i in range(0, len(X_avg)):
         X_avg[i, :] = np.linalg.norm(X[num_channels*i:num_channels*i+num_channels, :], axis=0)
@@ -32,7 +35,8 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         attributes = np.genfromtxt(att_file, delimiter=',', dtype=int)
 
     if num_channels != 1:
-        X = absChannels(attributes, num_channels)
+        #X = absChannels(attributes, num_channels)
+        X = np.reshape(X, (len(attributes//num_channels, num_channels, len(attributes[0]))))
     else:
         X = attributes
 
@@ -53,7 +57,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
 
     X = get_features_for_set(X)
     print("feature extraction done")
-    nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(X)
+    nbrs = NearestNeighbors(n_neighbors=3, algorithm='ball_tree').fit(X)
     d, i = nbrs.kneighbors(X)
 
     while l_flipped_counter < 0.05*SET_LENGTH:

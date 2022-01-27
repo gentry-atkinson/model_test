@@ -25,6 +25,7 @@ def add_nar(clean_labels, filename, num_classes):
     h_flipped_counter = 0
 
     counts = [np.count_nonzero(clean_labels==i) for i in range(num_classes)]
+    print("Label counts in add_nar: ", counts)
     MAJ_LABEL = int(np.argmax(counts))
     MIN_LABEL = int(np.argmin(counts))
 

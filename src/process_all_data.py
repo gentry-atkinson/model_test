@@ -17,7 +17,9 @@ Each dataset will have 7 label sets:
 """
 
 #from cmath import isinf
+from attr import attr
 from utils.gen_ts_data import generate_pattern_data_as_dataframe
+from utils.ts_feature_toolkit import clean_nan_and_inf
 from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
 from utils.add_nnar import add_nnar
@@ -215,97 +217,118 @@ if(__name__ == "__main__"):
         113899 train instances
         30091 test instances
         """
-        # INSTANCE_LEN = 30
-        # TRAIN_SPLIT = 0.8
+        INSTANCE_LEN = 30
+        TRAIN_SPLIT = 0.8
 
-        # print("##### Preparing Dataset: SN1 #####")
-        # weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
+        print("##### Preparing Dataset: SN1 #####")
+        weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
 
-        # weather_table = pd.read_csv(weather_file)
-        # locations = set(weather_table['Location'])
-        # num_train_locs = int(TRAIN_SPLIT*len(locations))
-        # print('Number of locations: ', len(locations))
-        # print('Train Locations:', list(locations)[0:num_train_locs])
-        # print('Test Locations:', list(locations)[num_train_locs:])
+        weather_table = pd.read_csv(weather_file)
+        locations = set(weather_table['Location'])
+        num_train_locs = int(TRAIN_SPLIT*len(locations))
+        print('Number of locations: ', len(locations))
+        print('Train Locations:', list(locations)[0:num_train_locs])
+        print('Test Locations:', list(locations)[num_train_locs:])
 
-        # feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
+        feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
 
-        # attributes = []
-        # test_att = []
-        # labels_clean = []
-        # labels_test = []
+        attributes = []
+        test_att = []
+        labels_clean = []
+        labels_test = []
 
-        # #Prepare an ordinal value for wind direction
-        # wind_dirs = set(weather_table['WindGustDir'])
-        # dir_dic = {}
-        # for i,d in enumerate(list(wind_dirs)):
-        #     dir_dic[d] = i
-        # print('Wind direction dictionary: ', dir_dic)
+        #Prepare an ordinal value for wind direction
+        wind_dirs = set(weather_table['WindGustDir'])
+        dir_dic = {}
+        for i,d in enumerate(list(wind_dirs)):
+            dir_dic[d] = i
+        print('Wind direction dictionary: ', dir_dic)
 
-        # train_count = 0
-        # test_count = 0
-        # i = 0
-        # while i < len(weather_table['Location'])-30:
-        #     if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
-        #         #Record this instance
+        train_count = 0
+        test_count = 0
+        i = 0
+        while i < len(weather_table['Location'])-30:
+            if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
+                #Record this instance
                 
-        #         if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
-        #             train_count += 1
-        #             for f in feature_list:
-        #                 line = list()
-        #                 if f == 'WindGustDir':
-        #                     line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
-        #                 else:
-        #                      line = np.array((weather_table[f][i:i+30]))
-        #                 line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-        #                 # max_val = np.max(line)
-        #                 # line = np.divide(line, max_val if max_val != 0 else 1)
-        #                 attributes.append(line)
-        #             labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
-        #         else:
-        #             test_count += 1
-        #             for f in feature_list:
-        #                 line = []
-        #                 if f == 'WindGustDir':
-        #                     line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
-        #                 else:
-        #                      line = np.array((weather_table[f][i:i+30]))
-        #                 line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-        #                 # max_val = abs(np.max(line))
-        #                 # line = np.divide(line, max_val if max_val != 0 else 1)
-        #                 test_att.append(line)
-        #             labels_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
-        #         i+=1
-        #     else:
-        #         #Skip to next location
-        #         j = i+1
-        #         #print('Next Location ', i)
-        #         while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
-        #             j+= 1
-        #         i=j
+                if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
+                    train_count += 1
+                    for f in feature_list:
+                        line = list()
+                        if f == 'WindGustDir':
+                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                        else:
+                             line = np.array((weather_table[f][i:i+30]))
+                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+                        # max_val = np.max(line)
+                        # line = np.divide(line, max_val if max_val != 0 else 1)
+                        attributes.append(line)
+                    labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+                else:
+                    test_count += 1
+                    for f in feature_list:
+                        line = []
+                        if f == 'WindGustDir':
+                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                        else:
+                             line = np.array((weather_table[f][i:i+30]))
+                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+                        # max_val = abs(np.max(line))
+                        # line = np.divide(line, max_val if max_val != 0 else 1)
+                        test_att.append(line)
+                    labels_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+                i+=1
+            else:
+                #Skip to next location
+                j = i+1
+                #print('Next Location ', i)
+                while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
+                    j+= 1
+                i=j
 
-        # normalize(attributes, axis=1, copy=False)
-        # normalize(test_att, axis=1, copy=False)
+        
 
-        # print ("Number of train instances: ", train_count)
-        # print ("Number of test instances: ", test_count)
-        # print ("Number of train array: ", len(attributes))
-        # print ("Number of test array: ", len(test_att))
+        labels_clean = np.array(labels_clean, dtype='int')
+        labels_test = np.array(labels_test, dtype='int')
 
-        # del weather_table
+        attributes = np.array(attributes)
+        test_att = np.array(test_att)
 
-        # # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
-        # # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
-        # # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
-        # # print('WindGustSpeed: ', ', '.join([str(i) for i in attributes[3]]))
-        # # print('Pressure9am: ', ', '.join([str(i) for i in attributes[4]]))
-        # # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
+        normalize(attributes, axis=1, copy=False)
+        normalize(test_att, axis=1, copy=False)
 
-        # #write attributes to file
-        # np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
-        # np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
-        # np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
-        # np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+        attributes = clean_nan_and_inf(attributes)
+        test_att = clean_nan_and_inf(test_att)
+
+        print ("Number of train instances: ", train_count)
+        print ("Number of test instances: ", test_count)
+        print ("Number of train array: ", len(attributes))
+        print ("Number of test array: ", len(test_att))
+        print ("Rainy train days: ", sum(labels_clean))
+        print ("Rainy test days: ", sum(labels_test))
+
+        del weather_table
+
+        # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
+        # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
+        # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
+        # print('WindGustSpeed: ', ', '.join([str(i) for i in attributes[3]]))
+        # print('Pressure9am: ', ', '.join([str(i) for i in attributes[4]]))
+        # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
+
+        #write attributes to file
+        np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
+        np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
+        np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+        np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+
+        add_ncar(labels_clean, PATH + 'sn1_labels', 2)
+        add_nar(labels_clean, PATH + 'sn1_labels', 2)
+        add_nnar(attributes, labels_clean, PATH + 'sn1_labels', 2, num_channels=6)
+
+        add_ncar(labels_test, PATH + 'sn1_labels_test', 2)
+        add_nar(labels_test, PATH + 'sn1_labels_test', 2)
+        add_nnar(test_att, labels_test, PATH + 'sn1_labels_test', 2, num_channels=6)
 
         #Create Synthetic Set 1
         """
@@ -352,15 +375,15 @@ if(__name__ == "__main__"):
         # print('Legth of instance: ', len(attributes[0]))
         # print(attributes[0])
 
-        for i in range(1, len(room_train_table['Temperature'])-INSTANCE_LEN):
+        for i in range(1, len(room_test_table['Temperature'])-INSTANCE_LEN):
             for f in features:
                 line = []
-                line.append(room_train_table[f][i:i+INSTANCE_LEN])
+                line.append(room_test_table[f][i:i+INSTANCE_LEN])
                 test_att.append(line)
             if sum(room_test_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
-                labels_clean.append(1)
+                labels_test.append(1)
             else:
-                labels_clean.append(0)
+                labels_test.append(0)
 
         attributes = np.reshape(np.array(attributes), (len(attributes), INSTANCE_LEN))
         test_att =  np.reshape(np.array(test_att), (len(test_att), INSTANCE_LEN))
@@ -368,8 +391,19 @@ if(__name__ == "__main__"):
         print('Train data shape: ', attributes.shape)
         print('Test data shape: ', test_att.shape)
 
+        attributes = clean_nan_and_inf(attributes)
+        test_att = clean_nan_and_inf(test_att)
+
         #write attributes to file
         np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
         np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
         np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
         np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+
+        add_ncar(labels_clean, PATH + 'sn2_labels', 2)
+        add_nar(labels_clean, PATH + 'sn2_labels', 2)
+        add_nnar(attributes, labels_clean, PATH + 'sn2_labels', 2, num_channels=5)
+
+        add_ncar(labels_test, PATH + 'sn2_labels_test', 2)
+        add_nar(labels_test, PATH + 'sn2_labels_test', 2)
+        add_nnar(test_att, labels_test, PATH + 'sn2_labels_test', 2, num_channels=5)
