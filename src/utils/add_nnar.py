@@ -55,7 +55,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     X = np.reshape(attributes, (len(attributes)//num_channels, num_channels, len(attributes[0])))
     print("feature extraction done")
     nbrs = NearestNeighbors(n_neighbors=3, algorithm='ball_tree').fit(X[:, 0, :])
-    d, i = nbrs.kneighbors(X)
+    d, i = nbrs.kneighbors(X[:, 0, :])
 
     while l_flipped_counter < 0.05*SET_LENGTH:
         rand_instance_index = randint(0, SET_LENGTH-1)

@@ -28,7 +28,7 @@ if DEBUG:
     ]
 else:
     sets = [
-        'ss1', 'ss2', 'har1', 'har2'
+        'ss1', 'ss2', 'har1', 'har2', 'sn1', 'sn2'
     ]
 
 labels = [
@@ -45,11 +45,11 @@ losses = [
 ]
 
 chan_dic = {
-    'har1':1, 'har2':3, 'ss1':1, 'ss2':1
+    'har1':1, 'har2':3, 'ss1':1, 'ss2':1, 'sn1':6, 'sn2':5
 }
 
 class_dic = {
-    'har1':6, 'har2':6, 'ss1':2, 'ss2':5
+    'har1':6, 'har2':6, 'ss1':2, 'ss2':5, 'sn1':2, 'sn2':5
 }
 
 FPR = 0

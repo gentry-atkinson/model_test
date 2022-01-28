@@ -12,16 +12,19 @@
 # python3 src/visualizer.py > logs/visualizer_log.txt
 
 echo "CNN Tests"
-python3 src/CNN_tests.py > logs/CNN_log.txt
+python3 -Wignore src/CNN_tests.py > logs/CNN_log.txt
 
 echo "LSTM Tests"
-python3 src/LSTM_tests.py > logs/LSTM_log.txt
+python3 -Wignore src/LSTM_tests.py > logs/LSTM_log.txt
+
+echo "Transformer Tests"
+python3 -Wignore src/LSTM_tests.py > logs/Transf_log.txt
 
 echo "SVM Tests"
-python3 src/SVM_tests.py > logs/SVM_log.txt
+python3 -Wignore src/SVM_tests.py > logs/SVM_log.txt
 
 echo "NB Tests"
-python3 src/NB_tests.py > logs/NB_log.txt
+python3 -Wignore src/NB_tests.py > logs/NB_log.txt
 
 echo "Tree Tests"
-python3 src/Tree_tests.py > logs/Tree_log.txt
+python3 -Wignore src/Tree_tests.py > logs/Tree_log.txt
