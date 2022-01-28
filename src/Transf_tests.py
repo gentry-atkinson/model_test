@@ -28,7 +28,7 @@ if DEBUG:
     ]
 else:
     sets = [
-        'ss1', 'ss2', 'bs1', 'bs2', 'har1', 'har2'
+        'ss1', 'ss2', 'har1', 'har2'
     ]
 
 labels = [
@@ -45,11 +45,11 @@ losses = [
 ]
 
 chan_dic = {
-    'bs1':1, 'bs2':2, 'har1':1, 'har2':3, 'ss1':1, 'ss2':1
+    'har1':1, 'har2':3, 'ss1':1, 'ss2':1
 }
 
 class_dic = {
-    'bs1':2, 'bs2':2, 'har1':6, 'har2':6, 'ss1':2, 'ss2':5
+    'har1':6, 'har2':6, 'ss1':2, 'ss2':5
 }
 
 FPR = 0
@@ -89,7 +89,7 @@ NUM_HEADS = 4
 FF_DIM = 32
 DROPOUT = 0.25
 
-def build_cnn(X, num_classes, opt='SGD', loss='mean_squared_error'):
+def build_tran(X, num_classes, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = layers.Input(shape=X[0].shape)
     for _ in NUM_ATTN_LAYERS:
@@ -100,14 +100,14 @@ def build_cnn(X, num_classes, opt='SGD', loss='mean_squared_error'):
     model.summary()
     return model
 
-def train_cnn(model, X, y):
+def train_tran(model, X, y):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=15)
     rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
     model.fit(X, y, epochs=500, verbose=0, callbacks=[es, rlr], validation_split=0.1, batch_size=32, workers=NUM_CORES)
     return model
 
-def evaluate_cnn(model, X, y, mlr, base_fpr, base_fnr):
+def evaluate_tran(model, X, y, mlr, base_fpr, base_fnr):
     y_pred = model.predict(X)
     y_pred = np.argmax(y_pred, axis=-1)
     y_true = np.argmax(y, axis=-1)
@@ -126,13 +126,13 @@ def evaluate_cnn(model, X, y, mlr, base_fpr, base_fnr):
 
 
 if __name__ == "__main__":
-    print("Testing CNN")
+    print("Testing Transformer")
     print(date.today())
-    results_file = open('results/CNN_results.txt', 'w+')
+    results_file = open('results/Tran_results.txt', 'w+')
     results_file.write('{}\n'.format(date.today()))
     readable_file = open('results/all_results.txt', 'w+')
     readable_file.write('{}\n'.format(date.today()))
-    readable_file.write('######  CNN #####\n')
+    readable_file.write('######  Tran #####\n')
 
     counter = 1
 
@@ -174,8 +174,8 @@ if __name__ == "__main__":
             y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
             y_train = to_categorical(y_train)
             X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-            model = build_cnn(X_train, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
-            model = train_cnn(model, X_train, y_train)
+            model = build_tran(X_train, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
+            model = train_tran(model, X_train, y_train)
             for j, l_test in enumerate(labels):
                 if '5' in l_test:
                     mlr_test = 0.05
@@ -197,7 +197,7 @@ if __name__ == "__main__":
                 print("Shape of y_test: ", y_test.shape)
                 print("NUM_INSTANCES is ", NUM_INSTANCES)
                 print("instances should be ", NUM_INSTANCES//chan_dic[f])
-                score, mat, aer, ter, cev, sde = evaluate_cnn(model, X_test, y_test, mlr_test, base_fpr, base_fnr)
+                score, mat, aer, ter, cev, sde = evaluate_tran(model, X_test, y_test, mlr_test, base_fpr, base_fnr)
                 if i==0 and j==0:
                     FP = mat.sum(axis=0) - np.diag(mat)
                     FN = mat.sum(axis=1) - np.diag(mat)

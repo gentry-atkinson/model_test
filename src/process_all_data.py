@@ -30,7 +30,7 @@ import pandas as pd
 #from scipy.signal import resample
 from sklearn.utils import shuffle
 import os
-from sklearn.preprocessing import normalize
+from sklearn.preprocessing import minmax_scale
 
 
 PATH = 'src/data/processed_datasets/'
@@ -294,8 +294,10 @@ if(__name__ == "__main__"):
         attributes = np.array(attributes)
         test_att = np.array(test_att)
 
-        normalize(attributes, axis=1, copy=False)
-        normalize(test_att, axis=1, copy=False)
+        # normalize(attributes, axis=1, copy=False, norm='max')
+        # normalize(test_att, axis=1, copy=False, norm='max')
+        attributes = minmax_scale(attributes, (-1, 1), axis=1)
+        test_att = minmax_scale(test_att, (-1, 1), axis=1)
 
         attributes = clean_nan_and_inf(attributes)
         test_att = clean_nan_and_inf(test_att)
@@ -306,6 +308,9 @@ if(__name__ == "__main__"):
         print ("Number of test array: ", len(test_att))
         print ("Rainy train days: ", sum(labels_clean))
         print ("Rainy test days: ", sum(labels_test))
+
+        print("Shape of train data: ", attributes.shape)
+        print('Sahpe of test data: ', test_att.shape)
 
         del weather_table
 
@@ -337,7 +342,7 @@ if(__name__ == "__main__"):
             Accurate occupancy detection of an office room from light, temperature, humidity and CO2 
             measurements using statistical learning models. Luis M. Candanedo, VÃ©ronique Feldheim. 
             Energy and Buildings. Volume 112, 15 January 2016, Pages 28-39.
-        2 classes
+        5 classes
         5 channel
         30 samples in every instance, one sample per minute
         # train instances
@@ -360,15 +365,32 @@ if(__name__ == "__main__"):
         labels_clean = []
         labels_test = []
 
+        #Label Set:
+        #0 -> Room empty for full sample            "Empty"
+        #1 -> Room occupied for full sample         "Occupied"
+        #2 -> Room started empty ended occupied     "Entered"
+        #3 -> Room started occupied ended empty     "Exited"
+        #4 -> Anything else                         "Partial" 
+
         for i in range(1, len(room_train_table['Temperature'])-INSTANCE_LEN):
             for f in features:
                 line = []
                 line.append(room_train_table[f][i:i+INSTANCE_LEN])
                 attributes.append(line)
-            if sum(room_train_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
-                labels_clean.append(1)
-            else:
+            # if sum(room_train_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
+            #     labels_clean.append(1)
+            # else:
+            #     labels_clean.append(0)
+            if sum(room_train_table[key][i:i+INSTANCE_LEN]) == 0:
                 labels_clean.append(0)
+            elif sum(room_train_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
+                labels_clean.append(1)
+            elif room_train_table[key][i] == 0 and room_train_table[key][i+INSTANCE_LEN] == 1:
+                labels_clean.append(2)
+            elif room_train_table[key][i] == 1 and room_train_table[key][i+INSTANCE_LEN] == 0:
+                labels_clean.append(3)
+            else:
+                labels_clean.append(4)
 
         # print('Number of samples in dataset: ', len(room_train_table['Temperature']))
         # print('Length of attribute array: ', len(attributes))
@@ -380,10 +402,20 @@ if(__name__ == "__main__"):
                 line = []
                 line.append(room_test_table[f][i:i+INSTANCE_LEN])
                 test_att.append(line)
-            if sum(room_test_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
-                labels_test.append(1)
+            # if sum(room_test_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
+            #     labels_test.append(1)
+            # else:
+            #     labels_test.append(0)
+            if sum(room_test_table[key][i:i+INSTANCE_LEN]) == 0:
+                labels_clean.append(0)
+            elif sum(room_test_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
+                labels_clean.append(1)
+            elif room_test_table[key][i] == 0 and room_test_table[key][i+INSTANCE_LEN] == 1:
+                labels_clean.append(2)
+            elif room_test_table[key][i] == 1 and room_test_table[key][i+INSTANCE_LEN] == 0:
+                labels_clean.append(3)
             else:
-                labels_test.append(0)
+                labels_clean.append(4)
 
         attributes = np.reshape(np.array(attributes), (len(attributes), INSTANCE_LEN))
         test_att =  np.reshape(np.array(test_att), (len(test_att), INSTANCE_LEN))
