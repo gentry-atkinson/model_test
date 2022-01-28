@@ -105,6 +105,7 @@ def clean_nan_and_inf(X):
     print('Cleaning nan and inf in array with shape: ', X.shape)
     max_val = np.nanmax(X, axis=None)
     NUM_CORES = os.cpu_count()
+    
     def fix_num(a):
         for col in range(len(X[0])):
             if np.isnan(a):

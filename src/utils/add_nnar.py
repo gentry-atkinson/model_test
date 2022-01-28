@@ -54,7 +54,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     X = get_features_for_set(X)
     X = np.reshape(attributes, (len(attributes)//num_channels, num_channels, len(attributes[0])))
     print("feature extraction done")
-    nbrs = NearestNeighbors(n_neighbors=3, algorithm='ball_tree').fit(X)
+    nbrs = NearestNeighbors(n_neighbors=3, algorithm='ball_tree').fit(X[:, 0, :])
     d, i = nbrs.kneighbors(X)
 
     while l_flipped_counter < 0.05*SET_LENGTH:

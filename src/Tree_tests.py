@@ -19,11 +19,11 @@ DEBUG = False
 
 if DEBUG:
     sets = [
-        'ss1', 'ss2'
+        'har1', 'har2'
     ]
 else:
     sets = [
-        'ss1', 'ss2', 'bs1', 'bs2', 'har1', 'har2'
+        'ss1', 'ss2', 'har1', 'har2', 'sn1', 'sn2'
     ]
 
 labels = [
@@ -40,11 +40,11 @@ losses = [
 ]
 
 chan_dic = {
-    'bs1':1, 'bs2':2, 'har1':1, 'har2':3, 'ss1':1, 'ss2':1
+    'har1':1, 'har2':3, 'ss1':1, 'ss2':1, 'sn1':6, 'sn2':5
 }
 
 class_dic = {
-    'bs1':2, 'bs2':2, 'har1':6, 'har2':6, 'ss1':2, 'ss2':5
+    'har1':6, 'har2':6, 'ss1':2, 'ss2':5, 'sn1':2, 'sn2':5
 }
 
 def build_rf(X, num_classes):
