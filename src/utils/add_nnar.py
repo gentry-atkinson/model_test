@@ -34,11 +34,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
         print("reading attribute file")
         attributes = np.genfromtxt(att_file, delimiter=',', dtype=int)
 
-    if num_channels != 1:
-        #X = absChannels(attributes, num_channels)
-        X = np.reshape(attributes, (len(attributes)//num_channels, num_channels, len(attributes[0])))
-    else:
-        X = attributes
+    X = attributes
 
     low_indexes = open(filename + '_nnar5_indexes.csv', 'w+')
     high_indexes = open(filename + '_nnar10_indexes.csv', 'w+')
@@ -56,6 +52,7 @@ def add_nnar(attributes, clean_labels, filename, num_classes, num_channels=1, at
     SET_LENGTH = len(clean_labels)
 
     X = get_features_for_set(X)
+    X = np.reshape(attributes, (len(attributes)//num_channels, num_channels, len(attributes[0])))
     print("feature extraction done")
     nbrs = NearestNeighbors(n_neighbors=3, algorithm='ball_tree').fit(X)
     d, i = nbrs.kneighbors(X)

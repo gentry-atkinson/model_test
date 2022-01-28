@@ -174,6 +174,7 @@ Parameters:
 Returns: the extracted feature set as a 2D array
 """
 def get_features_for_set(X, sample_rate=50, num_instances=None):
+    print("Feature extraction for set with shape: ", X.shape)
     sample_length = len(X[0])
     if num_instances is None:
         num_instances = len(X)
