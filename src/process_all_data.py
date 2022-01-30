@@ -36,8 +36,8 @@ from sklearn.preprocessing import minmax_scale
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = False
-RUN_HAR = False
+RUN_SS = True
+RUN_HAR = True
 #RUN_BS = False
 RUN_SN = True
 
@@ -299,8 +299,8 @@ if(__name__ == "__main__"):
         attributes = minmax_scale(attributes, (-1, 1), axis=1)
         test_att = minmax_scale(test_att, (-1, 1), axis=1)
 
-        attributes = clean_nan_and_inf(attributes)
-        test_att = clean_nan_and_inf(test_att)
+        # attributes = clean_nan_and_inf(attributes)
+        # test_att = clean_nan_and_inf(test_att)
 
         print ("Number of train instances: ", train_count)
         print ("Number of test instances: ", test_count)
@@ -365,6 +365,9 @@ if(__name__ == "__main__"):
         labels_clean = []
         labels_test = []
 
+        train_count = 0
+        test_count = 0
+
         #Label Set:
         #0 -> Room empty for full sample            "Empty"
         #1 -> Room occupied for full sample         "Occupied"
@@ -407,24 +410,34 @@ if(__name__ == "__main__"):
             # else:
             #     labels_test.append(0)
             if sum(room_test_table[key][i:i+INSTANCE_LEN]) == 0:
-                labels_clean.append(0)
+                labels_test.append(0)
             elif sum(room_test_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
-                labels_clean.append(1)
+                labels_test.append(1)
             elif room_test_table[key][i] == 0 and room_test_table[key][i+INSTANCE_LEN] == 1:
-                labels_clean.append(2)
+                labels_test.append(2)
             elif room_test_table[key][i] == 1 and room_test_table[key][i+INSTANCE_LEN] == 0:
-                labels_clean.append(3)
+                labels_test.append(3)
             else:
-                labels_clean.append(4)
+                labels_test.append(4)
 
         attributes = np.reshape(np.array(attributes), (len(attributes), INSTANCE_LEN))
         test_att =  np.reshape(np.array(test_att), (len(test_att), INSTANCE_LEN))
 
-        print('Train data shape: ', attributes.shape)
-        print('Test data shape: ', test_att.shape)
+        labels_clean = np.array(labels_clean, dtype='int')
+        labels_test = np.array(labels_test, dtype='int')
 
-        attributes = clean_nan_and_inf(attributes)
-        test_att = clean_nan_and_inf(test_att)
+        print ("Number of train instances: ", train_count)
+        print ("Number of test instances: ", test_count)
+        print ("Number of train array: ", len(attributes))
+        print ("Number of test array: ", len(test_att))
+        print ("Rainy occupied days: ", np.sum(np.where(labels_test==1), axis=None))
+        print ("Rainy unoccupied days: ", np.sum(np.where(labels_test!=1), axis=None))
+
+        print("Shape of train data: ", attributes.shape)
+        print('Sahpe of test data: ', test_att.shape)
+
+        # attributes = clean_nan_and_inf(attributes)
+        # test_att = clean_nan_and_inf(test_att)
 
         #write attributes to file
         np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
@@ -432,10 +445,10 @@ if(__name__ == "__main__"):
         np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
         np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
 
-        add_ncar(labels_clean, PATH + 'sn2_labels', 2)
-        add_nar(labels_clean, PATH + 'sn2_labels', 2)
-        add_nnar(attributes, labels_clean, PATH + 'sn2_labels', 2, num_channels=5)
+        add_ncar(labels_clean, PATH + 'sn2_labels', 5)
+        add_nar(labels_clean, PATH + 'sn2_labels', 5)
+        add_nnar(attributes, labels_clean, PATH + 'sn2_labels', 5, num_channels=5)
 
-        add_ncar(labels_test, PATH + 'sn2_labels_test', 2)
-        add_nar(labels_test, PATH + 'sn2_labels_test', 2)
-        add_nnar(test_att, labels_test, PATH + 'sn2_labels_test', 2, num_channels=5)
+        add_ncar(labels_test, PATH + 'sn2_labels_test', 5)
+        add_nar(labels_test, PATH + 'sn2_labels_test', 5)
+        add_nnar(test_att, labels_test, PATH + 'sn2_labels_test', 5, num_channels=5)

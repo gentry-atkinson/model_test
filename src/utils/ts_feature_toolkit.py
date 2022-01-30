@@ -103,17 +103,18 @@ def get_zero_crossing_rate(X):
 def clean_nan_and_inf(X):
     assert X.ndim == 2, "Please only de-nan 2D sets"
     print('Cleaning nan and inf in array with shape: ', X.shape)
-    max_val = np.nanmax(X, axis=None)
+    max_val = np.amax(np.ma.masked_invalid(X), axis=None, initial=0)
+    if not max_val: max_val = 0
     NUM_CORES = os.cpu_count()
-    
+    print("Max val is: ", max_val)
     def fix_num(a):
         for col in range(len(X[0])):
             if np.isnan(a):
                 return  0
-            elif np.isposinf(a):
-                return max_val
-            elif np.isposinf(a):
+            elif np.isneginf(a):
                return -1*max_val
+            elif np.isinf(a):
+                return max_val
             else:
                 return a
     # for row in range(len(X)):
@@ -126,7 +127,7 @@ def clean_nan_and_inf(X):
     #             X[row][col] = -1*max_val
     new_X = Parallel(n_jobs=NUM_CORES)(delayed(fix_num)(i) for i in np.nditer(X, flags=['multi_index']))
     new_X = np.reshape(new_X, X.shape)
-    print(np.sum(X != new_X, axis=None), " nans or infs cleaned")
+    print(np.sum(np.array(X) != np.array(new_X), axis=None), " nans or infs cleaned")
     print("First instance of nanny data: ", X[0])
     print("First instance of nanless data: ", new_X[0])
     return new_X
