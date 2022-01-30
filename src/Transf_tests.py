@@ -174,7 +174,7 @@ if __name__ == "__main__":
             y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
             y_train = to_categorical(y_train)
             X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-            model = build_tran(X_train, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
+            model = build_tran(X_train, class_dic[f], opt='adam', loss='categorical_crossentropy')
             model = train_tran(model, X_train, y_train)
             for j, l_test in enumerate(labels):
                 if '5' in l_test:
