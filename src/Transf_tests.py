@@ -71,8 +71,7 @@ def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
 
     # Normalization and Attention
     x = layers.LayerNormalization(epsilon=1e-6)(inputs)
-    x = layers.MultiHeadAttention(
-         num_heads=num_heads, key_dim=head_size, dropout=dropout)(x, x)
+    x = layers.MultiHeadAttention(num_heads=num_heads, key_dim=head_size, dropout=dropout)(x, x)
     x = layers.Dropout(dropout)(x)
     res = x + inputs
 
@@ -83,7 +82,7 @@ def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
     x = layers.Conv1D(filters=inputs.shape[-1], kernel_size=1)(x)
     return x + res 
 
-NUM_ATTN_LAYERS = 2
+NUM_ATTN_LAYERS = 1
 HEAD_SIZE = 16
 NUM_HEADS = 4
 FF_DIM = 32
@@ -91,11 +90,18 @@ DROPOUT = 0.25
 
 def build_tran(X, num_classes, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
-    model = layers.Input(shape=X[0].shape)
-    for _ in NUM_ATTN_LAYERS:
-        model = transformer_encoder(model, HEAD_SIZE, NUM_HEADS, FF_DIM, DROPOUT)
-    model = layers.GlobalAveragePooling1D()(model)
-    model = layers.Dense(num_classes, activation='softmax')
+    model = Sequential()
+    model.add(layers.Input(shape=X[0].shape))
+    for _ in range(NUM_ATTN_LAYERS):
+        model.add(layers.LayerNormalization(epsilon=1e-6))
+        model.add(layers.MultiHeadAttention(num_heads=NUM_HEADS, key_dim=HEAD_SIZE, dropout=DROPOUT)(model, model))
+        model.add(layers.Dropout(DROPOUT))
+        model.add(layers.LayerNormalization(epsilon=1e-6))
+        model.add(layers.Conv1D(filters=FF_DIM, kernel_size=1, activation='relu'))
+        model.add(layers.Dropout(DROPOUT))
+        model.add(layers.Conv1D(filters=X.shape[-1], kernel_size=1))
+    model.add(layers.GlobalAveragePooling1D(data_format="channels_first"))
+    model.add(layers.Dense(num_classes, activation='softmax'))
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
     model.summary()
     return model

@@ -55,3 +55,92 @@ CNN_dic = {
         'dropout' : 0.25
     }
 }
+
+LSTM_dic = {
+    'ss1' : {
+        'lstm_units' : 16,
+        'dropout' : 0.25,
+        'hidden_dense_size' : 128
+    },
+    'ss2' : {
+        'lstm_units' : 16,
+        'dropout' : 0.25,
+        'hidden_dense_size' : 128
+    },
+    'har1' : {
+        'lstm_units' : 16,
+        'dropout' : 0.25,
+        'hidden_dense_size' : 128
+    },
+    'har2' : {
+        'lstm_units' : 16,
+        'dropout' : 0.25,
+        'hidden_dense_size' : 128
+    },
+    'sn1' : {
+        'lstm_units' : 16,
+        'dropout' : 0.25,
+        'hidden_dense_size' : 128
+    },
+    'sn2' : {
+        'lstm_units' : 16,
+        'dropout' : 0.25,
+        'hidden_dense_size' : 128
+    }
+}
+
+Transf_dic = {
+    'ss1' : {
+        'num_attn+layers' : 2,
+        'head_size' : 16,
+        'num_heads' : 4,
+        'ff_dim' : 32,
+        'dropout' : 0.25
+    },
+    'ss2' : {
+        'num_attn+layers' : 2,
+        'head_size' : 16,
+        'num_heads' : 4,
+        'ff_dim' : 32,
+        'dropout' : 0.25
+    },
+    'har1' : {
+        'num_attn+layers' : 2,
+        'head_size' : 16,
+        'num_heads' : 4,
+        'ff_dim' : 32,
+        'dropout' : 0.25
+    },
+    'har2' : {
+        'num_attn+layers' : 2,
+        'head_size' : 16,
+        'num_heads' : 4,
+        'ff_dim' : 32,
+        'dropout' : 0.25
+    },
+    'sn1' : {
+        'num_attn+layers' : 2,
+        'head_size' : 16,
+        'num_heads' : 4,
+        'ff_dim' : 32,
+        'dropout' : 0.25
+    },
+    'sn2' : {
+        'num_attn+layers' : 2,
+        'head_size' : 16,
+        'num_heads' : 4,
+        'ff_dim' : 32,
+        'dropout' : 0.25
+    },
+}
+
+def loadDic(model):
+    if model=='CNN':
+        return dict(CNN_dic)
+    elif model=='LSTM':
+        return dict(LSTM_dic)
+    elif model=='Transformer':
+        return dict(Transf_dic)
+    else:
+        print('Unrecognized model name in loadDic')
+

@@ -58,8 +58,6 @@ def build_lstm(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_err
         LSTM(32),
         Dropout(0.25),
         Dense(128, activation='relu'),
-        Dense(128, activation='relu'),
-        Dense(64, activation='relu'),
         Dense(num_classes, activation='softmax')
     ])
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])

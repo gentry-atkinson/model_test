@@ -10,6 +10,7 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
 from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout, ReLU, GlobalAveragePooling1D
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+from tensorflow.keras.losses import CategoricalCrossentropy
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
 import gc
@@ -18,6 +19,7 @@ from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
 from datetime import date
+from model_config import loadDic
 
 DEBUG = False
 
@@ -54,24 +56,29 @@ class_dic = {
 FPR = 0
 FNR = 0
 
-def build_cnn(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
+# 'l1_numFilters' : 128,
+# 'l2_numFilters' : 64,
+# 'l1_kernelSize' : 32,
+# 'l2_kernelSize' : 16,
+# 'l1_maxPoolSize' : 4,
+# 'l2_maxPoolSize' : 4,
+# 'dropout' : 0.25
+
+config_dic = loadDic('CNN')
+print(config_dic['ss1'])
+
+def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        Conv1D(filters=128, kernel_size=16, padding='same'),
-        MaxPooling1D(pool_size=(2), data_format='channels_first'),
-        ReLU(),
-        Conv1D(filters=64, kernel_size=16, padding='same'),
-        MaxPooling1D(pool_size=(2), data_format='channels_first'),
-        ReLU(),
-        Conv1D(filters=64, kernel_size=8, padding='same'),
-        MaxPooling1D(pool_size=(2), data_format='channels_first'),
-        ReLU(),
-        Dropout(0.25),
-        # Flatten(),
-        # Dense(128, activation='relu'),
-        # Dense(64, activation='relu'),
-        GlobalAveragePooling1D(),
+        Conv1D(filters=config_dic[set]['l1_numFilters'], kernel_size=config_dic[set]['l1_kernelSize'], padding='same', activation='relu'),
+        Conv1D(filters=config_dic[set]['l1_numFilters'], kernel_size=config_dic[set]['l1_kernelSize'], padding='same', activation='relu'),
+        MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']), data_format='channels_first'),
+        Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='same', activation='relu'),
+        Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='same', activation='relu'),
+        MaxPooling1D(pool_size=(config_dic[set]['l2_maxPoolSize']), data_format='channels_first'),
+        Dropout(config_dic[set]['dropout']),
+        GlobalAveragePooling1D(data_format="channels_first"),
         Dense(num_classes, activation='softmax')
     ])
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
@@ -152,7 +159,7 @@ if __name__ == "__main__":
             y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
             y_train = to_categorical(y_train)
             X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-            model = build_cnn(X_train, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
+            model = build_cnn(X_train, class_dic[f], set=f, num_channels=chan_dic[f], opt='adam', loss=CategoricalCrossentropy(label_smoothing=0.1))
             model = train_cnn(model, X_train, y_train)
             for j, l_test in enumerate(labels):
                 if '5' in l_test:
