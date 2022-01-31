@@ -56,26 +56,17 @@ class_dic = {
 FPR = 0
 FNR = 0
 
-# 'l1_numFilters' : 128,
-# 'l2_numFilters' : 64,
-# 'l1_kernelSize' : 32,
-# 'l2_kernelSize' : 16,
-# 'l1_maxPoolSize' : 4,
-# 'l2_maxPoolSize' : 4,
-# 'dropout' : 0.25
-
 config_dic = loadDic('CNN')
-print(config_dic['ss1'])
 
 def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        Conv1D(filters=config_dic[set]['l1_numFilters'], kernel_size=config_dic[set]['l1_kernelSize'], padding='same', activation='relu'),
-        Conv1D(filters=config_dic[set]['l1_numFilters'], kernel_size=config_dic[set]['l1_kernelSize'], padding='same', activation='relu'),
+        Conv1D(filters=config_dic[set]['l1_numFilters']*num_channels, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=num_channels),
+        Conv1D(filters=config_dic[set]['l1_numFilters']*num_channels, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=num_channels),
         MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']), data_format='channels_first'),
-        Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='same', activation='relu'),
-        Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='same', activation='relu'),
+        Conv1D(filters=config_dic[set]['l2_numFilters']*num_channels, kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=num_channels),
+        Conv1D(filters=config_dic[set]['l2_numFilters']*num_channels, kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=num_channels),
         MaxPooling1D(pool_size=(config_dic[set]['l2_maxPoolSize']), data_format='channels_first'),
         Dropout(config_dic[set]['dropout']),
         GlobalAveragePooling1D(data_format="channels_first"),
@@ -89,7 +80,7 @@ def train_cnn(model, X, y):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=15)
     rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
-    model.fit(X, y, epochs=500, verbose=0, callbacks=[es, rlr], validation_split=0.1, batch_size=32, workers=NUM_CORES)
+    model.fit(X, y, epochs=500, verbose=0, callbacks=[es, rlr], validation_split=0.1, batch_size=32, use_multiprocessing=True, workers=NUM_CORES)
     return model
 
 def evaluate_cnn(model, X, y, mlr, base_fpr, base_fnr):
