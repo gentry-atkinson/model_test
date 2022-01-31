@@ -21,11 +21,11 @@ from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc
 from datetime import date
 from model_config import loadDic
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     sets = [
-        'har1', 'har2'
+        'sn1', 'sn2'
     ]
 else:
     sets = [
@@ -57,16 +57,25 @@ FPR = 0
 FNR = 0
 
 config_dic = loadDic('CNN')
+"""
+Build CNN
+Construct and return a compiled CNN
+Parameters:
+    X, numpy_array, trainging data
+    num_classes, int,  number of classes present in label set
+    set, string, identifier of dataset X was read from
+    num_channels, int, the number of channel in X  
+"""
 
 def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        Conv1D(filters=config_dic[set]['l1_numFilters']*num_channels, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=num_channels),
-        Conv1D(filters=config_dic[set]['l1_numFilters']*num_channels, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=num_channels),
-        MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']), data_format='channels_first'),
-        Conv1D(filters=config_dic[set]['l2_numFilters']*num_channels, kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=num_channels),
-        Conv1D(filters=config_dic[set]['l2_numFilters']*num_channels, kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=num_channels),
+        Conv1D(filters=config_dic[set]['l1_numFilters']*1, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=1),
+        Conv1D(filters=config_dic[set]['l1_numFilters']*1, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=1),
+        MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']*1), data_format='channels_first'),
+        Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=1),
+        Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=1),
         MaxPooling1D(pool_size=(config_dic[set]['l2_maxPoolSize']), data_format='channels_first'),
         Dropout(config_dic[set]['dropout']),
         GlobalAveragePooling1D(data_format="channels_first"),
@@ -80,6 +89,7 @@ def train_cnn(model, X, y):
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=15)
     rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
+    print('Size of X to fit: ', X.shape)
     model.fit(X, y, epochs=500, verbose=0, callbacks=[es, rlr], validation_split=0.1, batch_size=32, use_multiprocessing=True, workers=NUM_CORES)
     return model
 
@@ -132,7 +142,7 @@ if __name__ == "__main__":
         X_test = normalize(X_test, norm='max')
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
-        X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+        X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), SAMP_LEN, chan_dic[f]))
         base_fpr = None
         base_fnr = None
         for i, l_train in enumerate(labels):
@@ -146,7 +156,7 @@ if __name__ == "__main__":
             X_train = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
             X_train = normalize(X_train, norm='max')
             NUM_INSTANCES = len(X_train)
-            X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+            X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), SAMP_LEN, chan_dic[f]))
             y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
             y_train = to_categorical(y_train)
             X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)

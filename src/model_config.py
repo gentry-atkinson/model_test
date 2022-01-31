@@ -37,7 +37,7 @@ CNN_dic = {
         'dropout' : 0.25
     },
     'sn1' : {
-        'l1_numFilters' : 128,
+        'l1_numFilters' : 64,
         'l2_numFilters' : 64,
         'l1_kernelSize' : 32,
         'l2_kernelSize' : 16,
@@ -46,7 +46,7 @@ CNN_dic = {
         'dropout' : 0.25
     },
     'sn2' : {
-        'l1_numFilters' : 128,
+        'l1_numFilters' : 64,
         'l2_numFilters' : 64,
         'l1_kernelSize' : 32,
         'l2_kernelSize' : 16,
