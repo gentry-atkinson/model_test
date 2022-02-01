@@ -7,7 +7,7 @@
 
 import numpy as np
 import tensorflow.keras.metrics as met
-from tensorflow.keras import Sequential
+from tensorflow.keras import Sequential, Model
 from tensorflow.keras.utils import to_categorical
 import tensorflow.keras.layers as layers
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
@@ -25,7 +25,7 @@ DEBUG = False
 
 if DEBUG:
     sets = [
-        'har1', 'har2'
+        'sn1', 'sn2'
     ]
 else:
     sets = [
@@ -56,8 +56,6 @@ class_dic = {
 FPR = 0
 FNR = 0
 
-config_dic = loadDic('Transf')
-
 def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
     """
     TransformerEncoder for time-series encoder, conforming to the
@@ -72,7 +70,8 @@ def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
     """
 
     # Normalization and Attention
-    x = layers.LayerNormalization(epsilon=1e-6)(inputs)
+    print(type(inputs))
+    x = layers.BatchNormalization()(inputs)
     x = layers.MultiHeadAttention(num_heads=num_heads, key_dim=head_size, dropout=dropout)(x, x)
     x = layers.Dropout(dropout)(x)
     res = x + inputs
@@ -90,20 +89,18 @@ def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
 # 'ff_dim' : 32,
 # 'dropout' : 0.25
 
+config_dic = loadDic('Transformer')
+
 def build_tran(X, num_classes, set, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
-    model = Sequential()
-    model.add(layers.Input(shape=X[0].shape))
+    inputs = layers.Input(shape=X[0].shape)
+    x = inputs
     for _ in range(config_dic[set]['num_attn+layers']):
-        model.add(layers.LayerNormalization(epsilon=1e-6))
-        model.add(layers.MultiHeadAttention(num_heads=config_dic[set]['num_heads'], key_dim=config_dic[set]['head_size'], dropout=config_dic[set]['dropout'])(model, model))
-        model.add(layers.Dropout(config_dic[set]['dropout']))
-        model.add(layers.LayerNormalization(epsilon=1e-6))
-        model.add(layers.Conv1D(filters=config_dic[set]['ff_dim'], kernel_size=1, activation='relu'))
-        model.add(layers.Dropout(config_dic[set]['dropout']))
-        model.add(layers.Conv1D(filters=X.shape[-1], kernel_size=1))
-    model.add(layers.GlobalAveragePooling1D(data_format="channels_first"))
-    model.add(layers.Dense(num_classes, activation='softmax'))
+        x = transformer_encoder(x, config_dic[set]['head_size'], config_dic[set]['num_heads'], config_dic[set]['ff_dim'], config_dic[set]['dropout'])
+    x = layers.Dense(128, activation='relu')(x)
+    outputs = layers.Dense(num_classes, activation='softmax')(x)
+    outputs = layers.Flatten()(outputs)
+    model = Model(inputs, outputs)
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
     model.summary()
     return model

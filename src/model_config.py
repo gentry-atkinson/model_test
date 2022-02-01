@@ -58,32 +58,32 @@ CNN_dic = {
 
 LSTM_dic = {
     'ss1' : {
-        'lstm_units' : 16,
+        'lstm_units' : 64,
         'dropout' : 0.25,
         'hidden_dense_size' : 128
     },
     'ss2' : {
-        'lstm_units' : 16,
+        'lstm_units' : 64,
         'dropout' : 0.25,
         'hidden_dense_size' : 128
     },
     'har1' : {
-        'lstm_units' : 16,
+        'lstm_units' : 64,
         'dropout' : 0.25,
         'hidden_dense_size' : 128
     },
     'har2' : {
-        'lstm_units' : 16,
+        'lstm_units' : 64,
         'dropout' : 0.25,
         'hidden_dense_size' : 128
     },
     'sn1' : {
-        'lstm_units' : 5,
-        'dropout' : 0.25,
-        'hidden_dense_size' : 128
+        'lstm_units' : 16,
+        'dropout' : 0.5,
+        'hidden_dense_size' : 64
     },
     'sn2' : {
-        'lstm_units' : 5,
+        'lstm_units' : 16,
         'dropout' : 0.25,
         'hidden_dense_size' : 128
     }

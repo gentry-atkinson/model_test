@@ -8,7 +8,7 @@ import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import LSTM, Input, Dense
-from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout
+from tensorflow.keras.layers import BatchNormalization, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
@@ -20,11 +20,11 @@ from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc
 from model_config import loadDic
 from datetime import date
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     sets = [
-        'har1', 'har2'
+        'sn1', 'sn2'
     ]
 else:
     sets = [
@@ -62,7 +62,8 @@ def build_lstm(X, num_classes, set, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        LSTM(config_dic[set]['lstm_units']),
+        BatchNormalization(),
+        LSTM(config_dic[set]['lstm_units'], recurrent_dropout=config_dic[set]['dropout'], activation='relu'),
         Dropout(config_dic[set]['dropout']),
         Dense(config_dic[set]['hidden_dense_size'], activation='relu'),
         Dense(num_classes, activation='softmax')
