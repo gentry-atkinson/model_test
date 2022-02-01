@@ -107,6 +107,7 @@ def clean_nan_and_inf(X):
     if not max_val: max_val = 0
     NUM_CORES = os.cpu_count()
     print("Max val is: ", max_val)
+
     def fix_num(a):
         for col in range(len(X[0])):
             if np.isnan(a):
@@ -117,14 +118,7 @@ def clean_nan_and_inf(X):
                 return max_val
             else:
                 return a
-    # for row in range(len(X)):
-    #     for col in range(len(X[0])):
-    #         if np.isnan(X[row][col]):
-    #             X[row][col] = 0
-    #         elif np.isposinf(X[row][col]):
-    #             X[row][col] = max_val
-    #         elif np.isposinf(X[row][col]):
-    #             X[row][col] = -1*max_val
+
     new_X = Parallel(n_jobs=NUM_CORES)(delayed(fix_num)(i) for i in np.nditer(X, flags=['multi_index']))
     new_X = np.reshape(new_X, X.shape)
     print(np.sum(np.array(X) != np.array(new_X), axis=None), " nans or infs cleaned")
@@ -151,7 +145,7 @@ def get_features_from_one_signal(X, sample_rate=50):
     c, v = zip(*spectral_density)
     v = np.asarray(v)
 
-    return [
+    feat_array = np.array([
         0 if np.isnan(mean) else mean,
         0 if np.isnan(stdev) else stdev,
         0 if np.isnan(abs_energy) else abs_energy,
@@ -164,8 +158,15 @@ def get_features_from_one_signal(X, sample_rate=50):
         0 if np.isnan(zero_crossing) else zero_crossing,
         0 if np.isnan(num_peaks) else num_peaks,
         0 if np.isnan(sample_entropy) else sample_entropy,
-        v[0], v[1], v[2], v[3], v[4], v[5]
-    ]
+        0 if np.isnan(v[0]) else v[0], 
+        0 if np.isnan(v[1]) else v[1], 
+        0 if np.isnan(v[2]) else v[2], 
+        0 if np.isnan(v[3]) else v[3], 
+        0 if np.isnan(v[4]) else v[4], 
+        0 if np.isnan(v[5]) else v[5]
+    ])
+    feat_array = [i if not np.isinf(i) else 1 for i in feat_array]
+    return feat_array
 
 """
 Get Features for Set

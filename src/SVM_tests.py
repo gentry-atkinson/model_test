@@ -12,14 +12,14 @@ from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 import gc
 import os
-from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set, calc_bias_metrics, calc_error_rates
+from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set, calc_bias_metrics, calc_error_rates, clean_nan_and_inf
 from datetime import date
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     sets = [
-        'har1', 'har2'
+        'sn1', 'sn2'
     ]
 else:
     sets = [

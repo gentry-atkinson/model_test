@@ -20,7 +20,7 @@ from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc
 from model_config import loadDic
 from datetime import date
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     sets = [
