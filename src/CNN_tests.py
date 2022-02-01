@@ -25,7 +25,7 @@ DEBUG = True
 
 if DEBUG:
     sets = [
-        'sn1', 'sn2'
+        'sn2', 'sn1'
     ]
 else:
     sets = [
@@ -71,12 +71,13 @@ def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
+        BatchNormalization(),
         Conv1D(filters=config_dic[set]['l1_numFilters']*1, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=1),
         Conv1D(filters=config_dic[set]['l1_numFilters']*1, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=1),
-        MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']*1), data_format='channels_last'),
+        MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']*1), data_format='channels_first'),
         Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=1),
         Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=1),
-        MaxPooling1D(pool_size=(config_dic[set]['l2_maxPoolSize']), data_format='channels_last'),
+        MaxPooling1D(pool_size=(config_dic[set]['l2_maxPoolSize']), data_format='channels_first'),
         Dropout(config_dic[set]['dropout']),
         GlobalAveragePooling1D(data_format="channels_first"),
         Dense(num_classes, activation='softmax')
@@ -142,7 +143,7 @@ if __name__ == "__main__":
         X_test = normalize(X_test, norm='max')
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
-        X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), SAMP_LEN, chan_dic[f]))
+        X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
         base_fpr = None
         base_fnr = None
         for i, l_train in enumerate(labels):
@@ -156,7 +157,7 @@ if __name__ == "__main__":
             X_train = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
             X_train = normalize(X_train, norm='max')
             NUM_INSTANCES = len(X_train)
-            X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), SAMP_LEN, chan_dic[f]))
+            X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
             y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
             y_train = to_categorical(y_train)
             X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)

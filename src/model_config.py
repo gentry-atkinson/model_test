@@ -3,7 +3,7 @@ CNN_dic = {
         'l1_numFilters' : 128,
         'l2_numFilters' : 64,
         'l1_kernelSize' : 32,
-        'l2_kernelSize' : 16,
+        'l2_kernelSize' : 8,
         'l1_maxPoolSize' : 4,
         'l2_maxPoolSize' : 4,
         'dropout' : 0.25
@@ -13,7 +13,7 @@ CNN_dic = {
         'l1_numFilters' : 128,
         'l2_numFilters' : 64,
         'l1_kernelSize' : 32,
-        'l2_kernelSize' : 16,
+        'l2_kernelSize' : 8,
         'l1_maxPoolSize' : 4,
         'l2_maxPoolSize' : 4,
         'dropout' : 0.25
@@ -22,7 +22,7 @@ CNN_dic = {
         'l1_numFilters' : 128,
         'l2_numFilters' : 64,
         'l1_kernelSize' : 32,
-        'l2_kernelSize' : 16,
+        'l2_kernelSize' : 8,
         'l1_maxPoolSize' : 4,
         'l2_maxPoolSize' : 4,
         'dropout' : 0.25
@@ -31,7 +31,7 @@ CNN_dic = {
         'l1_numFilters' : 128,
         'l2_numFilters' : 64,
         'l1_kernelSize' : 32,
-        'l2_kernelSize' : 16,
+        'l2_kernelSize' : 8,
         'l1_maxPoolSize' : 4,
         'l2_maxPoolSize' : 4,
         'dropout' : 0.25
@@ -39,8 +39,8 @@ CNN_dic = {
     'sn1' : {
         'l1_numFilters' : 64,
         'l2_numFilters' : 64,
-        'l1_kernelSize' : 32,
-        'l2_kernelSize' : 16,
+        'l1_kernelSize' : 8,
+        'l2_kernelSize' : 4,
         'l1_maxPoolSize' : 4,
         'l2_maxPoolSize' : 4,
         'dropout' : 0.25
@@ -48,8 +48,8 @@ CNN_dic = {
     'sn2' : {
         'l1_numFilters' : 64,
         'l2_numFilters' : 64,
-        'l1_kernelSize' : 32,
-        'l2_kernelSize' : 16,
+        'l1_kernelSize' : 8,
+        'l2_kernelSize' : 4,
         'l1_maxPoolSize' : 4,
         'l2_maxPoolSize' : 4,
         'dropout' : 0.25
@@ -78,12 +78,12 @@ LSTM_dic = {
         'hidden_dense_size' : 128
     },
     'sn1' : {
-        'lstm_units' : 16,
+        'lstm_units' : 5,
         'dropout' : 0.25,
         'hidden_dense_size' : 128
     },
     'sn2' : {
-        'lstm_units' : 16,
+        'lstm_units' : 5,
         'dropout' : 0.25,
         'hidden_dense_size' : 128
     }
