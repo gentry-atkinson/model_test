@@ -17,6 +17,7 @@ import os
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
+from model_config import loadDic
 from datetime import date
 
 DEBUG = False
@@ -51,13 +52,19 @@ class_dic = {
     'har1':6, 'har2':6, 'ss1':2, 'ss2':5, 'sn1':2, 'sn2':5
 }
 
-def build_lstm(X, num_classes, num_channels=1, opt='SGD', loss='mean_squared_error'):
+# 'lstm_units' : 16,
+# 'dropout' : 0.25,
+# 'hidden_dense_size' : 128
+
+config_dic = loadDic('LSTM')
+
+def build_lstm(X, num_classes, set, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
-        LSTM(32),
-        Dropout(0.25),
-        Dense(128, activation='relu'),
+        LSTM(config_dic[set]['lstm_units']),
+        Dropout(config_dic[set]['dropout']),
+        Dense(config_dic[set]['hidden_dense_size'], activation='relu'),
         Dense(num_classes, activation='softmax')
     ])
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
@@ -136,7 +143,7 @@ if __name__ == "__main__":
                 y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
                 y_train = to_categorical(y_train)
                 X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-                model = build_lstm(X_train, class_dic[f], num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
+                model = build_lstm(X_train, class_dic[f], set=f, num_channels=chan_dic[f], opt='adam', loss='categorical_crossentropy')
                 model = train_lstm(model, X_train, y_train)
                 for j, l_test in enumerate(labels):
                     if '5' in l_test:

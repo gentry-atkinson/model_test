@@ -73,10 +73,10 @@ def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared
         Input(shape=X[0].shape),
         Conv1D(filters=config_dic[set]['l1_numFilters']*1, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=1),
         Conv1D(filters=config_dic[set]['l1_numFilters']*1, kernel_size=config_dic[set]['l1_kernelSize'], padding='causal', activation='relu', groups=1),
-        MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']*1), data_format='channels_first'),
+        MaxPooling1D(pool_size=(config_dic[set]['l1_maxPoolSize']*1), data_format='channels_last'),
         Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=1),
         Conv1D(filters=config_dic[set]['l2_numFilters'], kernel_size=config_dic[set]['l2_kernelSize'], padding='causal', activation='relu', groups=1),
-        MaxPooling1D(pool_size=(config_dic[set]['l2_maxPoolSize']), data_format='channels_first'),
+        MaxPooling1D(pool_size=(config_dic[set]['l2_maxPoolSize']), data_format='channels_last'),
         Dropout(config_dic[set]['dropout']),
         GlobalAveragePooling1D(data_format="channels_first"),
         Dense(num_classes, activation='softmax')
