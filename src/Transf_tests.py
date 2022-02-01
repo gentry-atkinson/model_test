@@ -18,6 +18,7 @@ import os
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
+from model_config import loadDic
 from datetime import date
 
 DEBUG = False
@@ -55,6 +56,7 @@ class_dic = {
 FPR = 0
 FNR = 0
 
+config_dic = loadDic('Transf')
 
 def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
     """
@@ -82,23 +84,23 @@ def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
     x = layers.Conv1D(filters=inputs.shape[-1], kernel_size=1)(x)
     return x + res 
 
-NUM_ATTN_LAYERS = 1
-HEAD_SIZE = 16
-NUM_HEADS = 4
-FF_DIM = 32
-DROPOUT = 0.25
+# 'num_attn+layers' : 2,
+# 'head_size' : 16,
+# 'num_heads' : 4,
+# 'ff_dim' : 32,
+# 'dropout' : 0.25
 
-def build_tran(X, num_classes, opt='SGD', loss='mean_squared_error'):
+def build_tran(X, num_classes, set, opt='SGD', loss='mean_squared_error'):
     print("Input Shape: ", X.shape)
     model = Sequential()
     model.add(layers.Input(shape=X[0].shape))
-    for _ in range(NUM_ATTN_LAYERS):
+    for _ in range(config_dic[set]['num_attn+layers']):
         model.add(layers.LayerNormalization(epsilon=1e-6))
-        model.add(layers.MultiHeadAttention(num_heads=NUM_HEADS, key_dim=HEAD_SIZE, dropout=DROPOUT)(model, model))
-        model.add(layers.Dropout(DROPOUT))
+        model.add(layers.MultiHeadAttention(num_heads=config_dic[set]['num_heads'], key_dim=config_dic[set]['head_size'], dropout=config_dic[set]['dropout'])(model, model))
+        model.add(layers.Dropout(config_dic[set]['dropout']))
         model.add(layers.LayerNormalization(epsilon=1e-6))
-        model.add(layers.Conv1D(filters=FF_DIM, kernel_size=1, activation='relu'))
-        model.add(layers.Dropout(DROPOUT))
+        model.add(layers.Conv1D(filters=config_dic[set]['ff_dim'], kernel_size=1, activation='relu'))
+        model.add(layers.Dropout(config_dic[set]['dropout']))
         model.add(layers.Conv1D(filters=X.shape[-1], kernel_size=1))
     model.add(layers.GlobalAveragePooling1D(data_format="channels_first"))
     model.add(layers.Dense(num_classes, activation='softmax'))
@@ -180,7 +182,7 @@ if __name__ == "__main__":
             y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
             y_train = to_categorical(y_train)
             X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-            model = build_tran(X_train, class_dic[f], opt='adam', loss='categorical_crossentropy')
+            model = build_tran(X_train, class_dic[f], set=f, opt='adam', loss='categorical_crossentropy')
             model = train_tran(model, X_train, y_train)
             for j, l_test in enumerate(labels):
                 if '5' in l_test:
