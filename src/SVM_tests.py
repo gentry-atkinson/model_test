@@ -15,7 +15,7 @@ import os
 from utils.ts_feature_toolkit import calc_AER, calc_TER, get_features_for_set, calc_bias_metrics, calc_error_rates, clean_nan_and_inf
 from datetime import date
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     sets = [

@@ -25,7 +25,7 @@ DEBUG = False
 
 if DEBUG:
     sets = [
-        'sn1', 'sn2'
+        'har2', 'har1'
     ]
 else:
     sets = [
@@ -83,12 +83,6 @@ def transformer_encoder(inputs, head_size, num_heads, ff_dim, dropout=0):
     x = layers.Conv1D(filters=inputs.shape[-1], kernel_size=1)(x)
     return x + res 
 
-# 'num_attn+layers' : 2,
-# 'head_size' : 16,
-# 'num_heads' : 4,
-# 'ff_dim' : 32,
-# 'dropout' : 0.25
-
 config_dic = loadDic('Transformer')
 
 def build_tran(X, num_classes, set, opt='SGD', loss='mean_squared_error'):
@@ -98,8 +92,8 @@ def build_tran(X, num_classes, set, opt='SGD', loss='mean_squared_error'):
     for _ in range(config_dic[set]['num_attn+layers']):
         x = transformer_encoder(x, config_dic[set]['head_size'], config_dic[set]['num_heads'], config_dic[set]['ff_dim'], config_dic[set]['dropout'])
     x = layers.Dense(128, activation='relu')(x)
+    x = layers.Flatten()(x)
     outputs = layers.Dense(num_classes, activation='softmax')(x)
-    outputs = layers.Flatten()(outputs)
     model = Model(inputs, outputs)
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
     model.summary()

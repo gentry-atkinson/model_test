@@ -1,4 +1,4 @@
-2022-01-29
+2022-02-01
 ############Experiment 1############
 Set: ss1
 Train Labels: clean
@@ -4791,5 +4791,2157 @@ Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
 0.810	0.779	1.263	0.971	1.129	0.960	1.163	
 0.512	0.551	1.130	0.716	0.883	0.713	0.926	
 0.723	0.725	1.304	1.023	1.239	1.046	1.296	
+
+
+############Experiment 197############
+Set: sn1
+Train Labels: clean
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87     23175
+           1       0.00      0.00      0.00      7076
+
+    accuracy                           0.77     30251
+   macro avg       0.38      0.50      0.43     30251
+weighted avg       0.59      0.77      0.66     30251
+
+Columns are predictions, rows are labels
+[[23175     0]
+ [ 7076     0]]
+AER: 0.234 MLR_train: 0.0 MLR_test:0.0 TER: 0.234, 0.234, 0.234
+
+############Experiment 198############
+Set: sn1
+Train Labels: clean
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.74      1.00      0.85     22375
+           1       0.00      0.00      0.00      7876
+
+    accuracy                           0.74     30251
+   macro avg       0.37      0.50      0.43     30251
+weighted avg       0.55      0.74      0.63     30251
+
+Columns are predictions, rows are labels
+[[22375     0]
+ [ 7876     0]]
+AER: 0.260 MLR_train: 0.0 MLR_test:0.05 TER: 0.234, 0.210, 0.310
+
+############Experiment 199############
+Set: sn1
+Train Labels: clean
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21532
+           1       0.00      0.00      0.00      8719
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21532     0]
+ [ 8719     0]]
+AER: 0.288 MLR_train: 0.0 MLR_test:0.1 TER: 0.235, 0.188, 0.388
+
+############Experiment 200############
+Set: sn1
+Train Labels: clean
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21585
+           1       0.00      0.00      0.00      8666
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21585     0]
+ [ 8666     0]]
+AER: 0.286 MLR_train: 0.0 MLR_test:0.05 TER: 0.263, 0.236, 0.336
+
+############Experiment 201############
+Set: sn1
+Train Labels: clean
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.66      1.00      0.79     19904
+           1       0.00      0.00      0.00     10347
+
+    accuracy                           0.66     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.43      0.66      0.52     30251
+
+Columns are predictions, rows are labels
+[[19904     0]
+ [10347     0]]
+AER: 0.342 MLR_train: 0.0 MLR_test:0.1 TER: 0.303, 0.242, 0.442
+
+############Experiment 202############
+Set: sn1
+Train Labels: clean
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.72      1.00      0.83     21662
+           1       0.00      0.00      0.00      8589
+
+    accuracy                           0.72     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.72      0.60     30251
+
+Columns are predictions, rows are labels
+[[21662     0]
+ [ 8589     0]]
+AER: 0.284 MLR_train: 0.0 MLR_test:0.05 TER: 0.260, 0.234, 0.334
+
+############Experiment 203############
+Set: sn1
+Train Labels: clean
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80     20149
+           1       0.00      0.00      0.00     10102
+
+    accuracy                           0.67     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.44      0.67      0.53     30251
+
+Columns are predictions, rows are labels
+[[20149     0]
+ [10102     0]]
+AER: 0.334 MLR_train: 0.0 MLR_test:0.1 TER: 0.292, 0.234, 0.434
+
+############Experiment 204############
+Set: sn1
+Train Labels: ncar5
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87     23175
+           1       0.00      0.00      0.00      7076
+
+    accuracy                           0.77     30251
+   macro avg       0.38      0.50      0.43     30251
+weighted avg       0.59      0.77      0.66     30251
+
+Columns are predictions, rows are labels
+[[23175     0]
+ [ 7076     0]]
+AER: 0.234 MLR_train: 0.05 MLR_test:0.0 TER: 0.234, 0.234, 0.234
+
+############Experiment 205############
+Set: sn1
+Train Labels: ncar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.74      1.00      0.85     22375
+           1       0.00      0.00      0.00      7876
+
+    accuracy                           0.74     30251
+   macro avg       0.37      0.50      0.43     30251
+weighted avg       0.55      0.74      0.63     30251
+
+Columns are predictions, rows are labels
+[[22375     0]
+ [ 7876     0]]
+AER: 0.260 MLR_train: 0.05 MLR_test:0.05 TER: 0.234, 0.210, 0.310
+
+############Experiment 206############
+Set: sn1
+Train Labels: ncar5
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21532
+           1       0.00      0.00      0.00      8719
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21532     0]
+ [ 8719     0]]
+AER: 0.288 MLR_train: 0.05 MLR_test:0.1 TER: 0.235, 0.188, 0.388
+
+############Experiment 207############
+Set: sn1
+Train Labels: ncar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21585
+           1       0.00      0.00      0.00      8666
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21585     0]
+ [ 8666     0]]
+AER: 0.286 MLR_train: 0.05 MLR_test:0.05 TER: 0.263, 0.236, 0.336
+
+############Experiment 208############
+Set: sn1
+Train Labels: ncar5
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.66      1.00      0.79     19904
+           1       0.00      0.00      0.00     10347
+
+    accuracy                           0.66     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.43      0.66      0.52     30251
+
+Columns are predictions, rows are labels
+[[19904     0]
+ [10347     0]]
+AER: 0.342 MLR_train: 0.05 MLR_test:0.1 TER: 0.303, 0.242, 0.442
+
+############Experiment 209############
+Set: sn1
+Train Labels: ncar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.72      1.00      0.83     21662
+           1       0.00      0.00      0.00      8589
+
+    accuracy                           0.72     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.72      0.60     30251
+
+Columns are predictions, rows are labels
+[[21662     0]
+ [ 8589     0]]
+AER: 0.284 MLR_train: 0.05 MLR_test:0.05 TER: 0.260, 0.234, 0.334
+
+############Experiment 210############
+Set: sn1
+Train Labels: ncar5
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80     20149
+           1       0.00      0.00      0.00     10102
+
+    accuracy                           0.67     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.44      0.67      0.53     30251
+
+Columns are predictions, rows are labels
+[[20149     0]
+ [10102     0]]
+AER: 0.334 MLR_train: 0.05 MLR_test:0.1 TER: 0.292, 0.234, 0.434
+
+############Experiment 211############
+Set: sn1
+Train Labels: ncar10
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87     23175
+           1       0.00      0.00      0.00      7076
+
+    accuracy                           0.77     30251
+   macro avg       0.38      0.50      0.43     30251
+weighted avg       0.59      0.77      0.66     30251
+
+Columns are predictions, rows are labels
+[[23175     0]
+ [ 7076     0]]
+AER: 0.234 MLR_train: 0.1 MLR_test:0.0 TER: 0.234, 0.234, 0.234
+
+############Experiment 212############
+Set: sn1
+Train Labels: ncar10
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.74      1.00      0.85     22375
+           1       0.00      0.00      0.00      7876
+
+    accuracy                           0.74     30251
+   macro avg       0.37      0.50      0.43     30251
+weighted avg       0.55      0.74      0.63     30251
+
+Columns are predictions, rows are labels
+[[22375     0]
+ [ 7876     0]]
+AER: 0.260 MLR_train: 0.1 MLR_test:0.05 TER: 0.234, 0.210, 0.310
+
+############Experiment 213############
+Set: sn1
+Train Labels: ncar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21532
+           1       0.00      0.00      0.00      8719
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21532     0]
+ [ 8719     0]]
+AER: 0.288 MLR_train: 0.1 MLR_test:0.1 TER: 0.235, 0.188, 0.388
+
+############Experiment 214############
+Set: sn1
+Train Labels: ncar10
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21585
+           1       0.00      0.00      0.00      8666
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21585     0]
+ [ 8666     0]]
+AER: 0.286 MLR_train: 0.1 MLR_test:0.05 TER: 0.263, 0.236, 0.336
+
+############Experiment 215############
+Set: sn1
+Train Labels: ncar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.66      1.00      0.79     19904
+           1       0.00      0.00      0.00     10347
+
+    accuracy                           0.66     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.43      0.66      0.52     30251
+
+Columns are predictions, rows are labels
+[[19904     0]
+ [10347     0]]
+AER: 0.342 MLR_train: 0.1 MLR_test:0.1 TER: 0.303, 0.242, 0.442
+
+############Experiment 216############
+Set: sn1
+Train Labels: ncar10
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.72      1.00      0.83     21662
+           1       0.00      0.00      0.00      8589
+
+    accuracy                           0.72     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.72      0.60     30251
+
+Columns are predictions, rows are labels
+[[21662     0]
+ [ 8589     0]]
+AER: 0.284 MLR_train: 0.1 MLR_test:0.05 TER: 0.260, 0.234, 0.334
+
+############Experiment 217############
+Set: sn1
+Train Labels: ncar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80     20149
+           1       0.00      0.00      0.00     10102
+
+    accuracy                           0.67     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.44      0.67      0.53     30251
+
+Columns are predictions, rows are labels
+[[20149     0]
+ [10102     0]]
+AER: 0.334 MLR_train: 0.1 MLR_test:0.1 TER: 0.292, 0.234, 0.434
+
+############Experiment 218############
+Set: sn1
+Train Labels: nar5
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87     23175
+           1       0.00      0.00      0.00      7076
+
+    accuracy                           0.77     30251
+   macro avg       0.38      0.50      0.43     30251
+weighted avg       0.59      0.77      0.66     30251
+
+Columns are predictions, rows are labels
+[[23175     0]
+ [ 7076     0]]
+AER: 0.234 MLR_train: 0.05 MLR_test:0.0 TER: 0.234, 0.234, 0.234
+
+############Experiment 219############
+Set: sn1
+Train Labels: nar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.74      1.00      0.85     22375
+           1       0.00      0.00      0.00      7876
+
+    accuracy                           0.74     30251
+   macro avg       0.37      0.50      0.43     30251
+weighted avg       0.55      0.74      0.63     30251
+
+Columns are predictions, rows are labels
+[[22375     0]
+ [ 7876     0]]
+AER: 0.260 MLR_train: 0.05 MLR_test:0.05 TER: 0.234, 0.210, 0.310
+
+############Experiment 220############
+Set: sn1
+Train Labels: nar5
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21532
+           1       0.00      0.00      0.00      8719
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21532     0]
+ [ 8719     0]]
+AER: 0.288 MLR_train: 0.05 MLR_test:0.1 TER: 0.235, 0.188, 0.388
+
+############Experiment 221############
+Set: sn1
+Train Labels: nar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21585
+           1       0.00      0.00      0.00      8666
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21585     0]
+ [ 8666     0]]
+AER: 0.286 MLR_train: 0.05 MLR_test:0.05 TER: 0.263, 0.236, 0.336
+
+############Experiment 222############
+Set: sn1
+Train Labels: nar5
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.66      1.00      0.79     19904
+           1       0.00      0.00      0.00     10347
+
+    accuracy                           0.66     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.43      0.66      0.52     30251
+
+Columns are predictions, rows are labels
+[[19904     0]
+ [10347     0]]
+AER: 0.342 MLR_train: 0.05 MLR_test:0.1 TER: 0.303, 0.242, 0.442
+
+############Experiment 223############
+Set: sn1
+Train Labels: nar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.72      1.00      0.83     21662
+           1       0.00      0.00      0.00      8589
+
+    accuracy                           0.72     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.72      0.60     30251
+
+Columns are predictions, rows are labels
+[[21662     0]
+ [ 8589     0]]
+AER: 0.284 MLR_train: 0.05 MLR_test:0.05 TER: 0.260, 0.234, 0.334
+
+############Experiment 224############
+Set: sn1
+Train Labels: nar5
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80     20149
+           1       0.00      0.00      0.00     10102
+
+    accuracy                           0.67     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.44      0.67      0.53     30251
+
+Columns are predictions, rows are labels
+[[20149     0]
+ [10102     0]]
+AER: 0.334 MLR_train: 0.05 MLR_test:0.1 TER: 0.292, 0.234, 0.434
+
+############Experiment 225############
+Set: sn1
+Train Labels: nar10
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87     23175
+           1       0.00      0.00      0.00      7076
+
+    accuracy                           0.77     30251
+   macro avg       0.38      0.50      0.43     30251
+weighted avg       0.59      0.77      0.66     30251
+
+Columns are predictions, rows are labels
+[[23175     0]
+ [ 7076     0]]
+AER: 0.234 MLR_train: 0.1 MLR_test:0.0 TER: 0.234, 0.234, 0.234
+
+############Experiment 226############
+Set: sn1
+Train Labels: nar10
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.74      1.00      0.85     22375
+           1       0.00      0.00      0.00      7876
+
+    accuracy                           0.74     30251
+   macro avg       0.37      0.50      0.43     30251
+weighted avg       0.55      0.74      0.63     30251
+
+Columns are predictions, rows are labels
+[[22375     0]
+ [ 7876     0]]
+AER: 0.260 MLR_train: 0.1 MLR_test:0.05 TER: 0.234, 0.210, 0.310
+
+############Experiment 227############
+Set: sn1
+Train Labels: nar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21532
+           1       0.00      0.00      0.00      8719
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21532     0]
+ [ 8719     0]]
+AER: 0.288 MLR_train: 0.1 MLR_test:0.1 TER: 0.235, 0.188, 0.388
+
+############Experiment 228############
+Set: sn1
+Train Labels: nar10
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21585
+           1       0.00      0.00      0.00      8666
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21585     0]
+ [ 8666     0]]
+AER: 0.286 MLR_train: 0.1 MLR_test:0.05 TER: 0.263, 0.236, 0.336
+
+############Experiment 229############
+Set: sn1
+Train Labels: nar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.66      1.00      0.79     19904
+           1       0.00      0.00      0.00     10347
+
+    accuracy                           0.66     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.43      0.66      0.52     30251
+
+Columns are predictions, rows are labels
+[[19904     0]
+ [10347     0]]
+AER: 0.342 MLR_train: 0.1 MLR_test:0.1 TER: 0.303, 0.242, 0.442
+
+############Experiment 230############
+Set: sn1
+Train Labels: nar10
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.72      1.00      0.83     21662
+           1       0.00      0.00      0.00      8589
+
+    accuracy                           0.72     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.72      0.60     30251
+
+Columns are predictions, rows are labels
+[[21662     0]
+ [ 8589     0]]
+AER: 0.284 MLR_train: 0.1 MLR_test:0.05 TER: 0.260, 0.234, 0.334
+
+############Experiment 231############
+Set: sn1
+Train Labels: nar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80     20149
+           1       0.00      0.00      0.00     10102
+
+    accuracy                           0.67     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.44      0.67      0.53     30251
+
+Columns are predictions, rows are labels
+[[20149     0]
+ [10102     0]]
+AER: 0.334 MLR_train: 0.1 MLR_test:0.1 TER: 0.292, 0.234, 0.434
+
+############Experiment 232############
+Set: sn1
+Train Labels: nnar5
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87     23175
+           1       0.00      0.00      0.00      7076
+
+    accuracy                           0.77     30251
+   macro avg       0.38      0.50      0.43     30251
+weighted avg       0.59      0.77      0.66     30251
+
+Columns are predictions, rows are labels
+[[23175     0]
+ [ 7076     0]]
+AER: 0.234 MLR_train: 0.05 MLR_test:0.0 TER: 0.234, 0.234, 0.234
+
+############Experiment 233############
+Set: sn1
+Train Labels: nnar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.74      1.00      0.85     22375
+           1       0.00      0.00      0.00      7876
+
+    accuracy                           0.74     30251
+   macro avg       0.37      0.50      0.43     30251
+weighted avg       0.55      0.74      0.63     30251
+
+Columns are predictions, rows are labels
+[[22375     0]
+ [ 7876     0]]
+AER: 0.260 MLR_train: 0.05 MLR_test:0.05 TER: 0.234, 0.210, 0.310
+
+############Experiment 234############
+Set: sn1
+Train Labels: nnar5
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21532
+           1       0.00      0.00      0.00      8719
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21532     0]
+ [ 8719     0]]
+AER: 0.288 MLR_train: 0.05 MLR_test:0.1 TER: 0.235, 0.188, 0.388
+
+############Experiment 235############
+Set: sn1
+Train Labels: nnar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21585
+           1       0.00      0.00      0.00      8666
+
+    accuracy                           0.71     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21585     0]
+ [ 8666     0]]
+AER: 0.286 MLR_train: 0.05 MLR_test:0.05 TER: 0.263, 0.236, 0.336
+
+############Experiment 236############
+Set: sn1
+Train Labels: nnar5
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.66      1.00      0.79     19904
+           1       0.00      0.00      0.00     10347
+
+    accuracy                           0.66     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.43      0.66      0.52     30251
+
+Columns are predictions, rows are labels
+[[19904     0]
+ [10347     0]]
+AER: 0.342 MLR_train: 0.05 MLR_test:0.1 TER: 0.303, 0.242, 0.442
+
+############Experiment 237############
+Set: sn1
+Train Labels: nnar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.72      1.00      0.83     21662
+           1       0.00      0.00      0.00      8589
+
+    accuracy                           0.72     30251
+   macro avg       0.36      0.50      0.42     30251
+weighted avg       0.51      0.72      0.60     30251
+
+Columns are predictions, rows are labels
+[[21662     0]
+ [ 8589     0]]
+AER: 0.284 MLR_train: 0.05 MLR_test:0.05 TER: 0.260, 0.234, 0.334
+
+############Experiment 238############
+Set: sn1
+Train Labels: nnar5
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80     20149
+           1       0.00      0.00      0.00     10102
+
+    accuracy                           0.67     30251
+   macro avg       0.33      0.50      0.40     30251
+weighted avg       0.44      0.67      0.53     30251
+
+Columns are predictions, rows are labels
+[[20149     0]
+ [10102     0]]
+AER: 0.334 MLR_train: 0.05 MLR_test:0.1 TER: 0.292, 0.234, 0.434
+
+############Experiment 239############
+Set: sn1
+Train Labels: nnar10
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       0.77      1.00      0.87     23175
+           1       0.09      0.00      0.00      7076
+
+    accuracy                           0.76     30251
+   macro avg       0.43      0.50      0.43     30251
+weighted avg       0.61      0.76      0.66     30251
+
+Columns are predictions, rows are labels
+[[23069   106]
+ [ 7066    10]]
+AER: 0.237 MLR_train: 0.1 MLR_test:0.0 TER: 0.237, 0.237, 0.237
+
+############Experiment 240############
+Set: sn1
+Train Labels: nnar10
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.74      1.00      0.85     22375
+           1       0.14      0.00      0.00      7876
+
+    accuracy                           0.74     30251
+   macro avg       0.44      0.50      0.43     30251
+weighted avg       0.58      0.74      0.63     30251
+
+Columns are predictions, rows are labels
+[[22275   100]
+ [ 7860    16]]
+AER: 0.263 MLR_train: 0.1 MLR_test:0.05 TER: 0.237, 0.213, 0.313
+
+############Experiment 241############
+Set: sn1
+Train Labels: nnar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21532
+           1       0.18      0.00      0.00      8719
+
+    accuracy                           0.71     30251
+   macro avg       0.45      0.50      0.42     30251
+weighted avg       0.56      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21437    95]
+ [ 8698    21]]
+AER: 0.291 MLR_train: 0.1 MLR_test:0.1 TER: 0.238, 0.191, 0.391
+
+############Experiment 242############
+Set: sn1
+Train Labels: nnar10
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.71      1.00      0.83     21585
+           1       0.15      0.00      0.00      8666
+
+    accuracy                           0.71     30251
+   macro avg       0.43      0.50      0.42     30251
+weighted avg       0.55      0.71      0.59     30251
+
+Columns are predictions, rows are labels
+[[21486    99]
+ [ 8649    17]]
+AER: 0.289 MLR_train: 0.1 MLR_test:0.05 TER: 0.266, 0.239, 0.339
+
+############Experiment 243############
+Set: sn1
+Train Labels: nnar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.66      1.00      0.79     19904
+           1       0.16      0.00      0.00     10347
+
+    accuracy                           0.66     30251
+   macro avg       0.41      0.50      0.40     30251
+weighted avg       0.49      0.66      0.52     30251
+
+Columns are predictions, rows are labels
+[[19807    97]
+ [10328    19]]
+AER: 0.345 MLR_train: 0.1 MLR_test:0.1 TER: 0.306, 0.245, 0.445
+
+############Experiment 244############
+Set: sn1
+Train Labels: nnar10
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.72      1.00      0.83     21662
+           1       0.16      0.00      0.00      8589
+
+    accuracy                           0.71     30251
+   macro avg       0.44      0.50      0.42     30251
+weighted avg       0.56      0.71      0.60     30251
+
+Columns are predictions, rows are labels
+[[21564    98]
+ [ 8571    18]]
+AER: 0.287 MLR_train: 0.1 MLR_test:0.05 TER: 0.263, 0.237, 0.337
+
+############Experiment 245############
+Set: sn1
+Train Labels: nnar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80     20149
+           1       0.25      0.00      0.01     10102
+
+    accuracy                           0.66     30251
+   macro avg       0.46      0.50      0.40     30251
+weighted avg       0.53      0.66      0.53     30251
+
+Columns are predictions, rows are labels
+[[20062    87]
+ [10073    29]]
+AER: 0.336 MLR_train: 0.1 MLR_test:0.1 TER: 0.295, 0.236, 0.436
+
+Summary of sn1
+Apparent Error Rates. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.234	0.260	0.288	0.286	0.342	0.284	0.334	
+0.234	0.260	0.288	0.286	0.342	0.284	0.334	
+0.234	0.260	0.288	0.286	0.342	0.284	0.334	
+0.234	0.260	0.288	0.286	0.342	0.284	0.334	
+0.234	0.260	0.288	0.286	0.342	0.284	0.334	
+0.234	0.260	0.288	0.286	0.342	0.284	0.334	
+0.237	0.263	0.291	0.289	0.345	0.287	0.336	
+
+
+True Error Rates. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.234, 0.234, 0.234	0.234, 0.210, 0.310	0.235, 0.188, 0.388	0.263, 0.236, 0.336	0.303, 0.242, 0.442	0.260, 0.234, 0.334	0.292, 0.234, 0.434	
+0.234, 0.234, 0.234	0.234, 0.210, 0.310	0.235, 0.188, 0.388	0.263, 0.236, 0.336	0.303, 0.242, 0.442	0.260, 0.234, 0.334	0.292, 0.234, 0.434	
+0.234, 0.234, 0.234	0.234, 0.210, 0.310	0.235, 0.188, 0.388	0.263, 0.236, 0.336	0.303, 0.242, 0.442	0.260, 0.234, 0.334	0.292, 0.234, 0.434	
+0.234, 0.234, 0.234	0.234, 0.210, 0.310	0.235, 0.188, 0.388	0.263, 0.236, 0.336	0.303, 0.242, 0.442	0.260, 0.234, 0.334	0.292, 0.234, 0.434	
+0.234, 0.234, 0.234	0.234, 0.210, 0.310	0.235, 0.188, 0.388	0.263, 0.236, 0.336	0.303, 0.242, 0.442	0.260, 0.234, 0.334	0.292, 0.234, 0.434	
+0.234, 0.234, 0.234	0.234, 0.210, 0.310	0.235, 0.188, 0.388	0.263, 0.236, 0.336	0.303, 0.242, 0.442	0.260, 0.234, 0.334	0.292, 0.234, 0.434	
+0.237, 0.237, 0.237	0.237, 0.213, 0.313	0.238, 0.191, 0.391	0.266, 0.239, 0.339	0.306, 0.245, 0.445	0.263, 0.237, 0.337	0.295, 0.236, 0.436	
+
+
+CEV. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.000	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+
+
+
+
+SDE. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.000	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+inf	inf	inf	inf	inf	inf	inf	
+
+
+############Experiment 246############
+Set: sn2
+Train Labels: clean
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      1558
+           1       0.73      0.99      0.84       670
+           2       0.05      0.50      0.08         4
+           3       0.00      0.00      0.00         1
+           4       0.93      0.14      0.24       401
+
+    accuracy                           0.86      2634
+   macro avg       0.54      0.52      0.43      2634
+weighted avg       0.92      0.86      0.84      2634
+
+Columns are predictions, rows are labels
+[[1558    0    0    0    0]
+ [   0  660    3    3    4]
+ [   0    2    2    0    0]
+ [   0    1    0    0    0]
+ [   3  238   39   65   56]]
+AER: 0.136 MLR_train: 0.0 MLR_test:0.0 TER: 0.136, 0.136, 0.136
+
+############Experiment 247############
+Set: sn2
+Train Labels: clean
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97      1501
+           1       0.70      0.95      0.81       660
+           2       0.09      0.13      0.11        30
+           3       0.00      0.00      0.00        31
+           4       0.90      0.13      0.23       412
+
+    accuracy                           0.83      2634
+   macro avg       0.53      0.44      0.42      2634
+weighted avg       0.86      0.83      0.79      2634
+
+Columns are predictions, rows are labels
+[[1489   10    0    1    1]
+ [  17  630    3    5    5]
+ [  19    6    4    1    0]
+ [  18   12    1    0    0]
+ [  18  243   36   61   54]]
+AER: 0.174 MLR_train: 0.0 MLR_test:0.05 TER: 0.137, 0.124, 0.224
+
+############Experiment 248############
+Set: sn2
+Train Labels: clean
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.90      0.98      0.94      1433
+           1       0.69      0.92      0.79       670
+           2       0.05      0.03      0.04        66
+           3       0.00      0.00      0.00        61
+           4       0.87      0.13      0.22       404
+
+    accuracy                           0.79      2634
+   macro avg       0.50      0.41      0.40      2634
+weighted avg       0.80      0.79      0.75      2634
+
+Columns are predictions, rows are labels
+[[1406   24    1    2    0]
+ [  39  618    5    3    5]
+ [  42   18    2    4    0]
+ [  39   18    1    0    3]
+ [  35  223   35   59   52]]
+AER: 0.211 MLR_train: 0.0 MLR_test:0.1 TER: 0.139, 0.111, 0.311
+
+############Experiment 249############
+Set: sn2
+Train Labels: clean
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96      1435
+           1       0.73      0.99      0.84       670
+           2       0.05      0.50      0.08         4
+           3       0.00      0.00      0.00       124
+           4       0.93      0.14      0.24       401
+
+    accuracy                           0.82      2634
+   macro avg       0.53      0.52      0.42      2634
+weighted avg       0.83      0.82      0.77      2634
+
+Columns are predictions, rows are labels
+[[1435    0    0    0    0]
+ [   0  660    3    3    4]
+ [   0    2    2    0    0]
+ [ 123    1    0    0    0]
+ [   3  238   39   65   56]]
+AER: 0.183 MLR_train: 0.0 MLR_test:0.05 TER: 0.147, 0.133, 0.233
+
+############Experiment 250############
+Set: sn2
+Train Labels: clean
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1300
+           1       0.73      0.99      0.84       670
+           2       0.05      0.50      0.08         4
+           3       0.00      0.00      0.00       259
+           4       0.93      0.14      0.24       401
+
+    accuracy                           0.77      2634
+   macro avg       0.51      0.52      0.42      2634
+weighted avg       0.74      0.77      0.70      2634
+
+Columns are predictions, rows are labels
+[[1300    0    0    0    0]
+ [   0  660    3    3    4]
+ [   0    2    2    0    0]
+ [ 258    1    0    0    0]
+ [   3  238   39   65   56]]
+AER: 0.234 MLR_train: 0.0 MLR_test:0.1 TER: 0.167, 0.134, 0.334
+
+############Experiment 251############
+Set: sn2
+Train Labels: clean
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.91      1.00      0.95      1426
+           1       0.73      0.99      0.84       670
+           2       0.05      0.50      0.08         4
+           3       0.00      0.00      0.00       133
+           4       0.93      0.14      0.24       401
+
+    accuracy                           0.81      2634
+   macro avg       0.52      0.52      0.42      2634
+weighted avg       0.82      0.81      0.77      2634
+
+Columns are predictions, rows are labels
+[[1426    0    0    0    0]
+ [   0  660    3    3    4]
+ [   0    2    2    0    0]
+ [ 132    1    0    0    0]
+ [   3  238   39   65   56]]
+AER: 0.186 MLR_train: 0.0 MLR_test:0.05 TER: 0.151, 0.136, 0.236
+
+############Experiment 252############
+Set: sn2
+Train Labels: clean
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1294
+           1       0.73      0.99      0.84       670
+           2       0.05      0.50      0.08         4
+           3       0.00      0.00      0.00       265
+           4       0.93      0.14      0.24       401
+
+    accuracy                           0.76      2634
+   macro avg       0.51      0.52      0.41      2634
+weighted avg       0.74      0.76      0.70      2634
+
+Columns are predictions, rows are labels
+[[1294    0    0    0    0]
+ [   0  660    3    3    4]
+ [   0    2    2    0    0]
+ [ 264    1    0    0    0]
+ [   3  238   39   65   56]]
+AER: 0.236 MLR_train: 0.0 MLR_test:0.1 TER: 0.170, 0.136, 0.336
+
+############Experiment 253############
+Set: sn2
+Train Labels: ncar5
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       1.00      0.94      0.97      1558
+           1       0.70      0.99      0.82       670
+           2       0.00      0.00      0.00         4
+           3       0.00      0.00      0.00         1
+           4       0.67      0.02      0.05       401
+
+    accuracy                           0.81      2634
+   macro avg       0.47      0.39      0.37      2634
+weighted avg       0.87      0.81      0.79      2634
+
+Columns are predictions, rows are labels
+[[1461    0    0   96    1]
+ [   0  663    1    4    2]
+ [   0    2    0    0    2]
+ [   0    1    0    0    0]
+ [   0  277   28   86   10]]
+AER: 0.190 MLR_train: 0.05 MLR_test:0.0 TER: 0.190, 0.190, 0.190
+
+############Experiment 254############
+Set: sn2
+Train Labels: ncar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.96      0.93      0.94      1501
+           1       0.67      0.96      0.79       660
+           2       0.10      0.10      0.10        30
+           3       0.01      0.03      0.01        31
+           4       0.60      0.02      0.04       412
+
+    accuracy                           0.78      2634
+   macro avg       0.47      0.41      0.38      2634
+weighted avg       0.81      0.78      0.74      2634
+
+Columns are predictions, rows are labels
+[[1396   11    0   94    0]
+ [  15  633    1    9    2]
+ [  18    6    3    0    3]
+ [  16   12    1    1    1]
+ [  16  281   24   82    9]]
+AER: 0.225 MLR_train: 0.05 MLR_test:0.05 TER: 0.194, 0.175, 0.275
+
+############Experiment 255############
+Set: sn2
+Train Labels: ncar5
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.90      0.92      0.91      1433
+           1       0.66      0.93      0.77       670
+           2       0.03      0.02      0.02        66
+           3       0.02      0.07      0.03        61
+           4       0.60      0.02      0.04       404
+
+    accuracy                           0.74      2634
+   macro avg       0.44      0.39      0.36      2634
+weighted avg       0.75      0.74      0.70      2634
+
+Columns are predictions, rows are labels
+[[1319   24    1   88    1]
+ [  38  621    1    7    3]
+ [  37   19    1    7    2]
+ [  37   19    1    4    0]
+ [  30  260   25   80    9]]
+AER: 0.258 MLR_train: 0.05 MLR_test:0.1 TER: 0.198, 0.158, 0.358
+
+############Experiment 256############
+Set: sn2
+Train Labels: ncar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.92      0.94      0.93      1435
+           1       0.70      0.99      0.82       670
+           2       0.00      0.00      0.00         4
+           3       0.05      0.07      0.06       124
+           4       0.67      0.02      0.05       401
+
+    accuracy                           0.77      2634
+   macro avg       0.47      0.41      0.37      2634
+weighted avg       0.78      0.77      0.73      2634
+
+Columns are predictions, rows are labels
+[[1347    0    0   87    1]
+ [   0  663    1    4    2]
+ [   0    2    0    0    2]
+ [ 114    1    0    9    0]
+ [   0  277   28   86   10]]
+AER: 0.230 MLR_train: 0.05 MLR_test:0.05 TER: 0.200, 0.180, 0.280
+
+############Experiment 257############
+Set: sn2
+Train Labels: ncar5
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.84      0.94      0.89      1300
+           1       0.70      0.99      0.82       670
+           2       0.00      0.00      0.00         4
+           3       0.12      0.09      0.10       259
+           4       0.67      0.02      0.05       401
+
+    accuracy                           0.73      2634
+   macro avg       0.47      0.41      0.37      2634
+weighted avg       0.71      0.73      0.66      2634
+
+Columns are predictions, rows are labels
+[[1226    0    0   73    1]
+ [   0  663    1    4    2]
+ [   0    2    0    0    2]
+ [ 235    1    0   23    0]
+ [   0  277   28   86   10]]
+AER: 0.270 MLR_train: 0.05 MLR_test:0.1 TER: 0.213, 0.170, 0.370
+
+############Experiment 258############
+Set: sn2
+Train Labels: ncar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.92      0.94      0.93      1426
+           1       0.70      0.99      0.82       670
+           2       0.00      0.00      0.00         4
+           3       0.04      0.06      0.05       133
+           4       0.67      0.02      0.05       401
+
+    accuracy                           0.77      2634
+   macro avg       0.47      0.40      0.37      2634
+weighted avg       0.78      0.77      0.72      2634
+
+Columns are predictions, rows are labels
+[[1338    0    0   88    0]
+ [   0  663    1    4    2]
+ [   0    2    0    0    2]
+ [ 123    1    0    8    1]
+ [   0  277   28   86   10]]
+AER: 0.233 MLR_train: 0.05 MLR_test:0.05 TER: 0.204, 0.183, 0.283
+
+############Experiment 259############
+Set: sn2
+Train Labels: ncar5
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.83      0.94      0.88      1294
+           1       0.70      0.99      0.82       670
+           2       0.00      0.00      0.00         4
+           3       0.07      0.05      0.06       265
+           4       0.67      0.02      0.05       401
+
+    accuracy                           0.72      2634
+   macro avg       0.45      0.40      0.36      2634
+weighted avg       0.69      0.72      0.65      2634
+
+Columns are predictions, rows are labels
+[[1210    0    0   83    1]
+ [   0  663    1    4    2]
+ [   0    2    0    0    2]
+ [ 251    1    0   13    0]
+ [   0  277   28   86   10]]
+AER: 0.280 MLR_train: 0.05 MLR_test:0.1 TER: 0.225, 0.180, 0.380
+
+############Experiment 260############
+Set: sn2
+Train Labels: ncar10
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       1.00      0.01      0.02      1558
+           1       0.27      0.99      0.42       670
+           2       0.00      0.00      0.00         4
+           3       0.00      0.00      0.00         1
+           4       0.97      0.08      0.15       401
+
+    accuracy                           0.27      2634
+   macro avg       0.45      0.22      0.12      2634
+weighted avg       0.81      0.27      0.14      2634
+
+Columns are predictions, rows are labels
+[[  15 1543    0    0    0]
+ [   0  663    1    5    1]
+ [   0    2    0    2    0]
+ [   0    1    0    0    0]
+ [   0  275   20   74   32]]
+AER: 0.730 MLR_train: 0.1 MLR_test:0.0 TER: 0.730, 0.730, 0.730
+
+############Experiment 261############
+Set: sn2
+Train Labels: ncar10
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.80      0.01      0.02      1501
+           1       0.26      0.98      0.41       660
+           2       0.10      0.07      0.08        30
+           3       0.00      0.00      0.00        31
+           4       0.91      0.07      0.13       412
+
+    accuracy                           0.26      2634
+   macro avg       0.41      0.23      0.13      2634
+weighted avg       0.66      0.26      0.13      2634
+
+Columns are predictions, rows are labels
+[[  12 1488    0    1    0]
+ [   0  650    1    7    2]
+ [   1   23    2    3    1]
+ [   2   28    1    0    0]
+ [   0  295   17   70   30]]
+AER: 0.737 MLR_train: 0.1 MLR_test:0.05 TER: 0.763, 0.687, 0.787
+
+############Experiment 262############
+Set: sn2
+Train Labels: ncar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.93      0.01      0.02      1433
+           1       0.27      0.98      0.42       670
+           2       0.00      0.00      0.00        66
+           3       0.00      0.00      0.00        61
+           4       0.88      0.07      0.13       404
+
+    accuracy                           0.27      2634
+   macro avg       0.42      0.21      0.11      2634
+weighted avg       0.71      0.27      0.14      2634
+
+Columns are predictions, rows are labels
+[[  14 1416    1    2    0]
+ [   1  659    1    8    1]
+ [   0   60    0    4    2]
+ [   0   59    1    0    1]
+ [   0  290   18   67   29]]
+AER: 0.733 MLR_train: 0.1 MLR_test:0.1 TER: 0.792, 0.633, 0.833
+
+############Experiment 263############
+Set: sn2
+Train Labels: ncar10
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.93      0.01      0.02      1435
+           1       0.27      0.99      0.42       670
+           2       0.00      0.00      0.00         4
+           3       0.00      0.00      0.00       124
+           4       0.97      0.08      0.15       401
+
+    accuracy                           0.27      2634
+   macro avg       0.43      0.22      0.12      2634
+weighted avg       0.72      0.27      0.14      2634
+
+Columns are predictions, rows are labels
+[[  14 1421    0    0    0]
+ [   0  663    1    5    1]
+ [   0    2    0    2    0]
+ [   1  123    0    0    0]
+ [   0  275   20   74   32]]
+AER: 0.731 MLR_train: 0.1 MLR_test:0.05 TER: 0.756, 0.681, 0.781
+
+############Experiment 264############
+Set: sn2
+Train Labels: ncar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.80      0.01      0.02      1300
+           1       0.27      0.99      0.42       670
+           2       0.00      0.00      0.00         4
+           3       0.00      0.00      0.00       259
+           4       0.97      0.08      0.15       401
+
+    accuracy                           0.27      2634
+   macro avg       0.41      0.22      0.12      2634
+weighted avg       0.61      0.27      0.14      2634
+
+Columns are predictions, rows are labels
+[[  12 1288    0    0    0]
+ [   0  663    1    5    1]
+ [   0    2    0    2    0]
+ [   3  256    0    0    0]
+ [   0  275   20   74   32]]
+AER: 0.732 MLR_train: 0.1 MLR_test:0.1 TER: 0.789, 0.632, 0.832
+
+############Experiment 265############
+Set: sn2
+Train Labels: ncar10
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.93      0.01      0.02      1426
+           1       0.27      0.99      0.42       670
+           2       0.00      0.00      0.00         4
+           3       0.00      0.00      0.00       133
+           4       0.97      0.08      0.15       401
+
+    accuracy                           0.27      2634
+   macro avg       0.43      0.22      0.12      2634
+weighted avg       0.72      0.27      0.14      2634
+
+Columns are predictions, rows are labels
+[[  14 1412    0    0    0]
+ [   0  663    1    5    1]
+ [   0    2    0    2    0]
+ [   1  132    0    0    0]
+ [   0  275   20   74   32]]
+AER: 0.731 MLR_train: 0.1 MLR_test:0.05 TER: 0.756, 0.681, 0.781
+
+############Experiment 266############
+Set: sn2
+Train Labels: ncar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       1.00      0.01      0.02      1294
+           1       0.27      0.99      0.42       670
+           2       0.00      0.00      0.00         4
+           3       0.00      0.00      0.00       265
+           4       0.97      0.08      0.15       401
+
+    accuracy                           0.27      2634
+   macro avg       0.45      0.22      0.12      2634
+weighted avg       0.71      0.27      0.14      2634
+
+Columns are predictions, rows are labels
+[[  15 1279    0    0    0]
+ [   0  663    1    5    1]
+ [   0    2    0    2    0]
+ [   0  265    0    0    0]
+ [   0  275   20   74   32]]
+AER: 0.730 MLR_train: 0.1 MLR_test:0.1 TER: 0.788, 0.630, 0.830
+
+############Experiment 267############
+Set: sn2
+Train Labels: nar5
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       1.00      0.85      0.92      1558
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.00      0.00      0.00         1
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.78      2634
+   macro avg       0.54      0.50      0.42      2634
+weighted avg       0.92      0.78      0.80      2634
+
+Columns are predictions, rows are labels
+[[1317    0    0  241    0]
+ [   0  660    6    0    4]
+ [   0    2    2    0    0]
+ [   0    1    0    0    0]
+ [   0  238   87    6   70]]
+AER: 0.222 MLR_train: 0.05 MLR_test:0.0 TER: 0.222, 0.222, 0.222
+
+############Experiment 268############
+Set: sn2
+Train Labels: nar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.96      0.84      0.89      1501
+           1       0.70      0.95      0.81       660
+           2       0.05      0.17      0.08        30
+           3       0.01      0.10      0.02        31
+           4       0.92      0.17      0.28       412
+
+    accuracy                           0.75      2634
+   macro avg       0.53      0.44      0.42      2634
+weighted avg       0.86      0.75      0.76      2634
+
+Columns are predictions, rows are labels
+[[1260   10    1  229    1]
+ [   9  630    8    8    5]
+ [  17    6    5    2    0]
+ [  15   12    1    3    0]
+ [  16  243   80    5   68]]
+AER: 0.254 MLR_train: 0.05 MLR_test:0.05 TER: 0.226, 0.204, 0.304
+
+############Experiment 269############
+Set: sn2
+Train Labels: nar5
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.91      0.83      0.87      1433
+           1       0.69      0.92      0.79       670
+           2       0.03      0.05      0.04        66
+           3       0.02      0.08      0.03        61
+           4       0.86      0.16      0.27       404
+
+    accuracy                           0.71      2634
+   macro avg       0.50      0.41      0.40      2634
+weighted avg       0.80      0.71      0.71      2634
+
+Columns are predictions, rows are labels
+[[1192   24    3  214    0]
+ [  36  618    8    3    5]
+ [  33   18    3   10    2]
+ [  34   18    1    5    3]
+ [  22  223   80   15   64]]
+AER: 0.285 MLR_train: 0.05 MLR_test:0.1 TER: 0.232, 0.185, 0.385
+
+############Experiment 270############
+Set: sn2
+Train Labels: nar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.93      0.85      0.89      1435
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.11      0.21      0.14       124
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.75      2634
+   macro avg       0.55      0.54      0.44      2634
+weighted avg       0.84      0.75      0.75      2634
+
+Columns are predictions, rows are labels
+[[1220    0    0  215    0]
+ [   0  660    6    0    4]
+ [   0    2    2    0    0]
+ [  97    1    0   26    0]
+ [   0  238   87    6   70]]
+AER: 0.249 MLR_train: 0.05 MLR_test:0.05 TER: 0.221, 0.199, 0.299
+
+############Experiment 271############
+Set: sn2
+Train Labels: nar5
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.84      0.85      0.85      1300
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.21      0.20      0.21       259
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.72      2634
+   macro avg       0.55      0.54      0.45      2634
+weighted avg       0.77      0.72      0.70      2634
+
+Columns are predictions, rows are labels
+[[1111    0    0  189    0]
+ [   0  660    6    0    4]
+ [   0    2    2    0    0]
+ [ 206    1    0   52    0]
+ [   0  238   87    6   70]]
+AER: 0.281 MLR_train: 0.05 MLR_test:0.1 TER: 0.226, 0.181, 0.381
+
+############Experiment 272############
+Set: sn2
+Train Labels: nar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.92      0.85      0.88      1426
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.09      0.16      0.11       133
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.74      2634
+   macro avg       0.54      0.53      0.43      2634
+weighted avg       0.83      0.74      0.74      2634
+
+Columns are predictions, rows are labels
+[[1206    0    0  220    0]
+ [   0  660    6    0    4]
+ [   0    2    2    0    0]
+ [ 111    1    0   21    0]
+ [   0  238   87    6   70]]
+AER: 0.256 MLR_train: 0.05 MLR_test:0.05 TER: 0.229, 0.206, 0.306
+
+############Experiment 273############
+Set: sn2
+Train Labels: nar5
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.83      0.84      0.84      1294
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.15      0.14      0.15       265
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.71      2634
+   macro avg       0.54      0.53      0.43      2634
+weighted avg       0.75      0.71      0.68      2634
+
+Columns are predictions, rows are labels
+[[1091    0    0  203    0]
+ [   0  660    6    0    4]
+ [   0    2    2    0    0]
+ [ 226    1    0   38    0]
+ [   0  238   87    6   70]]
+AER: 0.293 MLR_train: 0.05 MLR_test:0.1 TER: 0.242, 0.193, 0.393
+
+############Experiment 274############
+Set: sn2
+Train Labels: nar10
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      1558
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.00      0.00      0.00         1
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.87      2634
+   macro avg       0.54      0.53      0.44      2634
+weighted avg       0.92      0.87      0.85      2634
+
+Columns are predictions, rows are labels
+[[1557    0    0    1    0]
+ [   0  660    5    1    4]
+ [   0    2    2    0    0]
+ [   0    1    0    0    0]
+ [   0  238   87    6   70]]
+AER: 0.131 MLR_train: 0.1 MLR_test:0.0 TER: 0.131, 0.131, 0.131
+
+############Experiment 275############
+Set: sn2
+Train Labels: nar10
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.96      0.99      0.97      1501
+           1       0.70      0.95      0.81       660
+           2       0.05      0.17      0.08        30
+           3       0.12      0.03      0.05        31
+           4       0.92      0.17      0.28       412
+
+    accuracy                           0.83      2634
+   macro avg       0.55      0.46      0.44      2634
+weighted avg       0.87      0.83      0.80      2634
+
+Columns are predictions, rows are labels
+[[1489   10    1    0    1]
+ [  17  630    7    1    5]
+ [  18    6    5    1    0]
+ [  17   12    1    1    0]
+ [  16  243   80    5   68]]
+AER: 0.167 MLR_train: 0.1 MLR_test:0.05 TER: 0.130, 0.117, 0.217
+
+############Experiment 276############
+Set: sn2
+Train Labels: nar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.90      0.98      0.94      1433
+           1       0.69      0.92      0.79       670
+           2       0.03      0.05      0.04        66
+           3       0.00      0.00      0.00        61
+           4       0.86      0.16      0.27       404
+
+    accuracy                           0.79      2634
+   macro avg       0.50      0.42      0.41      2634
+weighted avg       0.80      0.79      0.75      2634
+
+Columns are predictions, rows are labels
+[[1405   24    3    1    0]
+ [  39  618    7    1    5]
+ [  42   18    3    1    2]
+ [  39   18    1    0    3]
+ [  32  223   80    5   64]]
+AER: 0.207 MLR_train: 0.1 MLR_test:0.1 TER: 0.133, 0.107, 0.307
+
+############Experiment 277############
+Set: sn2
+Train Labels: nar10
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96      1435
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.00      0.00      0.00       124
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.82      2634
+   macro avg       0.52      0.53      0.43      2634
+weighted avg       0.83      0.82      0.78      2634
+
+Columns are predictions, rows are labels
+[[1434    0    0    1    0]
+ [   0  660    5    1    4]
+ [   0    2    2    0    0]
+ [ 123    1    0    0    0]
+ [   0  238   87    6   70]]
+AER: 0.178 MLR_train: 0.1 MLR_test:0.05 TER: 0.142, 0.128, 0.228
+
+############Experiment 278############
+Set: sn2
+Train Labels: nar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1300
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.00      0.00      0.00       259
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.77      2634
+   macro avg       0.51      0.53      0.42      2634
+weighted avg       0.74      0.77      0.71      2634
+
+Columns are predictions, rows are labels
+[[1299    0    0    1    0]
+ [   0  660    5    1    4]
+ [   0    2    2    0    0]
+ [ 258    1    0    0    0]
+ [   0  238   87    6   70]]
+AER: 0.229 MLR_train: 0.1 MLR_test:0.1 TER: 0.161, 0.129, 0.329
+
+############Experiment 279############
+Set: sn2
+Train Labels: nar10
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96      1426
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.12      0.01      0.01       133
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.82      2634
+   macro avg       0.55      0.53      0.43      2634
+weighted avg       0.83      0.82      0.78      2634
+
+Columns are predictions, rows are labels
+[[1426    0    0    0    0]
+ [   0  660    5    1    4]
+ [   0    2    2    0    0]
+ [ 131    1    0    1    0]
+ [   0  238   87    6   70]]
+AER: 0.180 MLR_train: 0.1 MLR_test:0.05 TER: 0.145, 0.130, 0.230
+
+############Experiment 280############
+Set: sn2
+Train Labels: nar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1294
+           1       0.73      0.99      0.84       670
+           2       0.02      0.50      0.04         4
+           3       0.00      0.00      0.00       265
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.77      2634
+   macro avg       0.51      0.53      0.42      2634
+weighted avg       0.74      0.77      0.70      2634
+
+Columns are predictions, rows are labels
+[[1293    0    0    1    0]
+ [   0  660    5    1    4]
+ [   0    2    2    0    0]
+ [ 264    1    0    0    0]
+ [   0  238   87    6   70]]
+AER: 0.231 MLR_train: 0.1 MLR_test:0.1 TER: 0.164, 0.131, 0.331
+
+############Experiment 281############
+Set: sn2
+Train Labels: nnar5
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      1558
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00         1
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.87      2634
+   macro avg       0.54      0.48      0.43      2634
+weighted avg       0.92      0.87      0.85      2634
+
+Columns are predictions, rows are labels
+[[1558    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [   0    1    0    0    0]
+ [   3  238   82    8   70]]
+AER: 0.131 MLR_train: 0.05 MLR_test:0.0 TER: 0.131, 0.131, 0.131
+
+############Experiment 282############
+Set: sn2
+Train Labels: nnar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97      1501
+           1       0.70      0.95      0.81       660
+           2       0.04      0.13      0.07        30
+           3       0.00      0.00      0.00        31
+           4       0.92      0.17      0.28       412
+
+    accuracy                           0.83      2634
+   macro avg       0.52      0.45      0.43      2634
+weighted avg       0.86      0.83      0.80      2634
+
+Columns are predictions, rows are labels
+[[1489   10    1    0    1]
+ [  17  630    8    0    5]
+ [  18    6    4    2    0]
+ [  18   12    1    0    0]
+ [  19  243   75    7   68]]
+AER: 0.168 MLR_train: 0.05 MLR_test:0.05 TER: 0.131, 0.118, 0.218
+
+############Experiment 283############
+Set: sn2
+Train Labels: nnar5
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.90      0.98      0.94      1433
+           1       0.69      0.92      0.79       670
+           2       0.02      0.03      0.03        66
+           3       0.00      0.00      0.00        61
+           4       0.86      0.16      0.27       404
+
+    accuracy                           0.79      2634
+   macro avg       0.49      0.42      0.40      2634
+weighted avg       0.80      0.79      0.75      2634
+
+Columns are predictions, rows are labels
+[[1406   24    3    0    0]
+ [  39  618    8    0    5]
+ [  42   18    2    2    2]
+ [  39   18    1    0    3]
+ [  35  223   75    7   64]]
+AER: 0.207 MLR_train: 0.05 MLR_test:0.1 TER: 0.133, 0.107, 0.307
+
+############Experiment 284############
+Set: sn2
+Train Labels: nnar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96      1435
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       124
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.82      2634
+   macro avg       0.52      0.48      0.42      2634
+weighted avg       0.83      0.82      0.78      2634
+
+Columns are predictions, rows are labels
+[[1435    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 123    1    0    0    0]
+ [   3  238   82    8   70]]
+AER: 0.178 MLR_train: 0.05 MLR_test:0.05 TER: 0.142, 0.128, 0.228
+
+############Experiment 285############
+Set: sn2
+Train Labels: nnar5
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1300
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       259
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.77      2634
+   macro avg       0.50      0.48      0.41      2634
+weighted avg       0.74      0.77      0.71      2634
+
+Columns are predictions, rows are labels
+[[1300    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 258    1    0    0    0]
+ [   3  238   82    8   70]]
+AER: 0.229 MLR_train: 0.05 MLR_test:0.1 TER: 0.161, 0.129, 0.329
+
+############Experiment 286############
+Set: sn2
+Train Labels: nnar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.91      1.00      0.95      1426
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       133
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.82      2634
+   macro avg       0.52      0.48      0.42      2634
+weighted avg       0.82      0.82      0.78      2634
+
+Columns are predictions, rows are labels
+[[1426    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 132    1    0    0    0]
+ [   3  238   82    8   70]]
+AER: 0.181 MLR_train: 0.05 MLR_test:0.05 TER: 0.146, 0.131, 0.231
+
+############Experiment 287############
+Set: sn2
+Train Labels: nnar5
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1294
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       265
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.77      2634
+   macro avg       0.50      0.48      0.41      2634
+weighted avg       0.74      0.77      0.70      2634
+
+Columns are predictions, rows are labels
+[[1294    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 264    1    0    0    0]
+ [   3  238   82    8   70]]
+AER: 0.231 MLR_train: 0.05 MLR_test:0.1 TER: 0.164, 0.131, 0.331
+
+############Experiment 288############
+Set: sn2
+Train Labels: nnar10
+Test Labels: clean
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      1558
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00         1
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.87      2634
+   macro avg       0.54      0.48      0.43      2634
+weighted avg       0.92      0.87      0.85      2634
+
+Columns are predictions, rows are labels
+[[1558    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [   0    1    0    0    0]
+ [   4  238   82    7   70]]
+AER: 0.131 MLR_train: 0.1 MLR_test:0.0 TER: 0.131, 0.131, 0.131
+
+############Experiment 289############
+Set: sn2
+Train Labels: nnar10
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97      1501
+           1       0.70      0.95      0.81       660
+           2       0.04      0.13      0.07        30
+           3       0.00      0.00      0.00        31
+           4       0.92      0.17      0.28       412
+
+    accuracy                           0.83      2634
+   macro avg       0.52      0.45      0.43      2634
+weighted avg       0.86      0.83      0.80      2634
+
+Columns are predictions, rows are labels
+[[1489   10    1    0    1]
+ [  17  630    8    0    5]
+ [  19    6    4    1    0]
+ [  18   12    1    0    0]
+ [  19  243   75    7   68]]
+AER: 0.168 MLR_train: 0.1 MLR_test:0.05 TER: 0.131, 0.118, 0.218
+
+############Experiment 290############
+Set: sn2
+Train Labels: nnar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.90      0.98      0.94      1433
+           1       0.69      0.92      0.79       670
+           2       0.02      0.03      0.03        66
+           3       0.00      0.00      0.00        61
+           4       0.86      0.16      0.27       404
+
+    accuracy                           0.79      2634
+   macro avg       0.49      0.42      0.40      2634
+weighted avg       0.80      0.79      0.75      2634
+
+Columns are predictions, rows are labels
+[[1406   24    3    0    0]
+ [  39  618    8    0    5]
+ [  42   18    2    2    2]
+ [  39   18    1    0    3]
+ [  36  223   75    6   64]]
+AER: 0.207 MLR_train: 0.1 MLR_test:0.1 TER: 0.133, 0.107, 0.307
+
+############Experiment 291############
+Set: sn2
+Train Labels: nnar10
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96      1435
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       124
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.82      2634
+   macro avg       0.52      0.48      0.42      2634
+weighted avg       0.83      0.82      0.78      2634
+
+Columns are predictions, rows are labels
+[[1435    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 123    1    0    0    0]
+ [   4  238   82    7   70]]
+AER: 0.178 MLR_train: 0.1 MLR_test:0.05 TER: 0.142, 0.128, 0.228
+
+############Experiment 292############
+Set: sn2
+Train Labels: nnar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1300
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       259
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.77      2634
+   macro avg       0.50      0.48      0.41      2634
+weighted avg       0.74      0.77      0.71      2634
+
+Columns are predictions, rows are labels
+[[1300    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 258    1    0    0    0]
+ [   4  238   82    7   70]]
+AER: 0.229 MLR_train: 0.1 MLR_test:0.1 TER: 0.161, 0.129, 0.329
+
+############Experiment 293############
+Set: sn2
+Train Labels: nnar10
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.91      1.00      0.95      1426
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       133
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.82      2634
+   macro avg       0.52      0.48      0.42      2634
+weighted avg       0.82      0.82      0.78      2634
+
+Columns are predictions, rows are labels
+[[1426    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 132    1    0    0    0]
+ [   4  238   82    7   70]]
+AER: 0.181 MLR_train: 0.1 MLR_test:0.05 TER: 0.146, 0.131, 0.231
+
+############Experiment 294############
+Set: sn2
+Train Labels: nnar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.83      1.00      0.91      1294
+           1       0.73      0.99      0.84       670
+           2       0.01      0.25      0.02         4
+           3       0.00      0.00      0.00       265
+           4       0.95      0.17      0.29       401
+
+    accuracy                           0.77      2634
+   macro avg       0.50      0.48      0.41      2634
+weighted avg       0.74      0.77      0.70      2634
+
+Columns are predictions, rows are labels
+[[1294    0    0    0    0]
+ [   0  660    6    0    4]
+ [   0    2    1    1    0]
+ [ 264    1    0    0    0]
+ [   4  238   82    7   70]]
+AER: 0.231 MLR_train: 0.1 MLR_test:0.1 TER: 0.164, 0.131, 0.331
+
+Summary of sn2
+Apparent Error Rates. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.136	0.174	0.211	0.183	0.234	0.186	0.236	
+0.190	0.225	0.258	0.230	0.270	0.233	0.280	
+0.730	0.737	0.733	0.731	0.732	0.731	0.730	
+0.222	0.254	0.285	0.249	0.281	0.256	0.293	
+0.131	0.167	0.207	0.178	0.229	0.180	0.231	
+0.131	0.168	0.207	0.178	0.229	0.181	0.231	
+0.131	0.168	0.207	0.178	0.229	0.181	0.231	
+
+
+True Error Rates. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.136, 0.136, 0.136	0.137, 0.124, 0.224	0.139, 0.111, 0.311	0.147, 0.133, 0.233	0.167, 0.134, 0.334	0.151, 0.136, 0.236	0.170, 0.136, 0.336	
+0.190, 0.190, 0.190	0.194, 0.175, 0.275	0.198, 0.158, 0.358	0.200, 0.180, 0.280	0.213, 0.170, 0.370	0.204, 0.183, 0.283	0.225, 0.180, 0.380	
+0.730, 0.730, 0.730	0.763, 0.687, 0.787	0.792, 0.633, 0.833	0.756, 0.681, 0.781	0.789, 0.632, 0.832	0.756, 0.681, 0.781	0.788, 0.630, 0.830	
+0.222, 0.222, 0.222	0.226, 0.204, 0.304	0.232, 0.185, 0.385	0.221, 0.199, 0.299	0.226, 0.181, 0.381	0.229, 0.206, 0.306	0.242, 0.193, 0.393	
+0.131, 0.131, 0.131	0.130, 0.117, 0.217	0.133, 0.107, 0.307	0.142, 0.128, 0.228	0.161, 0.129, 0.329	0.145, 0.130, 0.230	0.164, 0.131, 0.331	
+0.131, 0.131, 0.131	0.131, 0.118, 0.218	0.133, 0.107, 0.307	0.142, 0.128, 0.228	0.161, 0.129, 0.329	0.146, 0.131, 0.231	0.164, 0.131, 0.331	
+0.131, 0.131, 0.131	0.131, 0.118, 0.218	0.133, 0.107, 0.307	0.142, 0.128, 0.228	0.161, 0.129, 0.329	0.146, 0.131, 0.231	0.164, 0.131, 0.331	
+
+
+CEV. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.000	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+nan	nan	nan	nan	nan	nan	nan	
+
+
+
+
+SDE. Row->Train Column->Test
+Label Sets: ['clean', 'ncar5', 'ncar10', 'nar5', 'nar10', 'nnar5', 'nnar10']
+0.000	inf	inf	nan	nan	nan	nan	
+inf	inf	inf	inf	inf	inf	inf	
+inf	inf	inf	inf	inf	inf	inf	
+inf	inf	inf	inf	inf	inf	inf	
+inf	inf	inf	inf	inf	nan	inf	
+nan	inf	inf	nan	nan	nan	nan	
+nan	inf	inf	nan	nan	nan	nan	
 
 
