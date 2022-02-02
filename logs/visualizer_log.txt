@@ -1,0 +1,43 @@
+Making Pictures
+Set:  bs1
+Shape of X:  (17020, 1000)
+NUM_INSTANCES is  17020
+instances should be  17020.0
+Size of feature set:  (17020, 18)
+Set:  bs2
+Shape of X:  (4934, 1000)
+NUM_INSTANCES is  4934
+instances should be  2467.0
+Size of feature set:  (2467, 18)
+Set:  har1
+Shape of X:  (425, 150)
+NUM_INSTANCES is  425
+instances should be  425.0
+Size of feature set:  (425, 18)
+Set:  har2
+Shape of X:  (22056, 128)
+NUM_INSTANCES is  22056
+instances should be  7352.0
+Size of feature set:  (7352, 18)
+Set:  ss1
+Shape of X:  (8000, 150)
+NUM_INSTANCES is  8000
+instances should be  8000.0
+Size of feature set:  (8000, 18)
+Set:  ss2
+Shape of X:  (24000, 150)
+NUM_INSTANCES is  24000
+instances should be  24000.0
+Size of feature set:  (24000, 18)
+Set:  bs1
+NUM_INSTANCES is  17020
+Set:  bs2
+NUM_INSTANCES is  2467
+Set:  har1
+NUM_INSTANCES is  425
+Set:  har2
+NUM_INSTANCES is  7352
+Set:  ss1
+NUM_INSTANCES is  8000
+Set:  ss2
+NUM_INSTANCES is  24000
