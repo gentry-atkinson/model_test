@@ -129,7 +129,7 @@ if __name__ == "__main__":
     print(date.today())
     results_file = open('results/Tran_results.txt', 'w+')
     results_file.write('{}\n'.format(date.today()))
-    readable_file = open('results/all_results.txt', 'w+')
+    readable_file = open('results/all_results.txt', 'a')
     readable_file.write('{}\n'.format(date.today()))
     readable_file.write('######  Tran #####\n')
 

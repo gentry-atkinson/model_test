@@ -18,7 +18,7 @@ echo "LSTM Tests"
 python3 -Wignore src/LSTM_tests.py > logs/LSTM_log.txt
 
 echo "Transformer Tests"
-python3 -Wignore src/LSTM_tests.py > logs/Transf_log.txt
+python3 -Wignore src/Transf_tests.py > logs/Transf_log.txt
 
 echo "SVM Tests"
 python3 -Wignore src/SVM_tests.py > logs/SVM_log.txt
