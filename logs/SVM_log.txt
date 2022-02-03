@@ -1,5 +1,5 @@
 Testing SVM
-2022-02-02
+2022-02-03
 Feature extraction for set with shape:  (2000, 150)
 Feature extraction for set with shape:  (8000, 150)
 Input Shape:  (8000, 18)
