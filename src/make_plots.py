@@ -1492,7 +1492,7 @@ def plot11():
         plt.bar(cols[i], min(data[i]), width=WIDTH, bottom=0, align='center', color=colors[0])
 
     ax = plt.gca()
-    ax.set_ylim([0.0, 0.15])
+    ax.set_ylim([0.0, 0.3])
     plt.xticks(rotation=LABEL_TILT)
     plt.title("Min/Avg/Max Change in Error")
     plt.savefig("imgs/plots/delta_aer_for_all_datasets.pdf", bbox_inches='tight')
@@ -1765,7 +1765,7 @@ def plot22():
 
 def prec_rec_scatter(prec_rec_dic, filename):
     marker_dic = {
-        'SS1':'.', 'SS2':'o', 'BS1':'x', 'BS2':'X', 'HAR1':'d', 'HAR2':'D'
+        'SS1':'.', 'SS2':'o', 'SN1':'x', 'SN2':'X', 'HAR1':'d', 'HAR2':'D'
     }
     noises = ['Clean', 'NCAR05','NCAR10','NAR05','NAR10','NNAR05','NNAR10']
     plt.figure()
@@ -1843,7 +1843,7 @@ def plot29():
     colors =  ['black', 'cornflowerblue', 'blue', 'mediumpurple', 'purple', 'palegreen', 'seagreen']
     labels = ['Clean', 'NCAR05','NCAR10','NAR05','NAR10','NNAR05','NNAR10']
     marker_dic = {
-        'SS1':'.', 'SS2':'o', 'BS1':'x', 'BS2':'X', 'HAR1':'d', 'HAR2':'D'
+        'SS1':'.', 'SS2':'o', 'SN1':'x', 'SN2':'X', 'HAR1':'d', 'HAR2':'D'
     }
     patches = [
         mpatches.Patch(color=color, label=label)
@@ -1861,38 +1861,38 @@ def plot29():
 
 
 if __name__ == '__main__':
-    plt.rcParams.update({'font.size': 16})
-    plot1()
-    plot2()
-    plt.rcParams.update({'font.size': 11})
-    plot3()
-    plot4()
-    plot5()
-    plot5andAHalf()
-    plot6()
-    plot7()
-    plot8()
-    plot9()
+    # plt.rcParams.update({'font.size': 16})
+    # plot1()
+    # plot2()
+    # plt.rcParams.update({'font.size': 11})
+    # plot3()
+    # plot4()
+    # plot5()
+    # plot5andAHalf()
+    # plot6()
+    # plot7()
+    # plot8()
+    # plot9()
     plt.rcParams.update({'font.size': 16})
     plot10()
     plot11()
-    plot12()
-    plot13()
-    plot14()
-    plot15()
-    plot16()
-    plot17()
-    plot18()
-    plot19()
-    plot20()
-    plt.rcParams.update({'font.size': 11})
-    plot21()
-    plot22()
-    plt.rcParams.update({'font.size': 16})
-    plot23()
-    plot24()
-    plot25()
-    plot26()
-    plot27()
-    plot28()
-    plot29()
+    # plot12()
+    # plot13()
+    # plot14()
+    # plot15()
+    # plot16()
+    # plot17()
+    # plot18()
+    # plot19()
+    # plot20()
+    # plt.rcParams.update({'font.size': 11})
+    # plot21()
+    # plot22()
+    # plt.rcParams.update({'font.size': 16})
+    # plot23()
+    # plot24()
+    # plot25()
+    # plot26()
+    # plot27()
+    # plot28()
+    # plot29()
