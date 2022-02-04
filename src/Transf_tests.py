@@ -1,6 +1,6 @@
 #Author: Gentry Atkinson and Alex Katrompas
 #Organization: Texas State University
-#Data: 21 July, 2021
+#Data: 21 January, 2022
 #Train and test a 1D transformer on the 6 datasets with their many label sets
 
 #original transformer code at:  https://github.com/imics-lab/recurrence-with-self-attention
