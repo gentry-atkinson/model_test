@@ -46,12 +46,17 @@ def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared
 if __name__ == '__main__':
     print('### Generate Dummy Data ###')
     X = np.reshape(np.array([generate_pattern_data_as_array(length=150) for _ in range(100)]), (100,1,150))
-    y = np.array([randint(0,2) for _ in range(100)])
+    config_dic = loadDic('CNN')
+    print(X.shape)
 
     print('### Build and Viosualize CNN')
-    model = build_cnn(X, 2, 'ss1')
-    model.fit(X,y, epochs=1)
-    print(type(model))
+    model = Sequential()
+    model.add(layers.InputLayer(input_shape=X[0].shape))
+    model.add(layers.Reshape((1,150)))
+    model.add(layers.Conv1D(filters=64, activation='relu', padding='valid', kernel_size=(3), data_format='channels_first'))
+    model.add(layers.Conv1D(filters=64, activation='relu', padding='valid', kernel_size=(3), data_format='channels_first'))
+    model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
+    visualkeras.layered_view(model, to_file='imgs/model_layers/test.png', min_xy=10, min_z=10, scale_xy=100, scale_z=100, one_dim_orientation='x')
 
     print('###Save visualization of CNN###')
-    visualkeras.graph_view(model(X[0]), to_file='model_layers/CNN_visualKeras.png')
+    #visualkeras.layered_view(model, to_file='imgs/model_layers/test.png')
