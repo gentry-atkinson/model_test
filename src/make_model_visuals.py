@@ -136,7 +136,7 @@ if __name__ == '__main__':
     font = ImageFont.truetype('LiberationSerif-Regular.ttf', size = 20)   
 
     print('###Save visualization of CNN###')
-    visualkeras.layered_view(model, to_file='imgs/model_layers/CNN_visualkeras.png',  legend=True, scale_xy=.5, scale_z=2, color_map=color_map, type_ignore=ignore, font=font)
+    visualkeras.layered_view(model, to_file='imgs/model_layers/CNN_visualkeras.png',  legend=True, scale_xy=1, scale_z=50, color_map=color_map, type_ignore=ignore, font=font)
     visualkeras.graph_view(model, to_file='imgs/model_layers/CNN_graph_visualkeras.png')
 
     print('### Build and Viosualize LSTM')

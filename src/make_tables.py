@@ -229,3 +229,7 @@ if __name__ == "__main__":
     outfile.write('### Table 17: LSTM hyperparameters ###\n\n')
     outfile.write(pd.DataFrame.from_dict(lstm_hyper_par()).to_latex(index=False))
     outfile.write('\n######\n')
+
+    outfile.write('### Table 18: Transformer hyperparameters ###\n\n')
+    outfile.write(pd.DataFrame.from_dict(transf_hyper_par()).to_latex(index=False))
+    outfile.write('\n######\n')
