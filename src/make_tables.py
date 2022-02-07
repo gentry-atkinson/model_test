@@ -5,6 +5,7 @@
 
 import pandas as pd
 import numpy as np
+from model_config import loadDic
 
 cnn_dic = {
     "Clean":["0.308"],
@@ -113,77 +114,118 @@ def ver_tab(mod_dic):
     tab = pd.DataFrame.from_dict({"Noise Type":mod_dic.keys(), "TER":mod_dic.values()})
     return tab.to_latex(index=False)
 
+def cnn_hyper_par():
+    config_dic = loadDic('CNN')
+    sets = ['ss1', 'ss2', 'sn1', 'sn2', 'har1', 'har2']
+    hp_dic = {
+        'Sets' : sets,
+        'Layer 1 Filters' : [config_dic[s]['l1_numFilters'] for s in sets],
+        'Layer 2 Filters' : [config_dic[s]['l2_numFilters'] for s in sets],
+        'Layer 1 Kernel Size' : [config_dic[s]['l1_kernelSize'] for s in sets],
+        'Layer 2 Kernel Size' : [config_dic[s]['l2_kernelSize'] for s in sets]
+    }
+    return hp_dic
+
+def lstm_hyper_par():
+    config_dic = loadDic('LSTM')
+    sets = ['ss1', 'ss2', 'sn1', 'sn2', 'har1', 'har2']
+    hp_dic = {
+        'Sets' : sets,
+        'Units' : [config_dic[s]['lstm_units'] for s in sets],
+        'Hidden Layer Nodes' : [config_dic[s]['hidden_dense_size'] for s in sets]
+    }
+    return hp_dic
+
+def transf_hyper_par():
+    config_dic = loadDic('Transformer')
+    sets = ['ss1', 'ss2', 'sn1', 'sn2', 'har1', 'har2']
+    hp_dic = {
+        'Sets' : sets,
+        'Head Size' : [config_dic[s]['head_size'] for s in sets],
+        'Number of Heads' : [config_dic[s]['num_heads'] for s in sets],
+        'Feed Forward Filters' : [config_dic[s]['ff_dim'] for s in sets]
+    }
+    return hp_dic
+
 
 
 if __name__ == "__main__":
     outfile = open("tables_latex.txt", 'w+')
 
-    outfile.write('### Table 1: CNN Horizontal ###\n\n')
-    outfile.write(hor_tab(cnn_dic))
+    # outfile.write('### Table 1: CNN Horizontal ###\n\n')
+    # outfile.write(hor_tab(cnn_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 2: CNN Vertical ###\n\n')
+    # outfile.write(ver_tab(cnn_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 3: LSTM Horizontal ###\n\n')
+    # outfile.write(hor_tab(lstm_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 4: LSTM Vertical ###\n\n')
+    # outfile.write(ver_tab(lstm_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 5: SVM Horizontal ###\n\n')
+    # outfile.write(hor_tab(svm_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 6: SVM Vertical ###\n\n')
+    # outfile.write(ver_tab(svm_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 7: NB Horizontal ###\n\n')
+    # outfile.write(hor_tab(nb_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 8: NB Vertical ###\n\n')
+    # outfile.write(ver_tab(nb_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 9: RF Horizontal ###\n\n')
+    # outfile.write(hor_tab(rf_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 10: RF Vertical ###\n\n')
+    # outfile.write(ver_tab(rf_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 11: All Model Horizontal ###\n\n')
+    # outfile.write(hor_tab(all_dic))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 12: All Model Vertical ###\n\n')
+    # outfile.write(ver_tab(all_dic))
+    # outfile.write('\n######\n')
+
+    # #dics = [cnn_dic, lstm_dic, svm_dic, nb_dic, rf_dic]
+    # big_table_dic = {
+    #     "Noise Type":cnn_dic.keys(),
+    #     "CNN":cnn_dic.values(),
+    #     "LSTM":lstm_dic.values(),
+    #     "Transformer":trans_dic.values(),
+    #     "SVM":svm_dic.values(),
+    #     "N. Bayes":nb_dic.values(),
+    #     "R. Forest":rf_dic.values(),
+    # }
+    # outfile.write('### Table 13: TER big table ###\n\n')
+    # outfile.write(pd.DataFrame.from_dict(big_table_dic).to_latex(index=False))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 14: Train -> Test Table ###\n\n')
+    # outfile.write(pd.DataFrame.from_dict(train_test_comparison_dic).to_latex(index=False))
+    # outfile.write('\n######\n')
+
+    # outfile.write('### Table 15: Datasets ###\n\n')
+    # outfile.write(pd.DataFrame.from_dict(dataset_dic).to_latex(index=False))
+    # outfile.write('\n######\n')
+
+    outfile.write('### Table 16: CNN hyperparameters ###\n\n')
+    outfile.write(pd.DataFrame.from_dict(cnn_hyper_par()).to_latex(index=False))
     outfile.write('\n######\n')
 
-    outfile.write('### Table 2: CNN Vertical ###\n\n')
-    outfile.write(ver_tab(cnn_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 3: LSTM Horizontal ###\n\n')
-    outfile.write(hor_tab(lstm_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 4: LSTM Vertical ###\n\n')
-    outfile.write(ver_tab(lstm_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 5: SVM Horizontal ###\n\n')
-    outfile.write(hor_tab(svm_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 6: SVM Vertical ###\n\n')
-    outfile.write(ver_tab(svm_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 7: NB Horizontal ###\n\n')
-    outfile.write(hor_tab(nb_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 8: NB Vertical ###\n\n')
-    outfile.write(ver_tab(nb_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 9: RF Horizontal ###\n\n')
-    outfile.write(hor_tab(rf_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 10: RF Vertical ###\n\n')
-    outfile.write(ver_tab(rf_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 11: All Model Horizontal ###\n\n')
-    outfile.write(hor_tab(all_dic))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 12: All Model Vertical ###\n\n')
-    outfile.write(ver_tab(all_dic))
-    outfile.write('\n######\n')
-
-    #dics = [cnn_dic, lstm_dic, svm_dic, nb_dic, rf_dic]
-    big_table_dic = {
-        "Noise Type":cnn_dic.keys(),
-        "CNN":cnn_dic.values(),
-        "LSTM":lstm_dic.values(),
-        "Transformer":trans_dic.values(),
-        "SVM":svm_dic.values(),
-        "N. Bayes":nb_dic.values(),
-        "R. Forest":rf_dic.values(),
-    }
-    outfile.write('### Table 13: TER big table ###\n\n')
-    outfile.write(pd.DataFrame.from_dict(big_table_dic).to_latex(index=False))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 14: Train -> Test Table ###\n\n')
-    outfile.write(pd.DataFrame.from_dict(train_test_comparison_dic).to_latex(index=False))
-    outfile.write('\n######\n')
-
-    outfile.write('### Table 15: Datasets ###\n\n')
-    outfile.write(pd.DataFrame.from_dict(dataset_dic).to_latex(index=False))
+    outfile.write('### Table 17: LSTM hyperparameters ###\n\n')
+    outfile.write(pd.DataFrame.from_dict(lstm_hyper_par()).to_latex(index=False))
     outfile.write('\n######\n')

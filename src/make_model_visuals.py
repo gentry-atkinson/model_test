@@ -133,22 +133,22 @@ if __name__ == '__main__':
 
     system_fonts = matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
     print(system_fonts)
-    font = ImageFont.truetype('LiberationSerif-Regular.ttf', size = 64)   
+    font = ImageFont.truetype('LiberationSerif-Regular.ttf', size = 20)   
 
     print('###Save visualization of CNN###')
-    visualkeras.layered_view(model, to_file='imgs/model_layers/CNN_visualkeras.png',  legend=True, scale_xy=.5, scale_z=1, color_map=color_map, type_ignore=ignore)
+    visualkeras.layered_view(model, to_file='imgs/model_layers/CNN_visualkeras.png',  legend=True, scale_xy=.5, scale_z=2, color_map=color_map, type_ignore=ignore, font=font)
     visualkeras.graph_view(model, to_file='imgs/model_layers/CNN_graph_visualkeras.png')
 
     print('### Build and Viosualize LSTM')
     model = build_lstm(X, 2, 'ss1')
     print(model.layers)
     print('###Save visualization of LSTM###')
-    visualkeras.layered_view(model, to_file='imgs/model_layers/LSTM_visualkeras.png',  legend=True, scale_xy=.5, scale_z=1, color_map=color_map, type_ignore=ignore)
+    visualkeras.layered_view(model, to_file='imgs/model_layers/LSTM_visualkeras.png',  legend=True, scale_xy=.5, scale_z=2, color_map=color_map, type_ignore=ignore, font=font)
     visualkeras.graph_view(model, to_file='imgs/model_layers/LSTM_graph_visualkeras.png')
 
     print('### Build and Viosualize Transformer')
     model = build_tran(X, 2, 'ss1')
 
     print('###Save visualization of Transformer###')
-    visualkeras.layered_view(model, to_file='imgs/model_layers/Transformer_visualkeras.png',  legend=True, scale_xy=.5, scale_z=1, color_map=color_map, type_ignore=ignore)
+    visualkeras.layered_view(model, to_file='imgs/model_layers/Transformer_visualkeras.png',  legend=True, scale_xy=.5, scale_z=2, color_map=color_map, type_ignore=ignore, font=font)
     # visualkeras.graph_view(model, to_file='imgs/model_layers/Transformer_graph_visualkeras.png')
