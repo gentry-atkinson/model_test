@@ -134,7 +134,7 @@ Transf_dic = {
     },
 }
 
-def loadDic(model):
+def loadDic(model : str) -> dict:
     if model=='CNN':
         return dict(CNN_dic)
     elif model=='LSTM':
