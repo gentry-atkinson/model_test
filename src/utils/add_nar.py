@@ -3,6 +3,10 @@
 #Data: 12 May, 2021
 #Generate two Noise at Random label sets, 5% and 10%
 
+#TODO:
+#  -Pass in noise percect for add_nar
+#  -Test output
+
 import numpy as np
 from random import randint
 import os

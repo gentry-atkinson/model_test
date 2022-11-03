@@ -3,6 +3,12 @@
 #Data: 23 August, 2021
 #Train and test an LSTM on the 6 datasets with their many label sets
 
+#TODO:
+#  -Test noise levels from 1-30%
+#  -Tune up the LSTM (consider pytorch)
+#  -Write the results as Pandas
+#  -Change the metrics
+
 import numpy as np
 import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential

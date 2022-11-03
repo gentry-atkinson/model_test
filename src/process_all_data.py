@@ -4,16 +4,18 @@
 #Read the 6 datasets, write in nice format, and then write noisy label settings
 #This is going to be a big one (Narrator: it was)
 
+#TODO:
+#  -hunt down shaping troubles
+#  -write to numpy files rather than csv
+#  -add a biosignal dataset
+
 """
 6 Datasets: 2 synthetic, 2 HAR, 2 BioSignal
-Each dataset will have 7 label sets:
+Each dataset will have 31 label sets:
   -clean
-  -low noise NCAR
-  -high noise NCAR
-  -low noise NAR
-  -high noise NAR
-  -low noise NNAR
-  -high noise NNAR
+  -1% to 30% NCAR
+  -1% to 30% NAR
+  -1% to 30% NNAR
 """
 
 #from cmath import isinf

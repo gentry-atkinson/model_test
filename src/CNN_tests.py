@@ -3,6 +3,12 @@
 #Data: 21 July, 2021
 #Train and test a CNN on the 6 datasets with their many label sets
 
+#TODO:
+#  -Test noise levels from 1-30%
+#  -Tune up the CNN (consider pytorch)
+#  -Write the results as Pandas
+#  -Change the metrics
+
 import numpy as np
 import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential

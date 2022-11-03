@@ -3,6 +3,10 @@
 #Data: 12 May, 2021
 #Generate two Noise Not at Random label sets, 5% and 10%
 
+#TODO:
+#  -Make sure the feature extractor is the newest one
+#  -Test the output
+
 import numpy as np
 from random import randint
 import os

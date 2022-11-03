@@ -3,6 +3,12 @@
 #Data: 4 September, 2021
 #Train and test a naive bayes classifier on the 6 datasets with their many label sets
 
+#TODO:
+#  -Test noise levels from 1-30%
+#  -Replace NB with KNN
+#  -Write the results as Pandas
+#  -Change the metrics
+
 import numpy as np
 import tensorflow.keras.metrics as met
 from sklearn.metrics import classification_report

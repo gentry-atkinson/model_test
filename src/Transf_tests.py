@@ -5,6 +5,12 @@
 
 #original transformer code at:  https://github.com/imics-lab/recurrence-with-self-attention
 
+#TODO:
+#  -Test noise levels from 1-30%
+#  -Tune up the Transformer (consider pytorch)
+#  -Write the results as Pandas
+#  -Change the metrics
+
 import numpy as np
 import tensorflow.keras.metrics as met
 from tensorflow.keras import Sequential, Model
