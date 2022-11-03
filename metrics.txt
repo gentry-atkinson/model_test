@@ -1,0 +1,22 @@
+What metrics will be used with the 6 models?
+
+Overall performance:
+
+1) Accuracy -> number of correct predictions divided by the total number of predictions
+2) F1-> harmonic mean of precision and recall
+3) area under receiver operating curve?
+4) Sensitivity and Specificity are used often in medical work:
+  -Sensitivity -> recall
+  -Specificity -> TN/(TN+FP) = True negative rate
+5) Apparent Error Rate -> error rate compared to assigned labels
+   True Error Rate -> error rate compared to clean labels
+
+Classwise performance:
+
+We want to show that noise that is concentrated in one or two classes can still
+impact the performace of the model in other classes.
+
+1) CEV?
+2) Classwise F1 or precision?
+3) Some presentation of a confusion matrix?
+

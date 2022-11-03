@@ -6,6 +6,7 @@
 #TODO:
 #  -Make sure the feature extractor is the newest one
 #  -Test the output
+#  -Use the output of KNN to pick the noisy label
 
 import numpy as np
 from random import randint
