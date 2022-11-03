@@ -120,6 +120,7 @@ def add_nnar(
         attributes = np.load(att_file)
     
     total_flipped = 0
+    total_counter = 0
 
     counts = [np.count_nonzero(clean_labels==i) for i in range(num_classes)]
     MAJ_LABEL = int(np.argmax(counts))
@@ -127,7 +128,30 @@ def add_nnar(
     SET_LENGTH = len(clean_labels)
 
     attributes = get_features_for_set(attributes, len(attributes))
+    noisy_labels = clean_labels.copy()
 
     nbrs = NearestNeighbors(n_neighbors=3, algorithm='ball_tree').fit(attributes)
     d, i = nbrs.kneighbors(attributes)
+
+    while total_flipped < (mislab_rate/100)*SET_LENGTH:
+        rand_instance_index = randint(0, SET_LENGTH-1)
+        total_counter += 1
+        if noisy_labels[rand_instance_index] == MAJ_LABEL:
+            if noisy_labels[i[rand_instance_index][1]]!=MAJ_LABEL or randint(0,99)<(mislab_rate/10):
+                noisy_labels[rand_instance_index] = MIN_LABEL
+                total_flipped += 1
+
+    np.save(f'{filename}_nnar_{mislab_rate}.npy', noisy_labels)
+
+    #Sanity checks
+    print('Len of clean labels: ', len(clean_labels))
+    print('Len of noisy labels: ', len(noisy_labels))
+    print('Mislabeling rate: ', mislab_rate)
+    print('Number of noisy labels: ', total_flipped)
+    print('Number of clean labels: ', np.count_nonzero(noisy_labels==clean_labels))
+
+if __name__ == '__main__':
+    clean_labels = np.concatenate((np.zeros((25000), dtype=int), np.ones((25000), dtype=int)), axis=0)
+    add_nnar(clean_labels, 'test_labels', 2, 10)
+    noisy_labels = np.load('test_labels_ncar_10.npy')
     

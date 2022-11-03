@@ -75,10 +75,10 @@ def add_ncar(
     """
     if clean_labels.ndim == 1:
         new_label = new_label_oneHot
-        noisy_labels = np.zeros((len(clean_labels)))
+        noisy_labels = np.empty((len(clean_labels)))
     elif clean_labels.ndim == 2:
         new_label = new_label_vector
-        noisy_labels = np.zeros((len(clean_labels), num_classes))
+        noisy_labels = np.empty((len(clean_labels), num_classes))
     else:
         print('Unusual labels passed to add_ncar')
         return
