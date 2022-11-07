@@ -7,8 +7,7 @@ import scipy
 from scipy.fft import fft
 from scipy import signal
 import numpy as np
-#from tsfresh.feature_extraction import feature_calculators as fc
-#from tsfresh.utilities.dataframe_functions import impute
+from tsfresh.feature_extraction import feature_calculators as fc
 from sklearn.metrics import confusion_matrix
 from joblib import Parallel, delayed
 from functools import reduce
@@ -127,23 +126,28 @@ def clean_nan_and_inf(X):
     return new_X
 
 
-def get_features_from_one_signal(X, sample_rate=50):
-    assert X.ndim ==1, "Expected single signal in feature extraction"
-    mean = np.mean(X)
-    stdev = np.std(X)
-    abs_energy = fc.abs_energy(X)
-    sum_of_changes = fc.absolute_sum_of_changes(X)
-    autoc = fc.autocorrelation(X, sample_rate)
-    count_above_mean = fc.count_above_mean(X)
-    count_below_mean = fc.count_below_mean(X)
-    kurtosis = fc.kurtosis(X)
-    longest_above = fc.longest_strike_above_mean(X)
-    zero_crossing = fc.number_crossing_m(X, mean)
-    num_peaks = fc.number_peaks(X, int(sample_rate/10))
-    sample_entropy = fc.sample_entropy(X)
-    spectral_density = fc.spkt_welch_density(X, [{"coeff":1}, {"coeff":2}, {"coeff":3}, {"coeff":4}, {"coeff":5}, {"coeff":6}])
-    c, v = zip(*spectral_density)
-    v = np.asarray(v)
+def get_features_from_one_signal(X, sample_rate=50, channels_first = True):
+    #assert X.ndim ==1, "Expected single signal in feature extraction"
+    if X.ndim == 1:
+        mean = np.mean(X)
+        stdev = np.std(X)
+        abs_energy = fc.abs_energy(X)
+        sum_of_changes = fc.absolute_sum_of_changes(X)
+        autoc = fc.autocorrelation(X, sample_rate)
+        count_above_mean = fc.count_above_mean(X)
+        count_below_mean = fc.count_below_mean(X)
+        kurtosis = fc.kurtosis(X)
+        longest_above = fc.longest_strike_above_mean(X)
+        zero_crossing = fc.number_crossing_m(X, mean)
+        num_peaks = fc.number_peaks(X, int(sample_rate/10))
+        sample_entropy = fc.sample_entropy(X)
+        spectral_density = fc.spkt_welch_density(X, [{"coeff":1}, {"coeff":2}, {"coeff":3}, {"coeff":4}, {"coeff":5}, {"coeff":6}])
+        c, v = zip(*spectral_density)
+        v = np.asarray(v)
+    elif channels_first:
+        return np.nanmax([get_features_from_one_signal(X[i, :]) for i in range(X.shape[0])], axis=0)
+    else:
+        return np.nanmax([get_features_from_one_signal(X[:, i]) for i in range(X.shape[1])], axis=0)
 
     feat_array = np.array([
         0 if np.isnan(mean) else mean,
