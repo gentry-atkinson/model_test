@@ -56,8 +56,12 @@ def add_nnar(
     attributes = get_features_for_set(attributes, len(attributes))
     noisy_labels = clean_labels.copy()
 
-    nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)
-    d, i = nbrs.kneighbors(attributes)
+    if os.path.exists(f'{filename}_knn_output.npy'):
+        i = np.load(f'{filename}_knn_output.npy')
+    else:
+        nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)
+        d, i = nbrs.kneighbors(attributes)
+        np.save(f'{filename}_knn_output.npy', i)
 
     while total_flipped < (mislab_rate/100)*SET_LENGTH:
         rand_instance_index = randint(0, SET_LENGTH-1)

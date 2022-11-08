@@ -119,7 +119,8 @@ def load_synthetic_dataset(
 
     return train_set, train_labels, test_set, test_labels
 
-    
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))   
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
