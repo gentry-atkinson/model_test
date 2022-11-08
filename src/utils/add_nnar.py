@@ -67,7 +67,7 @@ def add_nnar(
         rand_instance_index = randint(0, SET_LENGTH-1)
         total_counter += 1
         if noisy_labels[rand_instance_index] == MAJ_LABEL:
-            if noisy_labels[i[rand_instance_index][1]]!=MAJ_LABEL or randint(0,99)<(mislab_rate/10):
+            if noisy_labels[i[rand_instance_index][1]]!=MAJ_LABEL or randint(0,99)<=(mislab_rate/10):
                 #noisy_labels[rand_instance_index] = MIN_LABEL
                 noisy_labels[rand_instance_index] = i[rand_instance_index][1]
                 total_flipped += 1
@@ -75,10 +75,12 @@ def add_nnar(
     np.save(f'{filename}_nnar_{mislab_rate}.npy', noisy_labels)
 
     #Sanity checks
+    print('NNAR')
     print('Len of clean labels: ', len(clean_labels))
     print('Len of noisy labels: ', len(noisy_labels))
     print('Mislabeling rate: ', mislab_rate)
     print('Number of noisy labels: ', total_flipped)
+    print('Total iterations: ', total_counter)
     print('Number of clean labels: ', np.count_nonzero(noisy_labels==clean_labels))
 
 if __name__ == '__main__':

@@ -94,6 +94,7 @@ def add_ncar(
     np.save(f'{filename}_ncar_{mislab_rate}.npy', noisy_labels)
 
     #Sanity checks
+    print('NCAR')
     print('Len of clean labels: ', len(clean_labels))
     print('Len of noisy labels: ', len(noisy_labels))
     print('Mislabeling rate: ', mislab_rate)

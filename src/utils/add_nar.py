@@ -60,6 +60,7 @@ def add_nar(
     np.save(f'{filename}_nar_{mislab_rate}.npy', noisy_labels)
 
     #Sanity checks
+    print('NAR')
     print('Len of clean labels: ', len(clean_labels))
     print('Len of noisy labels: ', len(noisy_labels))
     print('Mislabeling rate: ', mislab_rate)
