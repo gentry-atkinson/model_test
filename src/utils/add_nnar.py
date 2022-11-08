@@ -10,7 +10,7 @@ import numpy as np
 from random import randint
 import os
 from sklearn.neighbors import NearestNeighbors
-from ts_feature_toolkit import get_features_for_set
+from utils.ts_feature_toolkit import get_features_for_set
 
 def absChannels(X, num_channels):
     print("Length of attribute list in add_nnar: ", len(X))

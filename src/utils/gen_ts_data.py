@@ -57,13 +57,9 @@ def generate_pattern_data_as_dataframe(length=100, numSamples=10, numClasses=3, 
     time = np.zeros(length*numSamples)
     data = np.zeros(length*numSamples)
     labels = np.zeros(numSamples, dtype='int')
-    start = 0;
-    gremlin = 0;
-    gremlinCounter = 0;
-    # amplitude = np.random.randint(low=1, high=8, size=(numClasses))
-    # pattern_length = np.random.randint(low=1, high=32, size=(numClasses))
-    # var_pattern_length = np.random.randint(low=1, high=64, size=(numClasses))
-    # var_amplitude = np.random.randint(low=1, high=4, size=(numClasses))
+    start = 0
+    gremlin = 0
+    gremlinCounter = 0
     amplitude = [1, 2, 4, 8, 16]
     pattern_length =  [2, 4, 8, 16, 32, 64]
     var_pattern_length = [2, 4, 8, 16, 32]

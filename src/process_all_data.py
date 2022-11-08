@@ -20,7 +20,7 @@ Each dataset will have 31 label sets:
 
 #from cmath import isinf
 from attr import attr
-from utils.gen_ts_data import generate_pattern_data_as_dataframe
+from utils.gen_ts_data import generate_pattern_data_as_array
 from utils.ts_feature_toolkit import clean_nan_and_inf
 from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
@@ -39,18 +39,93 @@ PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
 RUN_SS = True
-RUN_HAR = True
+RUN_HAR = False
 #RUN_BS = False
-RUN_SN = True
+RUN_SN = False
 
 def record_sn_instance(att_array, table, feature_list, start_index, end_index):
     for f in feature_list:
         att_array.append((table[f][start_index:end_index]))
+
+def load_synthetic_dataset(
+        num_train : int,
+        num_test : int,
+        num_classes : int,
+        instance_len : int
+    ):
+
+    params = {
+        'avg_pattern_length' : [],
+        'avg_amplitude' : [],
+        'default_variance' : [],
+        'variance_pattern_length' : [],
+        'variance_amplitude' : []
+    }
+
+    for _ in range(num_classes):
+        params['avg_amplitude'].append(np.random.randint(0, 5))
+        params['avg_pattern_length'].append(np.random.randint(5, 15))
+        params['default_variance'].append(np.random.randint(1, 4))
+        params['variance_pattern_length'].append(np.random.randint(5, 20))
+        params['variance_amplitude'].append(np.random.randint(1, 5))
+
+    train_set = np.zeros((num_train, instance_len))
+    test_set = np.zeros((num_test, instance_len))
+
+    train_labels = []
+    test_labels = []
+
+    train_label_count = [0]*num_classes
+    test_label_count = [0]*num_classes
+
+    for i in range (num_train):
+        label = np.random.randint(0, num_classes)
+        train_labels.append(label)
+        train_set[i, :] = generate_pattern_data_as_array(
+            length=instance_len,
+            avg_pattern_length=params['avg_pattern_length'][label],
+            avg_amplitude=params['avg_amplitude'][label],
+            default_variance=params['default_variance'][label],
+            variance_pattern_length=params['variance_pattern_length'][label],
+            variance_amplitude=params['variance_amplitude'][label]
+        )
+        train_label_count[label] += 1
+
+    for i in range (num_test):
+        label = np.random.randint(0, num_classes)
+        test_labels.append(label)
+        test_set[i, :] = generate_pattern_data_as_array(
+            length=instance_len,
+            avg_pattern_length=params['avg_pattern_length'][label],
+            avg_amplitude=params['avg_amplitude'][label],
+            default_variance=params['default_variance'][label],
+            variance_pattern_length=params['variance_pattern_length'][label],
+            variance_amplitude=params['variance_amplitude'][label]
+        )
+        test_label_count[label] += 1
+
+
+    train_set = np.reshape(train_set, (train_set.shape[0], train_set.shape[1], 1))
+    test_set = np.reshape(test_set, (test_set.shape[0], test_set.shape[1], 1))
+
+    train_labels = np.array(train_labels, dtype='int')
+    test_labels = np.array(test_labels, dtype='int')
+
+    print("Train labels: ", '\n'.join([str(i) for i in train_label_count]))
+    print("Test labels: ", '\n'.join([str(i) for i in test_label_count]))
+
+    print("Train data shape: ", train_set.shape)
+    print("Test data shape: ", test_set.shape)
+
+    return train_set, train_labels, test_set, test_labels
+
     
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
             os.system('mkdir src/data/processed_datasets')
+
+    np.random.seed(1899)
 
     if RUN_SS:
         #Create Synthetic Set 1
@@ -64,22 +139,28 @@ if(__name__ == "__main__"):
         2000 test instances
         """
         print("##### Preparing Dataset: SS1 #####")
-        attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=10000, numClasses=2, percentError=0)
-        attributes = np.reshape(np.array(attributes['x']),(10000, 150))
-        attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
-        np.savetxt(PATH + 'ss1_attributes_train.csv', attributes[0:8000],  delimiter=',')
-        np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean[0:8000], delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'ss1_attributes_test.csv', attributes[8000:10000],  delimiter=',')
-        np.savetxt(PATH + 'ss1_labels_test_clean.csv', labels_clean[8000:10000], delimiter=',', fmt='%d')
+        # attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=10000, numClasses=2, percentError=0)
+        # attributes = np.reshape(np.array(attributes['x']),(10000, 150))
+        # attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
+        X_train, y_train, X_test, y_test = load_synthetic_dataset(8000, 2000, 2, 150)
+        #np.savetxt(PATH + 'ss1_attributes_train.csv', attributes[0:8000],  delimiter=',')
+        np.save(PATH + 'ss1_attributes_train.csv', X_train)
+        #np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean[0:8000], delimiter=',', fmt='%d')
+        np.save(PATH + 'ss1_labels_clean.csv', y_train)
+        #np.savetxt(PATH + 'ss1_attributes_test.csv', attributes[8000:10000],  delimiter=',')
+        np.save(PATH + 'ss1_attributes_test.csv', X_test)
+        #np.savetxt(PATH + 'ss1_labels_test_clean.csv', labels_clean[8000:10000], delimiter=',', fmt='%d')
+        np.save(PATH + 'ss1_labels_test_clean.csv', y_test)
 
         #Create label sets for SS1
-        add_ncar(labels_clean[0:8000], PATH + 'ss1_labels', 2)
-        add_nar(labels_clean[0:8000], PATH + 'ss1_labels', 2)
-        add_nnar(attributes[0:8000], labels_clean[0:8000], PATH + 'ss1_labels', 2)
+        for mislab_rate in range(1, 31):
+            add_ncar(y_train, PATH + 'ss1_labels', 2, mislab_rate)
+            add_nar(y_train, PATH + 'ss1_labels', 2, mislab_rate)
+            add_nnar(X_train, y_train, PATH + 'ss1_labels', 2, mislab_rate)
 
-        add_ncar(labels_clean[8000:10000], PATH + 'ss1_labels_test', 2)
-        add_nar(labels_clean[8000:10000], PATH + 'ss1_labels_test', 2)
-        add_nnar(attributes[8000:10000], labels_clean[8000:10000], PATH + 'ss1_labels_test', 2)
+            add_ncar(y_test, PATH + 'ss1_labels_test', 2, mislab_rate)
+            add_nar(y_test, PATH + 'ss1_labels_test', 2, mislab_rate)
+            add_nnar(X_test, y_test, PATH + 'ss1_labels_test', 2, mislab_rate)
 
         #Create Synthetic Set 2
         print("##### Preparing Dataset: SS2 #####")
@@ -92,22 +173,28 @@ if(__name__ == "__main__"):
         24000 train instances
         6000 test instances
         """
-        attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=30000, numClasses=5, percentError=0)
-        attributes = np.reshape(np.array(attributes['x']),(30000, 150))
-        attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
-        np.savetxt(PATH + 'ss2_attributes_train.csv', attributes[0:24000],  delimiter=',')
-        np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'ss2_attributes_test.csv', attributes[24000:30000],  delimiter=',')
-        np.savetxt(PATH + 'ss2_labels_test_clean.csv', labels_clean[24000:30000], delimiter=',', fmt='%d')
+        # attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=30000, numClasses=5, percentError=0)
+        # attributes = np.reshape(np.array(attributes['x']),(30000, 150))
+        # attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
+        X_train, y_train, X_test, y_test = load_synthetic_dataset(24000, 6000, 5, 150)
+        #np.savetxt(PATH + 'ss2_attributes_train.csv', attributes[0:24000],  delimiter=',')
+        np.save(PATH + 'ss2_attributes_train.npy', X_train)
+        #np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
+        np.save(PATH + 'ss2_labels_clean.npy', y_test)
+        #np.savetxt(PATH + 'ss2_attributes_test.csv', attributes[24000:30000],  delimiter=',')
+        np.save(PATH + 'ss2_attributes_test.npy', X_test)
+        #np.savetxt(PATH + 'ss2_labels_test_clean.csv', labels_clean[24000:30000], delimiter=',', fmt='%d')
+        np.save(PATH + 'ss2_labels_test_clean.npy', y_test)
 
         #Create label sets for SS2
-        add_ncar(labels_clean[0:24000], PATH + 'ss2_labels', 5)
-        add_nar(labels_clean[0:24000], PATH + 'ss2_labels', 5)
-        add_nnar(attributes[0:24000], labels_clean[0:24000], PATH + 'ss2_labels', 5)
+        for mislab_rate in range(1, 31):
+            add_ncar(y_train, PATH + 'ss2_labels', 5, mislab_rate)
+            add_nar(y_train, PATH + 'ss2_labels', 5, mislab_rate)
+            add_nnar(X_train, y_train, PATH + 'ss2_labels', 5, mislab_rate)
 
-        add_ncar(labels_clean[24000:30000], PATH + 'ss2_labels_test', 5)
-        add_nar(labels_clean[24000:30000], PATH + 'ss2_labels_test', 5)
-        add_nnar(attributes[24000:30000], labels_clean[24000:30000], PATH + 'ss2_labels_test', 5)
+            add_ncar(y_test, PATH + 'ss2_labels_test', 5, mislab_rate)
+            add_nar(y_test, PATH + 'ss2_labels_test', 5, mislab_rate)
+            add_nnar(X_test, y_test, PATH + 'ss2_labels_test', 5, mislab_rate)
         print("Done with SS")
 
     if RUN_HAR:
