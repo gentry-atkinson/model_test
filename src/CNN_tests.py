@@ -17,6 +17,8 @@ from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
 from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout, ReLU, GlobalAveragePooling1D
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.losses import CategoricalCrossentropy
+# import torch
+# from torch import nn
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
 import gc
@@ -26,6 +28,8 @@ from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
 from datetime import date
 from model_config import loadDic
+
+# device = "cuda" if torch.cuda.is_available() else "cpu"
 
 DEBUG = True
 
@@ -73,7 +77,14 @@ Parameters:
     num_channels, int, the number of channel in X  
 """
 
-def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared_error'):
+def build_cnn(
+    X : np.ndarray, 
+    num_classes : int, 
+    set : str, 
+    num_channels=1, 
+    opt='SGD', 
+    loss='mean_squared_error'
+):
     print("Input Shape: ", X.shape)
     model = Sequential([
         Input(shape=X[0].shape),
@@ -88,8 +99,34 @@ def build_cnn(X, num_classes, set, num_channels=1, opt='SGD', loss='mean_squared
         GlobalAveragePooling1D(data_format="channels_first"),
         Dense(num_classes, activation='softmax')
     ])
-    model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
-    model.summary()
+    # model = nn.Sequential(
+    #     nn.Conv1d(in_channels=num_channels, out_channels=config_dic[set]['l1_numFilters'], 
+    #         kernel_size=config_dic[set]['l1_kernelSize'], padding='zeros'
+    #     ),
+    #     nn.Conv1d(in_channels=config_dic[set]['l1_numFilters'], out_channels=config_dic[set]['l1_numFilters'],
+    #         kernel_size=config_dic[set]['l1_kernelSize'], padding='zeros'
+    #     ),
+    #     nn.BatchNorm1d(config_dic[set]['l1_numFilters']),
+    #     nn.ReLU(),
+    #     nn.MaxPool1d(pool_size=config_dic[set]['l1_maxPoolSize']),
+    #     nn.Dropout(0.25),
+    #     nn.LazyConv1d(out_channels=config_dic[set]['l2_numFilters'], 
+    #         kernel_size=config_dic[set]['l1_kernelSize'], padding='zeros'
+    #     ),
+    #     nn.Conv1d(in_channels=config_dic[set]['l2_numFilters'],out_channels=config_dic[set]['l2_numFilters'],
+    #         kernel_size=config_dic[set]['l2_kernelSize'], padding='zeros'
+    #     ),
+    #     nn.BatchNorm1d(config_dic[set]['l2_numFilters']),
+    #     nn.ReLU(),
+    #     nn.MaxPool1d(pool_size=config_dic[set]['l2_maxPoolSize']),
+    #     nn.Dropout(0.25),
+    #     nn.AdaptiveAvgPool1d(output_size=num_classes*4),
+    #     nn.Linear(in_features=num_classes*4, out_features=num_classes),
+    #     nn.Softmax()
+    # )
+    # model = model.to(device)
+    #print(model)
+    print(model.summary())
     return model
 
 def train_cnn(model, X, y):
