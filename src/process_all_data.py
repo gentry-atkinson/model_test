@@ -26,7 +26,8 @@ from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
 from utils.add_nnar import add_nnar
 from data.load_data_time_series.HAR.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
-from utils.import_datasets import get_uci_data, get_uci_test
+from data.load_data_time_series.HAR.UCI_HAR.uci_har_load_dataset import uci_har_load_dataset
+#from utils.import_datasets import get_uci_data, get_uci_test
 import numpy as np
 import pandas as pd
 #from scipy.signal import resample
@@ -193,7 +194,105 @@ def run_ss():
     print("Done with SS")
 
 def run_har():
-    pass
+    print("##### Preparing Dataset: HAR1 #####")
+    """
+    Human Activity Recognition Set 1
+    Collected using an E4 data collection device at Texas State University.
+    6 classes
+    1 channel (total acceleration)
+    150 samples in every instance
+    2077 train instances
+    1091 test instances
+    """
+    #Use Lee's files to get HAR Set 1
+    #Use one_hot_encode to get numerical labels
+    X_train, y_train, X_test, y_test = e4_load_dataset(
+        verbose=False, one_hot_encode = True, incl_xyz_accel=False, 
+        incl_rms_accel=True, incl_val_group=False
+    )
+
+    y_train = np.argmax(y_train, axis=-1)
+    y_test = np.argmax(y_test, axis=-1)
+    num_instances = X_train.shape[0]
+    num_samples = X_train.shape[1]
+    num_channels = X_train.shape[2]
+    print('Shape of e4 train data: ', X_train.shape)
+    print('Shape of e4 train labels: ', y_train.shape)
+    print('Shape of e4 test data: ', X_test.shape)
+    print('Shape of e4 test labels: ', y_test.shape)
+
+    #np.savetxt(PATH + 'har1_attributes_train.csv', attributes,  delimiter=',')
+    np.save(PATH + 'har1_attributes_train.npy', X_train)
+    #np.savetxt(PATH + 'har1_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
+    np.save(PATH + 'har1_labels_clean.npy', y_train)
+    #np.savetxt(PATH + 'har1_attributes_test.csv', att_test,  delimiter=',')
+    np.save(PATH + 'har1_attributes_test.npy', X_test)
+    #np.savetxt(PATH + 'har1_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
+    np.save(PATH + 'har1_labels_test_clean.csv', y_test)
+
+    #Create label sets for HAR1
+    for mislab_rate in range(1, 31):
+        add_ncar(y_train, PATH + 'har1_labels', 6, mislab_rate)
+        add_nar(y_train, PATH + 'har1_labels', 6, mislab_rate)
+        add_nnar(X_train, y_train, PATH + 'har1_labels', 6, num_channels=1, mislab_rate=mislab_rate)
+
+        add_ncar(y_test, PATH + 'har1_labels_test', 6, mislab_rate)
+        add_nar(y_test, PATH + 'har1_labels_test', 6, mislab_rate)
+        add_nnar(X_test, y_test, PATH + 'har1_labels_test', 6, num_channels=1, mislab_rate=mislab_rate)
+
+    print("##### Preparing Dataset: HAR2 #####")
+    """
+    Human Activity Recognition Set 2
+    UCI HAR: collected at UC Irving using smartphone
+    6 classes
+    3 channel (xyz acceleration)
+    128 samples in every instance
+    7352 train instances
+    2947 test instances
+    """
+    #Process UCI HAR inertial signals into a good file
+    #attributes, labels_clean, labels = get_uci_data()
+    #attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
+    X_train, y_train, X_test, y_test = uci_har_load_dataset(
+        verbose=False, one_hot_encode = True, incl_xyz_accel=True, 
+        incl_rms_accel=False, incl_val_group=False
+    )
+
+    y_train = np.argmax(y_train, axis=-1)
+    y_test = np.argmax(y_test, axis=-1)
+
+    print("Shape of UCI data: ", X_train.shape)
+    print("Shape of UCI labels: ", y_train.shape)
+    print("Shape of UCI test: ", X_test.shape)
+    print("Shape of UCI test: ", y_test.shape)
+    #attributes = np.reshape(np.array(attributes), (7352*3, 128))
+    #np.savetxt(PATH + 'har2_attributes_train.csv', attributes,  delimiter=',')
+    np.save(PATH + 'har2_attributes_train.npy', X_train)
+    #np.savetxt(PATH + 'har2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
+    np.save(PATH + 'har2_labels_clean.npy', y_train)
+
+    
+
+    # #Create test sets for HAR2
+    # attributes, labels_clean, labels = get_uci_test()
+    # print("Shape of UCI test: ", attributes.shape)
+    # print("Shape of UCI test: ", labels_clean.shape)
+    # attributes = np.reshape(attributes,(2947*3, 128))
+    # np.savetxt(PATH + 'har2_attributes_test.csv', attributes,  delimiter=',')
+    np.save(PATH + 'har2_attributes_test.npy', X_test)
+    # np.savetxt(PATH + 'har2_labels_test_clean.csv', labels_clean, delimiter=',', fmt='%d')
+    np.save(PATH + 'har2_labels_test_clean.npy', y_test)
+
+    #Create label sets for HAR2
+    for mislab_rate in range(1, 31):
+        add_ncar(y_train, PATH + 'har2_labels', 6, mislab_rate)
+        add_nar(y_train, PATH + 'har2_labels', 6, mislab_rate)
+        add_nnar(X_train, y_train, PATH + 'har2_labels', 6, num_channels=3, mislab_rate=mislab_rate)
+
+        add_ncar(y_test, PATH + 'har2_labels_test', 6, mislab_rate)
+        add_nar(y_test, PATH + 'har2_labels_test', 6, mislab_rate)
+        add_nnar(X_test, y_test, PATH + 'har2_labels_test', 6, num_channels=3, mislab_rate=mislab_rate)
+    print("Done with HAR")
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
@@ -208,92 +307,10 @@ if(__name__ == "__main__"):
     if RUN_SS: run_ss()
         
 
-    if RUN_HAR:
-        print("##### Preparing Dataset: HAR1 #####")
-        """
-        Human Activity Recognition Set 1
-        Collected using an E4 data collection device at Texas State University.
-        6 classes
-        1 channel (total acceleration)
-        150 samples in every instance
-        2077 train instances
-        1091 test instances
-        """
-        #Use Lee's files to get HAR Set 1
-        #Use one_hot_encode to get numerical labels
-        X_train, y_train, X_test, y_test = e4_load_dataset(
-            verbose=False, one_hot_encode = True, incl_xyz_accel=False, 
-            incl_rms_accel=True, incl_val_group=False
-        )
-
-        y_train = np.argmax(y_train, axis=-1)
-        y_test = np.argmax(y_test, axis=-1)
-        num_instances = X_train.shape[0]
-        num_samples = X_train.shape[1]
-        num_channels = X_train.shape[2]
-        print('Shape of e4 train data: ', X_train.shape)
-        print('Shape of e4 train labels: ', y_train.shape)
-        print('Shape of e4 test data: ', X_test.shape)
-        print('Shape of e4 test labels: ', y_test.shape)
-
-        #np.savetxt(PATH + 'har1_attributes_train.csv', attributes,  delimiter=',')
-        np.save(PATH + 'har1_attributes_train.npy', X_train)
-        #np.savetxt(PATH + 'har1_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
-        np.save(PATH + 'har1_labels_clean.npy', y_train)
-        #np.savetxt(PATH + 'har1_attributes_test.csv', att_test,  delimiter=',')
-        np.save(PATH + 'har1_attributes_test.npy', X_test)
-        #np.savetxt(PATH + 'har1_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
-        np.save(PATH + 'har1_labels_test_clean.csv', y_test)
-
-        #Create label sets for HAR1
-        for mislab_rate in range(1, 31):
-            add_ncar(y_train, PATH + 'har1_labels', 6, mislab_rate)
-            add_nar(y_train, PATH + 'har1_labels', 6, mislab_rate)
-            add_nnar(X_train, y_train, PATH + 'har1_labels', 6, num_channels=1, mislab_rate=mislab_rate)
-
-            add_ncar(y_test, PATH + 'har1_labels_test', 6, mislab_rate)
-            add_nar(y_test, PATH + 'har1_labels_test', 6, mislab_rate)
-            add_nnar(X_test, y_test, PATH + 'har1_labels_test', 6, num_channels=1, mislab_rate=mislab_rate)
-
-        print("##### Preparing Dataset: HAR2 #####")
-        """
-        Human Activity Recognition Set 2
-        UCI HAR: collected at UC Irving using smartphone
-        6 classes
-        3 channel (xyz acceleration)
-        128 samples in every instance
-        7352 train instances
-        2947 test instances
-        """
-        #Process UCI HAR inertial signals into a good file
-        attributes, labels_clean, labels = get_uci_data()
-        #attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
-        print("Shape of UCI data: ", attributes.shape)
-        print("Shape of UCI labels: ", labels_clean.shape)
-        attributes = np.reshape(np.array(attributes), (7352*3, 128))
-        np.savetxt(PATH + 'har2_attributes_train.csv', attributes,  delimiter=',')
-        np.savetxt(PATH + 'har2_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
-
-        #Create label sets for HAR2
-        add_ncar(labels_clean, PATH + 'har2_labels', 6)
-        add_nar(labels_clean, PATH + 'har2_labels', 6)
-        add_nnar(attributes, labels_clean, PATH + 'har2_labels', 6, num_channels=3)
-
-        #Create test sets for HAR2
-        attributes, labels_clean, labels = get_uci_test()
-        print("Shape of UCI test: ", attributes.shape)
-        print("Shape of UCI test: ", labels_clean.shape)
-        attributes = np.reshape(attributes,(2947*3, 128))
-        np.savetxt(PATH + 'har2_attributes_test.csv', attributes,  delimiter=',')
-        np.savetxt(PATH + 'har2_labels_test_clean.csv', labels_clean, delimiter=',', fmt='%d')
-
-        add_ncar(labels_clean, PATH + 'har2_labels_test', 6)
-        add_nar(labels_clean, PATH + 'har2_labels_test', 6)
-        add_nnar(attributes, labels_clean, PATH + 'har2_labels_test', 6, num_channels=3)
-        print("Done with HAR")
-
+    if RUN_HAR: run_har()
+        
     if RUN_SN:
-        #Create Synthetic Set 1
+        #Create Sensor Network 1
         """
         Sensor Network Set 1
         Rainfall in Australia dataset from:
