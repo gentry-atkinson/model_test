@@ -221,41 +221,39 @@ if(__name__ == "__main__"):
         """
         #Use Lee's files to get HAR Set 1
         #Use one_hot_encode to get numerical labels
-        X_train, y_train, X_test, y_test_test = e4_load_dataset(
-            verbose=False, one_hot_encode = False, incl_xyz_accel=False, 
+        X_train, y_train, X_test, y_test = e4_load_dataset(
+            verbose=False, one_hot_encode = True, incl_xyz_accel=False, 
             incl_rms_accel=True, incl_val_group=False
         )
 
-        # labels_clean = np.argmax(labels_clean, axis=-1)
-        # lab_test = np.argmax(lab_test, axis=-1)
+        y_train = np.argmax(y_train, axis=-1)
+        y_test = np.argmax(y_test, axis=-1)
         num_instances = X_train.shape[0]
         num_samples = X_train.shape[1]
         num_channels = X_train.shape[2]
-        print('Shape of e4 data: ', X_train.shape)
-        print('Shape of e4 labels: ', y_train.shape)
-        print('Number of e4 instances: ', len(X_train))
-        print('Number of e4 labels: ', len(y_train))
+        print('Shape of e4 train data: ', X_train.shape)
+        print('Shape of e4 train labels: ', y_train.shape)
+        print('Shape of e4 test data: ', X_test.shape)
+        print('Shape of e4 test labels: ', y_test.shape)
 
-        num_instances = att_test.shape[0]
-        num_samples = att_test.shape[1]
-        num_channels = att_test.shape[2]
-        print('Number of test instances: ', len(att_test))
-        print('Number of test labels: ', len(lab_test))
-        print('Shape of test attributes: ', np.array(attributes).shape)
-        att_test = np.reshape(att_test,(num_instances*num_channels, num_samples))
-        np.savetxt(PATH + 'har1_attributes_train.csv', attributes,  delimiter=',')
-        np.savetxt(PATH + 'har1_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'har1_attributes_test.csv', att_test,  delimiter=',')
-        np.savetxt(PATH + 'har1_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
+        #np.savetxt(PATH + 'har1_attributes_train.csv', attributes,  delimiter=',')
+        np.save(PATH + 'har1_attributes_train.npy', X_train)
+        #np.savetxt(PATH + 'har1_labels_clean.csv', labels_clean, delimiter=',', fmt='%d')
+        np.save(PATH + 'har1_labels_clean.npy', y_train)
+        #np.savetxt(PATH + 'har1_attributes_test.csv', att_test,  delimiter=',')
+        np.save(PATH + 'har1_attributes_test.npy', X_test)
+        #np.savetxt(PATH + 'har1_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
+        np.save(PATH + 'har1_labels_test_clean.csv', y_test)
 
         #Create label sets for HAR1
-        add_ncar(labels_clean, PATH + 'har1_labels', 6)
-        add_nar(labels_clean, PATH + 'har1_labels', 6)
-        add_nnar(attributes, labels_clean, PATH + 'har1_labels', 6, num_channels=1)
+        for mislab_rate in range(1, 31):
+            add_ncar(y_train, PATH + 'har1_labels', 6, mislab_rate)
+            add_nar(y_train, PATH + 'har1_labels', 6, mislab_rate)
+            add_nnar(X_train, y_train, PATH + 'har1_labels', 6, num_channels=1, mislab_rate=mislab_rate)
 
-        add_ncar(lab_test, PATH + 'har1_labels_test', 6)
-        add_nar(lab_test, PATH + 'har1_labels_test', 6)
-        add_nnar(att_test, lab_test, PATH + 'har1_labels_test', 6, num_channels=1)
+            add_ncar(y_test, PATH + 'har1_labels_test', 6, mislab_rate)
+            add_nar(y_test, PATH + 'har1_labels_test', 6, mislab_rate)
+            add_nnar(X_test, y_test, PATH + 'har1_labels_test', 6, num_channels=1, mislab_rate=mislab_rate)
 
         print("##### Preparing Dataset: HAR2 #####")
         """
