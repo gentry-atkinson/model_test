@@ -8,9 +8,9 @@ Original file is located at
 
 #e4_get_X_y_sub.ipynb
 Loads the dataset from local zip files and converts the data into numpy arrays of X (data), y(labels), and sub (subject numbers)
->X = (samples, time steps per sample, accel_x/y/z/total_accel)
->y = {'Undefined','Upstairs','Downstairs','Walking','Jogging','Sitting','Standing'} # activity classification
->s = {1,2,3,...} # subject number
+>X = (samples, time steps per sample, accel_x/y/z/total_accel)  
+>y = {'Undefined','Upstairs','Downstairs','Walking','Jogging','Sitting','Standing'} # activity classification  
+>s = 1 # subject number - there is only one subject in this proof-of-concept
 
 y and s are column vectors with number of rows equal to samples.
 
@@ -23,12 +23,12 @@ window must be applied after separation into train/val/test groups.
 This video describes the code https://mediaflo.txstate.edu/Watch/e4_data_processing. (updates have been made since this was made)
 
 
-Acknowledgement to and a good example of the WISDM format being pre-processed is https://towardsdatascience.com/human-activity-recognition-har-tutorial-with-keras-and-core-ml-part-1-8c05e365dfa0  by Nils Ackermann.
+Acknowledgement to and a good example of the WISDM format being pre-processed is https://towardsdatascience.com/human-activity-recognition-har-tutorial-with-keras-and-core-ml-part-1-8c05e365dfa0  by Nils Ackermann.  
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
-[Lee B. Hinkle](https://userweb.cs.txstate.edu/~lbh31/), Texas State University, [IMICS Lab](https://imics.wp.txstate.edu/)
+Lee B. Hinkle, Texas State University, [IMICS Lab](https://imics.wp.txstate.edu/)  
 TODO:
 * Time is off by 6 hrs due to time zone issues - adjusted in Excel/csv but would be good to show it in the correct time zone.
 * Change to a callable function broke shapes, not sure why.
@@ -49,6 +49,7 @@ import matplotlib.pyplot as plt # for plotting - pandas uses matplotlib
 from tabulate import tabulate # for verbose tables
 from time import gmtime, strftime, localtime #for displaying Linux UTC timestamps in hh:mm:ss
 from datetime import datetime
+import os
 
 #Helper functions especially useful in colab
 from requests import get
@@ -71,7 +72,7 @@ def get_shapes(np_arr_list):
     """Returns text, each line is shape and dtype for numpy array in list
        example: print(get_shapes([X_train, X_test, y_train, y_test]))"""
     shapes = ""
-    shapes += "shapes call broke during refactor to function"
+    shapes += "shapes call broke when making the function - not sure why"
     return shapes
     for i in np_arr_list:
         print('i=',i)
@@ -84,11 +85,11 @@ def unzip_e4_file(zip_ffname, working_dir):
     """checks for local copy, if none unzips the e4 zipfile in working_dir
     Note:  the files themselves do not contain subject info and there are
     multiple files e.g. ACC.csv, BVP,csv etc, in each zipfile.
-    It is very important to further process the files with <fname>_labels.csv
+    It is very important to further process the files using _info.csv method
     :param zip_ffname: the path and filename of the zip file
     :param working_dir: local (colab) directory where csv files will be placed
     :return: nothing"""
-    if (os.path.isdir(working_dir) and False):
+    if (os.path.isdir(working_dir)):
         print("Skipping Unzip - Found existing archive in colab at", working_dir)
         return
     else:
@@ -97,6 +98,7 @@ def unzip_e4_file(zip_ffname, working_dir):
         if (os.path.exists(zip_ffname)):
             shutil.unpack_archive(zip_ffname,working_dir,'zip')
         else:
+            os.system('pwd')
             print("Error: ", zip_ffname, " not found, exiting")
             return
 
@@ -116,7 +118,7 @@ def df_from_e4_csv (ffname,col_labels):
     df = df.drop(df.index[[0,1]]) # drop 1st two rows, index is now off by 2
     print(ffname, "Sample frequency = ", sample_freq, " Hz")
     #show time in day month format, assumes same timezone
-    print("File start time = ", strftime("%a, %d %b %Y %H:%M:%S", localtime(start_time)))
+    print("File start time = ", strftime("%a, %d %b %Y %H:%M:%S", localtime(start_time)))  
     # Make the index datetime first so code can be used for other data types
     # Having the index as datetime is required for pandas resampling
     # The start_time pulled from the e4 csv file is a float64 which represents the
@@ -146,7 +148,7 @@ def process_e4_accel(df):
     return df
 
 def show_tag_time(tag_ffname):
-    """utility prints time marks from tags.csv to help with video sync
+    """utility prints time marks from tags.csv to help with video sync 
     and labeling.   When this is run in colab it seems to be GMT regardless
     of timezone settings."
     :param tag_ffname: file to be processed e.g. /content/temp/tags.csv'
@@ -224,7 +226,9 @@ def split_df_to_timeslice_nparrays(df, time_steps, step):
     # check for nan - issue with resampled data
     bad_data_locations = np.argwhere(np.isnan(reshaped_segments))
     np.unique(bad_data_locations[:,0]) #[:,0] accesses just 1st column
-    if (bad_data_locations.size!=0):
+    if (bad_data_locations.size==0):
+        print("No NaN entries found")
+    else:
         print("Warning: Output arrays contain NaN entries")
         print("execute print(X[99]) # to view single sample")
     return reshaped_segments, labels, subject
@@ -232,9 +236,11 @@ def split_df_to_timeslice_nparrays(df, time_steps, step):
 """# Main Function to generate ndarrays"""
 
 def get_X_y_sub(
-    working_dir='/content/temp', # this directory will be created inside colab
+    working_dir='content/temp', # this directory will be created inside colab
     # you probably need to change this path to your google drive mount
-    zip_dir = 'src/data/e4_wristband_Nov2019/zip_datafiles',
+    # zip_dir = '/content/drive/MyDrive/Colab Notebooks/imics_lab_repositories/load_data_time_series_dev/HAR/e4_wristband_Nov2019/zip_datafiles/sub1',
+    zip_dir = 'src/load_data_time_series/HAR/e4_wristband_Nov2019/zip_datafiles/sub1',
+
     zip_flist = [],
     # note the longer walk x25540_ zip file has not been labeled, this is for experiment only
     #zip_flist = ['1574625540_A01F11.zip'] # Old main to Alkek and back
@@ -267,9 +273,9 @@ def get_X_y_sub(
         # print ('label file ', labels_ffname)
         my_df = label_df_from_csv (my_df, labels_ffname)
         my_df['label'].value_counts()
-        print ("Label Counts - # samples before sliding window\n",my_df['label'].value_counts())
+        print ("Label Counts\n",my_df['label'].value_counts())
         temp_X, temp_y, temp_sub = split_df_to_timeslice_nparrays(my_df, time_steps, step)
-        #print(get_shapes([temp_X, temp_y, temp_sub]))
+        print(get_shapes([temp_X, temp_y, temp_sub]))
         #print(temp_X[:5]) # "head" for ndarray
         #print(temp_y[:5])
         #print(temp_sub[:5])
@@ -281,45 +287,32 @@ def get_X_y_sub(
         shutil.rmtree(working_dir)
 
     #delete first row placeholders
-    X = np.delete(my_X, (0), axis=0)
-    y = np.delete(my_y, (0), axis=0)
+    X = np.delete(my_X, (0), axis=0) 
+    y = np.delete(my_y, (0), axis=0) 
     sub = np.delete(my_sub, (0), axis=0)
     sub = sub.astype(int) # convert from float to int
-
+    print(get_shapes([X, y, sub]))
     # Print final counts for label ndarray - not quite as easy as pandas df
-    print("Final Label Counts")
     unique, counts = np.unique(y, return_counts=True)
-    print (np.asarray((unique, counts)).T)
-    print("Samples per Subject")
-    unique, counts = np.unique(sub, return_counts=True)
+    print("Final Label Counts")
     print (np.asarray((unique, counts)).T)
 
-    xys_info = 'e4 structured 6-activity zip files\n'
-    xys_info += '\n'.join([str(elem) for elem in zip_flist]) # conv list to string
+    xys_info = 'e4 November 2019 zip files\n'
+    xys_info += ' '.join([str(elem) for elem in zip_flist]) # conv list to string
     xys_info += '\nTime steps =' + str(time_steps) + ', Step =' + str(step) + ', no resample\n'
     xys_info += 'Final Shapes\n'
-    xys_info += "X shape " + str(X.shape) + " dtype = " + str(X.dtype) + "\n"
-    xys_info += "y shape " + str(y.shape) + " dtype = " + str(y.dtype) + "\n"
-    xys_info += "sub shape " + str(sub.shape) + " dtype = " + str(sub.dtype) + "\n"
+    xys_info += get_shapes([X, y, sub])
+    print (xys_info)
     return X, y, sub, xys_info
 
 if __name__ == "__main__":
     print("Processing e4 zip files and label csv into X, y, sub ndarrays")
-    # All 3 subjects structured activity data
-    X, y, sub, xys_info = get_X_y_sub(zip_flist =
-                                      ['sub1/1574621345_A01F11.zip',
-                                       'sub1/1574622389_A01F11.zip',
-                                       'sub1/1574624998_A01F11.zip',
-                                       'sub2/1633107019_A01F11.zip',
-                                       'sub2/1633108344_A01F11.zip',
-                                       'sub2/1633109744_A01F11.zip',
-                                       'sub3/1633704587_A01F11.zip',
-                                       'sub3/1633705664_A01F11.zip',
-                                       'sub3/1633711821_A01F11.zip'])
-    #X, y, sub, xys_info = get_X_y_sub(zip_flist = ['sub1/1574625540_A01F11.zip']) # sub 1 Old main to Alkek and back
-
+    X, y, sub, xys_info = get_X_y_sub(zip_flist = ['1574621345_A01F11.zip','1574622389_A01F11.zip', '1574624998_A01F11.zip'])
+    #X, y, sub, xys_info = get_X_y_sub(zip_flist = ['1574625540_A01F11.zip']) # Old main to Alkek and back
     # note the longer walk x25540_ zip file has not been labeled, all valid segments = 'Not_Labeled'
-    print("\n"+xys_info)
+    print("X shape ",X.shape,"dtype = ",X.dtype)
+    print("y shape ",y.shape,"dtype = ",y.dtype)
+    print("sub shape ",sub.shape,"dtype = ",sub.dtype)
 
 """#Save arrays to drive"""
 
@@ -328,12 +321,12 @@ if False: #change to true to save files interactively
     #output_dir = '/content/drive/MyDrive/Processed_Datasets/e4_Nov2019_xys/3s_window_2s_overlap'
     #output_dir = '/content/drive/MyDrive/Processed_Datasets/e4_Nov2019_xys/free_walk_not_labeled'
     if (os.path.isdir(output_dir)):
-        #quick check for existing files, '.ipynb_checkpoints' file
+        #quick check for existing files, '.ipynb_checkpoints' file 
         #makes it more complicated to see if directory is empty
         if (not os.path.isfile(output_dir + '/X.npy')):
             summary = "e4 Nov 2019 data\n"
             summary += "Saved to " + output_dir + "\n"
-            summary += "Generated by " + what_is_my_name()
+            summary += "Generated by " + what_is_my_name() 
             summary += " on " + time.strftime('%b-%d-%Y_%H%M', time.localtime())
 
             info_fname = output_dir +'/'+'info.txt'
@@ -356,13 +349,13 @@ if False: #change to true to save files interactively
 def plot_activities():
     uniques, y_num = np.unique(y, return_inverse=True)
     print (uniques)
-    plt.plot(y_num)
+    plt.plot(y_num) 
     plt.show()
 #plot_activities()
 
 def plot_subjects():
     uniques, s_num = np.unique(sub, return_inverse=True)
     print (uniques)
-    plt.plot(s_num)
+    plt.plot(s_num) 
     plt.show()
 #plot_subjects()

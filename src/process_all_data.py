@@ -25,7 +25,7 @@ from utils.ts_feature_toolkit import clean_nan_and_inf
 from utils.add_ncar import add_ncar
 from utils.add_nar import add_nar
 from utils.add_nnar import add_nnar
-from data.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
+from data.load_data_time_series.HAR.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
 from utils.import_datasets import get_uci_data, get_uci_test
 import numpy as np
 import pandas as pd
@@ -34,12 +34,15 @@ from sklearn.utils import shuffle
 import os
 from sklearn.preprocessing import minmax_scale
 
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))   
+
 
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = True
-RUN_HAR = False
+RUN_SS = False
+RUN_HAR = True
 #RUN_BS = False
 RUN_SN = False
 
@@ -118,9 +121,6 @@ def load_synthetic_dataset(
     print("Test data shape: ", test_set.shape)
 
     return train_set, train_labels, test_set, test_labels
-
-import tensorflow as tf
-print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))   
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
@@ -212,19 +212,7 @@ if(__name__ == "__main__"):
         #Use Lee's files to get HAR Set 1
         #Use one_hot_encode to get numerical labels
         attributes, labels_clean, att_test, lab_test = map(np.array, e4_load_dataset(verbose=False, one_hot_encode = True))
-        # attributes = np.array(attributes)
-        # att_test = np.array(att_test)
-        # label_dic = {
-        #     'Downstairs':0,
-        #     'Jogging':1,
-        #     'Not_Labeled':2,
-        #     'Sitting':3,
-        #     'Standing':4,
-        #     'Upstairs':5,
-        #     'Walking':6,
-        # }
-        # labels_clean = np.array([label_dic[i[0]] for i in labels_clean])
-        # lab_test = np.array([label_dic[i[0]] for i in lab_test])
+
         labels_clean = np.argmax(labels_clean, axis=-1)
         lab_test = np.argmax(lab_test, axis=-1)
         num_instances = attributes.shape[0]
