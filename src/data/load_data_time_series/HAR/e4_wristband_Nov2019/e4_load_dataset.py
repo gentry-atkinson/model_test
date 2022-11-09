@@ -32,7 +32,7 @@ TODOs:
 #mount google drive in colab session
 #enter path to where the git repo was cloned
 #my_path = '/content/drive/My Drive/Colab Notebooks/imics_lab_repositories/load_data_time_series_dev'
-my_path = 'src/load_data_time_series'
+my_path = 'src/data/load_data_time_series'
 
 import os
 import shutil #https://docs.python.org/3/library/shutil.html
@@ -49,7 +49,7 @@ from sklearn.preprocessing import OneHotEncoder
 # use get_x_y_sub to get partially processed numpy arrays
 full_filename = my_path+os.path.join('/HAR/e4_wristband_Nov2019/'+'e4_get_x_y_sub.py')
 shutil.copy(full_filename,'e4_get_x_y_sub.py')
-from load_data_time_series.HAR.e4_wristband_Nov2019.e4_get_x_y_sub import get_X_y_sub
+from data.load_data_time_series.HAR.e4_wristband_Nov2019.e4_get_x_y_sub import get_X_y_sub
 
 def e4_load_dataset(
     verbose = True,
