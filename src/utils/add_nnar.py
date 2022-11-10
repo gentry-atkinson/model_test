@@ -10,7 +10,7 @@ import numpy as np
 from random import randint
 import os
 from sklearn.neighbors import NearestNeighbors
-from utils.ts_feature_toolkit import get_features_for_set
+from ts_feature_toolkit import get_features_for_set
 
 def absChannels(X, num_channels):
     print("Length of attribute list in add_nnar: ", len(X))
@@ -52,6 +52,8 @@ def add_nnar(
     MIN_LABEL = int(np.argmin(counts))
     SET_LENGTH = len(clean_labels)
     assert MAJ_LABEL != MIN_LABEL, "Calculating class imbalance has gone horribly wrong"
+    
+    assert np.count_nonzero(clean_labels==MAJ_LABEL) >= (mislab_rate/100)*len(clean_labels)
 
     attributes = get_features_for_set(attributes, len(attributes))
     noisy_labels = clean_labels.copy()
