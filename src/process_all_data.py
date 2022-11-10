@@ -42,8 +42,8 @@ print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = True
-RUN_HAR = False
+RUN_SS = False
+RUN_HAR = True
 #RUN_BS = False
 RUN_SN = False
 
