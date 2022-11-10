@@ -75,6 +75,8 @@ def add_nnar(
     
     noisy_labels = clean_labels.copy()
 
+    assert np.count_nonzero(clean_labels==MAJ_LABEL) >= mislab_rate/100*len(clean_labels), f"Not enough majority labels for nnar with mislabling rate of {mislab_rate}"
+
     if os.path.exists(f'{filename}_knn_output.npy'):
         print('Grabbing old features for attributes')
         i = np.load(f'{filename}_knn_output.npy')

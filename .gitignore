@@ -4,5 +4,22 @@
 *.zip
 *.npy
 *.npy
+*.png
+*.drawio
+*.apn
+*.dat
+*.hea
+*.qrs
+*.xws
+*.shtml
+*ANNOTATORS
+*RECORDS
+*.c
+*.csv
+
+src/data/apnea-ecg-database*
+src/data/gait-in-parkinsons*
+src/data/UCI\ HAR\ Dataset/test/*
+src/data/UCI\ HAR\ Dataset/train/*
 
 *__pycache__*
