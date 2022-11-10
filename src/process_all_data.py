@@ -131,14 +131,14 @@ def run_ss():
     2 classes
     1 channel
     150 samples in every instance
-    8000 train instances
-    2000 test instances
+    8001 train instances
+    2001 test instances
     """
     print("##### Preparing Dataset: SS1 #####")
     # attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=10000, numClasses=2, percentError=0)
     # attributes = np.reshape(np.array(attributes['x']),(10000, 150))
     # attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
-    X_train, y_train, X_test, y_test = load_synthetic_dataset(8000, 2000, 2, 150)
+    X_train, y_train, X_test, y_test = load_synthetic_dataset(8001, 2001, 2, 150)
     #np.savetxt(PATH + 'ss1_attributes_train.csv', attributes[0:8000],  delimiter=',')
     np.save(PATH + 'ss1_attributes_train.csv', X_train)
     #np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean[0:8000], delimiter=',', fmt='%d')

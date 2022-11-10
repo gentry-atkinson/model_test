@@ -12,6 +12,7 @@ from sklearn.metrics import confusion_matrix
 from joblib import Parallel, delayed
 from functools import reduce
 import os
+from functools import partial
 
 """
 Calculate Apparent Error Rate
@@ -180,14 +181,15 @@ Parameters:
     num_instances: the number of instances in the set
 Returns: the extracted feature set as a 2D array
 """
-def get_features_for_set(X, sample_rate=50, num_instances=None):
+def get_features_for_set(X, sample_rate=50, num_instances=None, channels_first = True):
     print("Feature extraction for set with shape: ", X.shape)
     sample_length = len(X[0])
+    gffos = partial(get_features_from_one_signal, channels_first = channels_first)
     if num_instances is None:
         num_instances = len(X)
     fet = np.zeros((num_instances, 18))
     NUM_CORES = os.cpu_count()
-    fet = Parallel(n_jobs=NUM_CORES)(delayed(get_features_from_one_signal)(i) for i in X)
+    fet = Parallel(n_jobs=NUM_CORES)(delayed(gffos)(i) for i in X)
     return np.array(fet)
 
 #just a little testing section down here

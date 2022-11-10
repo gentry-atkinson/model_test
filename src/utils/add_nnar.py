@@ -10,7 +10,7 @@ import numpy as np
 from random import randint
 import os
 from sklearn.neighbors import NearestNeighbors
-from ts_feature_toolkit import get_features_for_set
+from utils.ts_feature_toolkit import get_features_for_set
 from math import ceil
 import random
 
@@ -61,7 +61,7 @@ def add_nnar(
     number_to_relabel = ceil((mislab_rate/100)*len(clean_labels))
     classes_to_relabel = []
     for c in count_indexes[::-1]:
-        if not indexes_to_relabel:
+        if indexes_to_relabel is None:
             indexes_to_relabel = np.array([i for i,l in enumerate(clean_labels) if l == c])
         else:
             indexes_to_relabel = np.concatenate((indexes_to_relabel,[i for i,l in enumerate(clean_labels) if l == c]), axis=0)
@@ -80,7 +80,7 @@ def add_nnar(
         i = np.load(f'{filename}_knn_output.npy')
     else:
         print('Running features for attributes')
-        attributes = get_features_for_set(attributes, len(attributes))
+        attributes = get_features_for_set(attributes, len(attributes), channels_first=False)
         nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)
         d, i = nbrs.kneighbors(attributes)
         np.save(f'{filename}_knn_output.npy', i)
