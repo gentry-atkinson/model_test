@@ -43,6 +43,7 @@ def add_nnar(
     """
     Write a noisy label file with a specific mislabeling rate (0-100)
     """
+    print('NNAR')
     if attributes is None:
         attributes = np.load(att_file)
     
@@ -71,12 +72,15 @@ def add_nnar(
     print("Size of relabeling pool: ", len(indexes_to_relabel))
     print("Number of classes in relabeling group: ", len(classes_to_relabel))
     
-    attributes = get_features_for_set(attributes, len(attributes))
+    
     noisy_labels = clean_labels.copy()
 
     if os.path.exists(f'{filename}_knn_output.npy'):
+        print('Grabbing old features for attributes')
         i = np.load(f'{filename}_knn_output.npy')
     else:
+        print('Running features for attributes')
+        attributes = get_features_for_set(attributes, len(attributes))
         nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(attributes)
         d, i = nbrs.kneighbors(attributes)
         np.save(f'{filename}_knn_output.npy', i)
@@ -96,7 +100,6 @@ def add_nnar(
     np.save(f'{filename}_nnar_{mislab_rate}.npy', noisy_labels)
 
     #Sanity checks
-    print('NNAR')
     print('Len of clean labels: ', len(clean_labels))
     print('Len of noisy labels: ', len(noisy_labels))
     print('Mislabeling rate: ', mislab_rate)
@@ -105,7 +108,7 @@ def add_nnar(
     print('Number of clean labels: ', np.count_nonzero(noisy_labels==clean_labels))
 
 if __name__ == '__main__':
-    att = np.concatenate((np.zeros((2500, 3, 50), dtype=int), np.ones((2000, 3, 50), dtype=int)), axis=0)
+    att = np.concatenate((np.zeros((250, 3, 50), dtype=int), np.ones((200, 3, 50), dtype=int)), axis=0)
     clean_labels = np.concatenate((np.zeros((2500), dtype=int), np.ones((2000), dtype=int)), axis=0)
     add_nnar(att, clean_labels, 'test_labels', 2, 10)
     noisy_labels = np.load('test_labels_nnar_10.npy')
