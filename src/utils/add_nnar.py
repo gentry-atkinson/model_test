@@ -11,6 +11,8 @@ from random import randint
 import os
 from sklearn.neighbors import NearestNeighbors
 from ts_feature_toolkit import get_features_for_set
+from math import ceil
+import random
 
 def absChannels(X, num_channels):
     print("Length of attribute list in add_nnar: ", len(X))
@@ -48,13 +50,27 @@ def add_nnar(
     total_counter = 0
 
     counts = [np.count_nonzero(clean_labels==i) for i in range(num_classes)]
+    count_indexes = np.argsort(counts)
     MAJ_LABEL = int(np.argmax(counts))
     MIN_LABEL = int(np.argmin(counts))
     SET_LENGTH = len(clean_labels)
     assert MAJ_LABEL != MIN_LABEL, "Calculating class imbalance has gone horribly wrong"
-    
-    assert np.count_nonzero(clean_labels==MAJ_LABEL) >= (mislab_rate/100)*len(clean_labels)
 
+    indexes_to_relabel = None
+    number_to_relabel = ceil((mislab_rate/100)*len(clean_labels))
+    classes_to_relabel = []
+    for c in count_indexes[::-1]:
+        if not indexes_to_relabel:
+            indexes_to_relabel = np.array([i for i,l in enumerate(clean_labels) if l == c])
+        else:
+            indexes_to_relabel = np.concatenate((indexes_to_relabel,[i for i,l in enumerate(clean_labels) if l == c]), axis=0)
+        classes_to_relabel.append(c)
+        if len(indexes_to_relabel) >= number_to_relabel: 
+            break
+
+    print("Size of relabeling pool: ", len(indexes_to_relabel))
+    print("Number of classes in relabeling group: ", len(classes_to_relabel))
+    
     attributes = get_features_for_set(attributes, len(attributes))
     noisy_labels = clean_labels.copy()
 
@@ -66,11 +82,15 @@ def add_nnar(
         np.save(f'{filename}_knn_output.npy', i)
 
     while total_flipped < (mislab_rate/100)*SET_LENGTH:
-        rand_instance_index = randint(0, SET_LENGTH-1)
+        #rand_instance_index = randint(0, SET_LENGTH-1)
+        rand_instance_index = random.choice(indexes_to_relabel)
         total_counter += 1
-        if clean_labels[rand_instance_index] == MAJ_LABEL:
-            if clean_labels[i[rand_instance_index][1]]!=MAJ_LABEL or (randint(0,99)<=(mislab_rate/10)):
-                noisy_labels[rand_instance_index] = noisy_labels[i[rand_instance_index][1]]
+        if noisy_labels[rand_instance_index] in classes_to_relabel:
+            if clean_labels[i[rand_instance_index][1]]!=noisy_labels[rand_instance_index]:
+                noisy_labels[rand_instance_index] = clean_labels[rand_instance_index]
+                total_flipped += 1
+            elif randint(0,99)<=(mislab_rate/10):
+                noisy_labels[rand_instance_index] = MIN_LABEL
                 total_flipped += 1
 
     np.save(f'{filename}_nnar_{mislab_rate}.npy', noisy_labels)
@@ -80,7 +100,7 @@ def add_nnar(
     print('Len of clean labels: ', len(clean_labels))
     print('Len of noisy labels: ', len(noisy_labels))
     print('Mislabeling rate: ', mislab_rate)
-    print('Number of noisy labels: ', total_flipped)
+    print('Number of flipped labels: ', total_flipped)
     print('Total iterations: ', total_counter)
     print('Number of clean labels: ', np.count_nonzero(noisy_labels==clean_labels))
 
