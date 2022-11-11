@@ -458,10 +458,10 @@ def run_sn():
     features = ['Temperature',  'Humidity',  'Light', 'CO2',  'HumidityRatio']
     key = 'Occupancy'
 
-    attributes = []
-    test_att = []
-    labels_clean = []
-    labels_test = []
+    X_train = []
+    X_test = []
+    y_train = []
+    y_test = []
 
     train_count = 0
     test_count = 0
@@ -477,21 +477,21 @@ def run_sn():
         for f in features:
             line = []
             line.append(room_train_table[f][i:i+INSTANCE_LEN])
-            attributes.append(line)
+            X_train.append(line)
         # if sum(room_train_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
         #     labels_clean.append(1)
         # else:
         #     labels_clean.append(0)
         if sum(room_train_table[key][i:i+INSTANCE_LEN]) == 0:
-            labels_clean.append(0)
+            y_train.append(0)
         elif sum(room_train_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
-            labels_clean.append(1)
+            y_train.append(1)
         elif room_train_table[key][i] == 0 and room_train_table[key][i+INSTANCE_LEN] == 1:
-            labels_clean.append(2)
+            y_train.append(2)
         elif room_train_table[key][i] == 1 and room_train_table[key][i+INSTANCE_LEN] == 0:
-            labels_clean.append(3)
+            y_train.append(3)
         else:
-            labels_clean.append(4)
+            y_train.append(4)
 
     # print('Number of samples in dataset: ', len(room_train_table['Temperature']))
     # print('Length of attribute array: ', len(attributes))
@@ -502,54 +502,59 @@ def run_sn():
         for f in features:
             line = []
             line.append(room_test_table[f][i:i+INSTANCE_LEN])
-            test_att.append(line)
+            X_test.append(line)
         # if sum(room_test_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
         #     labels_test.append(1)
         # else:
         #     labels_test.append(0)
         if sum(room_test_table[key][i:i+INSTANCE_LEN]) == 0:
-            labels_test.append(0)
+            y_test.append(0)
         elif sum(room_test_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
-            labels_test.append(1)
+            y_test.append(1)
         elif room_test_table[key][i] == 0 and room_test_table[key][i+INSTANCE_LEN] == 1:
-            labels_test.append(2)
+            y_test.append(2)
         elif room_test_table[key][i] == 1 and room_test_table[key][i+INSTANCE_LEN] == 0:
-            labels_test.append(3)
+            y_test.append(3)
         else:
-            labels_test.append(4)
+            y_test.append(4)
 
-    attributes = np.reshape(np.array(attributes), (len(attributes), INSTANCE_LEN))
-    test_att =  np.reshape(np.array(test_att), (len(test_att), INSTANCE_LEN))
+    X_train = np.reshape(np.array(X_train), (len(X_train), INSTANCE_LEN))
+    X_test =  np.reshape(np.array(X_test), (len(X_test), INSTANCE_LEN))
 
-    labels_clean = np.array(labels_clean, dtype='int')
-    labels_test = np.array(labels_test, dtype='int')
+    y_train = np.array(y_train, dtype='int')
+    y_test = np.array(y_test, dtype='int')
 
     print ("Number of train instances: ", train_count)
     print ("Number of test instances: ", test_count)
-    print ("Number of train array: ", len(attributes))
-    print ("Number of test array: ", len(test_att))
-    print ("Rainy occupied days: ", np.sum(np.where(labels_test==1), axis=None))
-    print ("Rainy unoccupied days: ", np.sum(np.where(labels_test!=1), axis=None))
+    print ("Number of train array: ", len(X_train))
+    print ("Number of test array: ", len(X_test))
+    print ("Rainy occupied test days: ", np.sum(np.where(y_test==1), axis=None))
+    print ("Rainy unoccupied test days: ", np.sum(np.where(y_test!=1), axis=None))
 
-    print("Shape of train data: ", attributes.shape)
-    print('Sahpe of test data: ', test_att.shape)
+    print("Shape of train data: ", X_train.shape)
+    print('Sahpe of test data: ', X_test.shape)
 
     # attributes = clean_nan_and_inf(attributes)
     # test_att = clean_nan_and_inf(test_att)
 
     #write attributes to file
-    np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
-    np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
-    np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
-    np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+    # np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
+    np.save(PATH + 'sn2_attributes_train.npy', X_train)
+    # np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
+    np.save(PATH + 'sn2_attributes_test.csv', X_test)
+    # np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+    np.save(PATH + 'sn2_labels_clean.csv', y_train)
+    # np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+    np.save(PATH + 'sn2_labels_test_clean.csv', y_test)
 
-    add_ncar(labels_clean, PATH + 'sn2_labels', 5)
-    add_nar(labels_clean, PATH + 'sn2_labels', 5)
-    add_nnar(attributes, labels_clean, PATH + 'sn2_labels', 5, num_channels=5)
+    for mislab_rate in range(1, 31):
+        add_ncar(y_train, PATH + 'sn2_labels', 5, mislab_rate)
+        add_nar(y_train, PATH + 'sn2_labels', 5, mislab_rate)
+        add_nnar(X_train, y_train, PATH + 'sn2_labels', 5, num_channels=5, mislab_rate=mislab_rate)
 
-    add_ncar(labels_test, PATH + 'sn2_labels_test', 5)
-    add_nar(labels_test, PATH + 'sn2_labels_test', 5)
-    add_nnar(test_att, labels_test, PATH + 'sn2_labels_test', 5, num_channels=5)
+        add_ncar(y_test, PATH + 'sn2_labels_test', 5, mislab_rate)
+        add_nar(y_test, PATH + 'sn2_labels_test', 5, mislab_rate)
+        add_nnar(X_test, y_test, PATH + 'sn2_labels_test', 5, num_channels=5, mislab_rate=mislab_rate)
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
