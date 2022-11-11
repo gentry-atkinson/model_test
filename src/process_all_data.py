@@ -299,7 +299,257 @@ def run_har():
     print("Done with HAR")
 
 def run_sn():
-    pass
+    #Create Sensor Network 1
+    """
+    Sensor Network Set 1
+    Rainfall in Australia dataset from:
+        http://www.bom.gov.au/climate/change/datasets/datasets.shtml
+    2 classes
+    6 channel
+    30 samples in every instance
+    113899 train instances
+    30091 test instances
+    """
+    INSTANCE_LEN = 30
+    TRAIN_SPLIT = 0.8
+
+    print("##### Preparing Dataset: SN1 #####")
+    weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
+
+    weather_table = pd.read_csv(weather_file)
+    locations = set(weather_table['Location'])
+    num_train_locs = int(TRAIN_SPLIT*len(locations))
+    print('Number of locations: ', len(locations))
+    print('Train Locations:', list(locations)[0:num_train_locs])
+    print('Test Locations:', list(locations)[num_train_locs:])
+
+    feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
+
+    X_train = []
+    X_test = []
+    y_train = []
+    y_test = []
+
+    #Prepare an ordinal value for wind direction
+    wind_dirs = set(weather_table['WindGustDir'])
+    dir_dic = {}
+    for i,d in enumerate(list(wind_dirs)):
+        dir_dic[d] = i
+    print('Wind direction dictionary: ', dir_dic)
+
+    train_count = 0
+    test_count = 0
+    i = 0
+    while i < len(weather_table['Location'])-30:
+        if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
+            #Record this instance
+            
+            if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
+                train_count += 1
+                for f in feature_list:
+                    line = list()
+                    if f == 'WindGustDir':
+                        line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                    else:
+                            line = np.array((weather_table[f][i:i+30]))
+                    line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+                    # max_val = np.max(line)
+                    # line = np.divide(line, max_val if max_val != 0 else 1)
+                    X_train.append(line)
+                y_train.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+            else:
+                test_count += 1
+                for f in feature_list:
+                    line = []
+                    if f == 'WindGustDir':
+                        line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
+                    else:
+                            line = np.array((weather_table[f][i:i+30]))
+                    line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
+                    # max_val = abs(np.max(line))
+                    # line = np.divide(line, max_val if max_val != 0 else 1)
+                    X_test.append(line)
+                y_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+            i+=1
+        else:
+            #Skip to next location
+            j = i+1
+            #print('Next Location ', i)
+            while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
+                j+= 1
+            i=j
+
+    
+
+    y_train = np.array(y_train, dtype='int')
+    y_test = np.array(y_test, dtype='int')
+
+    X_train = np.array(X_train)
+    X_test = np.array(X_test)
+
+    # normalize(attributes, axis=1, copy=False, norm='max')
+    # normalize(test_att, axis=1, copy=False, norm='max')
+    X_train = minmax_scale(X_train, (-1, 1), axis=1)
+    X_test = minmax_scale(X_test, (-1, 1), axis=1)
+
+    # attributes = clean_nan_and_inf(attributes)
+    # test_att = clean_nan_and_inf(test_att)
+
+    print ("Number of train instances: ", train_count)
+    print ("Number of test instances: ", test_count)
+    print ("Number of train array: ", len(X_train))
+    print ("Number of test array: ", len(X_test))
+    print ("Rainy train days: ", sum(y_train))
+    print ("Rainy test days: ", sum(y_test))
+
+    print("Shape of train data: ", X_train.shape)
+    print('Sahpe of test data: ', X_test.shape)
+
+    del weather_table
+
+    # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
+    # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
+    # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
+    # print('WindGustSpeed: ', ', '.join([str(i) for i in attributes[3]]))
+    # print('Pressure9am: ', ', '.join([str(i) for i in attributes[4]]))
+    # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
+
+    #write attributes to file
+    #np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
+    np.save(PATH + 'sn1_attributes_train.npy', X_train)
+    #np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
+    np.save(PATH + 'sn1_attributes_test.npy', X_test)
+    #np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+    np.save(PATH + 'sn1_labels_clean.npy', y_train)
+    #np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+    np.save(PATH + 'sn1_labels_test_clean.npy', y_test)
+
+    for mislab_rate in range(1, 31):
+        add_ncar(y_train, PATH + 'sn1_labels', 2, mislab_rate)
+        add_nar(y_train, PATH + 'sn1_labels', 2), mislab_rate
+        add_nnar(X_train, y_train, PATH + 'sn1_labels', 2, num_channels=6,mislab_rate=mislab_rate)
+
+        add_ncar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
+        add_nar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
+        add_nnar(X_test, y_test, PATH + 'sn1_labels_test', 2, num_channels=6, mislab_rate=mislab_rate)
+
+    #Create Synthetic Set 1
+    """
+    Sensor Network Set 2
+    Occupancy Detection Data Set dataset from:
+        Accurate occupancy detection of an office room from light, temperature, humidity and CO2 
+        measurements using statistical learning models. Luis M. Candanedo, VÃ©ronique Feldheim. 
+        Energy and Buildings. Volume 112, 15 January 2016, Pages 28-39.
+    5 classes
+    5 channel
+    30 samples in every instance, one sample per minute
+    # train instances
+    # test instances
+    """
+
+    INSTANCE_LEN = 30
+
+    room_train_file = "src/data/occupancy/datatraining.txt"
+    room_test_file = "src/data/occupancy/datatest.txt"
+    
+    room_train_table = pd.read_csv(room_train_file)
+    room_test_table = pd.read_csv(room_test_file)
+
+    features = ['Temperature',  'Humidity',  'Light', 'CO2',  'HumidityRatio']
+    key = 'Occupancy'
+
+    attributes = []
+    test_att = []
+    labels_clean = []
+    labels_test = []
+
+    train_count = 0
+    test_count = 0
+
+    #Label Set:
+    #0 -> Room empty for full sample            "Empty"
+    #1 -> Room occupied for full sample         "Occupied"
+    #2 -> Room started empty ended occupied     "Entered"
+    #3 -> Room started occupied ended empty     "Exited"
+    #4 -> Anything else                         "Partial" 
+
+    for i in range(1, len(room_train_table['Temperature'])-INSTANCE_LEN):
+        for f in features:
+            line = []
+            line.append(room_train_table[f][i:i+INSTANCE_LEN])
+            attributes.append(line)
+        # if sum(room_train_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
+        #     labels_clean.append(1)
+        # else:
+        #     labels_clean.append(0)
+        if sum(room_train_table[key][i:i+INSTANCE_LEN]) == 0:
+            labels_clean.append(0)
+        elif sum(room_train_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
+            labels_clean.append(1)
+        elif room_train_table[key][i] == 0 and room_train_table[key][i+INSTANCE_LEN] == 1:
+            labels_clean.append(2)
+        elif room_train_table[key][i] == 1 and room_train_table[key][i+INSTANCE_LEN] == 0:
+            labels_clean.append(3)
+        else:
+            labels_clean.append(4)
+
+    # print('Number of samples in dataset: ', len(room_train_table['Temperature']))
+    # print('Length of attribute array: ', len(attributes))
+    # print('Legth of instance: ', len(attributes[0]))
+    # print(attributes[0])
+
+    for i in range(1, len(room_test_table['Temperature'])-INSTANCE_LEN):
+        for f in features:
+            line = []
+            line.append(room_test_table[f][i:i+INSTANCE_LEN])
+            test_att.append(line)
+        # if sum(room_test_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
+        #     labels_test.append(1)
+        # else:
+        #     labels_test.append(0)
+        if sum(room_test_table[key][i:i+INSTANCE_LEN]) == 0:
+            labels_test.append(0)
+        elif sum(room_test_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
+            labels_test.append(1)
+        elif room_test_table[key][i] == 0 and room_test_table[key][i+INSTANCE_LEN] == 1:
+            labels_test.append(2)
+        elif room_test_table[key][i] == 1 and room_test_table[key][i+INSTANCE_LEN] == 0:
+            labels_test.append(3)
+        else:
+            labels_test.append(4)
+
+    attributes = np.reshape(np.array(attributes), (len(attributes), INSTANCE_LEN))
+    test_att =  np.reshape(np.array(test_att), (len(test_att), INSTANCE_LEN))
+
+    labels_clean = np.array(labels_clean, dtype='int')
+    labels_test = np.array(labels_test, dtype='int')
+
+    print ("Number of train instances: ", train_count)
+    print ("Number of test instances: ", test_count)
+    print ("Number of train array: ", len(attributes))
+    print ("Number of test array: ", len(test_att))
+    print ("Rainy occupied days: ", np.sum(np.where(labels_test==1), axis=None))
+    print ("Rainy unoccupied days: ", np.sum(np.where(labels_test!=1), axis=None))
+
+    print("Shape of train data: ", attributes.shape)
+    print('Sahpe of test data: ', test_att.shape)
+
+    # attributes = clean_nan_and_inf(attributes)
+    # test_att = clean_nan_and_inf(test_att)
+
+    #write attributes to file
+    np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
+    np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
+    np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+    np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+
+    add_ncar(labels_clean, PATH + 'sn2_labels', 5)
+    add_nar(labels_clean, PATH + 'sn2_labels', 5)
+    add_nnar(attributes, labels_clean, PATH + 'sn2_labels', 5, num_channels=5)
+
+    add_ncar(labels_test, PATH + 'sn2_labels_test', 5)
+    add_nar(labels_test, PATH + 'sn2_labels_test', 5)
+    add_nnar(test_att, labels_test, PATH + 'sn2_labels_test', 5, num_channels=5)
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
@@ -312,259 +562,8 @@ if(__name__ == "__main__"):
     np.random.seed(1899)
 
     if RUN_SS: run_ss()
-        
 
     if RUN_HAR: run_har()
         
-    if RUN_SN:
-        #Create Sensor Network 1
-        """
-        Sensor Network Set 1
-        Rainfall in Australia dataset from:
-            http://www.bom.gov.au/climate/change/datasets/datasets.shtml
-        2 classes
-        6 channel
-        30 samples in every instance
-        113899 train instances
-        30091 test instances
-        """
-        INSTANCE_LEN = 30
-        TRAIN_SPLIT = 0.8
-
-        print("##### Preparing Dataset: SN1 #####")
-        weather_file = 'src/data/rain_in_australia/weatherAUS.csv'
-
-        weather_table = pd.read_csv(weather_file)
-        locations = set(weather_table['Location'])
-        num_train_locs = int(TRAIN_SPLIT*len(locations))
-        print('Number of locations: ', len(locations))
-        print('Train Locations:', list(locations)[0:num_train_locs])
-        print('Test Locations:', list(locations)[num_train_locs:])
-
-        feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
-
-        X_train = []
-        X_test = []
-        y_train = []
-        y_test = []
-
-        #Prepare an ordinal value for wind direction
-        wind_dirs = set(weather_table['WindGustDir'])
-        dir_dic = {}
-        for i,d in enumerate(list(wind_dirs)):
-            dir_dic[d] = i
-        print('Wind direction dictionary: ', dir_dic)
-
-        train_count = 0
-        test_count = 0
-        i = 0
-        while i < len(weather_table['Location'])-30:
-            if weather_table.loc[i]['Location'] == weather_table.loc[i+30]['Location']:
-                #Record this instance
-                
-                if weather_table.loc[i]['Location'] in list(locations)[0:num_train_locs]:
-                    train_count += 1
-                    for f in feature_list:
-                        line = list()
-                        if f == 'WindGustDir':
-                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
-                        else:
-                             line = np.array((weather_table[f][i:i+30]))
-                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-                        # max_val = np.max(line)
-                        # line = np.divide(line, max_val if max_val != 0 else 1)
-                        X_train.append(line)
-                    y_train.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
-                else:
-                    test_count += 1
-                    for f in feature_list:
-                        line = []
-                        if f == 'WindGustDir':
-                            line = np.array(([dir_dic[k] for k in weather_table[f][i:i+30]]))
-                        else:
-                             line = np.array((weather_table[f][i:i+30]))
-                        line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
-                        # max_val = abs(np.max(line))
-                        # line = np.divide(line, max_val if max_val != 0 else 1)
-                        X_test.append(line)
-                    y_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
-                i+=1
-            else:
-                #Skip to next location
-                j = i+1
-                #print('Next Location ', i)
-                while weather_table.loc[i]['Location'] == weather_table.loc[j]['Location']:
-                    j+= 1
-                i=j
-
+    if RUN_SN: run_sn()
         
-
-        y_train = np.array(y_train, dtype='int')
-        y_test = np.array(y_test, dtype='int')
-
-        X_train = np.array(X_train)
-        X_test = np.array(X_test)
-
-        # normalize(attributes, axis=1, copy=False, norm='max')
-        # normalize(test_att, axis=1, copy=False, norm='max')
-        X_train = minmax_scale(X_train, (-1, 1), axis=1)
-        X_test = minmax_scale(X_test, (-1, 1), axis=1)
-
-        # attributes = clean_nan_and_inf(attributes)
-        # test_att = clean_nan_and_inf(test_att)
-
-        print ("Number of train instances: ", train_count)
-        print ("Number of test instances: ", test_count)
-        print ("Number of train array: ", len(X_train))
-        print ("Number of test array: ", len(X_test))
-        print ("Rainy train days: ", sum(labels_clean))
-        print ("Rainy test days: ", sum(labels_test))
-
-        print("Shape of train data: ", X_train.shape)
-        print('Sahpe of test data: ', X_test.shape)
-
-        del weather_table
-
-        # print('Mintemp: ', ', '.join([str(i) for i in attributes[0]]))
-        # print('MaxTemp: ', ', '.join([str(i) for i in attributes[1]]))
-        # print('WindGustDir: ', ', '.join([str(i) for i in attributes[2]]))
-        # print('WindGustSpeed: ', ', '.join([str(i) for i in attributes[3]]))
-        # print('Pressure9am: ', ', '.join([str(i) for i in attributes[4]]))
-        # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
-
-        #write attributes to file
-        #np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
-        np.save(PATH + 'sn1_attributes_train.npy', X_train)
-        #np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
-        np.save(PATH + 'sn1_attributes_test.npy', X_test)
-        #np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
-        np.save(PATH + 'sn1_labels_clean.npy', y_train)
-        #np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
-        np.save(PATH + 'sn1_labels_test_clean.npy', y_test)
-
-        for mislab_rate in range(1, 31):
-            add_ncar(y_train, PATH + 'sn1_labels', 2, mislab_rate)
-            add_nar(y_train, PATH + 'sn1_labels', 2), mislab_rate
-            add_nnar(X_train, y_train, PATH + 'sn1_labels', 2, num_channels=6,mislab_rate=mislab_rate)
-
-            add_ncar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
-            add_nar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
-            add_nnar(X_test, y_test, PATH + 'sn1_labels_test', 2, num_channels=6, mislab_rate=mislab_rate)
-
-        #Create Synthetic Set 1
-        """
-        Sensor Network Set 2
-        Occupancy Detection Data Set dataset from:
-            Accurate occupancy detection of an office room from light, temperature, humidity and CO2 
-            measurements using statistical learning models. Luis M. Candanedo, VÃ©ronique Feldheim. 
-            Energy and Buildings. Volume 112, 15 January 2016, Pages 28-39.
-        5 classes
-        5 channel
-        30 samples in every instance, one sample per minute
-        # train instances
-        # test instances
-        """
-
-        INSTANCE_LEN = 30
-
-        room_train_file = "src/data/occupancy/datatraining.txt"
-        room_test_file = "src/data/occupancy/datatest.txt"
-       
-        room_train_table = pd.read_csv(room_train_file)
-        room_test_table = pd.read_csv(room_test_file)
-
-        features = ['Temperature',  'Humidity',  'Light', 'CO2',  'HumidityRatio']
-        key = 'Occupancy'
-
-        attributes = []
-        test_att = []
-        labels_clean = []
-        labels_test = []
-
-        train_count = 0
-        test_count = 0
-
-        #Label Set:
-        #0 -> Room empty for full sample            "Empty"
-        #1 -> Room occupied for full sample         "Occupied"
-        #2 -> Room started empty ended occupied     "Entered"
-        #3 -> Room started occupied ended empty     "Exited"
-        #4 -> Anything else                         "Partial" 
-
-        for i in range(1, len(room_train_table['Temperature'])-INSTANCE_LEN):
-            for f in features:
-                line = []
-                line.append(room_train_table[f][i:i+INSTANCE_LEN])
-                attributes.append(line)
-            # if sum(room_train_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
-            #     labels_clean.append(1)
-            # else:
-            #     labels_clean.append(0)
-            if sum(room_train_table[key][i:i+INSTANCE_LEN]) == 0:
-                labels_clean.append(0)
-            elif sum(room_train_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
-                labels_clean.append(1)
-            elif room_train_table[key][i] == 0 and room_train_table[key][i+INSTANCE_LEN] == 1:
-                labels_clean.append(2)
-            elif room_train_table[key][i] == 1 and room_train_table[key][i+INSTANCE_LEN] == 0:
-                labels_clean.append(3)
-            else:
-                labels_clean.append(4)
-
-        # print('Number of samples in dataset: ', len(room_train_table['Temperature']))
-        # print('Length of attribute array: ', len(attributes))
-        # print('Legth of instance: ', len(attributes[0]))
-        # print(attributes[0])
-
-        for i in range(1, len(room_test_table['Temperature'])-INSTANCE_LEN):
-            for f in features:
-                line = []
-                line.append(room_test_table[f][i:i+INSTANCE_LEN])
-                test_att.append(line)
-            # if sum(room_test_table[key][i:i+INSTANCE_LEN]) > INSTANCE_LEN/2:
-            #     labels_test.append(1)
-            # else:
-            #     labels_test.append(0)
-            if sum(room_test_table[key][i:i+INSTANCE_LEN]) == 0:
-                labels_test.append(0)
-            elif sum(room_test_table[key][i:i+INSTANCE_LEN]) == INSTANCE_LEN:
-                labels_test.append(1)
-            elif room_test_table[key][i] == 0 and room_test_table[key][i+INSTANCE_LEN] == 1:
-                labels_test.append(2)
-            elif room_test_table[key][i] == 1 and room_test_table[key][i+INSTANCE_LEN] == 0:
-                labels_test.append(3)
-            else:
-                labels_test.append(4)
-
-        attributes = np.reshape(np.array(attributes), (len(attributes), INSTANCE_LEN))
-        test_att =  np.reshape(np.array(test_att), (len(test_att), INSTANCE_LEN))
-
-        labels_clean = np.array(labels_clean, dtype='int')
-        labels_test = np.array(labels_test, dtype='int')
-
-        print ("Number of train instances: ", train_count)
-        print ("Number of test instances: ", test_count)
-        print ("Number of train array: ", len(attributes))
-        print ("Number of test array: ", len(test_att))
-        print ("Rainy occupied days: ", np.sum(np.where(labels_test==1), axis=None))
-        print ("Rainy unoccupied days: ", np.sum(np.where(labels_test!=1), axis=None))
-
-        print("Shape of train data: ", attributes.shape)
-        print('Sahpe of test data: ', test_att.shape)
-
-        # attributes = clean_nan_and_inf(attributes)
-        # test_att = clean_nan_and_inf(test_att)
-
-        #write attributes to file
-        np.savetxt(PATH + 'sn2_attributes_train.csv', np.array(attributes),  delimiter=',')
-        np.savetxt(PATH + 'sn2_attributes_test.csv', np.array(test_att),  delimiter=',')
-        np.savetxt(PATH + 'sn2_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
-
-        add_ncar(labels_clean, PATH + 'sn2_labels', 5)
-        add_nar(labels_clean, PATH + 'sn2_labels', 5)
-        add_nnar(attributes, labels_clean, PATH + 'sn2_labels', 5, num_channels=5)
-
-        add_ncar(labels_test, PATH + 'sn2_labels_test', 5)
-        add_nar(labels_test, PATH + 'sn2_labels_test', 5)
-        add_nnar(test_att, labels_test, PATH + 'sn2_labels_test', 5, num_channels=5)
