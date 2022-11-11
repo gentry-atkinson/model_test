@@ -343,10 +343,10 @@ if(__name__ == "__main__"):
 
         feature_list = ['MinTemp', 'MaxTemp', 'WindGustDir', 'WindGustSpeed', 'Pressure9am', 'Pressure3pm']
 
-        attributes = []
-        test_att = []
-        labels_clean = []
-        labels_test = []
+        X_train = []
+        X_test = []
+        y_train = []
+        y_test = []
 
         #Prepare an ordinal value for wind direction
         wind_dirs = set(weather_table['WindGustDir'])
@@ -373,8 +373,8 @@ if(__name__ == "__main__"):
                         line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
                         # max_val = np.max(line)
                         # line = np.divide(line, max_val if max_val != 0 else 1)
-                        attributes.append(line)
-                    labels_clean.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+                        X_train.append(line)
+                    y_train.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 else:
                     test_count += 1
                     for f in feature_list:
@@ -386,8 +386,8 @@ if(__name__ == "__main__"):
                         line = [j if not np.isnan(j) and not np.isinf(j) else 0 for j in line ]
                         # max_val = abs(np.max(line))
                         # line = np.divide(line, max_val if max_val != 0 else 1)
-                        test_att.append(line)
-                    labels_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
+                        X_test.append(line)
+                    y_test.append(1 if weather_table['RainTomorrow'][i+30]=='Yes' else 0)
                 i+=1
             else:
                 #Skip to next location
@@ -399,29 +399,29 @@ if(__name__ == "__main__"):
 
         
 
-        labels_clean = np.array(labels_clean, dtype='int')
-        labels_test = np.array(labels_test, dtype='int')
+        y_train = np.array(y_train, dtype='int')
+        y_test = np.array(y_test, dtype='int')
 
-        attributes = np.array(attributes)
-        test_att = np.array(test_att)
+        X_train = np.array(X_train)
+        X_test = np.array(X_test)
 
         # normalize(attributes, axis=1, copy=False, norm='max')
         # normalize(test_att, axis=1, copy=False, norm='max')
-        attributes = minmax_scale(attributes, (-1, 1), axis=1)
-        test_att = minmax_scale(test_att, (-1, 1), axis=1)
+        X_train = minmax_scale(X_train, (-1, 1), axis=1)
+        X_test = minmax_scale(X_test, (-1, 1), axis=1)
 
         # attributes = clean_nan_and_inf(attributes)
         # test_att = clean_nan_and_inf(test_att)
 
         print ("Number of train instances: ", train_count)
         print ("Number of test instances: ", test_count)
-        print ("Number of train array: ", len(attributes))
-        print ("Number of test array: ", len(test_att))
+        print ("Number of train array: ", len(X_train))
+        print ("Number of test array: ", len(X_test))
         print ("Rainy train days: ", sum(labels_clean))
         print ("Rainy test days: ", sum(labels_test))
 
-        print("Shape of train data: ", attributes.shape)
-        print('Sahpe of test data: ', test_att.shape)
+        print("Shape of train data: ", X_train.shape)
+        print('Sahpe of test data: ', X_test.shape)
 
         del weather_table
 
@@ -433,18 +433,23 @@ if(__name__ == "__main__"):
         # print('Pressure3pm: ', ', '.join([str(i) for i in attributes[5]]))
 
         #write attributes to file
-        np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
-        np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
-        np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
-        np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+        #np.savetxt(PATH + 'sn1_attributes_train.csv', np.array(attributes),  delimiter=',')
+        np.save(PATH + 'sn1_attributes_train.npy', X_train)
+        #np.savetxt(PATH + 'sn1_attributes_test.csv', np.array(test_att),  delimiter=',')
+        np.save(PATH + 'sn1_attributes_test.npy', X_test)
+        #np.savetxt(PATH + 'sn1_labels_clean.csv', np.array(labels_clean), delimiter=',', fmt='%d')
+        np.save(PATH + 'sn1_labels_clean.npy', y_train)
+        #np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
+        np.save(PATH + 'sn1_labels_test_clean.npy', y_test)
 
-        add_ncar(labels_clean, PATH + 'sn1_labels', 2)
-        add_nar(labels_clean, PATH + 'sn1_labels', 2)
-        add_nnar(attributes, labels_clean, PATH + 'sn1_labels', 2, num_channels=6)
+        for mislab_rate in range(1, 31):
+            add_ncar(y_train, PATH + 'sn1_labels', 2, mislab_rate)
+            add_nar(y_train, PATH + 'sn1_labels', 2), mislab_rate
+            add_nnar(X_train, y_train, PATH + 'sn1_labels', 2, num_channels=6,mislab_rate=mislab_rate)
 
-        add_ncar(labels_test, PATH + 'sn1_labels_test', 2)
-        add_nar(labels_test, PATH + 'sn1_labels_test', 2)
-        add_nnar(test_att, labels_test, PATH + 'sn1_labels_test', 2, num_channels=6)
+            add_ncar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
+            add_nar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
+            add_nnar(X_test, y_test, PATH + 'sn1_labels_test', 2, num_channels=6, mislab_rate=mislab_rate)
 
         #Create Synthetic Set 1
         """
