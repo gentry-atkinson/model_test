@@ -1,6 +1,7 @@
 #Author: Gentry Atkinson
 #Organization: Texas State University
 #Data: 12 July, 2021
+#Updating: 11 Nov, 2022
 #Read the 6 datasets, write in nice format, and then write noisy label settings
 #This is going to be a big one (Narrator: it was)
 
@@ -12,10 +13,10 @@
 """
 6 Datasets: 2 synthetic, 2 HAR, 2 BioSignal
 Each dataset will have 31 label sets:
-  -clean
-  -1% to 30% NCAR
-  -1% to 30% NAR
-  -1% to 30% NNAR
+  - clean
+  - 1% to 30% NCAR
+  - 1% to 30% NAR
+  - 1% to 30% NNAR
 """
 
 import os
