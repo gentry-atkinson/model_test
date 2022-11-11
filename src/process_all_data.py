@@ -18,24 +18,28 @@ Each dataset will have 31 label sets:
   -1% to 30% NNAR
 """
 
-#from cmath import isinf
-from attr import attr
-from utils.gen_ts_data import generate_pattern_data_as_array
-from utils.ts_feature_toolkit import clean_nan_and_inf
-from utils.add_ncar import add_ncar
-from utils.add_nar import add_nar
-from utils.add_nnar import add_nnar
-from data.load_data_time_series.HAR.e4_wristband_Nov2019.e4_load_dataset import e4_load_dataset
-from data.load_data_time_series.HAR.UCI_HAR.uci_har_load_dataset import uci_har_load_dataset
+import os
+
 #from utils.import_datasets import get_uci_data, get_uci_test
 import numpy as np
 import pandas as pd
+import tensorflow as tf
+#from cmath import isinf
+from attr import attr
+from sklearn.preprocessing import minmax_scale
 #from scipy.signal import resample
 from sklearn.utils import shuffle
-import os
-from sklearn.preprocessing import minmax_scale
 
-import tensorflow as tf
+from data.load_data_time_series.HAR.e4_wristband_Nov2019.e4_load_dataset import \
+    e4_load_dataset
+from data.load_data_time_series.HAR.UCI_HAR.uci_har_load_dataset import \
+    uci_har_load_dataset
+from utils.add_nar import add_nar
+from utils.add_ncar import add_ncar
+from utils.add_nnar import add_nnar
+from utils.gen_ts_data import generate_pattern_data_as_array
+from utils.ts_feature_toolkit import clean_nan_and_inf
+
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))   
 
 
@@ -43,9 +47,9 @@ PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
 RUN_SS = False
-RUN_HAR = True
+RUN_HAR = False
 #RUN_BS = False
-RUN_SN = False
+RUN_SN = True
 
 def record_sn_instance(att_array, table, feature_list, start_index, end_index):
     for f in feature_list:
@@ -293,6 +297,9 @@ def run_har():
         add_nar(y_test, PATH + 'har2_labels_test', 6, mislab_rate)
         add_nnar(X_test, y_test, PATH + 'har2_labels_test', 6, num_channels=3, mislab_rate=mislab_rate)
     print("Done with HAR")
+
+def run_sn():
+    pass
 
 if(__name__ == "__main__"):
     if not os.path.isdir(PATH):
