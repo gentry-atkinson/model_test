@@ -21,5 +21,7 @@ src/data/apnea-ecg-database*
 src/data/gait-in-parkinsons*
 src/data/UCI\ HAR\ Dataset/test/*
 src/data/UCI\ HAR\ Dataset/train/*
+UCI\ HAR\ Dataset/*
+src/data/occupancy*
 
 *__pycache__*
