@@ -10,7 +10,8 @@
 #  -Change the metrics
 
 import numpy as np
-import tensorflow.keras.metrics as met
+from tensorflow import keras
+#from keras import Sequential
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
@@ -43,16 +44,7 @@ else:
     ]
 
 labels = [
-    'clean', 'ncar5', 'ncar10', 'nar5',
-    'nar10', 'nnar5', 'nnar10'
-]
-
-optimizers = [
-    'SGD', 'RMSprop', 'adam'
-]
-
-losses = [
-    'categorical_crossentropy', 'mean_squared_error', 'kullback_leibler_divergence'
+    'clean', 'ncar', 'nar', 'nnar'
 ]
 
 chan_dic = {
@@ -182,7 +174,7 @@ if __name__ == "__main__":
         cev_mat = np.zeros((7, 7))
         sde_mat = np.zeros((7, 7))
         #load the attributes for a test dataset
-        X_test = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_test.csv', delimiter=',')
+        X_test = np.load('src/data/processed_datasets/'+f+'_attributes_test.npy')
         X_test = normalize(X_test, norm='max')
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
@@ -190,69 +182,65 @@ if __name__ == "__main__":
         base_fpr = None
         base_fnr = None
         for i, l_train in enumerate(labels):
-            if '5' in l_train:
-                mlr_train = 0.05
-            elif '10' in l_train:
-                mlr_train = 0.1
-            else:
-                mlr_train = 0.
-            #load the training label and attribute sets
-            X_train = np.genfromtxt('src/data/processed_datasets/'+f+'_attributes_train.csv', delimiter=',')
-            X_train = normalize(X_train, norm='max')
-            NUM_INSTANCES = len(X_train)
-            X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
-            y_train = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_'+l_train+'.csv', delimiter=',', dtype=int)
-            y_train = to_categorical(y_train)
-            X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
-            model = build_cnn(X_train, class_dic[f], set=f, num_channels=chan_dic[f], opt='adam', loss=CategoricalCrossentropy(label_smoothing=0.1))
-            model = train_cnn(model, X_train, y_train)
-            for j, l_test in enumerate(labels):
-                if '5' in l_test:
-                    mlr_test = 0.05
-                elif '10' in l_test:
-                    mlr_test = 0.1
-                else:
-                    mlr_test = 0.
-                print ('Experiment: ', counter, " Set: ", f, "Train Labels: ", l_train, "Test Labels: ", l_test)
-                results_file.write('############Experiment {}############\n'.format(counter))
-                results_file.write('Set: {}\n'.format(f))
-                results_file.write('Train Labels: {}\n'.format(l_train))
-                results_file.write('Test Labels: {}\n'.format(l_test))
-                #load the test attribute set
-                y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test_'+l_test+'.csv', delimiter=',', dtype=int)
-                y_test = to_categorical(y_test)
-                print("Shape of X_train: ", X_train.shape)
-                print("Shape of X_test: ", X_test.shape)
-                print("Shape of y_train: ", y_train.shape)
-                print("Shape of y_test: ", y_test.shape)
-                print("NUM_INSTANCES is ", NUM_INSTANCES)
-                print("instances should be ", NUM_INSTANCES//chan_dic[f])
-                score, mat, aer, ter, cev, sde = evaluate_cnn(model, X_test, y_test, mlr_test, base_fpr, base_fnr)
-                if i==0 and j==0:
-                    FP = mat.sum(axis=0) - np.diag(mat)
-                    FN = mat.sum(axis=1) - np.diag(mat)
-                    TP = np.diag(mat)
-                    TN = mat.sum() - (FP + FN + TP)
-                    base_fpr = FP / (FP  + TN)
-                    base_fnr = FN / (FN + TP)
-                print("Recording results in matrix at {} {}".format(i, j))
-                print("AER: ", aer)
-                print("TER: ", ter)
-                aer_mat[i, j] = aer
-                ter_mat[i][j] = ter
-                cev_mat[i, j] = cev
-                sde_mat[i, j] = sde
-                print("Score for this model: \n", score)
-                print("Confusion Matrix for this model: \n", mat)
-                results_file.write(score)
-                results_file.write('\nColumns are predictions, rows are labels\n')
-                results_file.write(str(mat))
-                results_file.write('\n')
-                results_file.write('AER: {:.3f} MLR_train: {} MLR_test:{} TER: {}'.format(aer, mlr_train, mlr_test, ter))
-                results_file.write('\n\n')
-                counter += 1
-                gc.collect()
-                results_file.flush()
+            for mlr in range(0, 30):
+                mlr_percent = mlr/100
+                #load the training label and attribute sets
+                X_train = np.load('src/data/processed_datasets/'+f+'_attributes_train.npy')
+                X_train = normalize(X_train, norm='max')
+                NUM_INSTANCES = len(X_train)
+                #X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+                y_train = np.load('src/data/processed_datasets/'+f+'_labels_'+l_train+'.npy')
+                y_train = to_categorical(y_train)
+                X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
+                model = build_cnn(X_train, class_dic[f], set=f, num_channels=chan_dic[f], opt='adam', loss=CategoricalCrossentropy(label_smoothing=0.1))
+                model = train_cnn(model, X_train, y_train)
+                for j, l_test in enumerate(labels):
+                    if '5' in l_test:
+                        mlr_test = 0.05
+                    elif '10' in l_test:
+                        mlr_test = 0.1
+                    else:
+                        mlr_test = 0.
+                    print ('Experiment: ', counter, " Set: ", f, "Train Labels: ", l_train, "Test Labels: ", l_test)
+                    results_file.write('############Experiment {}############\n'.format(counter))
+                    results_file.write('Set: {}\n'.format(f))
+                    results_file.write('Train Labels: {}\n'.format(l_train))
+                    results_file.write('Test Labels: {}\n'.format(l_test))
+                    #load the test attribute set
+                    y_test = np.genfromtxt('src/data/processed_datasets/'+f+'_labels_test_'+l_test+'.csv', delimiter=',', dtype=int)
+                    y_test = to_categorical(y_test)
+                    print("Shape of X_train: ", X_train.shape)
+                    print("Shape of X_test: ", X_test.shape)
+                    print("Shape of y_train: ", y_train.shape)
+                    print("Shape of y_test: ", y_test.shape)
+                    print("NUM_INSTANCES is ", NUM_INSTANCES)
+                    print("instances should be ", NUM_INSTANCES//chan_dic[f])
+                    score, mat, aer, ter, cev, sde = evaluate_cnn(model, X_test, y_test, mlr_test, base_fpr, base_fnr)
+                    if i==0 and j==0:
+                        FP = mat.sum(axis=0) - np.diag(mat)
+                        FN = mat.sum(axis=1) - np.diag(mat)
+                        TP = np.diag(mat)
+                        TN = mat.sum() - (FP + FN + TP)
+                        base_fpr = FP / (FP  + TN)
+                        base_fnr = FN / (FN + TP)
+                    print("Recording results in matrix at {} {}".format(i, j))
+                    print("AER: ", aer)
+                    print("TER: ", ter)
+                    aer_mat[i, j] = aer
+                    ter_mat[i][j] = ter
+                    cev_mat[i, j] = cev
+                    sde_mat[i, j] = sde
+                    print("Score for this model: \n", score)
+                    print("Confusion Matrix for this model: \n", mat)
+                    results_file.write(score)
+                    results_file.write('\nColumns are predictions, rows are labels\n')
+                    results_file.write(str(mat))
+                    results_file.write('\n')
+                    results_file.write('AER: {:.3f} MLR_train: {} MLR_test:{} TER: {}'.format(aer, mlr_train, mlr_test, ter))
+                    results_file.write('\n\n')
+                    counter += 1
+                    gc.collect()
+                    results_file.flush()
         results_file.write("Summary of {}\n".format(f))
         readable_file.write("Summary of {}\n".format(f))
         results_file.write('Apparent Error Rates. Row->Train Column->Test\n')
