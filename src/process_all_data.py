@@ -47,10 +47,10 @@ print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = False
+RUN_SS = True
 RUN_HAR = False
 #RUN_BS = False
-RUN_SN = True
+RUN_SN = False
 
 def record_sn_instance(att_array, table, feature_list, start_index, end_index):
     for f in feature_list:

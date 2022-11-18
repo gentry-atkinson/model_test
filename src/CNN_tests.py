@@ -176,9 +176,10 @@ if __name__ == "__main__":
         #load the attributes for a test dataset
         X_test = np.load('src/data/processed_datasets/'+f+'_attributes_test.npy')
         X_test = normalize(X_test, norm='max')
+        print('Shape of X_test: '. X_test.shape)
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
-        X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+        #X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
         base_fpr = None
         base_fnr = None
         for i, l_train in enumerate(labels):
