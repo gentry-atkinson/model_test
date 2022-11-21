@@ -233,7 +233,7 @@ def run_har():
     #np.savetxt(PATH + 'har1_attributes_test.csv', att_test,  delimiter=',')
     np.save(PATH + 'har1_attributes_test.npy', X_test)
     #np.savetxt(PATH + 'har1_labels_test_clean.csv', lab_test, delimiter=',', fmt='%d')
-    np.save(PATH + 'har1_labels_test_clean.csv', y_test)
+    np.save(PATH + 'har1_labels_test_clean.npy', y_test)
 
     #Create label sets for HAR1
     for mislab_rate in range(1, 31):
