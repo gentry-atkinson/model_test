@@ -155,16 +155,8 @@ if __name__ == "__main__":
 
     for data_set in sets:
         #matrix of true and apparent error rates
-        aer_mat = np.zeros((7, 7))
-        ter_mat = [
-            ["","","","","","",""],
-            ["","","","","","",""],
-            ["","","","","","",""],
-            ["","","","","","",""],
-            ["","","","","","",""],
-            ["","","","","","",""],
-            ["","","","","","",""]
-        ]
+        aer_dict = {}
+        ter_dict = {}
         #matrix of bias measures
         cev_mat = np.zeros((7, 7))
         sde_mat = np.zeros((7, 7))
@@ -206,13 +198,16 @@ if __name__ == "__main__":
                 print("Shape of y_test: ", y_test.shape)
                 print("NUM_INSTANCES is ", NUM_INSTANCES)
                 print("instances should be ", NUM_INSTANCES//chan_dic[data_set])
-                score, mat, aer, ter, cev, sde = evaluate_cnn(model, X_test, y_test)
+                score, mat, aer = evaluate_cnn(model, X_test, y_test)
+                aer_dict[data_set + noise_type + str(mlr)] = aer
                 print("Score for this model: \n", score)
                 print("Confusion Matrix for this model: \n", mat)
+                print("Apparent error rate: \n", aer)
                 results_file.write(score)
                 results_file.write('\nColumns are predictions, rows are labels\n')
                 results_file.write(str(mat))
                 results_file.write('\n')
+                results_file.write(f'Apparent error rate: {aer}')
                 counter += 1
                 gc.collect()
                 results_file.flush()
@@ -232,60 +227,29 @@ if __name__ == "__main__":
                 print("Shape of y_test: ", y_test.shape)
                 print("NUM_INSTANCES is ", NUM_INSTANCES)
                 print("instances should be ", NUM_INSTANCES//chan_dic[data_set])
-                score, mat, aer, ter, cev, sde = evaluate_cnn(model, X_test, y_test)
+                score, mat, ter = evaluate_cnn(model, X_test, y_test)
+                ter_dict[data_set + noise_type + str(mlr)] = ter
                 print("Score for this model: \n", score)
                 print("Confusion Matrix for this model: \n", mat)
+                print("True error rate: \n", ter)
                 results_file.write(score)
                 results_file.write('\nColumns are predictions, rows are labels\n')
                 results_file.write(str(mat))
                 results_file.write('\n')
+                results_file.write(f'True error rate: {ter}')
                 counter += 1
                 gc.collect()
                 results_file.flush()
 
 
 
-        results_file.write("Summary of {}\n".format(f))
-        readable_file.write("Summary of {}\n".format(f))
-        results_file.write('Apparent Error Rates. Row->Train Column->Test\n')
-        readable_file.write('Apparent Error Rates. Row->Train Column->Test\n')
+        results_file.write("Summary of {}\n".format(data_set))
+        readable_file.write("Summary of {}\n".format(data_set))
+        results_file.write('Apparent Error Rates.\n')
+        readable_file.write('Apparent Error Rates.\n')
         results_file.write('Label Sets: {}\n'.format(labels))
-        for row in aer_mat:
-            for item in row:
-                results_file.write('{:.3f}\t'.format(item))
-                readable_file.write('{:.3f}\t'.format(item))
-            results_file.write('\n')
-            readable_file.write('\n')
-        results_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
-        readable_file.write('\n\nTrue Error Rates. Row->Train Column->Test\n')
-        results_file.write('Label Sets: {}\n'.format(labels))
-        for row in ter_mat:
-            for item in row:
-                results_file.write('{}\t'.format(item))
-                readable_file.write('{}\t'.format(item))
-            results_file.write('\n')
-            readable_file.write('\n')
-        results_file.write('\n\nCEV. Row->Train Column->Test\n')
-        readable_file.write('\n\nCEV. Row->Train Column->Test\n')
-        results_file.write('Label Sets: {}\n'.format(labels))
-        for row in cev_mat:
-            for item in row:
-                results_file.write('{:.3f}\t'.format(item))
-                readable_file.write('{:.3f}\t'.format(item))
-            results_file.write('\n')
-            readable_file.write('\n')
-        results_file.write('\n\n')
-        results_file.write('\n\nSDE. Row->Train Column->Test\n')
-        readable_file.write('\n\nSDE. Row->Train Column->Test\n')
-        results_file.write('Label Sets: {}\n'.format(labels))
-        for row in sde_mat:
-            for item in row:
-                results_file.write('{:.3f}\t'.format(item))
-                readable_file.write('{:.3f}\t'.format(item))
-            results_file.write('\n')
-            readable_file.write('\n')
-        results_file.write('\n\n')
-        results_file.flush()
-        readable_file.flush()
+        results_file.write(str(aer_dict))
+        
+        
     results_file.close()
     readable_file.close()
