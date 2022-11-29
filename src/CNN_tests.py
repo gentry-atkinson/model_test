@@ -19,6 +19,7 @@ from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Input
 from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout, ReLU, GlobalAveragePooling1D
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.losses import CategoricalCrossentropy
+import tensorflow.keras.metrics as met
 # import torch
 # from torch import nn
 from sklearn.metrics import classification_report
@@ -120,6 +121,7 @@ def build_cnn(
     # )
     # model = model.to(device)
     #print(model)
+    model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
     print(model.summary())
     return model
 
@@ -162,22 +164,22 @@ if __name__ == "__main__":
         sde_mat = np.zeros((7, 7))
         #load the attributes for a test dataset
         X_test = np.load('src/data/processed_datasets/'+data_set+'_attributes_test.npy')
-        X_test = normalize(X_test, norm='max')
-        print('Shape of X_test: '. X_test.shape)
+        #X_test = normalize(X_test, norm='max')
+        print('Shape of X_test: ', X_test.shape)
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
         #X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
         base_fpr = None
         base_fnr = None
         for i, noise_type in enumerate(labels):
-            for mlr in range(0, 30):
+            for mlr in range(1, 31):
                 mlr_percent = mlr/100
                 #load the training label and attribute sets
                 X_train = np.load('src/data/processed_datasets/'+data_set+'_attributes_train.npy')
-                X_train = normalize(X_train, norm='max')
+                #X_train = normalize(X_train, norm='max')
                 NUM_INSTANCES = len(X_train)
                 #X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
-                y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_'+noise_type+str(mlr)+'.npy')
+                y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_'+noise_type+'_'+str(mlr)+'.npy')
                 y_train = to_categorical(y_train)
                 X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
                 model = build_cnn(X_train, class_dic[data_set], set=data_set, num_channels=chan_dic[data_set], opt='adam', loss=CategoricalCrossentropy(label_smoothing=SMOOTHING_RATE))
