@@ -192,7 +192,7 @@ if __name__ == "__main__":
                 results_file.write('Train Labels: {}{}\n'.format(noise_type, mlr))
                 results_file.write('Test Labels: {}{}\n'.format(noise_type, mlr))
                 #load the test attribute set
-                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+noise_type+str(mlr)+'.npy')
+                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+noise_type+'_'+str(mlr)+'.npy')
                 y_test = to_categorical(y_test)
                 print("Shape of X_train: ", X_train.shape)
                 print("Shape of X_test: ", X_test.shape)
