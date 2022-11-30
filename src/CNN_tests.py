@@ -126,11 +126,11 @@ def build_cnn(
     return model
 
 def train_cnn(model, X, y):
-    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=15)
+    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=7)
     rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
     print('Size of X to fit: ', X.shape)
-    model.fit(X, y, epochs=500, verbose=0, callbacks=[es, rlr], validation_split=0.1, batch_size=32, use_multiprocessing=True, workers=NUM_CORES)
+    model.fit(X, y, epochs=500, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, use_multiprocessing=True, workers=NUM_CORES)
     return model
 
 def evaluate_cnn(model, X, y):
@@ -160,8 +160,7 @@ if __name__ == "__main__":
         aer_dict = {}
         ter_dict = {}
         #matrix of bias measures
-        cev_mat = np.zeros((7, 7))
-        sde_mat = np.zeros((7, 7))
+        
         #load the attributes for a test dataset
         X_test = np.load('src/data/processed_datasets/'+data_set+'_attributes_test.npy')
         #X_test = normalize(X_test, norm='max')
@@ -192,7 +191,7 @@ if __name__ == "__main__":
                 results_file.write('Train Labels: {}{}\n'.format(noise_type, mlr))
                 results_file.write('Test Labels: {}{}\n'.format(noise_type, mlr))
                 #load the test attribute set
-                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+noise_type+'_'+str(mlr)+'.npy')
+                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+'_'+noise_type+'_'+str(mlr)+'.npy')
                 y_test = to_categorical(y_test)
                 print("Shape of X_train: ", X_train.shape)
                 print("Shape of X_test: ", X_test.shape)
@@ -242,8 +241,8 @@ if __name__ == "__main__":
                 counter += 1
                 gc.collect()
                 results_file.flush()
-
-
+            #End for MLR
+        #End for noise_type
 
         results_file.write("Summary of {}\n".format(data_set))
         readable_file.write("Summary of {}\n".format(data_set))
@@ -251,7 +250,7 @@ if __name__ == "__main__":
         readable_file.write('Apparent Error Rates.\n')
         results_file.write('Label Sets: {}\n'.format(labels))
         results_file.write(str(aer_dict))
-        
+    #End for datasets   
         
     results_file.close()
     readable_file.close()
