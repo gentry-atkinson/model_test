@@ -140,7 +140,7 @@ def evaluate_cnn(model, X, y):
     print('Shape of y true: {}'.format(y_true.shape))
     print('Shape of y predicted: {}'.format(y_pred.shape))
     aer = calc_AER(y_true, y_pred)
-    print(base_fpr, base_fnr)
+    #print(base_fpr, base_fnr)
     return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer
 
 
@@ -168,8 +168,8 @@ if __name__ == "__main__":
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
         #X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
-        base_fpr = None
-        base_fnr = None
+        #base_fpr = None
+        #base_fnr = None
         for i, noise_type in enumerate(labels):
             for mlr in range(1, 31):
                 mlr_percent = mlr/100
@@ -191,7 +191,7 @@ if __name__ == "__main__":
                 results_file.write('Train Labels: {}{}\n'.format(noise_type, mlr))
                 results_file.write('Test Labels: {}{}\n'.format(noise_type, mlr))
                 #load the test attribute set
-                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+'_'+noise_type+'_'+str(mlr)+'.npy')
+                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+noise_type+'_'+str(mlr)+'.npy')
                 y_test = to_categorical(y_test)
                 print("Shape of X_train: ", X_train.shape)
                 print("Shape of X_test: ", X_test.shape)
