@@ -48,9 +48,9 @@ PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
 RUN_SS = True
-RUN_HAR = False
+RUN_HAR = True
 #RUN_BS = False
-RUN_SN = False
+RUN_SN = True
 
 def record_sn_instance(att_array, table, feature_list, start_index, end_index):
     for f in feature_list:
