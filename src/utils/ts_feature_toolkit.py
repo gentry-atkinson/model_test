@@ -204,11 +204,15 @@ def transition_matrix(
     true_labels: np.ndarray,
     assigned_labels: np.ndarray
 ) -> np.ndarray:
-    assert true_labels.ndim==1 and assigned_labels.ndim==1, "Can't calculate transition matrix for one-hot labels. Well, I can but I choose not to."
-    num_classes = np.nanmax(true_labels)
+    if true_labels.ndim != 1:
+        true_labels = np.argmax(true_labels, axis=-1)
+    if assigned_labels.ndim != 1:
+        assigned_labels = np.argmax(assigned_labels, axis=-1)
+    num_classes = np.nanmax(true_labels)+1
     t_mat = np.zeros((num_classes, num_classes))
-    for t_l, a_l in (true_labels, assigned_labels):
-        t_mat[t_l, a_l] += 1
+    for t_l in true_labels:
+        for a_l in assigned_labels:
+            t_mat[t_l, a_l] += 1
     per_mat = t_mat / len(true_labels)
     return t_mat, per_mat
 

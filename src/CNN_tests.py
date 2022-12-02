@@ -35,6 +35,7 @@ from utils.ts_feature_toolkit import transition_matrix
 
 DEBUG = True
 SMOOTHING_RATE = 0.0
+MAX_EPOCHS = 10
 
 if DEBUG:
     sets = [
@@ -102,7 +103,7 @@ def train_cnn(model, X, y):
     rlr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001)
     NUM_CORES = os.cpu_count()
     print('Size of X to fit: ', X.shape)
-    model.fit(X, y, epochs=500, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, use_multiprocessing=True, workers=NUM_CORES)
+    model.fit(X, y, epochs=MAX_EPOCHS, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, use_multiprocessing=True, workers=NUM_CORES)
     return model
 
 
@@ -146,7 +147,7 @@ if __name__ == "__main__":
         SAMP_LEN = len(X_test[0])
 
         #Clean train/test for comparison
-        results_file.write('############Clean Control############\n'.format(counter))
+        print('############Clean Control############\n')
         y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_clean.npy')
         y_train = to_categorical(y_train)
         #X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
@@ -155,14 +156,14 @@ if __name__ == "__main__":
         model = train_cnn(model, X_train, y_train)
         score, mat, aer = evaluate_cnn(model, X_test, y_test_clean)
 
-        results_file.write('############Clean Control############\n'.format(counter))
+        results_file.write('############Clean Control############\n')
         results_file.write('Set: {}\n'.format(data_set))
         
         results_file.write(score)
         results_file.write('\nColumns are predictions, rows are labels\n')
         results_file.write(str(mat))
         results_file.write('\n')
-        results_file.write(f'Apparent error rate: {aer}')
+        results_file.write(f'Apparent error rate: {aer}\n')
         print(score)
         results_file.flush()
 
@@ -202,7 +203,7 @@ if __name__ == "__main__":
                 results_file.write('\nColumns are predictions, rows are labels\n')
                 results_file.write(str(mat))
                 results_file.write('\n')
-                results_file.write(f'Apparent error rate: {aer}')
+                results_file.write(f'Apparent error rate: {aer}\n')
                 results_file.write(f'Transition matrix:\n{p_m}\n')
                 counter += 1
                 gc.collect()
@@ -230,7 +231,7 @@ if __name__ == "__main__":
                 results_file.write('\nColumns are predictions, rows are labels\n')
                 results_file.write(str(mat))
                 results_file.write('\n')
-                results_file.write(f'True error rate: {ter}')
+                results_file.write(f'True error rate: {ter}\n')
                 counter += 1
                 gc.collect()
                 results_file.flush()
