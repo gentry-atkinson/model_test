@@ -31,6 +31,7 @@ from sklearn.metrics import confusion_matrix
 from utils.ts_feature_toolkit import calc_AER, calc_TER, calc_bias_metrics, calc_error_rates
 from datetime import date
 from model_config import loadDic
+from utils.ts_feature_toolkit import transition_matrix
 
 # device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -133,15 +134,15 @@ def train_cnn(model, X, y):
     model.fit(X, y, epochs=500, verbose=1, callbacks=[es, rlr], validation_split=0.1, batch_size=32, use_multiprocessing=True, workers=NUM_CORES)
     return model
 
+
 def evaluate_cnn(model, X, y):
     y_pred = model.predict(X)
     y_pred = np.argmax(y_pred, axis=-1)
     y_true = np.argmax(y, axis=-1)
     print('Shape of y true: {}'.format(y_true.shape))
     print('Shape of y predicted: {}'.format(y_pred.shape))
-    aer = calc_AER(y_true, y_pred)
-    #print(base_fpr, base_fnr)
-    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), aer
+    error_rate = calc_AER(y_true, y_pred)
+    return classification_report(y_true, y_pred), confusion_matrix(y_true, y_pred), error_rate
 
 
 if __name__ == "__main__":
@@ -163,21 +164,36 @@ if __name__ == "__main__":
         
         #load the attributes for a test dataset
         X_test = np.load('src/data/processed_datasets/'+data_set+'_attributes_test.npy')
+        X_train = np.load('src/data/processed_datasets/'+data_set+'_attributes_train.npy')
+        y_test_clean = np.load('src/data/processed_datasets/'+data_set+'_labels_test_clean.npy')
+        y_test_clean = to_categorical(y_test_clean)
+        #X_train = normalize(X_train, norm='max')
+        NUM_INSTANCES = len(X_train)
         #X_test = normalize(X_test, norm='max')
         print('Shape of X_test: ', X_test.shape)
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
-        #X_test = np.reshape(X_test, (int(TEST_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
-        #base_fpr = None
-        #base_fnr = None
+
+        #Clean train/test for comparixon
+        results_file.write('############Clean Control############\n'.format(counter))
+        y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_clean.npy')
+        y_train = to_categorical(y_train)
+        X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
+        results_file.write('############Clean Control############\n'.format(counter))
+        results_file.write('Set: {}\n'.format(data_set))
+        score, mat, aer = evaluate_cnn(model, X_test, y_test_clean)
+        results_file.write(score)
+        results_file.write('\nColumns are predictions, rows are labels\n')
+        results_file.write(str(mat))
+        results_file.write('\n')
+        results_file.write(f'Apparent error rate: {aer}')
+        print(score)
+
+        
         for i, noise_type in enumerate(labels):
             for mlr in range(1, 31):
                 mlr_percent = mlr/100
-                #load the training label and attribute sets
-                X_train = np.load('src/data/processed_datasets/'+data_set+'_attributes_train.npy')
-                #X_train = normalize(X_train, norm='max')
-                NUM_INSTANCES = len(X_train)
-                #X_train = np.reshape(X_train, (int(NUM_INSTANCES//chan_dic[f]), chan_dic[f], SAMP_LEN))
+
                 y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_'+noise_type+'_'+str(mlr)+'.npy')
                 y_train = to_categorical(y_train)
                 X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
@@ -190,16 +206,18 @@ if __name__ == "__main__":
                 results_file.write('Set: {}\n'.format(data_set))
                 results_file.write('Train Labels: {}{}\n'.format(noise_type, mlr))
                 results_file.write('Test Labels: {}{}\n'.format(noise_type, mlr))
+                t_m, p_m = transition_matrix()
                 #load the test attribute set
-                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+noise_type+'_'+str(mlr)+'.npy')
-                y_test = to_categorical(y_test)
+                y_test_noisy = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+noise_type+'_'+str(mlr)+'.npy')
+                y_test_noisy = to_categorical(y_test_noisy)
+                t_m, p_m = transition_matrix(y_test_clean, y_test_noisy)
                 print("Shape of X_train: ", X_train.shape)
                 print("Shape of X_test: ", X_test.shape)
                 print("Shape of y_train: ", y_train.shape)
-                print("Shape of y_test: ", y_test.shape)
+                print("Shape of y_test: ", y_test_clean.shape)
                 print("NUM_INSTANCES is ", NUM_INSTANCES)
                 print("instances should be ", NUM_INSTANCES//chan_dic[data_set])
-                score, mat, aer = evaluate_cnn(model, X_test, y_test)
+                score, mat, aer = evaluate_cnn(model, X_test, y_test_noisy)
                 aer_dict[data_set + noise_type + str(mlr)] = aer
                 print("Score for this model: \n", score)
                 print("Confusion Matrix for this model: \n", mat)
@@ -209,6 +227,7 @@ if __name__ == "__main__":
                 results_file.write(str(mat))
                 results_file.write('\n')
                 results_file.write(f'Apparent error rate: {aer}')
+                results_file.write(f'Transition matrix:\n{p_m}\n')
                 counter += 1
                 gc.collect()
                 results_file.flush()
@@ -220,8 +239,6 @@ if __name__ == "__main__":
                 results_file.write('Train Labels: {}{}\n'.format(noise_type, mlr))
                 results_file.write('Test Labels: {}{}\n'.format(noise_type, mlr))
                 #load the test attribute set
-                y_test = np.load('src/data/processed_datasets/'+data_set+'_labels_test_clean.npy')
-                y_test = to_categorical(y_test)
                 print("Shape of X_train: ", X_train.shape)
                 print("Shape of X_test: ", X_test.shape)
                 print("Shape of y_train: ", y_train.shape)

@@ -192,6 +192,26 @@ def get_features_for_set(X, sample_rate=50, num_instances=None, channels_first =
     fet = Parallel(n_jobs=NUM_CORES)(delayed(gffos)(i) for i in X)
     return np.array(fet)
 
+"""
+Transition Matric
+Parameters:
+    true_labels: correct labels for dataset
+    assigned_labels: the assigned labels
+Returns: the transition matrix showing how many instances of each class have been assigned eash label
+  and the probablility of each class having each label
+"""
+def transition_matrix(
+    true_labels: np.ndarray,
+    assigned_labels: np.ndarray
+) -> np.ndarray:
+    assert true_labels.ndim==1 and assigned_labels.ndim==1, "Can't calculate transition matrix for one-hot labels. Well, I can but I choose not to."
+    num_classes = np.nanmax(true_labels)
+    t_mat = np.zeros((num_classes, num_classes))
+    for t_l, a_l in (true_labels, assigned_labels):
+        t_mat[t_l, a_l] += 1
+    per_mat = t_mat / len(true_labels)
+    return t_mat, per_mat
+
 #just a little testing section down here
 if __name__ == "__main__":
     y_true = np.array([0,1,0,1,0,1,0,1,0,1])
