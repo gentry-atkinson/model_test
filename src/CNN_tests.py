@@ -40,7 +40,7 @@ SMOOTHING_RATE = 0.0
 
 if DEBUG:
     sets = [
-        'ss2', 'ss1'
+        'ss1', 'ss2'
     ]
 else:
     sets = [
