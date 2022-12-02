@@ -89,7 +89,7 @@ def unzip_e4_file(zip_ffname, working_dir):
     :param zip_ffname: the path and filename of the zip file
     :param working_dir: local (colab) directory where csv files will be placed
     :return: nothing"""
-    if (os.path.isdir(working_dir+'ACC.csv')):
+    if (os.path.isdir(working_dir)):
         print("Skipping Unzip - Found existing archive in colab at", working_dir)
         return
     else:

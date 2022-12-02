@@ -20,8 +20,6 @@ from tensorflow.keras.layers import Reshape, BatchNormalization, Dropout, ReLU, 
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.losses import CategoricalCrossentropy
 import tensorflow.keras.metrics as met
-# import torch
-# from torch import nn
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import normalize
 import gc
@@ -56,7 +54,7 @@ chan_dic = {
 }
 
 class_dic = {
-    'har1':6, 'har2':6, 'ss1':2, 'ss2':5, 'sn1':2, 'sn2':5
+    'har1':6, 'har2':6, 'ss1':2, 'ss2':3, 'sn1':2, 'sn2':5
 }
 
 FPR = 0
@@ -95,33 +93,6 @@ def build_cnn(
         GlobalAveragePooling1D(data_format="channels_first"),
         Dense(num_classes, activation='softmax')
     ])
-    # model = nn.Sequential(
-    #     nn.Conv1d(in_channels=num_channels, out_channels=config_dic[set]['l1_numFilters'], 
-    #         kernel_size=config_dic[set]['l1_kernelSize'], padding='zeros'
-    #     ),
-    #     nn.Conv1d(in_channels=config_dic[set]['l1_numFilters'], out_channels=config_dic[set]['l1_numFilters'],
-    #         kernel_size=config_dic[set]['l1_kernelSize'], padding='zeros'
-    #     ),
-    #     nn.BatchNorm1d(config_dic[set]['l1_numFilters']),
-    #     nn.ReLU(),
-    #     nn.MaxPool1d(pool_size=config_dic[set]['l1_maxPoolSize']),
-    #     nn.Dropout(0.25),
-    #     nn.LazyConv1d(out_channels=config_dic[set]['l2_numFilters'], 
-    #         kernel_size=config_dic[set]['l1_kernelSize'], padding='zeros'
-    #     ),
-    #     nn.Conv1d(in_channels=config_dic[set]['l2_numFilters'],out_channels=config_dic[set]['l2_numFilters'],
-    #         kernel_size=config_dic[set]['l2_kernelSize'], padding='zeros'
-    #     ),
-    #     nn.BatchNorm1d(config_dic[set]['l2_numFilters']),
-    #     nn.ReLU(),
-    #     nn.MaxPool1d(pool_size=config_dic[set]['l2_maxPoolSize']),
-    #     nn.Dropout(0.25),
-    #     nn.AdaptiveAvgPool1d(output_size=num_classes*4),
-    #     nn.Linear(in_features=num_classes*4, out_features=num_classes),
-    #     nn.Softmax()
-    # )
-    # model = model.to(device)
-    #print(model)
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
     print(model.summary())
     return model
@@ -179,9 +150,14 @@ if __name__ == "__main__":
         y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_clean.npy')
         y_train = to_categorical(y_train)
         X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
+
+        model = build_cnn(X_train, class_dic[data_set], set=data_set, num_channels=chan_dic[data_set], opt='adam', loss=CategoricalCrossentropy(label_smoothing=SMOOTHING_RATE))
+        model = train_cnn(model, X_train, y_train)
+        score, mat, aer = evaluate_cnn(model, X_test, y_test_clean)
+
         results_file.write('############Clean Control############\n'.format(counter))
         results_file.write('Set: {}\n'.format(data_set))
-        score, mat, aer = evaluate_cnn(model, X_test, y_test_clean)
+        
         results_file.write(score)
         results_file.write('\nColumns are predictions, rows are labels\n')
         results_file.write(str(mat))

@@ -239,7 +239,7 @@ def get_X_y_sub(
     working_dir='content/temp', # this directory will be created inside colab
     # you probably need to change this path to your google drive mount
     # zip_dir = '/content/drive/MyDrive/Colab Notebooks/imics_lab_repositories/load_data_time_series_dev/HAR/e4_wristband_Nov2019/zip_datafiles/sub1',
-    zip_dir = 'src/load_data_time_series/HAR/e4_wristband_Nov2019/zip_datafiles/sub1',
+    zip_dir = 'src/data/load_data_time_series/HAR/e4_wristband_Nov2019/zip_datafiles/sub1',
 
     zip_flist = [],
     # note the longer walk x25540_ zip file has not been labeled, this is for experiment only

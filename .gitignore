@@ -16,6 +16,7 @@
 *RECORDS
 *.c
 *.csv
+TWristAR/*
 
 src/data/apnea-ecg-database*
 src/data/gait-in-parkinsons*

@@ -47,7 +47,7 @@ print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = True
+RUN_SS = False
 RUN_HAR = True
 #RUN_BS = False
 RUN_SN = True
@@ -177,7 +177,7 @@ def run_ss():
     # attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=30000, numClasses=5, percentError=0)
     # attributes = np.reshape(np.array(attributes['x']),(30000, 150))
     # attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
-    X_train, y_train, X_test, y_test = load_synthetic_dataset(24000, 6000, 5, 150)
+    X_train, y_train, X_test, y_test = load_synthetic_dataset(24000, 6000, 3, 150)
     #np.savetxt(PATH + 'ss2_attributes_train.csv', attributes[0:24000],  delimiter=',')
     np.save(PATH + 'ss2_attributes_train.npy', X_train)
     #np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
