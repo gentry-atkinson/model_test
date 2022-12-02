@@ -218,10 +218,10 @@ if __name__ == "__main__":
                 print("Shape of X_train: ", X_train.shape)
                 print("Shape of X_test: ", X_test.shape)
                 print("Shape of y_train: ", y_train.shape)
-                print("Shape of y_test: ", y_test.shape)
+                print("Shape of y_test: ", y_test_clean.shape)
                 print("NUM_INSTANCES is ", NUM_INSTANCES)
                 print("instances should be ", NUM_INSTANCES//chan_dic[data_set])
-                score, mat, ter = evaluate_cnn(model, X_test, y_test)
+                score, mat, ter = evaluate_cnn(model, X_test, y_test_clean)
                 ter_dict[data_set + noise_type + str(mlr)] = ter
                 print("Score for this model: \n", score)
                 print("Confusion Matrix for this model: \n", mat)

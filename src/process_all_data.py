@@ -140,17 +140,10 @@ def run_ss():
     2001 test instances
     """
     print("##### Preparing Dataset: SS1 #####")
-    # attributes, labels_clean = generate_pattern_data_as_dataframe(length=150, numSamples=10000, numClasses=2, percentError=0)
-    # attributes = np.reshape(np.array(attributes['x']),(10000, 150))
-    # attributes, labels_clean = shuffle(attributes, labels_clean, random_state=1899)
     X_train, y_train, X_test, y_test = load_synthetic_dataset(8001, 2001, 2, 150)
-    #np.savetxt(PATH + 'ss1_attributes_train.csv', attributes[0:8000],  delimiter=',')
     np.save(PATH + 'ss1_attributes_train.npy', X_train)
-    #np.savetxt(PATH + 'ss1_labels_clean.csv', labels_clean[0:8000], delimiter=',', fmt='%d')
     np.save(PATH + 'ss1_labels_clean.npy', y_train)
-    #np.savetxt(PATH + 'ss1_attributes_test.csv', attributes[8000:10000],  delimiter=',')
     np.save(PATH + 'ss1_attributes_test.npy', X_test)
-    #np.savetxt(PATH + 'ss1_labels_test_clean.csv', labels_clean[8000:10000], delimiter=',', fmt='%d')
     np.save(PATH + 'ss1_labels_test_clean.npy', y_test)
 
     #Create label sets for SS1
@@ -168,7 +161,7 @@ def run_ss():
     """
     Synthetic Set 2
     Generated using the gen_ts_data script in the utils directory.
-    5 classes
+    3 classes
     1 channel
     150 samples in every instance
     24000 train instances
