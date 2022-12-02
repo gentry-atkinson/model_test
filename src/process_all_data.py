@@ -50,7 +50,7 @@ PATH = 'src/data/processed_datasets/'
 RUN_SS = False
 RUN_HAR = True
 #RUN_BS = False
-RUN_SN = True
+RUN_SN = False
 
 def record_sn_instance(att_array, table, feature_list, start_index, end_index):
     for f in feature_list:
