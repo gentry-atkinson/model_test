@@ -149,7 +149,7 @@ if __name__ == "__main__":
         results_file.write('############Clean Control############\n'.format(counter))
         y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_clean.npy')
         y_train = to_categorical(y_train)
-        X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
+        #X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
 
         model = build_cnn(X_train, class_dic[data_set], set=data_set, num_channels=chan_dic[data_set], opt='adam', loss=CategoricalCrossentropy(label_smoothing=SMOOTHING_RATE))
         model = train_cnn(model, X_train, y_train)
@@ -173,7 +173,7 @@ if __name__ == "__main__":
 
                 y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_'+noise_type+'_'+str(mlr)+'.npy')
                 y_train = to_categorical(y_train)
-                X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
+                #X_train, y_train,  = shuffle(X_train, y_train, random_state=1899)
                 model = build_cnn(X_train, class_dic[data_set], set=data_set, num_channels=chan_dic[data_set], opt='adam', loss=CategoricalCrossentropy(label_smoothing=SMOOTHING_RATE))
                 model = train_cnn(model, X_train, y_train)
 
