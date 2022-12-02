@@ -145,7 +145,7 @@ if __name__ == "__main__":
         TEST_INSTANCES = len(X_test)
         SAMP_LEN = len(X_test[0])
 
-        #Clean train/test for comparixon
+        #Clean train/test for comparison
         results_file.write('############Clean Control############\n'.format(counter))
         y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_clean.npy')
         y_train = to_categorical(y_train)
@@ -164,6 +164,7 @@ if __name__ == "__main__":
         results_file.write('\n')
         results_file.write(f'Apparent error rate: {aer}')
         print(score)
+        results_file.flush()
 
         
         for i, noise_type in enumerate(labels):
@@ -182,7 +183,6 @@ if __name__ == "__main__":
                 results_file.write('Set: {}\n'.format(data_set))
                 results_file.write('Train Labels: {}{}\n'.format(noise_type, mlr))
                 results_file.write('Test Labels: {}{}\n'.format(noise_type, mlr))
-                t_m, p_m = transition_matrix()
                 #load the test attribute set
                 y_test_noisy = np.load('src/data/processed_datasets/'+data_set+'_labels_test_'+noise_type+'_'+str(mlr)+'.npy')
                 y_test_noisy = to_categorical(y_test_noisy)
