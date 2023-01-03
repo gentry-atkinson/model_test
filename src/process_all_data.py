@@ -6,18 +6,19 @@
 #This is going to be a big one (Narrator: it was)
 
 #TODO:
-#  -hunt down shaping troubles
-#  -write to numpy files rather than csv
 #  -add a biosignal dataset
 
 """
 6 Datasets: 2 synthetic, 2 HAR, 2 BioSignal
 Each dataset will have 31 label sets:
   - clean
-  - 1% to 30% NCAR
-  - 1% to 30% NAR
-  - 1% to 30% NNAR
+  - 1% to 20% NCAR
+  - 1% to 20% NAR
+  - 1% to 20% NNAR
 """
+
+MIN_PERCENT = 1
+MAX_PERCENT = 15
 
 import os
 
@@ -47,10 +48,10 @@ print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
-RUN_SS = False
+RUN_SS = True
 RUN_HAR = True
 #RUN_BS = False
-RUN_SN = False
+RUN_SN = True
 
 def record_sn_instance(att_array, table, feature_list, start_index, end_index):
     for f in feature_list:
@@ -147,7 +148,7 @@ def run_ss():
     np.save(PATH + 'ss1_labels_test_clean.npy', y_test)
 
     #Create label sets for SS1
-    for mislab_rate in range(1, 31):
+    for mislab_rate in range(MIN_PERCENT, MAX_PERCENT+1):
         add_ncar(y_train, PATH + 'ss1_labels', 2, mislab_rate)
         add_nar(y_train, PATH + 'ss1_labels', 2, mislab_rate)
         add_nnar(X_train, y_train, PATH + 'ss1_labels', 2, mislab_rate)
@@ -181,7 +182,7 @@ def run_ss():
     np.save(PATH + 'ss2_labels_test_clean.npy', y_test)
 
     #Create label sets for SS2
-    for mislab_rate in range(1, 31):
+    for mislab_rate in range(MIN_PERCENT, MAX_PERCENT+1):
         add_ncar(y_train, PATH + 'ss2_labels', 5, mislab_rate)
         add_nar(y_train, PATH + 'ss2_labels', 5, mislab_rate)
         add_nnar(X_train, y_train, PATH + 'ss2_labels', 5, mislab_rate)
@@ -229,7 +230,7 @@ def run_har():
     np.save(PATH + 'har1_labels_test_clean.npy', y_test)
 
     #Create label sets for HAR1
-    for mislab_rate in range(1, 31):
+    for mislab_rate in range(MIN_PERCENT, MAX_PERCENT+1):
         add_ncar(y_train, PATH + 'har1_labels', 6, mislab_rate)
         add_nar(y_train, PATH + 'har1_labels', 6, mislab_rate)
         add_nnar(X_train, y_train, PATH + 'har1_labels', 6, num_channels=1, mislab_rate=mislab_rate)
@@ -282,7 +283,7 @@ def run_har():
     np.save(PATH + 'har2_labels_test_clean.npy', y_test)
 
     #Create label sets for HAR2
-    for mislab_rate in range(1, 31):
+    for mislab_rate in range(MIN_PERCENT, MAX_PERCENT+1):
         add_ncar(y_train, PATH + 'har2_labels', 6, mislab_rate)
         add_nar(y_train, PATH + 'har2_labels', 6, mislab_rate)
         add_nnar(X_train, y_train, PATH + 'har2_labels', 6, num_channels=3, mislab_rate=mislab_rate)
@@ -378,13 +379,19 @@ def run_sn():
     y_train = np.array(y_train, dtype='int')
     y_test = np.array(y_test, dtype='int')
 
-    X_train = np.array(X_train)
-    X_test = np.array(X_test)
+    old_len_train = len(X_train)
+    old_len_test = len(X_test)
+    X_train = minmax_scale(X_train, (-1, 1), axis=1)
+    X_test = minmax_scale(X_test, (-1, 1), axis=1)
+
+
+    X_train = np.reshape(np.array(X_train), (old_len_train//6, 6, 30))
+    X_test = np.reshape(np.array(X_test), (old_len_test//6, 6, 30))
 
     # normalize(attributes, axis=1, copy=False, norm='max')
     # normalize(test_att, axis=1, copy=False, norm='max')
-    X_train = minmax_scale(X_train, (-1, 1), axis=1)
-    X_test = minmax_scale(X_test, (-1, 1), axis=1)
+    
+    
 
     # attributes = clean_nan_and_inf(attributes)
     # test_att = clean_nan_and_inf(test_att)
@@ -418,16 +425,16 @@ def run_sn():
     #np.savetxt(PATH + 'sn1_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
     np.save(PATH + 'sn1_labels_test_clean.npy', y_test)
 
-    for mislab_rate in range(1, 31):
+    for mislab_rate in range(MIN_PERCENT, MAX_PERCENT+1):
         add_ncar(y_train, PATH + 'sn1_labels', 2, mislab_rate)
-        add_nar(y_train, PATH + 'sn1_labels', 2), mislab_rate
+        add_nar(y_train, PATH + 'sn1_labels', 2, mislab_rate)
         add_nnar(X_train, y_train, PATH + 'sn1_labels', 2, num_channels=6,mislab_rate=mislab_rate)
 
         add_ncar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
         add_nar(y_test, PATH + 'sn1_labels_test', 2, mislab_rate)
         add_nnar(X_test, y_test, PATH + 'sn1_labels_test', 2, num_channels=6, mislab_rate=mislab_rate)
 
-    #Create Synthetic Set 1
+    #Create Synthetic Set 2
     """
     Sensor Network Set 2
     Occupancy Detection Data Set dataset from:
@@ -512,8 +519,8 @@ def run_sn():
         else:
             y_test.append(4)
 
-    X_train = np.reshape(np.array(X_train), (len(X_train), INSTANCE_LEN))
-    X_test =  np.reshape(np.array(X_test), (len(X_test), INSTANCE_LEN))
+    X_train = np.reshape(np.array(X_train), (len(X_train)//5, 5, INSTANCE_LEN))
+    X_test =  np.reshape(np.array(X_test), (len(X_test)//5, 5, INSTANCE_LEN))
 
     y_train = np.array(y_train, dtype='int')
     y_test = np.array(y_test, dtype='int')
@@ -541,7 +548,7 @@ def run_sn():
     # np.savetxt(PATH + 'sn2_labels_test_clean.csv', np.array(labels_test), delimiter=',', fmt='%d')
     np.save(PATH + 'sn2_labels_test_clean.csv', y_test)
 
-    for mislab_rate in range(1, 31):
+    for mislab_rate in range(MIN_PERCENT, MAX_PERCENT+1):
         add_ncar(y_train, PATH + 'sn2_labels', 5, mislab_rate)
         add_nar(y_train, PATH + 'sn2_labels', 5, mislab_rate)
         add_nnar(X_train, y_train, PATH + 'sn2_labels', 5, num_channels=5, mislab_rate=mislab_rate)
