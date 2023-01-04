@@ -35,7 +35,8 @@ from utils.ts_feature_toolkit import transition_matrix
 
 DEBUG = True
 SMOOTHING_RATE = 0.0
-MAX_EPOCHS = 10
+MAX_EPOCHS = 50
+MAX_NOISE_LVL = 15
 
 if DEBUG:
     sets = [
@@ -95,7 +96,7 @@ def build_cnn(
         Dense(num_classes, activation='softmax')
     ])
     model.compile(optimizer=opt, loss=loss, metrics=[met.CategoricalAccuracy()])
-    print(model.summary())
+    #print(model.summary())
     return model
 
 def train_cnn(model, X, y):
@@ -169,7 +170,7 @@ if __name__ == "__main__":
 
         
         for i, noise_type in enumerate(labels):
-            for mlr in range(1, 31):
+            for mlr in range(1, MAX_NOISE_LVL+1):
                 mlr_percent = mlr/100
 
                 y_train = np.load('src/data/processed_datasets/'+data_set+'_labels_'+noise_type+'_'+str(mlr)+'.npy')

@@ -175,7 +175,7 @@ def run_ss():
     #np.savetxt(PATH + 'ss2_attributes_train.csv', attributes[0:24000],  delimiter=',')
     np.save(PATH + 'ss2_attributes_train.npy', X_train)
     #np.savetxt(PATH + 'ss2_labels_clean.csv', labels_clean[0:24000], delimiter=',', fmt='%d')
-    np.save(PATH + 'ss2_labels_clean.npy', y_test)
+    np.save(PATH + 'ss2_labels_clean.npy', y_train)
     #np.savetxt(PATH + 'ss2_attributes_test.csv', attributes[24000:30000],  delimiter=',')
     np.save(PATH + 'ss2_attributes_test.npy', X_test)
     #np.savetxt(PATH + 'ss2_labels_test_clean.csv', labels_clean[24000:30000], delimiter=',', fmt='%d')
