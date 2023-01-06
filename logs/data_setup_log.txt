@@ -1,26 +1,26 @@
 Num GPUs Available:  0
 ##### Preparing Dataset: SS1 #####
-Train labels:  4048
-3953
-Test labels:  1011
-990
+Train labels:  3966
+4035
+Test labels:  981
+1020
 Train data shape:  (8001, 150, 1)
 Test data shape:  (2001, 150, 1)
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  1
-Number of noisy labels:  75
-Number of clean labels:  7926
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  81
+Number of clean labels:  7920
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  1
-Number of noisy labels:  70
-Number of clean labels:  7931
+Number of noisy labels:  84
+Number of clean labels:  7917
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Running features for attributes
 Feature extraction for set with shape:  (8001, 150, 1)
@@ -28,23 +28,23 @@ Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  1
 Number of flipped labels:  81
-Total iterations:  6278
-Number of clean labels:  7929
+Total iterations:  6158
+Number of clean labels:  7949
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  1
-Number of noisy labels:  17
-Number of clean labels:  1984
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  22
+Number of clean labels:  1979
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  1
-Number of noisy labels:  20
-Number of clean labels:  1981
+Number of noisy labels:  16
+Number of clean labels:  1985
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Running features for attributes
 Feature extraction for set with shape:  (2001, 150, 1)
@@ -52,659 +52,659 @@ Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  1
 Number of flipped labels:  21
-Total iterations:  1539
-Number of clean labels:  1983
+Total iterations:  1533
+Number of clean labels:  1987
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  2
-Number of noisy labels:  163
-Number of clean labels:  7838
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  179
+Number of clean labels:  7822
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  2
-Number of noisy labels:  147
-Number of clean labels:  7854
+Number of noisy labels:  173
+Number of clean labels:  7828
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  2
 Number of flipped labels:  161
-Total iterations:  14703
-Number of clean labels:  7866
+Total iterations:  11776
+Number of clean labels:  7879
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  2
-Number of noisy labels:  31
-Number of clean labels:  1970
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  39
+Number of clean labels:  1962
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  2
-Number of noisy labels:  41
-Number of clean labels:  1960
+Number of noisy labels:  37
+Number of clean labels:  1964
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  2
 Number of flipped labels:  41
-Total iterations:  3936
-Number of clean labels:  1962
+Total iterations:  2340
+Number of clean labels:  1977
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  3
-Number of noisy labels:  276
-Number of clean labels:  7725
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  213
+Number of clean labels:  7788
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  3
-Number of noisy labels:  255
-Number of clean labels:  7746
+Number of noisy labels:  247
+Number of clean labels:  7754
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  3
 Number of flipped labels:  241
-Total iterations:  22483
-Number of clean labels:  7791
+Total iterations:  16856
+Number of clean labels:  7849
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  3
-Number of noisy labels:  43
-Number of clean labels:  1958
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  52
+Number of clean labels:  1949
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  3
-Number of noisy labels:  50
-Number of clean labels:  1951
+Number of noisy labels:  51
+Number of clean labels:  1950
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  3
 Number of flipped labels:  61
-Total iterations:  5991
-Number of clean labels:  1947
+Total iterations:  4770
+Number of clean labels:  1963
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  4
-Number of noisy labels:  309
-Number of clean labels:  7692
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  326
+Number of clean labels:  7675
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  4
-Number of noisy labels:  308
-Number of clean labels:  7693
+Number of noisy labels:  313
+Number of clean labels:  7688
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  4
 Number of flipped labels:  321
-Total iterations:  30951
-Number of clean labels:  7727
+Total iterations:  23842
+Number of clean labels:  7784
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  4
-Number of noisy labels:  82
-Number of clean labels:  1919
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  76
+Number of clean labels:  1925
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  4
-Number of noisy labels:  77
-Number of clean labels:  1924
+Number of noisy labels:  70
+Number of clean labels:  1931
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  4
 Number of flipped labels:  81
-Total iterations:  7595
-Number of clean labels:  1925
+Total iterations:  4985
+Number of clean labels:  1946
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  5
-Number of noisy labels:  442
-Number of clean labels:  7559
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  414
+Number of clean labels:  7587
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  5
-Number of noisy labels:  419
-Number of clean labels:  7582
+Number of noisy labels:  430
+Number of clean labels:  7571
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  5
 Number of flipped labels:  401
-Total iterations:  38819
-Number of clean labels:  7649
+Total iterations:  24038
+Number of clean labels:  7730
 NCAR
-Len of clean labels:  2001
-Len of noisy labels:  2001
-Mislabeling rate:  5
-Number of noisy labels:  92
-Number of clean labels:  1909
-Label counts in add_nar:  [1011, 990]
-NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  5
 Number of noisy labels:  93
 Number of clean labels:  1908
+Label counts in add_nar:  [981, 1020]
+NAR
+Len of clean labels:  2001
+Len of noisy labels:  2001
+Mislabeling rate:  5
+Number of noisy labels:  112
+Number of clean labels:  1889
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  5
 Number of flipped labels:  101
-Total iterations:  8981
-Number of clean labels:  1908
+Total iterations:  7064
+Number of clean labels:  1942
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  6
-Number of noisy labels:  491
-Number of clean labels:  7510
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  484
+Number of clean labels:  7517
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  6
-Number of noisy labels:  462
-Number of clean labels:  7539
+Number of noisy labels:  449
+Number of clean labels:  7552
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  6
 Number of flipped labels:  481
-Total iterations:  48074
-Number of clean labels:  7573
+Total iterations:  34623
+Number of clean labels:  7687
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  6
-Number of noisy labels:  122
-Number of clean labels:  1879
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  129
+Number of clean labels:  1872
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  6
-Number of noisy labels:  128
-Number of clean labels:  1873
+Number of noisy labels:  130
+Number of clean labels:  1871
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  6
 Number of flipped labels:  121
-Total iterations:  13224
-Number of clean labels:  1894
+Total iterations:  6974
+Number of clean labels:  1932
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  7
-Number of noisy labels:  537
-Number of clean labels:  7464
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  598
+Number of clean labels:  7403
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  7
-Number of noisy labels:  591
-Number of clean labels:  7410
+Number of noisy labels:  525
+Number of clean labels:  7476
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  7
 Number of flipped labels:  561
-Total iterations:  49996
-Number of clean labels:  7516
+Total iterations:  41200
+Number of clean labels:  7614
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  7
-Number of noisy labels:  128
-Number of clean labels:  1873
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  147
+Number of clean labels:  1854
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  7
-Number of noisy labels:  135
-Number of clean labels:  1866
+Number of noisy labels:  161
+Number of clean labels:  1840
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  7
 Number of flipped labels:  141
-Total iterations:  14343
-Number of clean labels:  1877
+Total iterations:  7209
+Number of clean labels:  1912
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  8
-Number of noisy labels:  659
-Number of clean labels:  7342
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  653
+Number of clean labels:  7348
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  8
-Number of noisy labels:  637
-Number of clean labels:  7364
+Number of noisy labels:  646
+Number of clean labels:  7355
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  8
 Number of flipped labels:  641
-Total iterations:  57701
-Number of clean labels:  7452
+Total iterations:  47056
+Number of clean labels:  7577
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  8
-Number of noisy labels:  171
-Number of clean labels:  1830
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  156
+Number of clean labels:  1845
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  8
-Number of noisy labels:  148
-Number of clean labels:  1853
+Number of noisy labels:  165
+Number of clean labels:  1836
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  8
 Number of flipped labels:  161
-Total iterations:  16184
-Number of clean labels:  1855
+Total iterations:  9956
+Number of clean labels:  1893
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  9
-Number of noisy labels:  656
-Number of clean labels:  7345
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  696
+Number of clean labels:  7305
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  9
-Number of noisy labels:  728
-Number of clean labels:  7273
+Number of noisy labels:  697
+Number of clean labels:  7304
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  9
 Number of flipped labels:  721
-Total iterations:  63648
-Number of clean labels:  7374
+Total iterations:  52941
+Number of clean labels:  7494
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  9
-Number of noisy labels:  153
-Number of clean labels:  1848
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  184
+Number of clean labels:  1817
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  9
-Number of noisy labels:  187
-Number of clean labels:  1814
+Number of noisy labels:  208
+Number of clean labels:  1793
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  9
 Number of flipped labels:  181
-Total iterations:  16933
-Number of clean labels:  1840
+Total iterations:  10652
+Number of clean labels:  1894
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  10
-Number of noisy labels:  804
-Number of clean labels:  7197
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  763
+Number of clean labels:  7238
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  10
-Number of noisy labels:  840
-Number of clean labels:  7161
+Number of noisy labels:  815
+Number of clean labels:  7186
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  10
 Number of flipped labels:  801
-Total iterations:  42217
-Number of clean labels:  7268
+Total iterations:  32853
+Number of clean labels:  7357
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  10
-Number of noisy labels:  178
-Number of clean labels:  1823
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  210
+Number of clean labels:  1791
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  10
-Number of noisy labels:  215
-Number of clean labels:  1786
+Number of noisy labels:  189
+Number of clean labels:  1812
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  10
 Number of flipped labels:  201
-Total iterations:  10916
-Number of clean labels:  1810
+Total iterations:  7881
+Number of clean labels:  1856
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  11
-Number of noisy labels:  838
-Number of clean labels:  7163
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  833
+Number of clean labels:  7168
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  11
-Number of noisy labels:  842
-Number of clean labels:  7159
+Number of noisy labels:  903
+Number of clean labels:  7098
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  11
 Number of flipped labels:  881
-Total iterations:  47957
-Number of clean labels:  7178
+Total iterations:  44097
+Number of clean labels:  7277
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  11
-Number of noisy labels:  235
-Number of clean labels:  1766
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  232
+Number of clean labels:  1769
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  11
-Number of noisy labels:  209
-Number of clean labels:  1792
+Number of noisy labels:  252
+Number of clean labels:  1749
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  11
 Number of flipped labels:  221
-Total iterations:  12528
-Number of clean labels:  1791
+Total iterations:  8843
+Number of clean labels:  1837
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  12
-Number of noisy labels:  1035
-Number of clean labels:  6966
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  1005
+Number of clean labels:  6996
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  12
-Number of noisy labels:  936
-Number of clean labels:  7065
+Number of noisy labels:  944
+Number of clean labels:  7057
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  12
 Number of flipped labels:  961
-Total iterations:  51608
-Number of clean labels:  7109
+Total iterations:  41315
+Number of clean labels:  7242
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  12
-Number of noisy labels:  251
-Number of clean labels:  1750
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  256
+Number of clean labels:  1745
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  12
-Number of noisy labels:  244
-Number of clean labels:  1757
+Number of noisy labels:  253
+Number of clean labels:  1748
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  12
 Number of flipped labels:  241
-Total iterations:  12921
-Number of clean labels:  1771
+Total iterations:  10606
+Number of clean labels:  1816
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  13
-Number of noisy labels:  1012
-Number of clean labels:  6989
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  1019
+Number of clean labels:  6982
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  13
-Number of noisy labels:  1009
-Number of clean labels:  6992
+Number of noisy labels:  1008
+Number of clean labels:  6993
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  13
 Number of flipped labels:  1041
-Total iterations:  55944
-Number of clean labels:  7039
+Total iterations:  48395
+Number of clean labels:  7199
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  13
-Number of noisy labels:  286
-Number of clean labels:  1715
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  242
+Number of clean labels:  1759
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  13
-Number of noisy labels:  279
-Number of clean labels:  1722
+Number of noisy labels:  232
+Number of clean labels:  1769
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  13
 Number of flipped labels:  261
-Total iterations:  13201
-Number of clean labels:  1754
+Total iterations:  10709
+Number of clean labels:  1812
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  14
-Number of noisy labels:  1082
-Number of clean labels:  6919
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  1101
+Number of clean labels:  6900
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  14
-Number of noisy labels:  1149
-Number of clean labels:  6852
+Number of noisy labels:  1151
+Number of clean labels:  6850
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  14
 Number of flipped labels:  1121
-Total iterations:  59274
-Number of clean labels:  6982
+Total iterations:  50837
+Number of clean labels:  7095
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  14
-Number of noisy labels:  288
-Number of clean labels:  1713
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  281
+Number of clean labels:  1720
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  14
-Number of noisy labels:  280
-Number of clean labels:  1721
+Number of noisy labels:  278
+Number of clean labels:  1723
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  14
 Number of flipped labels:  281
-Total iterations:  14793
-Number of clean labels:  1727
+Total iterations:  11880
+Number of clean labels:  1780
 NCAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  15
-Number of noisy labels:  1215
-Number of clean labels:  6786
-Label counts in add_nar:  [4048, 3953]
+Number of noisy labels:  1163
+Number of clean labels:  6838
+Label counts in add_nar:  [3966, 4035]
 NAR
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  15
-Number of noisy labels:  1239
-Number of clean labels:  6762
+Number of noisy labels:  1185
+Number of clean labels:  6816
 NNAR
-Size of relabeling pool:  4048
+Size of relabeling pool:  4035
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  8001
 Len of noisy labels:  8001
 Mislabeling rate:  15
 Number of flipped labels:  1201
-Total iterations:  65020
-Number of clean labels:  6904
+Total iterations:  54029
+Number of clean labels:  7039
 NCAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  15
-Number of noisy labels:  283
-Number of clean labels:  1718
-Label counts in add_nar:  [1011, 990]
+Number of noisy labels:  266
+Number of clean labels:  1735
+Label counts in add_nar:  [981, 1020]
 NAR
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  15
-Number of noisy labels:  290
-Number of clean labels:  1711
+Number of noisy labels:  320
+Number of clean labels:  1681
 NNAR
-Size of relabeling pool:  1011
+Size of relabeling pool:  1020
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  2001
 Len of noisy labels:  2001
 Mislabeling rate:  15
 Number of flipped labels:  301
-Total iterations:  15217
-Number of clean labels:  1715
+Total iterations:  11059
+Number of clean labels:  1790
 ##### Preparing Dataset: SS2 #####
-Train labels:  8087
-7894
-8019
-Test labels:  1966
-1982
-2052
+Train labels:  8031
+7924
+8045
+Test labels:  1955
+1948
+2097
 Train data shape:  (24000, 150, 1)
 Test data shape:  (6000, 150, 1)
 NCAR
@@ -713,15 +713,15 @@ Len of noisy labels:  24000
 Mislabeling rate:  1
 Number of noisy labels:  236
 Number of clean labels:  23764
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  1
-Number of noisy labels:  220
-Number of clean labels:  23780
+Number of noisy labels:  239
+Number of clean labels:  23761
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Running features for attributes
 Feature extraction for set with shape:  (24000, 150, 1)
@@ -729,23 +729,23 @@ Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  1
 Number of flipped labels:  240
-Total iterations:  23199
-Number of clean labels:  23760
+Total iterations:  13695
+Number of clean labels:  23860
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  1
-Number of noisy labels:  58
-Number of clean labels:  5942
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  68
+Number of clean labels:  5932
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  1
-Number of noisy labels:  63
-Number of clean labels:  5937
+Number of noisy labels:  67
+Number of clean labels:  5933
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Running features for attributes
 Feature extraction for set with shape:  (6000, 150, 1)
@@ -753,130 +753,130 @@ Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  1
 Number of flipped labels:  60
-Total iterations:  210
-Number of clean labels:  5999
+Total iterations:  3482
+Number of clean labels:  5955
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  2
-Number of noisy labels:  450
-Number of clean labels:  23550
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  497
+Number of clean labels:  23503
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  2
-Number of noisy labels:  499
-Number of clean labels:  23501
+Number of noisy labels:  500
+Number of clean labels:  23500
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  2
 Number of flipped labels:  480
-Total iterations:  52406
-Number of clean labels:  23520
+Total iterations:  28454
+Number of clean labels:  23726
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  2
-Number of noisy labels:  126
-Number of clean labels:  5874
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  103
+Number of clean labels:  5897
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  2
-Number of noisy labels:  141
-Number of clean labels:  5859
+Number of noisy labels:  119
+Number of clean labels:  5881
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  2
 Number of flipped labels:  120
-Total iterations:  437
-Number of clean labels:  5998
+Total iterations:  6355
+Number of clean labels:  5927
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  3
-Number of noisy labels:  733
-Number of clean labels:  23267
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  731
+Number of clean labels:  23269
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  3
-Number of noisy labels:  740
-Number of clean labels:  23260
+Number of noisy labels:  707
+Number of clean labels:  23293
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  3
 Number of flipped labels:  720
-Total iterations:  78137
-Number of clean labels:  23280
+Total iterations:  43496
+Number of clean labels:  23577
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  3
-Number of noisy labels:  170
-Number of clean labels:  5830
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  179
+Number of clean labels:  5821
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  3
-Number of noisy labels:  188
-Number of clean labels:  5812
+Number of noisy labels:  185
+Number of clean labels:  5815
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  3
 Number of flipped labels:  180
-Total iterations:  629
-Number of clean labels:  5993
+Total iterations:  10258
+Number of clean labels:  5891
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  4
-Number of noisy labels:  989
-Number of clean labels:  23011
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  969
+Number of clean labels:  23031
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  4
-Number of noisy labels:  931
-Number of clean labels:  23069
+Number of noisy labels:  958
+Number of clean labels:  23042
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  4
 Number of flipped labels:  960
-Total iterations:  100160
-Number of clean labels:  23040
+Total iterations:  58812
+Number of clean labels:  23454
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  4
-Number of noisy labels:  232
-Number of clean labels:  5768
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  242
+Number of clean labels:  5758
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
@@ -884,521 +884,521 @@ Mislabeling rate:  4
 Number of noisy labels:  269
 Number of clean labels:  5731
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  4
 Number of flipped labels:  240
-Total iterations:  912
-Number of clean labels:  5994
+Total iterations:  14171
+Number of clean labels:  5860
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  5
-Number of noisy labels:  1200
-Number of clean labels:  22800
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  1210
+Number of clean labels:  22790
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  5
-Number of noisy labels:  1164
-Number of clean labels:  22836
+Number of noisy labels:  1184
+Number of clean labels:  22816
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  5
 Number of flipped labels:  1200
-Total iterations:  129604
-Number of clean labels:  22800
+Total iterations:  71485
+Number of clean labels:  23341
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  5
-Number of noisy labels:  291
-Number of clean labels:  5709
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  276
+Number of clean labels:  5724
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  5
-Number of noisy labels:  273
-Number of clean labels:  5727
+Number of noisy labels:  306
+Number of clean labels:  5694
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  5
 Number of flipped labels:  300
-Total iterations:  1192
-Number of clean labels:  5997
+Total iterations:  15595
+Number of clean labels:  5836
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  6
-Number of noisy labels:  1541
-Number of clean labels:  22459
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  1462
+Number of clean labels:  22538
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  6
-Number of noisy labels:  1441
-Number of clean labels:  22559
+Number of noisy labels:  1413
+Number of clean labels:  22587
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  6
 Number of flipped labels:  1440
-Total iterations:  158189
-Number of clean labels:  22560
+Total iterations:  85122
+Number of clean labels:  23168
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  6
-Number of noisy labels:  354
-Number of clean labels:  5646
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  337
+Number of clean labels:  5663
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  6
-Number of noisy labels:  367
-Number of clean labels:  5633
+Number of noisy labels:  375
+Number of clean labels:  5625
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  6
 Number of flipped labels:  360
-Total iterations:  1359
-Number of clean labels:  5990
+Total iterations:  22223
+Number of clean labels:  5793
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  7
-Number of noisy labels:  1680
-Number of clean labels:  22320
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  1705
+Number of clean labels:  22295
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  7
-Number of noisy labels:  1694
-Number of clean labels:  22306
+Number of noisy labels:  1699
+Number of clean labels:  22301
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  7
 Number of flipped labels:  1681
-Total iterations:  190305
-Number of clean labels:  22319
+Total iterations:  103166
+Number of clean labels:  23071
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  7
-Number of noisy labels:  402
-Number of clean labels:  5598
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  432
+Number of clean labels:  5568
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  7
-Number of noisy labels:  408
-Number of clean labels:  5592
+Number of noisy labels:  454
+Number of clean labels:  5546
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  7
 Number of flipped labels:  421
-Total iterations:  1579
-Number of clean labels:  5992
+Total iterations:  25350
+Number of clean labels:  5765
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  8
-Number of noisy labels:  1946
-Number of clean labels:  22054
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  1969
+Number of clean labels:  22031
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  8
-Number of noisy labels:  1754
-Number of clean labels:  22246
+Number of noisy labels:  1965
+Number of clean labels:  22035
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  8
 Number of flipped labels:  1920
-Total iterations:  223479
-Number of clean labels:  22080
+Total iterations:  114663
+Number of clean labels:  22885
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  8
-Number of noisy labels:  494
-Number of clean labels:  5506
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  440
+Number of clean labels:  5560
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  8
-Number of noisy labels:  485
-Number of clean labels:  5515
+Number of noisy labels:  455
+Number of clean labels:  5545
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  8
 Number of flipped labels:  480
-Total iterations:  1861
-Number of clean labels:  5985
+Total iterations:  28853
+Number of clean labels:  5707
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  9
-Number of noisy labels:  2143
-Number of clean labels:  21857
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  2188
+Number of clean labels:  21812
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  9
-Number of noisy labels:  2174
-Number of clean labels:  21826
+Number of noisy labels:  2140
+Number of clean labels:  21860
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  9
 Number of flipped labels:  2160
-Total iterations:  252858
-Number of clean labels:  21840
+Total iterations:  138516
+Number of clean labels:  22764
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  9
-Number of noisy labels:  532
-Number of clean labels:  5468
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  525
+Number of clean labels:  5475
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  9
-Number of noisy labels:  559
-Number of clean labels:  5441
+Number of noisy labels:  520
+Number of clean labels:  5480
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  9
 Number of flipped labels:  540
-Total iterations:  2153
-Number of clean labels:  5983
+Total iterations:  33235
+Number of clean labels:  5688
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  10
-Number of noisy labels:  2389
-Number of clean labels:  21611
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  2380
+Number of clean labels:  21620
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  10
-Number of noisy labels:  2392
-Number of clean labels:  21608
+Number of noisy labels:  2300
+Number of clean labels:  21700
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  10
 Number of flipped labels:  2400
-Total iterations:  142727
-Number of clean labels:  21600
+Total iterations:  92497
+Number of clean labels:  22317
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  10
-Number of noisy labels:  560
-Number of clean labels:  5440
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  599
+Number of clean labels:  5401
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  10
-Number of noisy labels:  603
-Number of clean labels:  5397
+Number of noisy labels:  595
+Number of clean labels:  5405
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  10
 Number of flipped labels:  600
-Total iterations:  2324
-Number of clean labels:  5964
+Total iterations:  23723
+Number of clean labels:  5570
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  11
-Number of noisy labels:  2631
-Number of clean labels:  21369
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  2648
+Number of clean labels:  21352
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  11
-Number of noisy labels:  2617
-Number of clean labels:  21383
+Number of noisy labels:  2627
+Number of clean labels:  21373
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  11
 Number of flipped labels:  2640
-Total iterations:  160459
-Number of clean labels:  21360
+Total iterations:  107001
+Number of clean labels:  22162
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  11
-Number of noisy labels:  672
-Number of clean labels:  5328
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  658
+Number of clean labels:  5342
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  11
-Number of noisy labels:  677
-Number of clean labels:  5323
+Number of noisy labels:  658
+Number of clean labels:  5342
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  11
 Number of flipped labels:  660
-Total iterations:  2396
-Number of clean labels:  5963
+Total iterations:  26239
+Number of clean labels:  5544
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  12
-Number of noisy labels:  2929
-Number of clean labels:  21071
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  2847
+Number of clean labels:  21153
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  12
-Number of noisy labels:  2911
-Number of clean labels:  21089
+Number of noisy labels:  2855
+Number of clean labels:  21145
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  12
 Number of flipped labels:  2880
-Total iterations:  179701
-Number of clean labels:  21120
+Total iterations:  118830
+Number of clean labels:  21971
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  12
-Number of noisy labels:  700
-Number of clean labels:  5300
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  714
+Number of clean labels:  5286
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  12
-Number of noisy labels:  724
-Number of clean labels:  5276
+Number of noisy labels:  753
+Number of clean labels:  5247
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  12
 Number of flipped labels:  720
-Total iterations:  2846
-Number of clean labels:  5962
+Total iterations:  28932
+Number of clean labels:  5504
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  13
-Number of noisy labels:  3161
-Number of clean labels:  20839
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  3183
+Number of clean labels:  20817
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  13
-Number of noisy labels:  3149
-Number of clean labels:  20851
+Number of noisy labels:  3097
+Number of clean labels:  20903
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  13
 Number of flipped labels:  3120
-Total iterations:  198287
-Number of clean labels:  20880
+Total iterations:  127488
+Number of clean labels:  21832
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  13
-Number of noisy labels:  756
-Number of clean labels:  5244
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  796
+Number of clean labels:  5204
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  13
-Number of noisy labels:  793
-Number of clean labels:  5207
+Number of noisy labels:  831
+Number of clean labels:  5169
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  13
 Number of flipped labels:  780
-Total iterations:  2857
-Number of clean labels:  5951
+Total iterations:  32088
+Number of clean labels:  5458
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  14
-Number of noisy labels:  3248
-Number of clean labels:  20752
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  3331
+Number of clean labels:  20669
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  14
-Number of noisy labels:  3319
-Number of clean labels:  20681
+Number of noisy labels:  3308
+Number of clean labels:  20692
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  14
 Number of flipped labels:  3361
-Total iterations:  227051
-Number of clean labels:  20639
+Total iterations:  142062
+Number of clean labels:  21659
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  14
-Number of noisy labels:  784
-Number of clean labels:  5216
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  816
+Number of clean labels:  5184
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  14
-Number of noisy labels:  830
-Number of clean labels:  5170
+Number of noisy labels:  846
+Number of clean labels:  5154
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  14
 Number of flipped labels:  841
-Total iterations:  3122
-Number of clean labels:  5960
+Total iterations:  35979
+Number of clean labels:  5401
 NCAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  15
-Number of noisy labels:  3611
-Number of clean labels:  20389
-Label counts in add_nar:  [8087, 7894, 8019, 0, 0]
+Number of noisy labels:  3631
+Number of clean labels:  20369
+Label counts in add_nar:  [8031, 7924, 8045, 0, 0]
 NAR
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  15
-Number of noisy labels:  3544
-Number of clean labels:  20456
+Number of noisy labels:  3588
+Number of clean labels:  20412
 NNAR
-Size of relabeling pool:  8087
+Size of relabeling pool:  8045
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  24000
 Len of noisy labels:  24000
 Mislabeling rate:  15
 Number of flipped labels:  3600
-Total iterations:  237942
-Number of clean labels:  20400
+Total iterations:  148348
+Number of clean labels:  21426
 NCAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  15
-Number of noisy labels:  904
-Number of clean labels:  5096
-Label counts in add_nar:  [1966, 1982, 2052, 0, 0]
+Number of noisy labels:  918
+Number of clean labels:  5082
+Label counts in add_nar:  [1955, 1948, 2097, 0, 0]
 NAR
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  15
-Number of noisy labels:  904
-Number of clean labels:  5096
+Number of noisy labels:  892
+Number of clean labels:  5108
 NNAR
-Size of relabeling pool:  2052
+Size of relabeling pool:  2097
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  6000
 Len of noisy labels:  6000
 Mislabeling rate:  15
 Number of flipped labels:  900
-Total iterations:  3542
-Number of clean labels:  5956
+Total iterations:  37359
+Number of clean labels:  5379
 Done with SS
 ##### Preparing Dataset: HAR1 #####
 Processing  1574621345_A01F11.zip
@@ -1480,15 +1480,15 @@ NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  1
-Number of noisy labels:  9
-Number of clean labels:  700
+Number of noisy labels:  11
+Number of clean labels:  698
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  1
-Number of noisy labels:  5
-Number of clean labels:  704
+Number of noisy labels:  9
+Number of clean labels:  700
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1498,14 +1498,14 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  1
 Number of flipped labels:  8
-Total iterations:  107
-Number of clean labels:  709
+Total iterations:  140
+Number of clean labels:  708
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  1
-Number of noisy labels:  6
-Number of clean labels:  332
+Number of noisy labels:  3
+Number of clean labels:  335
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
@@ -1522,21 +1522,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  1
 Number of flipped labels:  4
-Total iterations:  36
-Number of clean labels:  338
+Total iterations:  35
+Number of clean labels:  336
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  2
-Number of noisy labels:  16
-Number of clean labels:  693
+Number of noisy labels:  15
+Number of clean labels:  694
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  2
-Number of noisy labels:  17
-Number of clean labels:  692
+Number of noisy labels:  15
+Number of clean labels:  694
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1545,21 +1545,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  2
 Number of flipped labels:  15
-Total iterations:  117
-Number of clean labels:  708
+Total iterations:  139
+Number of clean labels:  706
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  2
-Number of noisy labels:  5
-Number of clean labels:  333
+Number of noisy labels:  8
+Number of clean labels:  330
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  2
-Number of noisy labels:  5
-Number of clean labels:  333
+Number of noisy labels:  3
+Number of clean labels:  335
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1568,21 +1568,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  2
 Number of flipped labels:  7
-Total iterations:  71
+Total iterations:  83
 Number of clean labels:  338
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  3
-Number of noisy labels:  20
-Number of clean labels:  689
+Number of noisy labels:  23
+Number of clean labels:  686
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  3
-Number of noisy labels:  22
-Number of clean labels:  687
+Number of noisy labels:  20
+Number of clean labels:  689
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1591,21 +1591,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  3
 Number of flipped labels:  22
-Total iterations:  242
-Number of clean labels:  706
+Total iterations:  297
+Number of clean labels:  709
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  3
-Number of noisy labels:  6
-Number of clean labels:  332
+Number of noisy labels:  7
+Number of clean labels:  331
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  3
-Number of noisy labels:  11
-Number of clean labels:  327
+Number of noisy labels:  12
+Number of clean labels:  326
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1614,21 +1614,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  3
 Number of flipped labels:  11
-Total iterations:  56
-Number of clean labels:  338
+Total iterations:  146
+Number of clean labels:  337
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  4
-Number of noisy labels:  24
-Number of clean labels:  685
+Number of noisy labels:  26
+Number of clean labels:  683
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  4
-Number of noisy labels:  29
-Number of clean labels:  680
+Number of noisy labels:  28
+Number of clean labels:  681
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1637,21 +1637,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  4
 Number of flipped labels:  29
-Total iterations:  381
-Number of clean labels:  706
+Total iterations:  444
+Number of clean labels:  703
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  4
-Number of noisy labels:  8
-Number of clean labels:  330
+Number of noisy labels:  12
+Number of clean labels:  326
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  4
-Number of noisy labels:  15
-Number of clean labels:  323
+Number of noisy labels:  18
+Number of clean labels:  320
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1660,21 +1660,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  4
 Number of flipped labels:  14
-Total iterations:  243
-Number of clean labels:  337
+Total iterations:  132
+Number of clean labels:  336
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  5
-Number of noisy labels:  31
-Number of clean labels:  678
+Number of noisy labels:  32
+Number of clean labels:  677
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  5
-Number of noisy labels:  35
-Number of clean labels:  674
+Number of noisy labels:  39
+Number of clean labels:  670
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1683,21 +1683,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  5
 Number of flipped labels:  36
-Total iterations:  509
+Total iterations:  496
 Number of clean labels:  705
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  5
-Number of noisy labels:  26
-Number of clean labels:  312
+Number of noisy labels:  15
+Number of clean labels:  323
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  5
-Number of noisy labels:  16
-Number of clean labels:  322
+Number of noisy labels:  11
+Number of clean labels:  327
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1706,21 +1706,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  5
 Number of flipped labels:  17
-Total iterations:  315
-Number of clean labels:  337
+Total iterations:  217
+Number of clean labels:  336
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  6
-Number of noisy labels:  47
-Number of clean labels:  662
+Number of noisy labels:  38
+Number of clean labels:  671
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  6
-Number of noisy labels:  47
-Number of clean labels:  662
+Number of noisy labels:  30
+Number of clean labels:  679
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1729,21 +1729,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  6
 Number of flipped labels:  43
-Total iterations:  504
+Total iterations:  738
 Number of clean labels:  703
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  6
-Number of noisy labels:  19
-Number of clean labels:  319
+Number of noisy labels:  22
+Number of clean labels:  316
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  6
-Number of noisy labels:  21
-Number of clean labels:  317
+Number of noisy labels:  17
+Number of clean labels:  321
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1752,14 +1752,14 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  6
 Number of flipped labels:  21
-Total iterations:  230
+Total iterations:  288
 Number of clean labels:  336
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  7
-Number of noisy labels:  57
-Number of clean labels:  652
+Number of noisy labels:  51
+Number of clean labels:  658
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
@@ -1775,21 +1775,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  7
 Number of flipped labels:  50
-Total iterations:  825
-Number of clean labels:  706
+Total iterations:  681
+Number of clean labels:  704
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  7
-Number of noisy labels:  27
-Number of clean labels:  311
+Number of noisy labels:  30
+Number of clean labels:  308
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  7
-Number of noisy labels:  31
-Number of clean labels:  307
+Number of noisy labels:  21
+Number of clean labels:  317
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1798,21 +1798,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  7
 Number of flipped labels:  24
-Total iterations:  268
-Number of clean labels:  337
+Total iterations:  239
+Number of clean labels:  335
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  8
-Number of noisy labels:  51
-Number of clean labels:  658
+Number of noisy labels:  57
+Number of clean labels:  652
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  8
-Number of noisy labels:  49
-Number of clean labels:  660
+Number of noisy labels:  57
+Number of clean labels:  652
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1821,21 +1821,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  8
 Number of flipped labels:  57
-Total iterations:  743
-Number of clean labels:  702
+Total iterations:  695
+Number of clean labels:  698
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  8
-Number of noisy labels:  27
-Number of clean labels:  311
+Number of noisy labels:  29
+Number of clean labels:  309
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  8
-Number of noisy labels:  22
-Number of clean labels:  316
+Number of noisy labels:  29
+Number of clean labels:  309
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1844,21 +1844,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  8
 Number of flipped labels:  28
-Total iterations:  363
-Number of clean labels:  332
+Total iterations:  318
+Number of clean labels:  335
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  9
-Number of noisy labels:  62
-Number of clean labels:  647
+Number of noisy labels:  71
+Number of clean labels:  638
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  9
-Number of noisy labels:  64
-Number of clean labels:  645
+Number of noisy labels:  69
+Number of clean labels:  640
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1867,21 +1867,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  9
 Number of flipped labels:  64
-Total iterations:  1052
-Number of clean labels:  701
+Total iterations:  869
+Number of clean labels:  699
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  9
-Number of noisy labels:  32
-Number of clean labels:  306
+Number of noisy labels:  27
+Number of clean labels:  311
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  9
-Number of noisy labels:  38
-Number of clean labels:  300
+Number of noisy labels:  28
+Number of clean labels:  310
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -1890,21 +1890,21 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  9
 Number of flipped labels:  31
-Total iterations:  448
-Number of clean labels:  336
+Total iterations:  343
+Number of clean labels:  335
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  10
-Number of noisy labels:  76
-Number of clean labels:  633
+Number of noisy labels:  69
+Number of clean labels:  640
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  10
-Number of noisy labels:  68
-Number of clean labels:  641
+Number of noisy labels:  64
+Number of clean labels:  645
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -1913,203 +1913,19 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  10
 Number of flipped labels:  71
-Total iterations:  1117
-Number of clean labels:  692
+Total iterations:  879
+Number of clean labels:  695
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  10
-Number of noisy labels:  38
-Number of clean labels:  300
+Number of noisy labels:  37
+Number of clean labels:  301
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  10
-Number of noisy labels:  44
-Number of clean labels:  294
-NNAR
-Size of relabeling pool:  61
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  10
-Number of flipped labels:  34
-Total iterations:  273
-Number of clean labels:  332
-NCAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  11
-Number of noisy labels:  74
-Number of clean labels:  635
-Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
-NAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  11
-Number of noisy labels:  72
-Number of clean labels:  637
-NNAR
-Size of relabeling pool:  128
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  11
-Number of flipped labels:  78
-Total iterations:  1031
-Number of clean labels:  686
-NCAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  11
-Number of noisy labels:  43
-Number of clean labels:  295
-Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
-NAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  11
-Number of noisy labels:  44
-Number of clean labels:  294
-NNAR
-Size of relabeling pool:  61
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  11
-Number of flipped labels:  38
-Total iterations:  374
-Number of clean labels:  334
-NCAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  12
-Number of noisy labels:  80
-Number of clean labels:  629
-Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
-NAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  12
-Number of noisy labels:  89
-Number of clean labels:  620
-NNAR
-Size of relabeling pool:  128
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  12
-Number of flipped labels:  86
-Total iterations:  1094
-Number of clean labels:  692
-NCAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  12
-Number of noisy labels:  35
-Number of clean labels:  303
-Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
-NAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  12
-Number of noisy labels:  35
-Number of clean labels:  303
-NNAR
-Size of relabeling pool:  61
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  12
-Number of flipped labels:  41
-Total iterations:  425
-Number of clean labels:  331
-NCAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  13
-Number of noisy labels:  88
-Number of clean labels:  621
-Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
-NAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  13
-Number of noisy labels:  92
-Number of clean labels:  617
-NNAR
-Size of relabeling pool:  128
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  13
-Number of flipped labels:  93
-Total iterations:  1071
-Number of clean labels:  688
-NCAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  13
-Number of noisy labels:  49
-Number of clean labels:  289
-Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
-NAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  13
-Number of noisy labels:  41
-Number of clean labels:  297
-NNAR
-Size of relabeling pool:  61
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  13
-Number of flipped labels:  44
-Total iterations:  339
-Number of clean labels:  330
-NCAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  14
-Number of noisy labels:  122
-Number of clean labels:  587
-Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
-NAR
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  14
-Number of noisy labels:  88
-Number of clean labels:  621
-NNAR
-Size of relabeling pool:  128
-Number of classes in relabeling group:  1
-Grabbing old features for attributes
-Len of clean labels:  709
-Len of noisy labels:  709
-Mislabeling rate:  14
-Number of flipped labels:  100
-Total iterations:  1256
-Number of clean labels:  690
-NCAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  14
-Number of noisy labels:  53
-Number of clean labels:  285
-Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
-NAR
-Len of clean labels:  338
-Len of noisy labels:  338
-Mislabeling rate:  14
 Number of noisy labels:  45
 Number of clean labels:  293
 NNAR
@@ -2118,23 +1934,207 @@ Number of classes in relabeling group:  1
 Grabbing old features for attributes
 Len of clean labels:  338
 Len of noisy labels:  338
-Mislabeling rate:  14
-Number of flipped labels:  48
-Total iterations:  427
-Number of clean labels:  329
+Mislabeling rate:  10
+Number of flipped labels:  34
+Total iterations:  388
+Number of clean labels:  333
 NCAR
 Len of clean labels:  709
 Len of noisy labels:  709
-Mislabeling rate:  15
+Mislabeling rate:  11
+Number of noisy labels:  96
+Number of clean labels:  613
+Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
+NAR
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  11
+Number of noisy labels:  81
+Number of clean labels:  628
+NNAR
+Size of relabeling pool:  128
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  11
+Number of flipped labels:  78
+Total iterations:  920
+Number of clean labels:  690
+NCAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  11
+Number of noisy labels:  27
+Number of clean labels:  311
+Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
+NAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  11
+Number of noisy labels:  37
+Number of clean labels:  301
+NNAR
+Size of relabeling pool:  61
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  11
+Number of flipped labels:  38
+Total iterations:  439
+Number of clean labels:  330
+NCAR
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  12
 Number of noisy labels:  92
 Number of clean labels:  617
 Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
 NAR
 Len of clean labels:  709
 Len of noisy labels:  709
+Mislabeling rate:  12
+Number of noisy labels:  92
+Number of clean labels:  617
+NNAR
+Size of relabeling pool:  128
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  12
+Number of flipped labels:  86
+Total iterations:  1158
+Number of clean labels:  694
+NCAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  12
+Number of noisy labels:  41
+Number of clean labels:  297
+Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
+NAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  12
+Number of noisy labels:  42
+Number of clean labels:  296
+NNAR
+Size of relabeling pool:  61
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  12
+Number of flipped labels:  41
+Total iterations:  317
+Number of clean labels:  329
+NCAR
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  13
+Number of noisy labels:  88
+Number of clean labels:  621
+Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
+NAR
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  13
+Number of noisy labels:  97
+Number of clean labels:  612
+NNAR
+Size of relabeling pool:  128
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  13
+Number of flipped labels:  93
+Total iterations:  1299
+Number of clean labels:  686
+NCAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  13
+Number of noisy labels:  44
+Number of clean labels:  294
+Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
+NAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  13
+Number of noisy labels:  38
+Number of clean labels:  300
+NNAR
+Size of relabeling pool:  61
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  13
+Number of flipped labels:  44
+Total iterations:  416
+Number of clean labels:  328
+NCAR
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  14
+Number of noisy labels:  105
+Number of clean labels:  604
+Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
+NAR
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  14
+Number of noisy labels:  102
+Number of clean labels:  607
+NNAR
+Size of relabeling pool:  128
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  14
+Number of flipped labels:  100
+Total iterations:  1452
+Number of clean labels:  694
+NCAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  14
+Number of noisy labels:  54
+Number of clean labels:  284
+Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
+NAR
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  14
+Number of noisy labels:  50
+Number of clean labels:  288
+NNAR
+Size of relabeling pool:  61
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  338
+Len of noisy labels:  338
+Mislabeling rate:  14
+Number of flipped labels:  48
+Total iterations:  509
+Number of clean labels:  332
+NCAR
+Len of clean labels:  709
+Len of noisy labels:  709
 Mislabeling rate:  15
-Number of noisy labels:  104
-Number of clean labels:  605
+Number of noisy labels:  115
+Number of clean labels:  594
+Label counts in add_nar:  [121, 117, 116, 112, 128, 115]
+NAR
+Len of clean labels:  709
+Len of noisy labels:  709
+Mislabeling rate:  15
+Number of noisy labels:  105
+Number of clean labels:  604
 NNAR
 Size of relabeling pool:  128
 Number of classes in relabeling group:  1
@@ -2143,21 +2143,21 @@ Len of clean labels:  709
 Len of noisy labels:  709
 Mislabeling rate:  15
 Number of flipped labels:  107
-Total iterations:  1469
-Number of clean labels:  679
+Total iterations:  1330
+Number of clean labels:  684
 NCAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  15
-Number of noisy labels:  53
-Number of clean labels:  285
+Number of noisy labels:  59
+Number of clean labels:  279
 Label counts in add_nar:  [49, 58, 61, 58, 52, 60]
 NAR
 Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  15
-Number of noisy labels:  53
-Number of clean labels:  285
+Number of noisy labels:  47
+Number of clean labels:  291
 NNAR
 Size of relabeling pool:  61
 Number of classes in relabeling group:  1
@@ -2166,8 +2166,8 @@ Len of clean labels:  338
 Len of noisy labels:  338
 Mislabeling rate:  15
 Number of flipped labels:  51
-Total iterations:  448
-Number of clean labels:  330
+Total iterations:  683
+Number of clean labels:  328
 ##### Preparing Dataset: HAR2 #####
 Downloading and processing UCI HAR dataset
 ./UCI_HAR_Dataset.zip found, skipping download
@@ -2180,15 +2180,15 @@ NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  1
-Number of noisy labels:  67
-Number of clean labels:  7285
+Number of noisy labels:  82
+Number of clean labels:  7270
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  1
-Number of noisy labels:  86
-Number of clean labels:  7266
+Number of noisy labels:  88
+Number of clean labels:  7264
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2198,21 +2198,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  1
 Number of flipped labels:  74
-Total iterations:  112
+Total iterations:  115
 Number of clean labels:  7352
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  1
-Number of noisy labels:  30
-Number of clean labels:  2917
+Number of noisy labels:  32
+Number of clean labels:  2915
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  1
-Number of noisy labels:  33
-Number of clean labels:  2914
+Number of noisy labels:  30
+Number of clean labels:  2917
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2222,21 +2222,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  1
 Number of flipped labels:  30
-Total iterations:  36
-Number of clean labels:  2947
+Total iterations:  54
+Number of clean labels:  2946
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  2
-Number of noisy labels:  148
-Number of clean labels:  7204
+Number of noisy labels:  131
+Number of clean labels:  7221
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  2
-Number of noisy labels:  129
-Number of clean labels:  7223
+Number of noisy labels:  165
+Number of clean labels:  7187
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2245,21 +2245,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  2
 Number of flipped labels:  148
-Total iterations:  264
-Number of clean labels:  7350
+Total iterations:  256
+Number of clean labels:  7351
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  2
-Number of noisy labels:  71
-Number of clean labels:  2876
+Number of noisy labels:  52
+Number of clean labels:  2895
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  2
-Number of noisy labels:  59
-Number of clean labels:  2888
+Number of noisy labels:  66
+Number of clean labels:  2881
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2268,21 +2268,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  2
 Number of flipped labels:  59
-Total iterations:  86
+Total iterations:  105
 Number of clean labels:  2947
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  3
-Number of noisy labels:  227
-Number of clean labels:  7125
+Number of noisy labels:  225
+Number of clean labels:  7127
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  3
-Number of noisy labels:  236
-Number of clean labels:  7116
+Number of noisy labels:  226
+Number of clean labels:  7126
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2291,21 +2291,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  3
 Number of flipped labels:  221
-Total iterations:  353
+Total iterations:  342
 Number of clean labels:  7352
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  3
-Number of noisy labels:  86
-Number of clean labels:  2861
+Number of noisy labels:  90
+Number of clean labels:  2857
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  3
-Number of noisy labels:  88
-Number of clean labels:  2859
+Number of noisy labels:  80
+Number of clean labels:  2867
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2315,20 +2315,20 @@ Len of noisy labels:  2947
 Mislabeling rate:  3
 Number of flipped labels:  89
 Total iterations:  147
-Number of clean labels:  2947
+Number of clean labels:  2946
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  4
-Number of noisy labels:  266
-Number of clean labels:  7086
+Number of noisy labels:  269
+Number of clean labels:  7083
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  4
-Number of noisy labels:  309
-Number of clean labels:  7043
+Number of noisy labels:  289
+Number of clean labels:  7063
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2337,14 +2337,14 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  4
 Number of flipped labels:  295
-Total iterations:  460
-Number of clean labels:  7351
+Total iterations:  444
+Number of clean labels:  7350
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  4
-Number of noisy labels:  109
-Number of clean labels:  2838
+Number of noisy labels:  119
+Number of clean labels:  2828
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
@@ -2360,21 +2360,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  4
 Number of flipped labels:  118
-Total iterations:  220
-Number of clean labels:  2947
+Total iterations:  195
+Number of clean labels:  2946
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  5
-Number of noisy labels:  374
-Number of clean labels:  6978
+Number of noisy labels:  373
+Number of clean labels:  6979
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  5
-Number of noisy labels:  353
-Number of clean labels:  6999
+Number of noisy labels:  359
+Number of clean labels:  6993
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2383,21 +2383,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  5
 Number of flipped labels:  368
-Total iterations:  570
+Total iterations:  563
 Number of clean labels:  7351
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  5
-Number of noisy labels:  149
-Number of clean labels:  2798
+Number of noisy labels:  160
+Number of clean labels:  2787
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  5
-Number of noisy labels:  149
-Number of clean labels:  2798
+Number of noisy labels:  144
+Number of clean labels:  2803
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2406,21 +2406,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  5
 Number of flipped labels:  148
-Total iterations:  251
-Number of clean labels:  2944
+Total iterations:  233
+Number of clean labels:  2946
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  6
-Number of noisy labels:  412
-Number of clean labels:  6940
+Number of noisy labels:  452
+Number of clean labels:  6900
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  6
-Number of noisy labels:  450
-Number of clean labels:  6902
+Number of noisy labels:  437
+Number of clean labels:  6915
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2429,21 +2429,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  6
 Number of flipped labels:  442
-Total iterations:  697
-Number of clean labels:  7348
+Total iterations:  727
+Number of clean labels:  7350
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  6
-Number of noisy labels:  159
-Number of clean labels:  2788
+Number of noisy labels:  166
+Number of clean labels:  2781
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  6
-Number of noisy labels:  175
-Number of clean labels:  2772
+Number of noisy labels:  193
+Number of clean labels:  2754
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2452,21 +2452,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  6
 Number of flipped labels:  177
-Total iterations:  268
-Number of clean labels:  2947
+Total iterations:  287
+Number of clean labels:  2944
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  7
-Number of noisy labels:  526
-Number of clean labels:  6826
+Number of noisy labels:  507
+Number of clean labels:  6845
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  7
-Number of noisy labels:  543
-Number of clean labels:  6809
+Number of noisy labels:  512
+Number of clean labels:  6840
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2475,21 +2475,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  7
 Number of flipped labels:  515
-Total iterations:  853
-Number of clean labels:  7347
+Total iterations:  840
+Number of clean labels:  7350
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  7
-Number of noisy labels:  208
-Number of clean labels:  2739
+Number of noisy labels:  182
+Number of clean labels:  2765
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  7
-Number of noisy labels:  200
-Number of clean labels:  2747
+Number of noisy labels:  207
+Number of clean labels:  2740
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2498,21 +2498,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  7
 Number of flipped labels:  207
-Total iterations:  352
-Number of clean labels:  2947
+Total iterations:  348
+Number of clean labels:  2946
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  8
-Number of noisy labels:  563
-Number of clean labels:  6789
+Number of noisy labels:  581
+Number of clean labels:  6771
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  8
-Number of noisy labels:  599
-Number of clean labels:  6753
+Number of noisy labels:  547
+Number of clean labels:  6805
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2521,21 +2521,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  8
 Number of flipped labels:  589
-Total iterations:  930
-Number of clean labels:  7349
+Total iterations:  967
+Number of clean labels:  7347
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  8
-Number of noisy labels:  236
-Number of clean labels:  2711
+Number of noisy labels:  250
+Number of clean labels:  2697
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  8
-Number of noisy labels:  243
-Number of clean labels:  2704
+Number of noisy labels:  220
+Number of clean labels:  2727
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2544,21 +2544,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  8
 Number of flipped labels:  236
-Total iterations:  375
-Number of clean labels:  2946
+Total iterations:  379
+Number of clean labels:  2947
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  9
-Number of noisy labels:  690
-Number of clean labels:  6662
+Number of noisy labels:  675
+Number of clean labels:  6677
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  9
-Number of noisy labels:  662
-Number of clean labels:  6690
+Number of noisy labels:  682
+Number of clean labels:  6670
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2567,21 +2567,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  9
 Number of flipped labels:  662
-Total iterations:  1078
-Number of clean labels:  7349
+Total iterations:  1057
+Number of clean labels:  7351
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  9
-Number of noisy labels:  259
-Number of clean labels:  2688
+Number of noisy labels:  250
+Number of clean labels:  2697
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  9
-Number of noisy labels:  258
-Number of clean labels:  2689
+Number of noisy labels:  271
+Number of clean labels:  2676
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2590,21 +2590,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  9
 Number of flipped labels:  266
-Total iterations:  441
-Number of clean labels:  2947
+Total iterations:  443
+Number of clean labels:  2946
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  10
-Number of noisy labels:  755
-Number of clean labels:  6597
+Number of noisy labels:  747
+Number of clean labels:  6605
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  10
-Number of noisy labels:  707
-Number of clean labels:  6645
+Number of noisy labels:  768
+Number of clean labels:  6584
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2613,21 +2613,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  10
 Number of flipped labels:  736
-Total iterations:  1150
-Number of clean labels:  7340
+Total iterations:  1200
+Number of clean labels:  7344
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  10
-Number of noisy labels:  311
-Number of clean labels:  2636
+Number of noisy labels:  282
+Number of clean labels:  2665
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  10
-Number of noisy labels:  295
-Number of clean labels:  2652
+Number of noisy labels:  291
+Number of clean labels:  2656
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2637,20 +2637,20 @@ Len of noisy labels:  2947
 Mislabeling rate:  10
 Number of flipped labels:  295
 Total iterations:  477
-Number of clean labels:  2943
+Number of clean labels:  2944
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  11
-Number of noisy labels:  816
-Number of clean labels:  6536
+Number of noisy labels:  815
+Number of clean labels:  6537
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  11
-Number of noisy labels:  811
-Number of clean labels:  6541
+Number of noisy labels:  815
+Number of clean labels:  6537
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2659,21 +2659,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  11
 Number of flipped labels:  809
-Total iterations:  1283
-Number of clean labels:  7343
+Total iterations:  1262
+Number of clean labels:  7340
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  11
-Number of noisy labels:  356
-Number of clean labels:  2591
+Number of noisy labels:  304
+Number of clean labels:  2643
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  11
-Number of noisy labels:  318
-Number of clean labels:  2629
+Number of noisy labels:  353
+Number of clean labels:  2594
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2682,21 +2682,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  11
 Number of flipped labels:  325
-Total iterations:  532
-Number of clean labels:  2943
+Total iterations:  494
+Number of clean labels:  2942
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  12
-Number of noisy labels:  904
-Number of clean labels:  6448
+Number of noisy labels:  827
+Number of clean labels:  6525
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  12
-Number of noisy labels:  901
-Number of clean labels:  6451
+Number of noisy labels:  904
+Number of clean labels:  6448
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2705,21 +2705,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  12
 Number of flipped labels:  883
-Total iterations:  1415
-Number of clean labels:  7339
+Total iterations:  1448
+Number of clean labels:  7342
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  12
-Number of noisy labels:  358
-Number of clean labels:  2589
+Number of noisy labels:  350
+Number of clean labels:  2597
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  12
-Number of noisy labels:  357
-Number of clean labels:  2590
+Number of noisy labels:  356
+Number of clean labels:  2591
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2728,21 +2728,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  12
 Number of flipped labels:  354
-Total iterations:  603
-Number of clean labels:  2940
+Total iterations:  553
+Number of clean labels:  2942
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  13
-Number of noisy labels:  987
-Number of clean labels:  6365
+Number of noisy labels:  944
+Number of clean labels:  6408
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  13
-Number of noisy labels:  940
-Number of clean labels:  6412
+Number of noisy labels:  932
+Number of clean labels:  6420
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2751,21 +2751,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  13
 Number of flipped labels:  956
-Total iterations:  1540
-Number of clean labels:  7344
+Total iterations:  1497
+Number of clean labels:  7335
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  13
-Number of noisy labels:  394
-Number of clean labels:  2553
+Number of noisy labels:  340
+Number of clean labels:  2607
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  13
-Number of noisy labels:  395
-Number of clean labels:  2552
+Number of noisy labels:  376
+Number of clean labels:  2571
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2774,21 +2774,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  13
 Number of flipped labels:  384
-Total iterations:  601
-Number of clean labels:  2943
+Total iterations:  610
+Number of clean labels:  2942
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  14
-Number of noisy labels:  1013
-Number of clean labels:  6339
+Number of noisy labels:  1036
+Number of clean labels:  6316
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  14
-Number of noisy labels:  1061
-Number of clean labels:  6291
+Number of noisy labels:  1044
+Number of clean labels:  6308
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2797,21 +2797,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  14
 Number of flipped labels:  1030
-Total iterations:  1636
-Number of clean labels:  7339
+Total iterations:  1635
+Number of clean labels:  7341
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  14
-Number of noisy labels:  413
-Number of clean labels:  2534
+Number of noisy labels:  395
+Number of clean labels:  2552
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  14
-Number of noisy labels:  397
-Number of clean labels:  2550
+Number of noisy labels:  407
+Number of clean labels:  2540
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2820,21 +2820,21 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  14
 Number of flipped labels:  413
-Total iterations:  685
-Number of clean labels:  2939
+Total iterations:  650
+Number of clean labels:  2940
 NCAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  15
-Number of noisy labels:  1089
-Number of clean labels:  6263
+Number of noisy labels:  1048
+Number of clean labels:  6304
 Label counts in add_nar:  [1226, 1073, 986, 1286, 1374, 1407]
 NAR
 Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  15
-Number of noisy labels:  1065
-Number of clean labels:  6287
+Number of noisy labels:  1083
+Number of clean labels:  6269
 NNAR
 Size of relabeling pool:  1407
 Number of classes in relabeling group:  1
@@ -2843,21 +2843,21 @@ Len of clean labels:  7352
 Len of noisy labels:  7352
 Mislabeling rate:  15
 Number of flipped labels:  1103
-Total iterations:  1804
-Number of clean labels:  7341
+Total iterations:  1771
+Number of clean labels:  7340
 NCAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  15
-Number of noisy labels:  403
-Number of clean labels:  2544
+Number of noisy labels:  422
+Number of clean labels:  2525
 Label counts in add_nar:  [496, 471, 420, 491, 532, 537]
 NAR
 Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  15
-Number of noisy labels:  437
-Number of clean labels:  2510
+Number of noisy labels:  445
+Number of clean labels:  2502
 NNAR
 Size of relabeling pool:  537
 Number of classes in relabeling group:  1
@@ -2866,36 +2866,1411 @@ Len of clean labels:  2947
 Len of noisy labels:  2947
 Mislabeling rate:  15
 Number of flipped labels:  443
-Total iterations:  717
-Number of clean labels:  2937
+Total iterations:  727
+Number of clean labels:  2941
 Done with HAR
 ##### Preparing Dataset: SN1 #####
 Number of locations:  49
-Train Locations: ['Sydney', 'PearceRAAF', 'GoldCoast', 'Cairns', 'Townsville', 'Moree', 'AliceSprings', 'Richmond', 'Darwin', 'MountGinini', 'Mildura', 'Portland', 'Brisbane', 'Perth', 'Walpole', 'Nhil', 'Witchcliffe', 'BadgerysCreek', 'Uluru', 'Katherine', 'Newcastle', 'SalmonGums', 'Albany', 'Launceston', 'Woomera', 'Cobar', 'Penrith', 'Bendigo', 'Canberra', 'Sale', 'PerthAirport', 'Dartmoor', 'Albury', 'Watsonia', 'Hobart', 'Wollongong', 'MelbourneAirport', 'NorfolkIsland', 'MountGambier']
-Test Locations: ['WaggaWagga', 'Williamtown', 'Adelaide', 'Ballarat', 'SydneyAirport', 'Nuriootpa', 'NorahHead', 'Tuggeranong', 'CoffsHarbour', 'Melbourne']
-Wind direction dictionary:  {nan: 0, 'NNE': 1, 'SW': 2, 'NE': 3, 'NW': 4, 'SE': 5, 'SSE': 6, 'NNW': 7, 'WNW': 8, 'SSW': 9, 'ESE': 10, 'ENE': 11, 'E': 12, 'WSW': 13, 'S': 14, 'W': 15, 'N': 16}
-Number of train instances:  113776
-Number of test instances:  30214
-Number of train array:  113776
-Number of test array:  30214
-Rainy train days:  24730
-Rainy test days:  6899
-Shape of train data:  (113776, 6, 30)
-Sahpe of test data:  (30214, 6, 30)
+Train Locations: ['Albany', 'Hobart', 'Melbourne', 'Brisbane', 'Woomera', 'CoffsHarbour', 'Witchcliffe', 'Dartmoor', 'Bendigo', 'GoldCoast', 'Albury', 'Katherine', 'Perth', 'Walpole', 'Tuggeranong', 'Launceston', 'Moree', 'Williamtown', 'MountGambier', 'Uluru', 'NorfolkIsland', 'Adelaide', 'SalmonGums', 'AliceSprings', 'NorahHead', 'Ballarat', 'Cobar', 'Richmond', 'Watsonia', 'Nuriootpa', 'Sydney', 'SydneyAirport', 'Mildura', 'WaggaWagga', 'Nhil', 'Newcastle', 'Townsville', 'Penrith', 'Canberra']
+Test Locations: ['MountGinini', 'Sale', 'Wollongong', 'Portland', 'PearceRAAF', 'Darwin', 'Cairns', 'MelbourneAirport', 'PerthAirport', 'BadgerysCreek']
+Wind direction dictionary:  {nan: 0, 'SSE': 1, 'W': 2, 'N': 3, 'SW': 4, 'WNW': 5, 'ESE': 6, 'WSW': 7, 'E': 8, 'NNW': 9, 'NNE': 10, 'SE': 11, 'ENE': 12, 'NW': 13, 'SSW': 14, 'S': 15, 'NE': 16}
+Number of train instances:  113923
+Number of test instances:  30067
+Number of train array:  113923
+Number of test array:  30067
+Rainy train days:  24285
+Rainy test days:  7344
+Shape of train data:  (113923, 6, 30)
+Sahpe of test data:  (30067, 6, 30)
 NCAR
-Len of clean labels:  113776
-Len of noisy labels:  113776
+Len of clean labels:  113923
+Len of noisy labels:  113923
 Mislabeling rate:  1
-Number of noisy labels:  1129
-Number of clean labels:  112647
-Label counts in add_nar:  [89046, 24730]
+Number of noisy labels:  1151
+Number of clean labels:  112772
+Label counts in add_nar:  [89638, 24285]
 NAR
-Len of clean labels:  113776
-Len of noisy labels:  113776
+Len of clean labels:  113923
+Len of noisy labels:  113923
 Mislabeling rate:  1
-Number of noisy labels:  1843
-Number of clean labels:  111933
+Number of noisy labels:  1719
+Number of clean labels:  112204
 NNAR
-Size of relabeling pool:  89046
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Running features for attributes
+Feature extraction for set with shape:  (113923, 6, 30)
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  1
+Number of flipped labels:  1140
+Total iterations:  8120
+Number of clean labels:  113852
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  1
+Number of noisy labels:  343
+Number of clean labels:  29724
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  1
+Number of noisy labels:  480
+Number of clean labels:  29587
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Running features for attributes
+Feature extraction for set with shape:  (30067, 6, 30)
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  1
+Number of flipped labels:  301
+Total iterations:  1838
+Number of clean labels:  30054
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  2
+Number of noisy labels:  2238
+Number of clean labels:  111685
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  2
+Number of noisy labels:  2717
+Number of clean labels:  111206
+NNAR
+Size of relabeling pool:  89638
 Number of classes in relabeling group:  1
 Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  2
+Number of flipped labels:  2279
+Total iterations:  16157
+Number of clean labels:  113775
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  2
+Number of noisy labels:  594
+Number of clean labels:  29473
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  2
+Number of noisy labels:  688
+Number of clean labels:  29379
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  2
+Number of flipped labels:  602
+Total iterations:  3696
+Number of clean labels:  30030
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  3
+Number of noisy labels:  3414
+Number of clean labels:  110509
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  3
+Number of noisy labels:  3540
+Number of clean labels:  110383
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  3
+Number of flipped labels:  3418
+Total iterations:  24542
+Number of clean labels:  113710
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  3
+Number of noisy labels:  956
+Number of clean labels:  29111
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  3
+Number of noisy labels:  885
+Number of clean labels:  29182
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  3
+Number of flipped labels:  903
+Total iterations:  5982
+Number of clean labels:  30015
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  4
+Number of noisy labels:  4435
+Number of clean labels:  109488
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  4
+Number of noisy labels:  5351
+Number of clean labels:  108572
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  4
+Number of flipped labels:  4557
+Total iterations:  31441
+Number of clean labels:  113629
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  4
+Number of noisy labels:  1167
+Number of clean labels:  28900
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  4
+Number of noisy labels:  1366
+Number of clean labels:  28701
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  4
+Number of flipped labels:  1203
+Total iterations:  7618
+Number of clean labels:  30004
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  5
+Number of noisy labels:  5566
+Number of clean labels:  108357
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  5
+Number of noisy labels:  6332
+Number of clean labels:  107591
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  5
+Number of flipped labels:  5697
+Total iterations:  39786
+Number of clean labels:  113560
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  5
+Number of noisy labels:  1548
+Number of clean labels:  28519
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  5
+Number of noisy labels:  1592
+Number of clean labels:  28475
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  5
+Number of flipped labels:  1504
+Total iterations:  9629
+Number of clean labels:  29994
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  6
+Number of noisy labels:  6886
+Number of clean labels:  107037
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  6
+Number of noisy labels:  7026
+Number of clean labels:  106897
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  6
+Number of flipped labels:  6836
+Total iterations:  47525
+Number of clean labels:  113495
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  6
+Number of noisy labels:  1815
+Number of clean labels:  28252
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  6
+Number of noisy labels:  1735
+Number of clean labels:  28332
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  6
+Number of flipped labels:  1805
+Total iterations:  11577
+Number of clean labels:  29979
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  7
+Number of noisy labels:  7963
+Number of clean labels:  105960
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  7
+Number of noisy labels:  8016
+Number of clean labels:  105907
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  7
+Number of flipped labels:  7975
+Total iterations:  56969
+Number of clean labels:  113404
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  7
+Number of noisy labels:  2087
+Number of clean labels:  27980
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  7
+Number of noisy labels:  2241
+Number of clean labels:  27826
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  7
+Number of flipped labels:  2105
+Total iterations:  12953
+Number of clean labels:  29958
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  8
+Number of noisy labels:  9010
+Number of clean labels:  104913
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  8
+Number of noisy labels:  9715
+Number of clean labels:  104208
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  8
+Number of flipped labels:  9114
+Total iterations:  63302
+Number of clean labels:  113377
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  8
+Number of noisy labels:  2423
+Number of clean labels:  27644
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  8
+Number of noisy labels:  2453
+Number of clean labels:  27614
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  8
+Number of flipped labels:  2406
+Total iterations:  15920
+Number of clean labels:  29943
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  9
+Number of noisy labels:  10257
+Number of clean labels:  103666
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  9
+Number of noisy labels:  10707
+Number of clean labels:  103216
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  9
+Number of flipped labels:  10254
+Total iterations:  72911
+Number of clean labels:  113289
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  9
+Number of noisy labels:  2748
+Number of clean labels:  27319
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  9
+Number of noisy labels:  2650
+Number of clean labels:  27417
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  9
+Number of flipped labels:  2707
+Total iterations:  17071
+Number of clean labels:  29926
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  10
+Number of noisy labels:  11573
+Number of clean labels:  102350
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  10
+Number of noisy labels:  11554
+Number of clean labels:  102369
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  10
+Number of flipped labels:  11393
+Total iterations:  74981
+Number of clean labels:  112647
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  10
+Number of noisy labels:  2938
+Number of clean labels:  27129
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  10
+Number of noisy labels:  3215
+Number of clean labels:  26852
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  10
+Number of flipped labels:  3007
+Total iterations:  18403
+Number of clean labels:  29772
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  11
+Number of noisy labels:  12714
+Number of clean labels:  101209
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  11
+Number of noisy labels:  12451
+Number of clean labels:  101472
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  11
+Number of flipped labels:  12532
+Total iterations:  83450
+Number of clean labels:  112467
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  11
+Number of noisy labels:  3396
+Number of clean labels:  26671
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  11
+Number of noisy labels:  3288
+Number of clean labels:  26779
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  11
+Number of flipped labels:  3308
+Total iterations:  20626
+Number of clean labels:  29733
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  12
+Number of noisy labels:  13780
+Number of clean labels:  100143
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  12
+Number of noisy labels:  14211
+Number of clean labels:  99712
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  12
+Number of flipped labels:  13671
+Total iterations:  91208
+Number of clean labels:  112385
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  12
+Number of noisy labels:  3624
+Number of clean labels:  26443
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  12
+Number of noisy labels:  3656
+Number of clean labels:  26411
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  12
+Number of flipped labels:  3609
+Total iterations:  21869
+Number of clean labels:  29702
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  13
+Number of noisy labels:  14746
+Number of clean labels:  99177
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  13
+Number of noisy labels:  15090
+Number of clean labels:  98833
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  13
+Number of flipped labels:  14810
+Total iterations:  98641
+Number of clean labels:  112242
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  13
+Number of noisy labels:  4011
+Number of clean labels:  26056
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  13
+Number of noisy labels:  4004
+Number of clean labels:  26063
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  13
+Number of flipped labels:  3909
+Total iterations:  23582
+Number of clean labels:  29667
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  14
+Number of noisy labels:  15993
+Number of clean labels:  97930
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  14
+Number of noisy labels:  16129
+Number of clean labels:  97794
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  14
+Number of flipped labels:  15950
+Total iterations:  104886
+Number of clean labels:  112153
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  14
+Number of noisy labels:  4207
+Number of clean labels:  25860
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  14
+Number of noisy labels:  4353
+Number of clean labels:  25714
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  14
+Number of flipped labels:  4210
+Total iterations:  25582
+Number of clean labels:  29656
+NCAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  15
+Number of noisy labels:  17004
+Number of clean labels:  96919
+Label counts in add_nar:  [89638, 24285]
+NAR
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  15
+Number of noisy labels:  17876
+Number of clean labels:  96047
+NNAR
+Size of relabeling pool:  89638
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  113923
+Len of noisy labels:  113923
+Mislabeling rate:  15
+Number of flipped labels:  17089
+Total iterations:  112491
+Number of clean labels:  111898
+NCAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  15
+Number of noisy labels:  4597
+Number of clean labels:  25470
+Label counts in add_nar:  [22723, 7344]
+NAR
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  15
+Number of noisy labels:  4548
+Number of clean labels:  25519
+NNAR
+Size of relabeling pool:  22723
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  30067
+Len of noisy labels:  30067
+Mislabeling rate:  15
+Number of flipped labels:  4511
+Total iterations:  27538
+Number of clean labels:  29568
+Number of train instances:  0
+Number of test instances:  0
+Number of train array:  8112
+Number of test array:  2634
+Rainy occupied test days:  769049
+Rainy unoccupied test days:  2698612
+Shape of train data:  (8112, 5, 30)
+Sahpe of test data:  (2634, 5, 30)
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  1
+Number of noisy labels:  76
+Number of clean labels:  8036
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  1
+Number of noisy labels:  126
+Number of clean labels:  7986
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Running features for attributes
+Feature extraction for set with shape:  (8112, 5, 30)
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  1
+Number of flipped labels:  82
+Total iterations:  7742
+Number of clean labels:  8035
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  1
+Number of noisy labels:  26
+Number of clean labels:  2608
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  1
+Number of noisy labels:  27
+Number of clean labels:  2607
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Running features for attributes
+Feature extraction for set with shape:  (2634, 5, 30)
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  1
+Number of flipped labels:  27
+Total iterations:  2115
+Number of clean labels:  2607
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  2
+Number of noisy labels:  166
+Number of clean labels:  7946
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  2
+Number of noisy labels:  170
+Number of clean labels:  7942
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  2
+Number of flipped labels:  163
+Total iterations:  16488
+Number of clean labels:  7956
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  2
+Number of noisy labels:  45
+Number of clean labels:  2589
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  2
+Number of noisy labels:  81
+Number of clean labels:  2553
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  2
+Number of flipped labels:  53
+Total iterations:  5119
+Number of clean labels:  2581
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  3
+Number of noisy labels:  239
+Number of clean labels:  7873
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  3
+Number of noisy labels:  217
+Number of clean labels:  7895
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  3
+Number of flipped labels:  244
+Total iterations:  23678
+Number of clean labels:  7886
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  3
+Number of noisy labels:  70
+Number of clean labels:  2564
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  3
+Number of noisy labels:  81
+Number of clean labels:  2553
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  3
+Number of flipped labels:  80
+Total iterations:  7731
+Number of clean labels:  2554
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  4
+Number of noisy labels:  343
+Number of clean labels:  7769
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  4
+Number of noisy labels:  366
+Number of clean labels:  7746
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  4
+Number of flipped labels:  325
+Total iterations:  32582
+Number of clean labels:  7814
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  4
+Number of noisy labels:  107
+Number of clean labels:  2527
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  4
+Number of noisy labels:  100
+Number of clean labels:  2534
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  4
+Number of flipped labels:  106
+Total iterations:  9768
+Number of clean labels:  2528
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  5
+Number of noisy labels:  385
+Number of clean labels:  7727
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  5
+Number of noisy labels:  436
+Number of clean labels:  7676
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  5
+Number of flipped labels:  406
+Total iterations:  40237
+Number of clean labels:  7733
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  5
+Number of noisy labels:  144
+Number of clean labels:  2490
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  5
+Number of noisy labels:  131
+Number of clean labels:  2503
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  5
+Number of flipped labels:  132
+Total iterations:  14750
+Number of clean labels:  2502
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  6
+Number of noisy labels:  456
+Number of clean labels:  7656
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  6
+Number of noisy labels:  429
+Number of clean labels:  7683
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  6
+Number of flipped labels:  487
+Total iterations:  44528
+Number of clean labels:  7645
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  6
+Number of noisy labels:  159
+Number of clean labels:  2475
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  6
+Number of noisy labels:  193
+Number of clean labels:  2441
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  6
+Number of flipped labels:  159
+Total iterations:  15391
+Number of clean labels:  2475
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  7
+Number of noisy labels:  583
+Number of clean labels:  7529
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  7
+Number of noisy labels:  630
+Number of clean labels:  7482
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  7
+Number of flipped labels:  568
+Total iterations:  55794
+Number of clean labels:  7587
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  7
+Number of noisy labels:  185
+Number of clean labels:  2449
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  7
+Number of noisy labels:  155
+Number of clean labels:  2479
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  7
+Number of flipped labels:  185
+Total iterations:  17895
+Number of clean labels:  2449
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  8
+Number of noisy labels:  587
+Number of clean labels:  7525
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  8
+Number of noisy labels:  682
+Number of clean labels:  7430
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  8
+Number of flipped labels:  649
+Total iterations:  66305
+Number of clean labels:  7503
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  8
+Number of noisy labels:  195
+Number of clean labels:  2439
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  8
+Number of noisy labels:  222
+Number of clean labels:  2412
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  8
+Number of flipped labels:  211
+Total iterations:  22531
+Number of clean labels:  2423
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  9
+Number of noisy labels:  723
+Number of clean labels:  7389
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  9
+Number of noisy labels:  741
+Number of clean labels:  7371
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  9
+Number of flipped labels:  731
+Total iterations:  75257
+Number of clean labels:  7430
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  9
+Number of noisy labels:  238
+Number of clean labels:  2396
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  9
+Number of noisy labels:  261
+Number of clean labels:  2373
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  9
+Number of flipped labels:  238
+Total iterations:  28582
+Number of clean labels:  2396
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  10
+Number of noisy labels:  794
+Number of clean labels:  7318
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  10
+Number of noisy labels:  943
+Number of clean labels:  7169
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  10
+Number of flipped labels:  812
+Total iterations:  38991
+Number of clean labels:  7329
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  10
+Number of noisy labels:  274
+Number of clean labels:  2360
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  10
+Number of noisy labels:  251
+Number of clean labels:  2383
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  10
+Number of flipped labels:  264
+Total iterations:  14409
+Number of clean labels:  2370
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  11
+Number of noisy labels:  951
+Number of clean labels:  7161
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  11
+Number of noisy labels:  921
+Number of clean labels:  7191
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  11
+Number of flipped labels:  893
+Total iterations:  45431
+Number of clean labels:  7247
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  11
+Number of noisy labels:  290
+Number of clean labels:  2344
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  11
+Number of noisy labels:  326
+Number of clean labels:  2308
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  11
+Number of flipped labels:  290
+Total iterations:  15058
+Number of clean labels:  2344
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  12
+Number of noisy labels:  935
+Number of clean labels:  7177
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  12
+Number of noisy labels:  983
+Number of clean labels:  7129
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  12
+Number of flipped labels:  974
+Total iterations:  50413
+Number of clean labels:  7174
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  12
+Number of noisy labels:  328
+Number of clean labels:  2306
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  12
+Number of noisy labels:  308
+Number of clean labels:  2326
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  12
+Number of flipped labels:  317
+Total iterations:  18192
+Number of clean labels:  2317
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  13
+Number of noisy labels:  1079
+Number of clean labels:  7033
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  13
+Number of noisy labels:  1131
+Number of clean labels:  6981
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  13
+Number of flipped labels:  1055
+Total iterations:  55525
+Number of clean labels:  7091
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  13
+Number of noisy labels:  350
+Number of clean labels:  2284
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  13
+Number of noisy labels:  316
+Number of clean labels:  2318
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  13
+Number of flipped labels:  343
+Total iterations:  20268
+Number of clean labels:  2291
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  14
+Number of noisy labels:  1159
+Number of clean labels:  6953
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  14
+Number of noisy labels:  1173
+Number of clean labels:  6939
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  14
+Number of flipped labels:  1136
+Total iterations:  61954
+Number of clean labels:  7015
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  14
+Number of noisy labels:  331
+Number of clean labels:  2303
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  14
+Number of noisy labels:  360
+Number of clean labels:  2274
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  14
+Number of flipped labels:  369
+Total iterations:  20219
+Number of clean labels:  2265
+NCAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  15
+Number of noisy labels:  1207
+Number of clean labels:  6905
+Label counts in add_nar:  [6142, 1371, 200, 192, 207]
+NAR
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  15
+Number of noisy labels:  1244
+Number of clean labels:  6868
+NNAR
+Size of relabeling pool:  6142
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  8112
+Len of noisy labels:  8112
+Mislabeling rate:  15
+Number of flipped labels:  1217
+Total iterations:  66041
+Number of clean labels:  6927
+NCAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  15
+Number of noisy labels:  428
+Number of clean labels:  2206
+Label counts in add_nar:  [1558, 670, 4, 1, 401]
+NAR
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  15
+Number of noisy labels:  419
+Number of clean labels:  2215
+NNAR
+Size of relabeling pool:  1558
+Number of classes in relabeling group:  1
+Grabbing old features for attributes
+Len of clean labels:  2634
+Len of noisy labels:  2634
+Mislabeling rate:  15
+Number of flipped labels:  396
+Total iterations:  22179
+Number of clean labels:  2238

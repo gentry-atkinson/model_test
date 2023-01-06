@@ -1,0 +1,6 @@
+2023-01-04
+######  CNN #####
+Summary of ss1
+Apparent Error Rates.
+Summary of ss2
+Apparent Error Rates.

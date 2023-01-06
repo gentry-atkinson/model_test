@@ -49,9 +49,9 @@ PATH = 'src/data/processed_datasets/'
 
 #Use these bools to turn processing of sections on or off
 RUN_SS = True
-RUN_HAR = True
+RUN_HAR = False
 #RUN_BS = False
-RUN_SN = True
+RUN_SN = False
 
 def record_sn_instance(att_array, table, feature_list, start_index, end_index):
     for f in feature_list:
@@ -183,13 +183,13 @@ def run_ss():
 
     #Create label sets for SS2
     for mislab_rate in range(MIN_PERCENT, MAX_PERCENT+1):
-        add_ncar(y_train, PATH + 'ss2_labels', 5, mislab_rate)
-        add_nar(y_train, PATH + 'ss2_labels', 5, mislab_rate)
-        add_nnar(X_train, y_train, PATH + 'ss2_labels', 5, mislab_rate)
+        add_ncar(y_train, PATH + 'ss2_labels', 3, mislab_rate)
+        add_nar(y_train, PATH + 'ss2_labels', 3, mislab_rate)
+        add_nnar(X_train, y_train, PATH + 'ss2_labels', 3, mislab_rate)
 
-        add_ncar(y_test, PATH + 'ss2_labels_test', 5, mislab_rate)
-        add_nar(y_test, PATH + 'ss2_labels_test', 5, mislab_rate)
-        add_nnar(X_test, y_test, PATH + 'ss2_labels_test', 5, mislab_rate)
+        add_ncar(y_test, PATH + 'ss2_labels_test', 3, mislab_rate)
+        add_nar(y_test, PATH + 'ss2_labels_test', 3, mislab_rate)
+        add_nnar(X_test, y_test, PATH + 'ss2_labels_test', 3, mislab_rate)
     print("Done with SS")
 
 def run_har():
@@ -572,4 +572,6 @@ if(__name__ == "__main__"):
     if RUN_HAR: run_har()
         
     if RUN_SN: run_sn()
+
+    print('All datasets processed')
         

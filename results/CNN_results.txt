@@ -1,758 +1,758 @@
-2023-01-03
+2023-01-04
 ############Clean Control############
 Set: ss1
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   0  990]]
-Apparent error rate: 0.0
+[[ 978    1]
+ [   0 1022]]
+Apparent error rate: 0.0004997501249375312
 ############Experiment 1############
 Set: ss1
 Train Labels: ncar1
 Test Labels: ncar1
               precision    recall  f1-score   support
 
-           0       0.99      0.99      0.99      1010
-           1       0.99      0.99      0.99       991
+           0       0.99      0.99      0.99       985
+           1       0.99      0.99      0.99      1016
 
     accuracy                           0.99      2001
    macro avg       0.99      0.99      0.99      2001
 weighted avg       0.99      0.99      0.99      2001
 
 Columns are predictions, rows are labels
-[[998  12]
- [ 10 981]]
-Apparent error rate: 0.010994502748625687
+[[ 972   13]
+ [   6 1010]]
+Apparent error rate: 0.009495252373813094
 Transition matrix:
-[[510.29985007 500.70014993]
- [499.70014993 490.29985007]]
+[[481.91654173 497.08345827]
+ [503.08345827 518.91654173]]
 ############Experiment 2############
 Set: ss1
 Train Labels: ncar1
 Test Labels: ncar1
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1007    4]
- [   1  989]]
-True error rate: 0.0024987506246876563
+[[ 978    1]
+ [   0 1022]]
+True error rate: 0.0004997501249375312
 ############Experiment 3############
 Set: ss1
 Train Labels: ncar2
 Test Labels: ncar2
               precision    recall  f1-score   support
 
-           0       0.98      0.98      0.98      1012
-           1       0.98      0.98      0.98       989
+           0       0.97      0.98      0.98       971
+           1       0.98      0.98      0.98      1030
 
     accuracy                           0.98      2001
    macro avg       0.98      0.98      0.98      2001
 weighted avg       0.98      0.98      0.98      2001
 
 Columns are predictions, rows are labels
-[[992  20]
- [ 20 969]]
-Apparent error rate: 0.01999000499750125
+[[ 954   17]
+ [  25 1005]]
+Apparent error rate: 0.020989505247376312
 Transition matrix:
-[[511.31034483 499.68965517]
- [500.68965517 489.31034483]]
+[[475.06696652 503.93303348]
+ [495.93303348 526.06696652]]
 ############Experiment 4############
 Set: ss1
 Train Labels: ncar2
 Test Labels: ncar2
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      0.99      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1007    4]
- [   5  985]]
-True error rate: 0.004497751124437781
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 5############
 Set: ss1
 Train Labels: ncar3
 Test Labels: ncar3
               precision    recall  f1-score   support
 
-           0       0.98      0.96      0.97      1018
-           1       0.96      0.98      0.97       983
+           0       0.97      0.96      0.96       981
+           1       0.96      0.97      0.97      1020
 
     accuracy                           0.97      2001
-   macro avg       0.97      0.97      0.97      2001
+   macro avg       0.97      0.96      0.96      2001
 weighted avg       0.97      0.97      0.97      2001
 
 Columns are predictions, rows are labels
-[[979  39]
- [ 24 959]]
-Apparent error rate: 0.031484257871064465
+[[943  38]
+ [ 32 988]]
+Apparent error rate: 0.03498250874562719
 Transition matrix:
-[[514.34182909 496.65817091]
- [503.65817091 486.34182909]]
+[[479.95952024 499.04047976]
+ [501.04047976 520.95952024]]
 ############Experiment 6############
 Set: ss1
 Train Labels: ncar3
 Test Labels: ncar3
               precision    recall  f1-score   support
 
-           0       0.99      0.99      0.99      1011
-           1       0.98      0.99      0.99       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[996  15]
- [  7 983]]
-True error rate: 0.010994502748625687
+[[ 975    4]
+ [   0 1022]]
+True error rate: 0.001999000499750125
 ############Experiment 7############
 Set: ss1
 Train Labels: ncar4
 Test Labels: ncar4
               precision    recall  f1-score   support
 
-           0       0.96      0.94      0.95      1021
-           1       0.94      0.96      0.95       980
+           0       0.95      0.95      0.95       979
+           1       0.95      0.95      0.95      1022
 
     accuracy                           0.95      2001
    macro avg       0.95      0.95      0.95      2001
 weighted avg       0.95      0.95      0.95      2001
 
 Columns are predictions, rows are labels
-[[961  60]
- [ 36 944]]
-Apparent error rate: 0.047976011994003
+[[931  48]
+ [ 50 972]]
+Apparent error rate: 0.04897551224387806
 Transition matrix:
-[[515.85757121 495.14242879]
- [505.14242879 484.85757121]]
+[[478.9810095 500.0189905]
+ [500.0189905 521.9810095]]
 ############Experiment 8############
 Set: ss1
 Train Labels: ncar4
 Test Labels: ncar4
               precision    recall  f1-score   support
 
-           0       1.00      0.99      0.99      1011
-           1       0.99      1.00      0.99       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[997  14]
- [  0 990]]
-True error rate: 0.0069965017491254375
+[[ 977    2]
+ [   4 1018]]
+True error rate: 0.0029985007496251873
 ############Experiment 9############
 Set: ss1
 Train Labels: ncar5
 Test Labels: ncar5
               precision    recall  f1-score   support
 
-           0       0.95      0.96      0.95      1001
-           1       0.96      0.95      0.95      1000
+           0       0.95      0.90      0.93       991
+           1       0.91      0.95      0.93      1010
 
-    accuracy                           0.95      2001
-   macro avg       0.95      0.95      0.95      2001
-weighted avg       0.95      0.95      0.95      2001
+    accuracy                           0.93      2001
+   macro avg       0.93      0.93      0.93      2001
+weighted avg       0.93      0.93      0.93      2001
 
 Columns are predictions, rows are labels
-[[960  41]
- [ 51 949]]
-Apparent error rate: 0.04597701149425287
+[[896  95]
+ [ 46 964]]
+Apparent error rate: 0.0704647676161919
 Transition matrix:
-[[505.75262369 505.24737631]
- [495.24737631 494.75262369]]
+[[484.85207396 494.14792604]
+ [506.14792604 515.85207396]]
 ############Experiment 10############
 Set: ss1
 Train Labels: ncar5
 Test Labels: ncar5
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      0.96      0.98       979
+           1       0.96      1.00      0.98      1022
 
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
+    accuracy                           0.98      2001
+   macro avg       0.98      0.98      0.98      2001
+weighted avg       0.98      0.98      0.98      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   0  990]]
-True error rate: 0.0
+[[ 941   38]
+ [   1 1021]]
+True error rate: 0.019490254872563718
 ############Experiment 11############
 Set: ss1
 Train Labels: ncar6
 Test Labels: ncar6
               precision    recall  f1-score   support
 
-           0       0.95      0.91      0.93      1021
-           1       0.91      0.95      0.93       980
+           0       0.94      0.90      0.92       992
+           1       0.91      0.94      0.92      1009
 
-    accuracy                           0.93      2001
-   macro avg       0.93      0.93      0.93      2001
-weighted avg       0.93      0.93      0.93      2001
+    accuracy                           0.92      2001
+   macro avg       0.92      0.92      0.92      2001
+weighted avg       0.92      0.92      0.92      2001
 
 Columns are predictions, rows are labels
-[[934  87]
- [ 52 928]]
-Apparent error rate: 0.06946526736631684
+[[897  95]
+ [ 62 947]]
+Apparent error rate: 0.07846076961519241
 Transition matrix:
-[[515.85757121 495.14242879]
- [505.14242879 484.85757121]]
+[[485.34132934 493.65867066]
+ [506.65867066 515.34132934]]
 ############Experiment 12############
 Set: ss1
 Train Labels: ncar6
 Test Labels: ncar6
               precision    recall  f1-score   support
 
-           0       1.00      0.98      0.99      1011
-           1       0.98      1.00      0.99       990
+           0       1.00      0.98      0.99       979
+           1       0.98      1.00      0.99      1022
 
     accuracy                           0.99      2001
    macro avg       0.99      0.99      0.99      2001
 weighted avg       0.99      0.99      0.99      2001
 
 Columns are predictions, rows are labels
-[[986  25]
- [  0 990]]
-True error rate: 0.01249375312343828
+[[ 958   21]
+ [   1 1021]]
+True error rate: 0.010994502748625687
 ############Experiment 13############
 Set: ss1
 Train Labels: ncar7
 Test Labels: ncar7
               precision    recall  f1-score   support
 
-           0       0.93      0.93      0.93       999
-           1       0.93      0.93      0.93      1002
+           0       0.91      0.92      0.91       958
+           1       0.93      0.91      0.92      1043
 
-    accuracy                           0.93      2001
-   macro avg       0.93      0.93      0.93      2001
-weighted avg       0.93      0.93      0.93      2001
+    accuracy                           0.92      2001
+   macro avg       0.92      0.92      0.92      2001
+weighted avg       0.92      0.92      0.92      2001
 
 Columns are predictions, rows are labels
-[[929  70]
- [ 73 929]]
-Apparent error rate: 0.07146426786606697
+[[886  72]
+ [ 93 950]]
+Apparent error rate: 0.08245877061469266
 Transition matrix:
-[[504.74212894 506.25787106]
- [494.25787106 495.74212894]]
+[[468.70664668 510.29335332]
+ [489.29335332 532.70664668]]
 ############Experiment 14############
 Set: ss1
 Train Labels: ncar7
 Test Labels: ncar7
               precision    recall  f1-score   support
 
-           0       1.00      0.99      0.99      1011
-           1       0.99      1.00      0.99       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[998  13]
- [  4 986]]
-True error rate: 0.00849575212393803
+[[ 978    1]
+ [   1 1021]]
+True error rate: 0.0009995002498750624
 ############Experiment 15############
 Set: ss1
 Train Labels: ncar8
 Test Labels: ncar8
               precision    recall  f1-score   support
 
-           0       0.91      0.90      0.91      1006
-           1       0.90      0.91      0.91       995
+           0       0.91      0.89      0.90       995
+           1       0.89      0.91      0.90      1006
 
-    accuracy                           0.91      2001
-   macro avg       0.91      0.91      0.91      2001
-weighted avg       0.91      0.91      0.91      2001
+    accuracy                           0.90      2001
+   macro avg       0.90      0.90      0.90      2001
+weighted avg       0.90      0.90      0.90      2001
 
 Columns are predictions, rows are labels
-[[907  99]
- [ 89 906]]
-Apparent error rate: 0.09395302348825588
+[[884 111]
+ [ 92 914]]
+Apparent error rate: 0.10144927536231885
 Transition matrix:
-[[508.27886057 502.72113943]
- [497.72113943 492.27886057]]
+[[486.80909545 492.19090455]
+ [508.19090455 513.80909545]]
 ############Experiment 16############
 Set: ss1
 Train Labels: ncar8
 Test Labels: ncar8
               precision    recall  f1-score   support
 
-           0       1.00      0.98      0.99      1011
-           1       0.98      1.00      0.99       990
+           0       0.99      0.99      0.99       979
+           1       0.99      0.99      0.99      1022
 
     accuracy                           0.99      2001
    macro avg       0.99      0.99      0.99      2001
 weighted avg       0.99      0.99      0.99      2001
 
 Columns are predictions, rows are labels
-[[993  18]
- [  3 987]]
-True error rate: 0.010494752623688156
+[[ 968   11]
+ [   8 1014]]
+True error rate: 0.009495252373813094
 ############Experiment 17############
 Set: ss1
 Train Labels: ncar9
 Test Labels: ncar9
               precision    recall  f1-score   support
 
-           0       0.92      0.90      0.91      1006
-           1       0.90      0.92      0.91       995
+           0       0.90      0.88      0.89       969
+           1       0.89      0.91      0.90      1032
 
-    accuracy                           0.91      2001
-   macro avg       0.91      0.91      0.91      2001
-weighted avg       0.91      0.91      0.91      2001
+    accuracy                           0.89      2001
+   macro avg       0.89      0.89      0.89      2001
+weighted avg       0.89      0.89      0.89      2001
 
 Columns are predictions, rows are labels
-[[908  98]
- [ 78 917]]
-Apparent error rate: 0.0879560219890055
+[[850 119]
+ [ 93 939]]
+Apparent error rate: 0.10594702648675662
 Transition matrix:
-[[508.27886057 502.72113943]
- [497.72113943 492.27886057]]
+[[474.08845577 504.91154423]
+ [494.91154423 527.08845577]]
 ############Experiment 18############
 Set: ss1
 Train Labels: ncar9
 Test Labels: ncar9
               precision    recall  f1-score   support
 
-           0       1.00      0.97      0.99      1011
-           1       0.97      1.00      0.99       990
+           0       1.00      0.96      0.98       979
+           1       0.97      1.00      0.98      1022
 
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
+    accuracy                           0.98      2001
+   macro avg       0.98      0.98      0.98      2001
+weighted avg       0.98      0.98      0.98      2001
 
 Columns are predictions, rows are labels
-[[984  27]
- [  2 988]]
-True error rate: 0.014492753623188406
+[[ 943   36]
+ [   0 1022]]
+True error rate: 0.017991004497751123
 ############Experiment 19############
 Set: ss1
 Train Labels: ncar10
 Test Labels: ncar10
               precision    recall  f1-score   support
 
-           0       0.92      0.90      0.91      1027
-           1       0.90      0.92      0.91       974
-
-    accuracy                           0.91      2001
-   macro avg       0.91      0.91      0.91      2001
-weighted avg       0.91      0.91      0.91      2001
-
-Columns are predictions, rows are labels
-[[927 100]
- [ 82 892]]
-Apparent error rate: 0.09095452273863068
-Transition matrix:
-[[518.88905547 492.11094453]
- [508.11094453 481.88905547]]
-############Experiment 20############
-Set: ss1
-Train Labels: ncar10
-Test Labels: ncar10
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
-
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
-
-Columns are predictions, rows are labels
-[[1008    3]
- [   1  989]]
-True error rate: 0.001999000499750125
-############Experiment 21############
-Set: ss1
-Train Labels: ncar11
-Test Labels: ncar11
-              precision    recall  f1-score   support
-
-           0       0.87      0.89      0.88       990
-           1       0.89      0.87      0.88      1011
+           0       0.91      0.85      0.88      1016
+           1       0.85      0.91      0.88       985
 
     accuracy                           0.88      2001
    macro avg       0.88      0.88      0.88      2001
 weighted avg       0.88      0.88      0.88      2001
 
 Columns are predictions, rows are labels
-[[882 108]
- [128 883]]
-Apparent error rate: 0.11794102948525736
+[[861 155]
+ [ 86 899]]
+Apparent error rate: 0.12043978010994502
 Transition matrix:
-[[500.19490255 510.80509745]
- [489.80509745 500.19490255]]
+[[497.08345827 481.91654173]
+ [518.91654173 503.08345827]]
+############Experiment 20############
+Set: ss1
+Train Labels: ncar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       1.00      0.97      0.98       979
+           1       0.97      1.00      0.98      1022
+
+    accuracy                           0.98      2001
+   macro avg       0.98      0.98      0.98      2001
+weighted avg       0.98      0.98      0.98      2001
+
+Columns are predictions, rows are labels
+[[ 945   34]
+ [   2 1020]]
+True error rate: 0.017991004497751123
+############Experiment 21############
+Set: ss1
+Train Labels: ncar11
+Test Labels: ncar11
+              precision    recall  f1-score   support
+
+           0       0.87      0.84      0.86       982
+           1       0.85      0.88      0.87      1019
+
+    accuracy                           0.86      2001
+   macro avg       0.86      0.86      0.86      2001
+weighted avg       0.86      0.86      0.86      2001
+
+Columns are predictions, rows are labels
+[[823 159]
+ [118 901]]
+Apparent error rate: 0.13843078460769614
+Transition matrix:
+[[480.44877561 498.55122439]
+ [501.55122439 520.44877561]]
 ############Experiment 22############
 Set: ss1
 Train Labels: ncar11
 Test Labels: ncar11
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      0.96      0.98       979
+           1       0.96      1.00      0.98      1022
 
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
+    accuracy                           0.98      2001
+   macro avg       0.98      0.98      0.98      2001
+weighted avg       0.98      0.98      0.98      2001
 
 Columns are predictions, rows are labels
-[[1010    1]
- [   0  990]]
-True error rate: 0.0004997501249375312
+[[ 939   40]
+ [   2 1020]]
+True error rate: 0.020989505247376312
 ############Experiment 23############
 Set: ss1
 Train Labels: ncar12
 Test Labels: ncar12
               precision    recall  f1-score   support
 
-           0       0.87      0.81      0.84      1000
-           1       0.82      0.88      0.85      1001
+           0       0.89      0.74      0.81       991
+           1       0.78      0.91      0.84      1010
 
-    accuracy                           0.84      2001
-   macro avg       0.85      0.84      0.84      2001
-weighted avg       0.85      0.84      0.84      2001
+    accuracy                           0.82      2001
+   macro avg       0.83      0.82      0.82      2001
+weighted avg       0.83      0.82      0.82      2001
 
 Columns are predictions, rows are labels
-[[809 191]
- [120 881]]
-Apparent error rate: 0.15542228885557222
+[[732 259]
+ [ 94 916]]
+Apparent error rate: 0.17641179410294852
 Transition matrix:
-[[505.24737631 505.75262369]
- [494.75262369 495.24737631]]
+[[484.85207396 494.14792604]
+ [506.14792604 515.85207396]]
 ############Experiment 24############
 Set: ss1
 Train Labels: ncar12
 Test Labels: ncar12
               precision    recall  f1-score   support
 
-           0       1.00      0.92      0.96      1011
-           1       0.92      1.00      0.96       990
+           0       1.00      0.84      0.91       979
+           1       0.87      1.00      0.93      1022
 
-    accuracy                           0.96      2001
-   macro avg       0.96      0.96      0.96      2001
-weighted avg       0.96      0.96      0.96      2001
+    accuracy                           0.92      2001
+   macro avg       0.93      0.92      0.92      2001
+weighted avg       0.93      0.92      0.92      2001
 
 Columns are predictions, rows are labels
-[[928  83]
- [  1 989]]
-True error rate: 0.041979010494752625
+[[ 825  154]
+ [   1 1021]]
+True error rate: 0.07746126936531735
 ############Experiment 25############
 Set: ss1
 Train Labels: ncar13
 Test Labels: ncar13
               precision    recall  f1-score   support
 
-           0       0.84      0.77      0.80       981
-           1       0.80      0.86      0.83      1020
+           0       0.87      0.85      0.86      1002
+           1       0.86      0.88      0.87       999
 
-    accuracy                           0.82      2001
-   macro avg       0.82      0.82      0.82      2001
-weighted avg       0.82      0.82      0.82      2001
+    accuracy                           0.87      2001
+   macro avg       0.87      0.87      0.87      2001
+weighted avg       0.87      0.87      0.87      2001
 
 Columns are predictions, rows are labels
-[[757 224]
- [144 876]]
-Apparent error rate: 0.1839080459770115
+[[855 147]
+ [123 876]]
+Apparent error rate: 0.13493253373313344
 Transition matrix:
-[[495.64767616 515.35232384]
- [485.35232384 504.64767616]]
+[[490.23388306 488.76611694]
+ [511.76611694 510.23388306]]
 ############Experiment 26############
 Set: ss1
 Train Labels: ncar13
 Test Labels: ncar13
               precision    recall  f1-score   support
 
-           0       1.00      0.89      0.94      1011
-           1       0.90      1.00      0.94       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.94      2001
-   macro avg       0.95      0.94      0.94      2001
-weighted avg       0.95      0.94      0.94      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[898 113]
- [  3 987]]
-True error rate: 0.057971014492753624
+[[ 978    1]
+ [   0 1022]]
+True error rate: 0.0004997501249375312
 ############Experiment 27############
 Set: ss1
 Train Labels: ncar14
 Test Labels: ncar14
               precision    recall  f1-score   support
 
-           0       0.82      0.81      0.81      1033
-           1       0.80      0.81      0.80       968
+           0       0.86      0.84      0.85      1002
+           1       0.84      0.86      0.85       999
 
-    accuracy                           0.81      2001
-   macro avg       0.81      0.81      0.81      2001
-weighted avg       0.81      0.81      0.81      2001
+    accuracy                           0.85      2001
+   macro avg       0.85      0.85      0.85      2001
+weighted avg       0.85      0.85      0.85      2001
 
 Columns are predictions, rows are labels
-[[835 198]
- [183 785]]
-Apparent error rate: 0.1904047976011994
+[[837 165]
+ [136 863]]
+Apparent error rate: 0.1504247876061969
 Transition matrix:
-[[521.92053973 489.07946027]
- [511.07946027 478.92053973]]
+[[490.23388306 488.76611694]
+ [511.76611694 510.23388306]]
 ############Experiment 28############
 Set: ss1
 Train Labels: ncar14
 Test Labels: ncar14
               precision    recall  f1-score   support
 
-           0       0.94      0.95      0.94      1011
-           1       0.94      0.94      0.94       990
+           0       1.00      0.99      0.99       979
+           1       0.99      1.00      1.00      1022
 
-    accuracy                           0.94      2001
-   macro avg       0.94      0.94      0.94      2001
-weighted avg       0.94      0.94      0.94      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      0.99      0.99      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[956  55]
- [ 62 928]]
-True error rate: 0.05847076461769116
+[[ 971    8]
+ [   2 1020]]
+True error rate: 0.004997501249375313
 ############Experiment 29############
 Set: ss1
 Train Labels: ncar15
 Test Labels: ncar15
               precision    recall  f1-score   support
 
-           0       0.85      0.75      0.80      1006
-           1       0.78      0.87      0.82       995
+           0       0.84      0.79      0.82       994
+           1       0.81      0.85      0.83      1007
 
-    accuracy                           0.81      2001
-   macro avg       0.82      0.81      0.81      2001
-weighted avg       0.82      0.81      0.81      2001
+    accuracy                           0.82      2001
+   macro avg       0.82      0.82      0.82      2001
+weighted avg       0.82      0.82      0.82      2001
 
 Columns are predictions, rows are labels
-[[759 247]
- [130 865]]
-Apparent error rate: 0.18840579710144928
+[[788 206]
+ [149 858]]
+Apparent error rate: 0.1774112943528236
 Transition matrix:
-[[508.27886057 502.72113943]
- [497.72113943 492.27886057]]
+[[486.31984008 492.68015992]
+ [507.68015992 514.31984008]]
 ############Experiment 30############
 Set: ss1
 Train Labels: ncar15
 Test Labels: ncar15
               precision    recall  f1-score   support
 
-           0       0.99      0.87      0.93      1011
-           1       0.88      0.99      0.94       990
+           0       1.00      0.96      0.98       979
+           1       0.96      1.00      0.98      1022
 
-    accuracy                           0.93      2001
-   macro avg       0.94      0.93      0.93      2001
-weighted avg       0.94      0.93      0.93      2001
+    accuracy                           0.98      2001
+   macro avg       0.98      0.98      0.98      2001
+weighted avg       0.98      0.98      0.98      2001
 
 Columns are predictions, rows are labels
-[[882 129]
- [  7 983]]
-True error rate: 0.06796601699150424
+[[ 937   42]
+ [   0 1022]]
+True error rate: 0.020989505247376312
 ############Experiment 31############
 Set: ss1
 Train Labels: nar1
 Test Labels: nar1
               precision    recall  f1-score   support
 
-           0       0.98      1.00      0.99       991
-           1       1.00      0.98      0.99      1010
+           0       1.00      0.98      0.99       995
+           1       0.98      1.00      0.99      1006
 
     accuracy                           0.99      2001
    macro avg       0.99      0.99      0.99      2001
 weighted avg       0.99      0.99      0.99      2001
 
 Columns are predictions, rows are labels
-[[988   3]
- [ 20 990]]
-Apparent error rate: 0.011494252873563218
+[[ 977   18]
+ [   0 1006]]
+Apparent error rate: 0.008995502248875561
 Transition matrix:
-[[500.70014993 510.29985007]
- [490.29985007 499.70014993]]
+[[486.80909545 492.19090455]
+ [508.19090455 513.80909545]]
 ############Experiment 32############
 Set: ss1
 Train Labels: nar1
 Test Labels: nar1
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1008    3]
- [   0  990]]
-True error rate: 0.0014992503748125937
+[[ 977    2]
+ [   0 1022]]
+True error rate: 0.0009995002498750624
 ############Experiment 33############
 Set: ss1
 Train Labels: nar2
 Test Labels: nar2
               precision    recall  f1-score   support
 
-           0       0.96      0.97      0.97       970
-           1       0.97      0.96      0.97      1031
+           0       1.00      0.96      0.98      1021
+           1       0.96      1.00      0.98       980
 
-    accuracy                           0.97      2001
-   macro avg       0.97      0.97      0.97      2001
-weighted avg       0.97      0.97      0.97      2001
+    accuracy                           0.98      2001
+   macro avg       0.98      0.98      0.98      2001
+weighted avg       0.98      0.98      0.98      2001
 
 Columns are predictions, rows are labels
-[[944  26]
- [ 40 991]]
-Apparent error rate: 0.03298350824587706
+[[976  45]
+ [  0 980]]
+Apparent error rate: 0.022488755622188907
 Transition matrix:
-[[490.08995502 520.91004498]
- [479.91004498 510.08995502]]
+[[499.52973513 479.47026487]
+ [521.47026487 500.52973513]]
 ############Experiment 34############
 Set: ss1
 Train Labels: nar2
 Test Labels: nar2
               precision    recall  f1-score   support
 
-           0       1.00      0.97      0.99      1011
-           1       0.97      1.00      0.99       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[984  27]
- [  0 990]]
-True error rate: 0.013493253373313344
+[[ 976    3]
+ [   0 1022]]
+True error rate: 0.0014992503748125937
 ############Experiment 35############
 Set: ss1
 Train Labels: nar3
 Test Labels: nar3
               precision    recall  f1-score   support
 
-           0       0.95      1.00      0.97       961
-           1       1.00      0.95      0.97      1040
+           0       0.99      0.94      0.97      1038
+           1       0.94      0.99      0.97       963
 
     accuracy                           0.97      2001
    macro avg       0.97      0.97      0.97      2001
-weighted avg       0.98      0.97      0.97      2001
+weighted avg       0.97      0.97      0.97      2001
 
 Columns are predictions, rows are labels
-[[961   0]
- [ 52 988]]
-Apparent error rate: 0.025987006496751622
+[[979  59]
+ [  6 957]]
+Apparent error rate: 0.03248375812093953
 Transition matrix:
-[[485.54272864 525.45727136]
- [475.45727136 514.54272864]]
+[[507.84707646 471.15292354]
+ [530.15292354 491.84707646]]
 ############Experiment 36############
 Set: ss1
 Train Labels: nar3
 Test Labels: nar3
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       0.99      1.00      1.00       979
+           1       1.00      0.99      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   2  988]]
-True error rate: 0.0009995002498750624
+[[ 978    1]
+ [   7 1015]]
+True error rate: 0.00399800099950025
 ############Experiment 37############
 Set: ss1
 Train Labels: nar4
 Test Labels: nar4
               precision    recall  f1-score   support
 
-           0       0.92      0.97      0.95       934
-           1       0.98      0.93      0.95      1067
+           0       1.00      0.93      0.97      1046
+           1       0.93      1.00      0.97       955
 
-    accuracy                           0.95      2001
-   macro avg       0.95      0.95      0.95      2001
-weighted avg       0.95      0.95      0.95      2001
+    accuracy                           0.97      2001
+   macro avg       0.97      0.97      0.97      2001
+weighted avg       0.97      0.97      0.97      2001
 
 Columns are predictions, rows are labels
-[[909  25]
- [ 75 992]]
-Apparent error rate: 0.04997501249375312
+[[977  69]
+ [  0 955]]
+Apparent error rate: 0.034482758620689655
 Transition matrix:
-[[471.90104948 539.09895052]
- [462.09895052 527.90104948]]
+[[511.76111944 467.23888056]
+ [534.23888056 487.76111944]]
 ############Experiment 38############
 Set: ss1
 Train Labels: nar4
 Test Labels: nar4
               precision    recall  f1-score   support
 
-           0       1.00      0.97      0.99      1011
-           1       0.97      1.00      0.99       990
-
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
-
-Columns are predictions, rows are labels
-[[984  27]
- [  0 990]]
-True error rate: 0.013493253373313344
-############Experiment 39############
-Set: ss1
-Train Labels: nar5
-Test Labels: nar5
-              precision    recall  f1-score   support
-
-           0       0.91      1.00      0.95       918
-           1       1.00      0.91      0.96      1083
-
-    accuracy                           0.95      2001
-   macro avg       0.95      0.96      0.95      2001
-weighted avg       0.96      0.95      0.95      2001
-
-Columns are predictions, rows are labels
-[[918   0]
- [ 93 990]]
-Apparent error rate: 0.046476761619190406
-Transition matrix:
-[[463.81709145 547.18290855]
- [454.18290855 535.81709145]]
-############Experiment 40############
-Set: ss1
-Train Labels: nar5
-Test Labels: nar5
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   0  990]]
+[[ 977    2]
+ [   0 1022]]
+True error rate: 0.0009995002498750624
+############Experiment 39############
+Set: ss1
+Train Labels: nar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       1.00      0.89      0.94      1097
+           1       0.88      1.00      0.94       904
+
+    accuracy                           0.94      2001
+   macro avg       0.94      0.95      0.94      2001
+weighted avg       0.95      0.94      0.94      2001
+
+Columns are predictions, rows are labels
+[[979 118]
+ [  0 904]]
+Apparent error rate: 0.05897051474262868
+Transition matrix:
+[[536.71314343 442.28685657]
+ [560.28685657 461.71314343]]
+############Experiment 40############
+Set: ss1
+Train Labels: nar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 979    0]
+ [   0 1022]]
 True error rate: 0.0
 ############Experiment 41############
 Set: ss1
@@ -760,591 +760,591 @@ Train Labels: nar6
 Test Labels: nar6
               precision    recall  f1-score   support
 
-           0       0.87      0.99      0.93       883
-           1       0.99      0.89      0.94      1118
+           0       1.00      0.89      0.94      1105
+           1       0.88      1.00      0.93       896
 
-    accuracy                           0.93      2001
-   macro avg       0.93      0.94      0.93      2001
-weighted avg       0.94      0.93      0.93      2001
+    accuracy                           0.94      2001
+   macro avg       0.94      0.94      0.94      2001
+weighted avg       0.95      0.94      0.94      2001
 
 Columns are predictions, rows are labels
-[[876   7]
- [126 992]]
-Apparent error rate: 0.06646676661669165
+[[980 125]
+ [  0 896]]
+Apparent error rate: 0.062468765617191405
 Transition matrix:
-[[446.13343328 564.86656672]
- [436.86656672 553.13343328]]
+[[540.62718641 438.37281359]
+ [564.37281359 457.62718641]]
 ############Experiment 42############
 Set: ss1
 Train Labels: nar6
 Test Labels: nar6
               precision    recall  f1-score   support
 
-           0       1.00      0.99      1.00      1011
-           1       0.99      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1002    9]
- [   0  990]]
-True error rate: 0.004497751124437781
+[[ 979    0]
+ [   1 1021]]
+True error rate: 0.0004997501249375312
 ############Experiment 43############
 Set: ss1
 Train Labels: nar7
 Test Labels: nar7
               precision    recall  f1-score   support
 
-           0       0.87      0.92      0.89       876
-           1       0.94      0.89      0.91      1125
+           0       0.98      0.87      0.92      1132
+           1       0.85      0.98      0.91       869
 
-    accuracy                           0.90      2001
-   macro avg       0.90      0.91      0.90      2001
-weighted avg       0.91      0.90      0.90      2001
+    accuracy                           0.92      2001
+   macro avg       0.92      0.92      0.92      2001
+weighted avg       0.93      0.92      0.92      2001
 
 Columns are predictions, rows are labels
-[[ 809   67]
- [ 124 1001]]
-Apparent error rate: 0.09545227386306847
+[[981 151]
+ [ 15 854]]
+Apparent error rate: 0.08295852073963018
 Transition matrix:
-[[442.59670165 568.40329835]
- [433.40329835 556.59670165]]
+[[553.83708146 425.16291854]
+ [578.16291854 443.83708146]]
 ############Experiment 44############
 Set: ss1
 Train Labels: nar7
 Test Labels: nar7
               precision    recall  f1-score   support
 
-           0       1.00      0.92      0.96      1011
-           1       0.93      1.00      0.96       990
+           0       0.98      1.00      0.99       979
+           1       1.00      0.98      0.99      1022
 
-    accuracy                           0.96      2001
-   macro avg       0.96      0.96      0.96      2001
-weighted avg       0.96      0.96      0.96      2001
+    accuracy                           0.99      2001
+   macro avg       0.99      0.99      0.99      2001
+weighted avg       0.99      0.99      0.99      2001
 
 Columns are predictions, rows are labels
-[[933  78]
- [  0 990]]
-True error rate: 0.038980509745127435
+[[ 979    0]
+ [  17 1005]]
+True error rate: 0.00849575212393803
 ############Experiment 45############
 Set: ss1
 Train Labels: nar8
 Test Labels: nar8
               precision    recall  f1-score   support
 
-           0       0.85      1.00      0.92       863
-           1       1.00      0.87      0.93      1138
+           0       0.98      0.87      0.92      1133
+           1       0.85      0.97      0.91       868
 
-    accuracy                           0.93      2001
-   macro avg       0.93      0.93      0.93      2001
-weighted avg       0.94      0.93      0.93      2001
+    accuracy                           0.91      2001
+   macro avg       0.91      0.92      0.91      2001
+weighted avg       0.92      0.91      0.91      2001
 
 Columns are predictions, rows are labels
-[[863   0]
- [148 990]]
-Apparent error rate: 0.07396301849075462
+[[981 152]
+ [ 24 844]]
+Apparent error rate: 0.0879560219890055
 Transition matrix:
-[[436.02848576 574.97151424]
- [426.97151424 563.02848576]]
+[[554.32633683 424.67366317]
+ [578.67366317 443.32633683]]
 ############Experiment 46############
 Set: ss1
 Train Labels: nar8
 Test Labels: nar8
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       0.97      1.00      0.99       979
+           1       1.00      0.97      0.99      1022
 
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
+    accuracy                           0.99      2001
+   macro avg       0.99      0.99      0.99      2001
+weighted avg       0.99      0.99      0.99      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   0  990]]
-True error rate: 0.0
+[[979   0]
+ [ 26 996]]
+True error rate: 0.012993503248375811
 ############Experiment 47############
 Set: ss1
 Train Labels: nar9
 Test Labels: nar9
               precision    recall  f1-score   support
 
-           0       0.81      0.99      0.89       824
-           1       0.99      0.84      0.91      1177
+           0       1.00      0.85      0.92      1154
+           1       0.83      1.00      0.91       847
 
-    accuracy                           0.90      2001
-   macro avg       0.90      0.92      0.90      2001
-weighted avg       0.92      0.90      0.90      2001
+    accuracy                           0.91      2001
+   macro avg       0.91      0.92      0.91      2001
+weighted avg       0.93      0.91      0.91      2001
 
 Columns are predictions, rows are labels
-[[819   5]
- [188 989]]
-Apparent error rate: 0.09645177411294353
+[[978 176]
+ [  0 847]]
+Apparent error rate: 0.0879560219890055
 Transition matrix:
-[[416.32383808 594.67616192]
- [407.67616192 582.32383808]]
+[[564.60069965 414.39930035]
+ [589.39930035 432.60069965]]
 ############Experiment 48############
 Set: ss1
 Train Labels: nar9
 Test Labels: nar9
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       0.99      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1006    5]
- [   1  989]]
-True error rate: 0.0029985007496251873
+[[ 978    1]
+ [   0 1022]]
+True error rate: 0.0004997501249375312
 ############Experiment 49############
 Set: ss1
 Train Labels: nar10
 Test Labels: nar10
               precision    recall  f1-score   support
 
-           0       0.79      1.00      0.88       796
-           1       1.00      0.82      0.90      1205
+           0       1.00      0.83      0.91      1183
+           1       0.80      1.00      0.89       818
 
-    accuracy                           0.89      2001
-   macro avg       0.89      0.91      0.89      2001
-weighted avg       0.92      0.89      0.89      2001
+    accuracy                           0.90      2001
+   macro avg       0.90      0.91      0.90      2001
+weighted avg       0.92      0.90      0.90      2001
 
 Columns are predictions, rows are labels
-[[796   0]
- [214 991]]
-Apparent error rate: 0.10694652673663169
+[[979 204]
+ [  0 818]]
+Apparent error rate: 0.10194902548725637
 Transition matrix:
-[[402.17691154 608.82308846]
- [393.82308846 596.17691154]]
+[[578.78910545 400.21089455]
+ [604.21089455 417.78910545]]
 ############Experiment 50############
 Set: ss1
 Train Labels: nar10
 Test Labels: nar10
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1010    1]
- [   0  990]]
-True error rate: 0.0004997501249375312
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 51############
 Set: ss1
 Train Labels: nar11
 Test Labels: nar11
               precision    recall  f1-score   support
 
-           0       0.80      0.84      0.82       802
-           1       0.89      0.86      0.87      1199
+           0       0.99      0.81      0.90      1206
+           1       0.78      0.99      0.87       795
 
-    accuracy                           0.85      2001
-   macro avg       0.84      0.85      0.85      2001
-weighted avg       0.85      0.85      0.85      2001
+    accuracy                           0.89      2001
+   macro avg       0.89      0.90      0.88      2001
+weighted avg       0.91      0.89      0.89      2001
 
 Columns are predictions, rows are labels
-[[ 673  129]
- [ 171 1028]]
-Apparent error rate: 0.14992503748125938
+[[981 225]
+ [  5 790]]
+Apparent error rate: 0.11494252873563218
 Transition matrix:
-[[405.2083958 605.7916042]
- [396.7916042 593.2083958]]
+[[590.04197901 388.95802099]
+ [615.95802099 406.04197901]]
 ############Experiment 52############
 Set: ss1
 Train Labels: nar11
 Test Labels: nar11
               precision    recall  f1-score   support
 
-           0       1.00      0.83      0.91      1011
-           1       0.85      1.00      0.92       990
+           0       0.99      1.00      1.00       979
+           1       1.00      0.99      1.00      1022
 
-    accuracy                           0.91      2001
-   macro avg       0.93      0.92      0.91      2001
-weighted avg       0.93      0.91      0.91      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[842 169]
- [  2 988]]
-True error rate: 0.08545727136431784
+[[ 979    0]
+ [   7 1015]]
+True error rate: 0.0034982508745627187
 ############Experiment 53############
 Set: ss1
 Train Labels: nar12
 Test Labels: nar12
               precision    recall  f1-score   support
 
-           0       0.77      0.93      0.84       767
-           1       0.95      0.83      0.88      1234
+           0       0.98      0.81      0.88      1221
+           1       0.76      0.97      0.85       780
 
     accuracy                           0.87      2001
-   macro avg       0.86      0.88      0.86      2001
-weighted avg       0.88      0.87      0.87      2001
+   macro avg       0.87      0.89      0.87      2001
+weighted avg       0.89      0.87      0.87      2001
 
 Columns are predictions, rows are labels
-[[ 710   57]
- [ 212 1022]]
-Apparent error rate: 0.1344327836081959
+[[987 234]
+ [ 25 755]]
+Apparent error rate: 0.1294352823588206
 Transition matrix:
-[[387.52473763 623.47526237]
- [379.47526237 610.52473763]]
+[[597.3808096 381.6191904]
+ [623.6191904 398.3808096]]
 ############Experiment 54############
 Set: ss1
 Train Labels: nar12
 Test Labels: nar12
               precision    recall  f1-score   support
 
-           0       1.00      0.91      0.95      1011
-           1       0.92      1.00      0.96       990
-
-    accuracy                           0.96      2001
-   macro avg       0.96      0.96      0.96      2001
-weighted avg       0.96      0.96      0.96      2001
-
-Columns are predictions, rows are labels
-[[922  89]
- [  0 990]]
-True error rate: 0.04447776111944028
-############Experiment 55############
-Set: ss1
-Train Labels: nar13
-Test Labels: nar13
-              precision    recall  f1-score   support
-
-           0       0.72      1.00      0.84       732
-           1       1.00      0.78      0.88      1269
-
-    accuracy                           0.86      2001
-   macro avg       0.86      0.89      0.86      2001
-weighted avg       0.90      0.86      0.86      2001
-
-Columns are predictions, rows are labels
-[[732   0]
- [279 990]]
-Apparent error rate: 0.13943028485757122
-Transition matrix:
-[[369.84107946 641.15892054]
- [362.15892054 627.84107946]]
-############Experiment 56############
-Set: ss1
-Train Labels: nar13
-Test Labels: nar13
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
-
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
-
-Columns are predictions, rows are labels
-[[1011    0]
- [   0  990]]
-True error rate: 0.0
-############Experiment 57############
-Set: ss1
-Train Labels: nar14
-Test Labels: nar14
-              precision    recall  f1-score   support
-
-           0       0.72      1.00      0.84       731
-           1       1.00      0.78      0.87      1270
-
-    accuracy                           0.86      2001
-   macro avg       0.86      0.89      0.86      2001
-weighted avg       0.90      0.86      0.86      2001
-
-Columns are predictions, rows are labels
-[[730   1]
- [284 986]]
-Apparent error rate: 0.1424287856071964
-Transition matrix:
-[[369.33583208 641.66416792]
- [361.66416792 628.33583208]]
-############Experiment 58############
-Set: ss1
-Train Labels: nar14
-Test Labels: nar14
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
-
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
-
-Columns are predictions, rows are labels
-[[1010    1]
- [   4  986]]
-True error rate: 0.0024987506246876563
-############Experiment 59############
-Set: ss1
-Train Labels: nar15
-Test Labels: nar15
-              precision    recall  f1-score   support
-
-           0       0.71      0.99      0.83       721
-           1       1.00      0.78      0.87      1280
-
-    accuracy                           0.85      2001
-   macro avg       0.85      0.88      0.85      2001
-weighted avg       0.89      0.85      0.86      2001
-
-Columns are predictions, rows are labels
-[[717   4]
- [288 992]]
-Apparent error rate: 0.14592703648175911
-Transition matrix:
-[[364.28335832 646.71664168]
- [356.71664168 633.28335832]]
-############Experiment 60############
-Set: ss1
-Train Labels: nar15
-Test Labels: nar15
-              precision    recall  f1-score   support
-
-           0       1.00      0.99      1.00      1011
-           1       0.99      1.00      1.00       990
-
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
-
-Columns are predictions, rows are labels
-[[1005    6]
- [   0  990]]
-True error rate: 0.0029985007496251873
-############Experiment 61############
-Set: ss1
-Train Labels: nnar1
-Test Labels: nnar1
-              precision    recall  f1-score   support
-
-           0       0.98      1.00      0.99       993
-           1       1.00      0.98      0.99      1008
-
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
-
-Columns are predictions, rows are labels
-[[992   1]
- [ 18 990]]
-Apparent error rate: 0.009495252373813094
-Transition matrix:
-[[501.71064468 509.28935532]
- [491.28935532 498.71064468]]
-############Experiment 62############
-Set: ss1
-Train Labels: nnar1
-Test Labels: nnar1
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
-
-    accuracy                           1.00      2001
-   macro avg       1.00      1.00      1.00      2001
-weighted avg       1.00      1.00      1.00      2001
-
-Columns are predictions, rows are labels
-[[1010    1]
- [   0  990]]
-True error rate: 0.0004997501249375312
-############Experiment 63############
-Set: ss1
-Train Labels: nnar2
-Test Labels: nnar2
-              precision    recall  f1-score   support
-
-           0       0.96      0.99      0.98       972
-           1       0.99      0.96      0.98      1029
+           0       0.96      1.00      0.98       979
+           1       1.00      0.96      0.98      1022
 
     accuracy                           0.98      2001
    macro avg       0.98      0.98      0.98      2001
 weighted avg       0.98      0.98      0.98      2001
 
 Columns are predictions, rows are labels
-[[967   5]
- [ 39 990]]
-Apparent error rate: 0.021989005497251374
+[[976   3]
+ [ 36 986]]
+True error rate: 0.019490254872563718
+############Experiment 55############
+Set: ss1
+Train Labels: nar13
+Test Labels: nar13
+              precision    recall  f1-score   support
+
+           0       0.99      0.78      0.88      1261
+           1       0.73      0.99      0.84       740
+
+    accuracy                           0.86      2001
+   macro avg       0.86      0.89      0.86      2001
+weighted avg       0.90      0.86      0.86      2001
+
+Columns are predictions, rows are labels
+[[985 276]
+ [  5 735]]
+Apparent error rate: 0.14042978510744628
 Transition matrix:
-[[491.10044978 519.89955022]
- [480.89955022 509.10044978]]
+[[616.95102449 362.04897551]
+ [644.04897551 377.95102449]]
+############Experiment 56############
+Set: ss1
+Train Labels: nar13
+Test Labels: nar13
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99       979
+           1       1.00      0.99      0.99      1022
+
+    accuracy                           0.99      2001
+   macro avg       0.99      0.99      0.99      2001
+weighted avg       0.99      0.99      0.99      2001
+
+Columns are predictions, rows are labels
+[[ 979    0]
+ [  11 1011]]
+True error rate: 0.005497251374312844
+############Experiment 57############
+Set: ss1
+Train Labels: nar14
+Test Labels: nar14
+              precision    recall  f1-score   support
+
+           0       1.00      0.77      0.87      1279
+           1       0.71      1.00      0.83       722
+
+    accuracy                           0.85      2001
+   macro avg       0.85      0.88      0.85      2001
+weighted avg       0.89      0.85      0.85      2001
+
+Columns are predictions, rows are labels
+[[981 298]
+ [  0 722]]
+Apparent error rate: 0.1489255372313843
+Transition matrix:
+[[625.75762119 353.24237881]
+ [653.24237881 368.75762119]]
+############Experiment 58############
+Set: ss1
+Train Labels: nar14
+Test Labels: nar14
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 979    0]
+ [   2 1020]]
+True error rate: 0.0009995002498750624
+############Experiment 59############
+Set: ss1
+Train Labels: nar15
+Test Labels: nar15
+              precision    recall  f1-score   support
+
+           0       0.99      0.76      0.86      1279
+           1       0.70      0.99      0.82       722
+
+    accuracy                           0.85      2001
+   macro avg       0.85      0.88      0.84      2001
+weighted avg       0.89      0.85      0.85      2001
+
+Columns are predictions, rows are labels
+[[977 302]
+ [  5 717]]
+Apparent error rate: 0.15342328835582209
+Transition matrix:
+[[625.75762119 353.24237881]
+ [653.24237881 368.75762119]]
+############Experiment 60############
+Set: ss1
+Train Labels: nar15
+Test Labels: nar15
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      1.00       979
+           1       1.00      0.99      1.00      1022
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 976    3]
+ [   6 1016]]
+True error rate: 0.004497751124437781
+############Experiment 61############
+Set: ss1
+Train Labels: nnar1
+Test Labels: nnar1
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 979    0]
+ [   0 1022]]
+Apparent error rate: 0.0
+Transition matrix:
+[[478.9810095 500.0189905]
+ [500.0189905 521.9810095]]
+############Experiment 62############
+Set: ss1
+Train Labels: nnar1
+Test Labels: nnar1
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
+############Experiment 63############
+Set: ss1
+Train Labels: nnar2
+Test Labels: nnar2
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       980
+           1       1.00      1.00      1.00      1021
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 979    1]
+ [   0 1021]]
+Apparent error rate: 0.0004997501249375312
+Transition matrix:
+[[479.47026487 499.52973513]
+ [500.52973513 521.47026487]]
 ############Experiment 64############
 Set: ss1
 Train Labels: nnar2
 Test Labels: nnar2
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       0.99      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1006    5]
- [   0  990]]
-True error rate: 0.0024987506246876563
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 65############
 Set: ss1
 Train Labels: nnar3
 Test Labels: nnar3
               precision    recall  f1-score   support
 
-           0       0.95      0.99      0.97       957
-           1       0.99      0.95      0.97      1044
+           0       1.00      1.00      1.00       980
+           1       1.00      1.00      1.00      1021
 
-    accuracy                           0.97      2001
-   macro avg       0.97      0.97      0.97      2001
-weighted avg       0.97      0.97      0.97      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[946  11]
- [ 54 990]]
-Apparent error rate: 0.03248375812093953
+[[ 979    1]
+ [   0 1021]]
+Apparent error rate: 0.0004997501249375312
 Transition matrix:
-[[483.52173913 527.47826087]
- [473.47826087 516.52173913]]
+[[479.47026487 499.52973513]
+ [500.52973513 521.47026487]]
 ############Experiment 66############
 Set: ss1
 Train Labels: nnar3
 Test Labels: nnar3
               precision    recall  f1-score   support
 
-           0       1.00      0.99      0.99      1011
-           1       0.99      1.00      0.99       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1000   11]
- [   0  990]]
-True error rate: 0.005497251374312844
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 67############
 Set: ss1
 Train Labels: nnar4
 Test Labels: nnar4
               precision    recall  f1-score   support
 
-           0       0.92      0.98      0.95       935
-           1       0.98      0.93      0.96      1066
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.95      2001
-   macro avg       0.95      0.96      0.95      2001
-weighted avg       0.96      0.95      0.95      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[917  18]
- [ 75 991]]
-Apparent error rate: 0.046476761619190406
+[[ 979    0]
+ [   0 1022]]
+Apparent error rate: 0.0
 Transition matrix:
-[[472.40629685 538.59370315]
- [462.59370315 527.40629685]]
+[[478.9810095 500.0189905]
+ [500.0189905 521.9810095]]
 ############Experiment 68############
 Set: ss1
 Train Labels: nnar4
 Test Labels: nnar4
               precision    recall  f1-score   support
 
-           0       1.00      0.98      0.99      1011
-           1       0.98      1.00      0.99       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.99      2001
-   macro avg       0.99      0.99      0.99      2001
-weighted avg       0.99      0.99      0.99      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[991  20]
- [  1 989]]
-True error rate: 0.010494752623688156
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 69############
 Set: ss1
 Train Labels: nnar5
 Test Labels: nnar5
               precision    recall  f1-score   support
 
-           0       0.90      1.00      0.95       918
-           1       1.00      0.91      0.95      1083
+           0       1.00      1.00      1.00       980
+           1       1.00      1.00      1.00      1021
 
-    accuracy                           0.95      2001
-   macro avg       0.95      0.95      0.95      2001
-weighted avg       0.96      0.95      0.95      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[917   1]
- [ 97 986]]
-Apparent error rate: 0.04897551224387806
+[[ 979    1]
+ [   0 1021]]
+Apparent error rate: 0.0004997501249375312
 Transition matrix:
-[[463.81709145 547.18290855]
- [454.18290855 535.81709145]]
+[[479.47026487 499.52973513]
+ [500.52973513 521.47026487]]
 ############Experiment 70############
 Set: ss1
 Train Labels: nnar5
 Test Labels: nnar5
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1010    1]
- [   4  986]]
-True error rate: 0.0024987506246876563
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 71############
 Set: ss1
 Train Labels: nnar6
 Test Labels: nnar6
               precision    recall  f1-score   support
 
-           0       0.89      1.00      0.94       904
-           1       1.00      0.90      0.95      1097
-
-    accuracy                           0.95      2001
-   macro avg       0.95      0.95      0.95      2001
-weighted avg       0.95      0.95      0.95      2001
-
-Columns are predictions, rows are labels
-[[904   0]
- [107 990]]
-Apparent error rate: 0.05347326336831584
-Transition matrix:
-[[456.74362819 554.25637181]
- [447.25637181 542.74362819]]
-############Experiment 72############
-Set: ss1
-Train Labels: nnar6
-Test Labels: nnar6
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   0  990]]
+[[ 979    0]
+ [   0 1022]]
+Apparent error rate: 0.0
+Transition matrix:
+[[478.9810095 500.0189905]
+ [500.0189905 521.9810095]]
+############Experiment 72############
+Set: ss1
+Train Labels: nnar6
+Test Labels: nnar6
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 979    0]
+ [   0 1022]]
 True error rate: 0.0
 ############Experiment 73############
 Set: ss1
@@ -1352,330 +1352,2244 @@ Train Labels: nnar7
 Test Labels: nnar7
               precision    recall  f1-score   support
 
-           0       0.88      0.87      0.87       887
-           1       0.90      0.90      0.90      1114
+           0       1.00      1.00      1.00       980
+           1       1.00      1.00      1.00      1021
 
-    accuracy                           0.89      2001
-   macro avg       0.89      0.89      0.89      2001
-weighted avg       0.89      0.89      0.89      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[ 773  114]
- [ 109 1005]]
-Apparent error rate: 0.11144427786106946
+[[ 979    1]
+ [   2 1019]]
+Apparent error rate: 0.0014992503748125937
 Transition matrix:
-[[448.15442279 562.84557721]
- [438.84557721 551.15442279]]
+[[479.47026487 499.52973513]
+ [500.52973513 521.47026487]]
 ############Experiment 74############
 Set: ss1
 Train Labels: nnar7
 Test Labels: nnar7
               precision    recall  f1-score   support
 
-           0       1.00      0.87      0.93      1011
-           1       0.88      1.00      0.94       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.93      2001
-   macro avg       0.94      0.94      0.93      2001
-weighted avg       0.94      0.93      0.93      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[881 130]
- [  1 989]]
-True error rate: 0.06546726636681659
+[[ 979    0]
+ [   2 1020]]
+True error rate: 0.0009995002498750624
 ############Experiment 75############
 Set: ss1
 Train Labels: nnar8
 Test Labels: nnar8
               precision    recall  f1-score   support
 
-           0       0.85      0.89      0.87       865
-           1       0.92      0.88      0.90      1136
+           0       1.00      1.00      1.00       980
+           1       1.00      1.00      1.00      1021
 
-    accuracy                           0.89      2001
-   macro avg       0.89      0.89      0.89      2001
-weighted avg       0.89      0.89      0.89      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[ 774   91]
- [ 132 1004]]
-Apparent error rate: 0.11144427786106946
+[[ 979    1]
+ [   0 1021]]
+Apparent error rate: 0.0004997501249375312
 Transition matrix:
-[[437.03898051 573.96101949]
- [427.96101949 562.03898051]]
+[[479.47026487 499.52973513]
+ [500.52973513 521.47026487]]
 ############Experiment 76############
 Set: ss1
 Train Labels: nnar8
 Test Labels: nnar8
               precision    recall  f1-score   support
 
-           0       1.00      0.90      0.95      1011
-           1       0.90      1.00      0.95       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.95      2001
-   macro avg       0.95      0.95      0.95      2001
-weighted avg       0.95      0.95      0.95      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[906 105]
- [  0 990]]
-True error rate: 0.05247376311844078
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 77############
 Set: ss1
 Train Labels: nnar9
 Test Labels: nnar9
               precision    recall  f1-score   support
 
-           0       0.84      0.92      0.88       850
-           1       0.94      0.87      0.90      1151
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.89      2001
-   macro avg       0.89      0.89      0.89      2001
-weighted avg       0.89      0.89      0.89      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[784  66]
- [153 998]]
-Apparent error rate: 0.10944527736131934
+[[ 978    1]
+ [   0 1022]]
+Apparent error rate: 0.0004997501249375312
 Transition matrix:
-[[429.46026987 581.53973013]
- [420.53973013 569.46026987]]
+[[478.9810095 500.0189905]
+ [500.0189905 521.9810095]]
 ############Experiment 78############
 Set: ss1
 Train Labels: nnar9
 Test Labels: nnar9
               precision    recall  f1-score   support
 
-           0       1.00      0.92      0.96      1011
-           1       0.93      1.00      0.96       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.96      2001
-   macro avg       0.96      0.96      0.96      2001
-weighted avg       0.96      0.96      0.96      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[934  77]
- [  3 987]]
-True error rate: 0.0399800099950025
+[[ 978    1]
+ [   0 1022]]
+True error rate: 0.0004997501249375312
 ############Experiment 79############
 Set: ss1
 Train Labels: nnar10
 Test Labels: nnar10
               precision    recall  f1-score   support
 
-           0       0.81      0.88      0.85       820
-           1       0.91      0.86      0.89      1181
+           0       1.00      1.00      1.00       982
+           1       1.00      1.00      1.00      1019
 
-    accuracy                           0.87      2001
-   macro avg       0.86      0.87      0.87      2001
-weighted avg       0.87      0.87      0.87      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[ 725   95]
- [ 168 1013]]
-Apparent error rate: 0.13143428285857073
+[[ 979    3]
+ [   0 1019]]
+Apparent error rate: 0.0014992503748125937
 Transition matrix:
-[[414.30284858 596.69715142]
- [405.69715142 584.30284858]]
+[[480.44877561 498.55122439]
+ [501.55122439 520.44877561]]
 ############Experiment 80############
 Set: ss1
 Train Labels: nnar10
 Test Labels: nnar10
               precision    recall  f1-score   support
 
-           0       1.00      0.88      0.94      1011
-           1       0.89      1.00      0.94       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.94      2001
-   macro avg       0.95      0.94      0.94      2001
-weighted avg       0.95      0.94      0.94      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[892 119]
- [  1 989]]
-True error rate: 0.05997001499250375
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 81############
 Set: ss1
 Train Labels: nnar11
 Test Labels: nnar11
               precision    recall  f1-score   support
 
-           0       0.80      0.88      0.84       801
-           1       0.92      0.85      0.88      1200
+           0       1.00      0.99      1.00       985
+           1       0.99      1.00      1.00      1016
 
-    accuracy                           0.86      2001
-   macro avg       0.86      0.87      0.86      2001
-weighted avg       0.87      0.86      0.86      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[ 708   93]
- [ 182 1018]]
-Apparent error rate: 0.1374312843578211
+[[ 979    6]
+ [   0 1016]]
+Apparent error rate: 0.0029985007496251873
 Transition matrix:
-[[404.70314843 606.29685157]
- [396.29685157 593.70314843]]
+[[481.91654173 497.08345827]
+ [503.08345827 518.91654173]]
 ############Experiment 82############
 Set: ss1
 Train Labels: nnar11
 Test Labels: nnar11
               precision    recall  f1-score   support
 
-           0       1.00      0.88      0.94      1011
-           1       0.89      1.00      0.94       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.94      2001
-   macro avg       0.95      0.94      0.94      2001
-weighted avg       0.95      0.94      0.94      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[890 121]
- [  0 990]]
-True error rate: 0.06046976511744128
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 83############
 Set: ss1
 Train Labels: nnar12
 Test Labels: nnar12
               precision    recall  f1-score   support
 
-           0       0.77      0.76      0.77       781
-           1       0.85      0.85      0.85      1220
+           0       1.00      1.00      1.00       981
+           1       1.00      1.00      1.00      1020
 
-    accuracy                           0.82      2001
-   macro avg       0.81      0.81      0.81      2001
-weighted avg       0.82      0.82      0.82      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[ 597  184]
- [ 178 1042]]
-Apparent error rate: 0.1809095452273863
+[[ 979    2]
+ [   0 1020]]
+Apparent error rate: 0.0009995002498750624
 Transition matrix:
-[[394.5982009 616.4017991]
- [386.4017991 603.5982009]]
+[[479.95952024 499.04047976]
+ [501.04047976 520.95952024]]
 ############Experiment 84############
 Set: ss1
 Train Labels: nnar12
 Test Labels: nnar12
               precision    recall  f1-score   support
 
-           0       1.00      0.77      0.87      1011
-           1       0.81      1.00      0.89       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
-    accuracy                           0.88      2001
-   macro avg       0.90      0.88      0.88      2001
-weighted avg       0.90      0.88      0.88      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[775 236]
- [  0 990]]
-True error rate: 0.11794102948525736
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 85############
 Set: ss1
 Train Labels: nnar13
 Test Labels: nnar13
               precision    recall  f1-score   support
 
-           0       0.75      1.00      0.86       764
-           1       1.00      0.80      0.89      1237
+           0       1.00      0.99      1.00       986
+           1       0.99      1.00      1.00      1015
 
-    accuracy                           0.88      2001
-   macro avg       0.88      0.90      0.87      2001
-weighted avg       0.91      0.88      0.88      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[764   0]
- [248 989]]
-Apparent error rate: 0.12393803098450774
+[[ 979    7]
+ [   0 1015]]
+Apparent error rate: 0.0034982508745627187
 Transition matrix:
-[[386.0089955 624.9910045]
- [377.9910045 612.0089955]]
+[[482.4057971 496.5942029]
+ [503.5942029 518.4057971]]
 ############Experiment 86############
 Set: ss1
 Train Labels: nnar13
 Test Labels: nnar13
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   1  989]]
-True error rate: 0.0004997501249375312
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
 ############Experiment 87############
 Set: ss1
 Train Labels: nnar14
 Test Labels: nnar14
               precision    recall  f1-score   support
 
-           0       0.73      1.00      0.84       737
-           1       1.00      0.78      0.88      1264
+           0       1.00      0.99      1.00       986
+           1       0.99      1.00      1.00      1015
 
-    accuracy                           0.86      2001
-   macro avg       0.86      0.89      0.86      2001
-weighted avg       0.90      0.86      0.87      2001
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[737   0]
- [274 990]]
-Apparent error rate: 0.13693153423288357
+[[ 978    8]
+ [   0 1015]]
+Apparent error rate: 0.00399800099950025
 Transition matrix:
-[[372.36731634 638.63268366]
- [364.63268366 625.36731634]]
+[[482.4057971 496.5942029]
+ [503.5942029 518.4057971]]
 ############Experiment 88############
 Set: ss1
 Train Labels: nnar14
 Test Labels: nnar14
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      1011
-           1       1.00      1.00      1.00       990
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1011    0]
- [   0  990]]
-True error rate: 0.0
+[[ 978    1]
+ [   0 1022]]
+True error rate: 0.0004997501249375312
 ############Experiment 89############
 Set: ss1
 Train Labels: nnar15
 Test Labels: nnar15
               precision    recall  f1-score   support
 
-           0       0.72      0.99      0.83       725
-           1       1.00      0.78      0.87      1276
-
-    accuracy                           0.86      2001
-   macro avg       0.86      0.89      0.85      2001
-weighted avg       0.89      0.86      0.86      2001
-
-Columns are predictions, rows are labels
-[[721   4]
- [285 991]]
-Apparent error rate: 0.14442778610694654
-Transition matrix:
-[[366.30434783 644.69565217]
- [358.69565217 631.30434783]]
-############Experiment 90############
-Set: ss1
-Train Labels: nnar15
-Test Labels: nnar15
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00      1011
-           1       0.99      1.00      1.00       990
+           0       1.00      0.99      1.00       984
+           1       1.00      1.00      1.00      1017
 
     accuracy                           1.00      2001
    macro avg       1.00      1.00      1.00      2001
 weighted avg       1.00      1.00      1.00      2001
 
 Columns are predictions, rows are labels
-[[1006    5]
- [   0  990]]
-True error rate: 0.0024987506246876563
+[[ 979    5]
+ [   0 1017]]
+Apparent error rate: 0.0024987506246876563
+Transition matrix:
+[[481.42728636 497.57271364]
+ [502.57271364 519.42728636]]
+############Experiment 90############
+Set: ss1
+Train Labels: nnar15
+Test Labels: nnar15
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       979
+           1       1.00      1.00      1.00      1022
+
+    accuracy                           1.00      2001
+   macro avg       1.00      1.00      1.00      2001
+weighted avg       1.00      1.00      1.00      2001
+
+Columns are predictions, rows are labels
+[[ 979    0]
+ [   0 1022]]
+True error rate: 0.0
+Summary of ss1
+Apparent Error Rates.
+Label Sets: ['ncar', 'nar', 'nnar']
+{'ss1ncar1': 0.009495252373813094, 'ss1ncar2': 0.020989505247376312, 'ss1ncar3': 0.03498250874562719, 'ss1ncar4': 0.04897551224387806, 'ss1ncar5': 0.0704647676161919, 'ss1ncar6': 0.07846076961519241, 'ss1ncar7': 0.08245877061469266, 'ss1ncar8': 0.10144927536231885, 'ss1ncar9': 0.10594702648675662, 'ss1ncar10': 0.12043978010994502, 'ss1ncar11': 0.13843078460769614, 'ss1ncar12': 0.17641179410294852, 'ss1ncar13': 0.13493253373313344, 'ss1ncar14': 0.1504247876061969, 'ss1ncar15': 0.1774112943528236, 'ss1nar1': 0.008995502248875561, 'ss1nar2': 0.022488755622188907, 'ss1nar3': 0.03248375812093953, 'ss1nar4': 0.034482758620689655, 'ss1nar5': 0.05897051474262868, 'ss1nar6': 0.062468765617191405, 'ss1nar7': 0.08295852073963018, 'ss1nar8': 0.0879560219890055, 'ss1nar9': 0.0879560219890055, 'ss1nar10': 0.10194902548725637, 'ss1nar11': 0.11494252873563218, 'ss1nar12': 0.1294352823588206, 'ss1nar13': 0.14042978510744628, 'ss1nar14': 0.1489255372313843, 'ss1nar15': 0.15342328835582209, 'ss1nnar1': 0.0, 'ss1nnar2': 0.0004997501249375312, 'ss1nnar3': 0.0004997501249375312, 'ss1nnar4': 0.0, 'ss1nnar5': 0.0004997501249375312, 'ss1nnar6': 0.0, 'ss1nnar7': 0.0014992503748125937, 'ss1nnar8': 0.0004997501249375312, 'ss1nnar9': 0.0004997501249375312, 'ss1nnar10': 0.0014992503748125937, 'ss1nnar11': 0.0029985007496251873, 'ss1nnar12': 0.0009995002498750624, 'ss1nnar13': 0.0034982508745627187, 'ss1nnar14': 0.00399800099950025, 'ss1nnar15': 0.0024987506246876563}############Clean Control############
+Set: ss2
+              precision    recall  f1-score   support
+
+           0       0.99      0.95      0.97      2075
+           1       0.95      1.00      0.98      1977
+           2       1.00      0.99      1.00      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[1979   96    0]
+ [   1 1976    0]
+ [  13    0 1935]]
+Apparent error rate: 0.018333333333333333
+############Experiment 91############
+Set: ss2
+Train Labels: ncar1
+Test Labels: ncar1
+              precision    recall  f1-score   support
+
+           0       0.97      0.98      0.98      2070
+           1       0.98      0.97      0.98      1981
+           2       0.99      0.99      0.99      1949
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2024   32   14]
+ [  38 1930   13]
+ [  16   13 1920]]
+Apparent error rate: 0.021
+Transition matrix:
+[[715.875      685.09583333 674.02916667]
+ [682.065      652.7395     642.1955    ]
+ [672.06       643.16466667 632.77533333]]
+############Experiment 92############
+Set: ss2
+Train Labels: ncar1
+Test Labels: ncar1
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2075
+           1       0.99      0.99      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2049   21    5]
+ [  23 1954    0]
+ [   6    0 1942]]
+True error rate: 0.009166666666666667
+############Experiment 93############
+Set: ss2
+Train Labels: ncar2
+Test Labels: ncar2
+              precision    recall  f1-score   support
+
+           0       0.95      0.96      0.95      2072
+           1       0.97      0.95      0.96      1971
+           2       0.96      0.97      0.97      1957
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[1991   38   43]
+ [  74 1870   27]
+ [  41   21 1895]]
+Apparent error rate: 0.04066666666666666
+Transition matrix:
+[[716.56666667 681.6375     676.79583333]
+ [682.724      649.4445     644.8315    ]
+ [672.70933333 639.918      635.37266667]]
+############Experiment 94############
+Set: ss2
+Train Labels: ncar2
+Test Labels: ncar2
+              precision    recall  f1-score   support
+
+           0       0.97      0.98      0.98      2075
+           1       1.00      0.97      0.98      1977
+           2       0.99      1.00      0.99      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2043    9   23]
+ [  54 1920    3]
+ [   9    0 1939]]
+True error rate: 0.01633333333333333
+############Experiment 95############
+Set: ss2
+Train Labels: ncar3
+Test Labels: ncar3
+              precision    recall  f1-score   support
+
+           0       0.96      0.93      0.95      2089
+           1       0.94      0.96      0.95      1977
+           2       0.96      0.96      0.96      1934
+
+    accuracy                           0.95      6000
+   macro avg       0.95      0.95      0.95      6000
+weighted avg       0.95      0.95      0.95      6000
+
+Columns are predictions, rows are labels
+[[1947   97   45]
+ [  38 1906   33]
+ [  46   26 1862]]
+Apparent error rate: 0.0475
+Transition matrix:
+[[722.44583333 683.7125     668.84166667]
+ [688.3255     651.4215     637.253     ]
+ [678.22866667 641.866      627.90533333]]
+############Experiment 96############
+Set: ss2
+Train Labels: ncar3
+Test Labels: ncar3
+              precision    recall  f1-score   support
+
+           0       0.98      0.96      0.97      2075
+           1       0.97      0.99      0.98      1977
+           2       0.99      0.99      0.99      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[1993   67   15]
+ [  14 1960    3]
+ [  24    2 1922]]
+True error rate: 0.020833333333333332
+############Experiment 97############
+Set: ss2
+Train Labels: ncar4
+Test Labels: ncar4
+              precision    recall  f1-score   support
+
+           0       0.95      0.88      0.91      2087
+           1       0.94      0.95      0.95      1972
+           2       0.89      0.95      0.92      1941
+
+    accuracy                           0.93      6000
+   macro avg       0.93      0.93      0.93      6000
+weighted avg       0.93      0.93      0.93      6000
+
+Columns are predictions, rows are labels
+[[1837   76  174]
+ [  45 1879   48]
+ [  52   45 1844]]
+Apparent error rate: 0.07333333333333333
+Transition matrix:
+[[721.75416667 681.98333333 671.2625    ]
+ [687.6665     649.774      639.5595    ]
+ [677.57933333 640.24266667 630.178     ]]
+############Experiment 98############
+Set: ss2
+Train Labels: ncar4
+Test Labels: ncar4
+              precision    recall  f1-score   support
+
+           0       0.99      0.92      0.95      2075
+           1       0.98      0.99      0.98      1977
+           2       0.94      0.99      0.96      1948
+
+    accuracy                           0.97      6000
+   macro avg       0.97      0.97      0.97      6000
+weighted avg       0.97      0.97      0.97      6000
+
+Columns are predictions, rows are labels
+[[1905   42  128]
+ [  17 1955    5]
+ [  12    3 1933]]
+True error rate: 0.0345
+############Experiment 99############
+Set: ss2
+Train Labels: ncar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.90      0.91      0.90      2053
+           1       0.91      0.92      0.92      1972
+           2       0.93      0.91      0.92      1975
+
+    accuracy                           0.91      6000
+   macro avg       0.91      0.91      0.91      6000
+weighted avg       0.91      0.91      0.91      6000
+
+Columns are predictions, rows are labels
+[[1871  112   70]
+ [  97 1813   62]
+ [ 114   61 1800]]
+Apparent error rate: 0.086
+Transition matrix:
+[[709.99583333 681.98333333 683.02083333]
+ [676.4635     649.774      650.7625    ]
+ [666.54066667 640.24266667 641.21666667]]
+############Experiment 100############
+Set: ss2
+Train Labels: ncar5
+Test Labels: ncar5
+              precision    recall  f1-score   support
+
+           0       0.96      0.96      0.96      2075
+           1       0.97      0.98      0.97      1977
+           2       0.98      0.97      0.97      1948
+
+    accuracy                           0.97      6000
+   macro avg       0.97      0.97      0.97      6000
+weighted avg       0.97      0.97      0.97      6000
+
+Columns are predictions, rows are labels
+[[1992   53   30]
+ [  37 1928   12]
+ [  53    5 1890]]
+True error rate: 0.03166666666666667
+############Experiment 101############
+Set: ss2
+Train Labels: ncar6
+Test Labels: ncar6
+              precision    recall  f1-score   support
+
+           0       0.91      0.90      0.90      2065
+           1       0.93      0.91      0.92      1991
+           2       0.90      0.93      0.92      1944
+
+    accuracy                           0.91      6000
+   macro avg       0.91      0.91      0.91      6000
+weighted avg       0.91      0.91      0.91      6000
+
+Columns are predictions, rows are labels
+[[1865   71  129]
+ [ 116 1813   62]
+ [  76   59 1809]]
+Apparent error rate: 0.0855
+Transition matrix:
+[[714.14583333 688.55416667 672.3       ]
+ [680.4175     656.0345     640.548     ]
+ [670.43666667 646.41133333 631.152     ]]
+############Experiment 102############
+Set: ss2
+Train Labels: ncar6
+Test Labels: ncar6
+              precision    recall  f1-score   support
+
+           0       0.96      0.96      0.96      2075
+           1       0.99      0.97      0.98      1977
+           2       0.96      0.98      0.97      1948
+
+    accuracy                           0.97      6000
+   macro avg       0.97      0.97      0.97      6000
+weighted avg       0.97      0.97      0.97      6000
+
+Columns are predictions, rows are labels
+[[1983    8   84]
+ [  51 1922    4]
+ [  23   13 1912]]
+True error rate: 0.0305
+############Experiment 103############
+Set: ss2
+Train Labels: ncar7
+Test Labels: ncar7
+              precision    recall  f1-score   support
+
+           0       0.90      0.93      0.91      2048
+           1       0.92      0.90      0.91      1991
+           2       0.93      0.91      0.92      1961
+
+    accuracy                           0.91      6000
+   macro avg       0.91      0.91      0.91      6000
+weighted avg       0.91      0.91      0.91      6000
+
+Columns are predictions, rows are labels
+[[1903   75   70]
+ [ 124 1799   68]
+ [  99   81 1781]]
+Apparent error rate: 0.08616666666666667
+Transition matrix:
+[[708.26666667 688.55416667 678.17916667]
+ [674.816      656.0345     646.1495    ]
+ [664.91733333 646.41133333 636.67133333]]
+############Experiment 104############
+Set: ss2
+Train Labels: ncar7
+Test Labels: ncar7
+              precision    recall  f1-score   support
+
+           0       0.97      0.99      0.98      2075
+           1       0.98      0.97      0.98      1977
+           2       0.99      0.97      0.98      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2056   12    7]
+ [  40 1923   14]
+ [  30   20 1898]]
+True error rate: 0.0205
+############Experiment 105############
+Set: ss2
+Train Labels: ncar8
+Test Labels: ncar8
+              precision    recall  f1-score   support
+
+           0       0.90      0.87      0.88      2079
+           1       0.90      0.92      0.91      1961
+           2       0.89      0.90      0.89      1960
+
+    accuracy                           0.89      6000
+   macro avg       0.89      0.89      0.89      6000
+weighted avg       0.89      0.89      0.89      6000
+
+Columns are predictions, rows are labels
+[[1803  129  147]
+ [  86 1797   78]
+ [ 122   78 1760]]
+Apparent error rate: 0.10666666666666667
+Transition matrix:
+[[718.9875     678.17916667 677.83333333]
+ [685.0305     646.1495     645.82      ]
+ [674.982      636.67133333 636.34666667]]
+############Experiment 106############
+Set: ss2
+Train Labels: ncar8
+Test Labels: ncar8
+              precision    recall  f1-score   support
+
+           0       0.97      0.94      0.95      2075
+           1       0.97      0.98      0.98      1977
+           2       0.96      0.98      0.97      1948
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[1942   57   76]
+ [  28 1942    7]
+ [  41    5 1902]]
+True error rate: 0.035666666666666666
+############Experiment 107############
+Set: ss2
+Train Labels: ncar9
+Test Labels: ncar9
+              precision    recall  f1-score   support
+
+           0       0.88      0.89      0.88      2088
+           1       0.90      0.90      0.90      1942
+           2       0.89      0.87      0.88      1970
+
+    accuracy                           0.89      6000
+   macro avg       0.89      0.89      0.89      6000
+weighted avg       0.89      0.89      0.89      6000
+
+Columns are predictions, rows are labels
+[[1848  112  128]
+ [  95 1757   90]
+ [ 167   93 1710]]
+Apparent error rate: 0.11416666666666667
+Transition matrix:
+[[722.1        671.60833333 681.29166667]
+ [687.996      639.889      649.115     ]
+ [677.904      630.50266667 639.59333333]]
+############Experiment 108############
+Set: ss2
+Train Labels: ncar9
+Test Labels: ncar9
+              precision    recall  f1-score   support
+
+           0       0.96      0.97      0.96      2075
+           1       0.99      0.98      0.99      1977
+           2       0.97      0.96      0.97      1948
+
+    accuracy                           0.97      6000
+   macro avg       0.97      0.97      0.97      6000
+weighted avg       0.97      0.97      0.97      6000
+
+Columns are predictions, rows are labels
+[[2018   14   43]
+ [  22 1946    9]
+ [  70    2 1876]]
+True error rate: 0.02666666666666667
+############Experiment 109############
+Set: ss2
+Train Labels: ncar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.82      0.84      0.83      2088
+           1       0.87      0.81      0.84      1981
+           2       0.85      0.88      0.87      1931
+
+    accuracy                           0.85      6000
+   macro avg       0.85      0.85      0.85      6000
+weighted avg       0.85      0.85      0.85      6000
+
+Columns are predictions, rows are labels
+[[1764  140  184]
+ [ 254 1607  120]
+ [ 132   91 1708]]
+Apparent error rate: 0.1535
+Transition matrix:
+[[722.1        685.09583333 667.80416667]
+ [687.996      652.7395     636.2645    ]
+ [677.904      643.16466667 626.93133333]]
+############Experiment 110############
+Set: ss2
+Train Labels: ncar10
+Test Labels: ncar10
+              precision    recall  f1-score   support
+
+           0       0.90      0.93      0.92      2075
+           1       0.97      0.90      0.93      1977
+           2       0.95      0.98      0.96      1948
+
+    accuracy                           0.94      6000
+   macro avg       0.94      0.94      0.94      6000
+weighted avg       0.94      0.94      0.94      6000
+
+Columns are predictions, rows are labels
+[[1936   56   83]
+ [ 174 1782   21]
+ [  40    0 1908]]
+True error rate: 0.06233333333333333
+############Experiment 111############
+Set: ss2
+Train Labels: ncar11
+Test Labels: ncar11
+              precision    recall  f1-score   support
+
+           0       0.79      0.83      0.81      2086
+           1       0.88      0.76      0.82      1980
+           2       0.81      0.88      0.84      1934
+
+    accuracy                           0.82      6000
+   macro avg       0.83      0.82      0.82      6000
+weighted avg       0.83      0.82      0.82      6000
+
+Columns are predictions, rows are labels
+[[1727  116  243]
+ [ 317 1507  156]
+ [ 142   94 1698]]
+Apparent error rate: 0.178
+Transition matrix:
+[[721.40833333 684.75       668.84166667]
+ [687.337      652.41       637.253     ]
+ [677.25466667 642.84       627.90533333]]
+############Experiment 112############
+Set: ss2
+Train Labels: ncar11
+Test Labels: ncar11
+              precision    recall  f1-score   support
+
+           0       0.88      0.93      0.91      2075
+           1       0.99      0.86      0.92      1977
+           2       0.92      0.99      0.95      1948
+
+    accuracy                           0.93      6000
+   macro avg       0.93      0.93      0.93      6000
+weighted avg       0.93      0.93      0.92      6000
+
+Columns are predictions, rows are labels
+[[1929   24  122]
+ [ 238 1693   46]
+ [  19    0 1929]]
+True error rate: 0.07483333333333334
+############Experiment 113############
+Set: ss2
+Train Labels: ncar12
+Test Labels: ncar12
+              precision    recall  f1-score   support
+
+           0       0.84      0.81      0.83      2064
+           1       0.84      0.87      0.85      1985
+           2       0.84      0.84      0.84      1951
+
+    accuracy                           0.84      6000
+   macro avg       0.84      0.84      0.84      6000
+weighted avg       0.84      0.84      0.84      6000
+
+Columns are predictions, rows are labels
+[[1670  207  187]
+ [ 135 1724  126]
+ [ 179  125 1647]]
+Apparent error rate: 0.15983333333333333
+Transition matrix:
+[[713.8        686.47916667 674.72083333]
+ [680.088      654.0575     642.8545    ]
+ [670.112      644.46333333 633.42466667]]
+############Experiment 114############
+Set: ss2
+Train Labels: ncar12
+Test Labels: ncar12
+              precision    recall  f1-score   support
+
+           0       0.96      0.92      0.94      2075
+           1       0.95      0.99      0.97      1977
+           2       0.96      0.97      0.96      1948
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[1900   98   77]
+ [  19 1958    0]
+ [  65    0 1883]]
+True error rate: 0.043166666666666666
+############Experiment 115############
+Set: ss2
+Train Labels: ncar13
+Test Labels: ncar13
+              precision    recall  f1-score   support
+
+           0       0.84      0.84      0.84      2073
+           1       0.85      0.82      0.83      1998
+           2       0.83      0.86      0.84      1929
+
+    accuracy                           0.84      6000
+   macro avg       0.84      0.84      0.84      6000
+weighted avg       0.84      0.84      0.84      6000
+
+Columns are predictions, rows are labels
+[[1735  170  168]
+ [ 186 1639  173]
+ [ 155  124 1650]]
+Apparent error rate: 0.16266666666666665
+Transition matrix:
+[[716.9125 690.975  667.1125]
+ [683.0535 658.341  635.6055]
+ [673.034  648.684  626.282 ]]
+############Experiment 116############
+Set: ss2
+Train Labels: ncar13
+Test Labels: ncar13
+              precision    recall  f1-score   support
+
+           0       0.96      0.96      0.96      2075
+           1       0.96      0.94      0.95      1977
+           2       0.95      0.97      0.96      1948
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[1985   42   48]
+ [  65 1860   52]
+ [  26   31 1891]]
+True error rate: 0.044
+############Experiment 117############
+Set: ss2
+Train Labels: ncar14
+Test Labels: ncar14
+              precision    recall  f1-score   support
+
+           0       0.81      0.84      0.83      2058
+           1       0.84      0.81      0.83      1981
+           2       0.83      0.83      0.83      1961
+
+    accuracy                           0.83      6000
+   macro avg       0.83      0.83      0.83      6000
+weighted avg       0.83      0.83      0.83      6000
+
+Columns are predictions, rows are labels
+[[1732  145  181]
+ [ 217 1612  152]
+ [ 177  160 1624]]
+Apparent error rate: 0.172
+Transition matrix:
+[[711.725      685.09583333 678.17916667]
+ [678.111      652.7395     646.1495    ]
+ [668.164      643.16466667 636.67133333]]
+############Experiment 118############
+Set: ss2
+Train Labels: ncar14
+Test Labels: ncar14
+              precision    recall  f1-score   support
+
+           0       0.94      0.96      0.95      2075
+           1       0.97      0.94      0.96      1977
+           2       0.96      0.96      0.96      1948
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[2000   21   54]
+ [  84 1862   31]
+ [  42   34 1872]]
+True error rate: 0.044333333333333336
+############Experiment 119############
+Set: ss2
+Train Labels: ncar15
+Test Labels: ncar15
+              precision    recall  f1-score   support
+
+           0       0.80      0.79      0.79      2049
+           1       0.81      0.79      0.80      1956
+           2       0.79      0.83      0.81      1995
+
+    accuracy                           0.80      6000
+   macro avg       0.80      0.80      0.80      6000
+weighted avg       0.80      0.80      0.80      6000
+
+Columns are predictions, rows are labels
+[[1615  220  214]
+ [ 208 1536  212]
+ [ 203  143 1649]]
+Apparent error rate: 0.2
+Transition matrix:
+[[708.6125 676.45   689.9375]
+ [675.1455 644.502  657.3525]
+ [665.242  635.048  647.71  ]]
+############Experiment 120############
+Set: ss2
+Train Labels: ncar15
+Test Labels: ncar15
+              precision    recall  f1-score   support
+
+           0       0.93      0.91      0.92      2075
+           1       0.93      0.90      0.92      1977
+           2       0.90      0.96      0.93      1948
+
+    accuracy                           0.92      6000
+   macro avg       0.92      0.92      0.92      6000
+weighted avg       0.92      0.92      0.92      6000
+
+Columns are predictions, rows are labels
+[[1878  104   93]
+ [  90 1775  112]
+ [  58   20 1870]]
+True error rate: 0.0795
+############Experiment 121############
+Set: ss2
+Train Labels: nar1
+Test Labels: nar1
+              precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97      2021
+           1       0.99      0.98      0.98      1977
+           2       1.00      0.97      0.99      2002
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[1995   21    5]
+ [  44 1933    0]
+ [  54    0 1948]]
+Apparent error rate: 0.020666666666666667
+Transition matrix:
+[[698.92916667 683.7125     692.35833333]
+ [665.9195     651.4215     659.659     ]
+ [656.15133333 641.866      649.98266667]]
+############Experiment 122############
+Set: ss2
+Train Labels: nar1
+Test Labels: nar1
+              precision    recall  f1-score   support
+
+           0       0.98      0.99      0.98      2075
+           1       0.99      0.98      0.98      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2049   21    5]
+ [  44 1933    0]
+ [   0    0 1948]]
+True error rate: 0.011666666666666667
+############Experiment 123############
+Set: ss2
+Train Labels: nar2
+Test Labels: nar2
+              precision    recall  f1-score   support
+
+           0       0.92      0.98      0.95      1957
+           1       0.98      0.98      0.98      1977
+           2       0.99      0.94      0.97      2066
+
+    accuracy                           0.97      6000
+   macro avg       0.97      0.97      0.97      6000
+weighted avg       0.97      0.97      0.97      6000
+
+Columns are predictions, rows are labels
+[[1913   30   14]
+ [  38 1939    0]
+ [ 121    2 1943]]
+Apparent error rate: 0.034166666666666665
+Transition matrix:
+[[676.79583333 683.7125     714.49166667]
+ [644.8315     651.4215     680.747     ]
+ [635.37266667 641.866      670.76133333]]
+############Experiment 124############
+Set: ss2
+Train Labels: nar2
+Test Labels: nar2
+              precision    recall  f1-score   support
+
+           0       0.98      0.98      0.98      2075
+           1       0.98      0.98      0.98      1977
+           2       0.99      1.00      0.99      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.99      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2028   32   15]
+ [  38 1939    0]
+ [   6    0 1942]]
+True error rate: 0.015166666666666667
+############Experiment 125############
+Set: ss2
+Train Labels: nar3
+Test Labels: nar3
+              precision    recall  f1-score   support
+
+           0       0.89      0.98      0.93      1904
+           1       0.98      0.97      0.98      1977
+           2       1.00      0.92      0.96      2119
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[1863   35    6]
+ [  50 1927    0]
+ [ 174    2 1943]]
+Apparent error rate: 0.0445
+Transition matrix:
+[[658.46666667 683.7125     732.82083333]
+ [627.368      651.4215     698.2105    ]
+ [618.16533333 641.866      687.96866667]]
+############Experiment 126############
+Set: ss2
+Train Labels: nar3
+Test Labels: nar3
+              precision    recall  f1-score   support
+
+           0       0.97      0.98      0.98      2075
+           1       0.98      0.97      0.98      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2033   36    6]
+ [  50 1927    0]
+ [   4    1 1943]]
+True error rate: 0.016166666666666666
+############Experiment 127############
+Set: ss2
+Train Labels: nar4
+Test Labels: nar4
+              precision    recall  f1-score   support
+
+           0       0.88      0.97      0.92      1826
+           1       0.97      1.00      0.98      1977
+           2       1.00      0.88      0.94      2197
+
+    accuracy                           0.95      6000
+   macro avg       0.95      0.95      0.95      6000
+weighted avg       0.95      0.95      0.95      6000
+
+Columns are predictions, rows are labels
+[[1776   50    0]
+ [   4 1973    0]
+ [ 242   19 1936]]
+Apparent error rate: 0.0525
+Transition matrix:
+[[631.49166667 683.7125     759.79583333]
+ [601.667      651.4215     723.9115    ]
+ [592.84133333 641.866      713.29266667]]
+############Experiment 128############
+Set: ss2
+Train Labels: nar4
+Test Labels: nar4
+              precision    recall  f1-score   support
+
+           0       1.00      0.97      0.98      2075
+           1       0.97      1.00      0.98      1977
+           2       1.00      0.99      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2014   61    0]
+ [   4 1973    0]
+ [   4    8 1936]]
+True error rate: 0.012833333333333334
+############Experiment 129############
+Set: ss2
+Train Labels: nar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.84      1.00      0.91      1749
+           1       0.89      0.99      0.94      1977
+           2       1.00      0.75      0.86      2274
+
+    accuracy                           0.90      6000
+   macro avg       0.91      0.91      0.90      6000
+weighted avg       0.92      0.90      0.90      6000
+
+Columns are predictions, rows are labels
+[[1744    2    3]
+ [  15 1962    0]
+ [ 329  236 1709]]
+Apparent error rate: 0.0975
+Transition matrix:
+[[604.8625 683.7125 786.425 ]
+ [576.2955 651.4215 749.283 ]
+ [567.842  641.866  738.292 ]]
+############Experiment 130############
+Set: ss2
+Train Labels: nar5
+Test Labels: nar5
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99      2075
+           1       0.89      0.99      0.94      1977
+           2       1.00      0.88      0.93      1948
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[2068    4    3]
+ [  15 1962    0]
+ [   5  234 1709]]
+True error rate: 0.0435
+############Experiment 131############
+Set: ss2
+Train Labels: nar6
+Test Labels: nar6
+              precision    recall  f1-score   support
+
+           0       0.77      0.92      0.84      1721
+           1       0.96      0.92      0.94      1977
+           2       0.96      0.85      0.90      2302
+
+    accuracy                           0.90      6000
+   macro avg       0.90      0.90      0.90      6000
+weighted avg       0.91      0.90      0.90      6000
+
+Columns are predictions, rows are labels
+[[1587   58   76]
+ [ 149 1828    0]
+ [ 326   12 1964]]
+Apparent error rate: 0.1035
+Transition matrix:
+[[595.17916667 683.7125     796.10833333]
+ [567.0695     651.4215     758.509     ]
+ [558.75133333 641.866      747.38266667]]
+############Experiment 132############
+Set: ss2
+Train Labels: nar6
+Test Labels: nar6
+              precision    recall  f1-score   support
+
+           0       0.93      0.92      0.92      2075
+           1       0.96      0.92      0.94      1977
+           2       0.95      1.00      0.97      1948
+
+    accuracy                           0.95      6000
+   macro avg       0.95      0.95      0.95      6000
+weighted avg       0.95      0.95      0.95      6000
+
+Columns are predictions, rows are labels
+[[1908   70   97]
+ [ 149 1828    0]
+ [   5    0 1943]]
+True error rate: 0.0535
+############Experiment 133############
+Set: ss2
+Train Labels: nar7
+Test Labels: nar7
+              precision    recall  f1-score   support
+
+           0       0.77      0.98      0.86      1620
+           1       0.97      1.00      0.98      1977
+           2       1.00      0.80      0.89      2403
+
+    accuracy                           0.91      6000
+   macro avg       0.92      0.93      0.91      6000
+weighted avg       0.93      0.91      0.91      6000
+
+Columns are predictions, rows are labels
+[[1589   28    3]
+ [   9 1968    0]
+ [ 456   26 1921]]
+Apparent error rate: 0.087
+Transition matrix:
+[[560.25   683.7125 831.0375]
+ [533.79   651.4215 791.7885]
+ [525.96   641.866  780.174 ]]
+############Experiment 134############
+Set: ss2
+Train Labels: nar7
+Test Labels: nar7
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.99      2075
+           1       0.97      1.00      0.98      1977
+           2       1.00      0.99      0.99      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2035   37    3]
+ [   9 1968    0]
+ [  10   17 1921]]
+True error rate: 0.012666666666666666
+############Experiment 135############
+Set: ss2
+Train Labels: nar8
+Test Labels: nar8
+              precision    recall  f1-score   support
+
+           0       0.77      0.97      0.86      1616
+           1       0.96      0.98      0.97      1977
+           2       1.00      0.81      0.89      2407
+
+    accuracy                           0.91      6000
+   macro avg       0.91      0.92      0.91      6000
+weighted avg       0.92      0.91      0.91      6000
+
+Columns are predictions, rows are labels
+[[1560   50    6]
+ [  30 1947    0]
+ [ 442   23 1942]]
+Apparent error rate: 0.09183333333333334
+Transition matrix:
+[[558.86666667 683.7125     832.42083333]
+ [532.472      651.4215     793.1065    ]
+ [524.66133333 641.866      781.47266667]]
+############Experiment 136############
+Set: ss2
+Train Labels: nar8
+Test Labels: nar8
+              precision    recall  f1-score   support
+
+           0       0.98      0.96      0.97      2075
+           1       0.96      0.98      0.97      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[1995   73    7]
+ [  30 1947    0]
+ [   7    0 1941]]
+True error rate: 0.0195
+############Experiment 137############
+Set: ss2
+Train Labels: nar9
+Test Labels: nar9
+              precision    recall  f1-score   support
+
+           0       0.73      0.97      0.84      1539
+           1       0.90      0.99      0.95      1977
+           2       1.00      0.72      0.84      2484
+
+    accuracy                           0.87      6000
+   macro avg       0.88      0.89      0.87      6000
+weighted avg       0.90      0.87      0.87      6000
+
+Columns are predictions, rows are labels
+[[1495   44    0]
+ [  18 1959    0]
+ [ 527  162 1795]]
+Apparent error rate: 0.12516666666666668
+Transition matrix:
+[[532.2375 683.7125 859.05  ]
+ [507.1005 651.4215 818.478 ]
+ [499.662  641.866  806.472 ]]
+############Experiment 138############
+Set: ss2
+Train Labels: nar9
+Test Labels: nar9
+              precision    recall  f1-score   support
+
+           0       0.99      0.97      0.98      2075
+           1       0.90      0.99      0.95      1977
+           2       1.00      0.92      0.96      1948
+
+    accuracy                           0.96      6000
+   macro avg       0.96      0.96      0.96      6000
+weighted avg       0.96      0.96      0.96      6000
+
+Columns are predictions, rows are labels
+[[2010   65    0]
+ [  18 1959    0]
+ [  12  141 1795]]
+True error rate: 0.03933333333333333
+############Experiment 139############
+Set: ss2
+Train Labels: nar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.67      0.97      0.80      1468
+           1       0.98      0.98      0.98      1977
+           2       1.00      0.74      0.85      2555
+
+    accuracy                           0.88      6000
+   macro avg       0.88      0.90      0.88      6000
+weighted avg       0.91      0.88      0.88      6000
+
+Columns are predictions, rows are labels
+[[1430   37    1]
+ [  30 1947    0]
+ [ 661   12 1882]]
+Apparent error rate: 0.1235
+Transition matrix:
+[[507.68333333 683.7125     883.60416667]
+ [483.706      651.4215     841.8725    ]
+ [476.61066667 641.866      829.52333333]]
+############Experiment 140############
+Set: ss2
+Train Labels: nar10
+Test Labels: nar10
+              precision    recall  f1-score   support
+
+           0       0.96      0.98      0.97      2075
+           1       0.98      0.98      0.98      1977
+           2       1.00      0.97      0.98      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2026   46    3]
+ [  30 1947    0]
+ [  65    3 1880]]
+True error rate: 0.0245
+############Experiment 141############
+Set: ss2
+Train Labels: nar11
+Test Labels: nar11
+              precision    recall  f1-score   support
+
+           0       0.67      0.96      0.79      1442
+           1       0.89      0.99      0.94      1977
+           2       1.00      0.68      0.81      2581
+
+    accuracy                           0.85      6000
+   macro avg       0.85      0.88      0.85      6000
+weighted avg       0.89      0.85      0.85      6000
+
+Columns are predictions, rows are labels
+[[1383   58    1]
+ [  23 1954    0]
+ [ 654  178 1749]]
+Apparent error rate: 0.15233333333333332
+Transition matrix:
+[[498.69166667 683.7125     892.59583333]
+ [475.139      651.4215     850.4395    ]
+ [468.16933333 641.866      837.96466667]]
+############Experiment 142############
+Set: ss2
+Train Labels: nar11
+Test Labels: nar11
+              precision    recall  f1-score   support
+
+           0       0.96      0.96      0.96      2075
+           1       0.89      0.99      0.94      1977
+           2       1.00      0.90      0.95      1948
+
+    accuracy                           0.95      6000
+   macro avg       0.95      0.95      0.95      6000
+weighted avg       0.95      0.95      0.95      6000
+
+Columns are predictions, rows are labels
+[[1985   89    1]
+ [  23 1954    0]
+ [  52  147 1749]]
+True error rate: 0.052
+############Experiment 143############
+Set: ss2
+Train Labels: nar12
+Test Labels: nar12
+              precision    recall  f1-score   support
+
+           0       0.63      0.98      0.76      1342
+           1       0.96      0.97      0.96      1977
+           2       1.00      0.71      0.83      2681
+
+    accuracy                           0.86      6000
+   macro avg       0.86      0.89      0.85      6000
+weighted avg       0.90      0.86      0.86      6000
+
+Columns are predictions, rows are labels
+[[1315   25    2]
+ [  61 1916    0]
+ [ 727   54 1900]]
+Apparent error rate: 0.14483333333333334
+Transition matrix:
+[[464.10833333 683.7125     927.17916667]
+ [442.189      651.4215     883.3895    ]
+ [435.70266667 641.866      870.43133333]]
+############Experiment 144############
+Set: ss2
+Train Labels: nar12
+Test Labels: nar12
+              precision    recall  f1-score   support
+
+           0       0.97      0.98      0.97      2075
+           1       0.96      0.97      0.96      1977
+           2       1.00      0.97      0.99      1948
+
+    accuracy                           0.97      6000
+   macro avg       0.97      0.97      0.97      6000
+weighted avg       0.97      0.97      0.97      6000
+
+Columns are predictions, rows are labels
+[[2032   39    4]
+ [  61 1916    0]
+ [  10   40 1898]]
+True error rate: 0.025666666666666667
+############Experiment 145############
+Set: ss2
+Train Labels: nar13
+Test Labels: nar13
+              precision    recall  f1-score   support
+
+           0       0.61      0.98      0.75      1309
+           1       0.97      0.98      0.97      1977
+           2       1.00      0.69      0.82      2714
+
+    accuracy                           0.85      6000
+   macro avg       0.86      0.88      0.85      6000
+weighted avg       0.90      0.85      0.86      6000
+
+Columns are predictions, rows are labels
+[[1288   21    0]
+ [  46 1931    0]
+ [ 793   37 1884]]
+Apparent error rate: 0.1495
+Transition matrix:
+[[452.69583333 683.7125     938.59166667]
+ [431.3155     651.4215     894.263     ]
+ [424.98866667 641.866      881.14533333]]
+############Experiment 146############
+Set: ss2
+Train Labels: nar13
+Test Labels: nar13
+              precision    recall  f1-score   support
+
+           0       0.96      0.98      0.97      2075
+           1       0.97      0.98      0.97      1977
+           2       1.00      0.97      0.98      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2042   33    0]
+ [  46 1931    0]
+ [  39   25 1884]]
+True error rate: 0.023833333333333335
+############Experiment 147############
+Set: ss2
+Train Labels: nar14
+Test Labels: nar14
+              precision    recall  f1-score   support
+
+           0       0.57      0.98      0.72      1217
+           1       0.98      0.97      0.97      1977
+           2       1.00      0.69      0.81      2806
+
+    accuracy                           0.84      6000
+   macro avg       0.85      0.88      0.84      6000
+weighted avg       0.90      0.84      0.85      6000
+
+Columns are predictions, rows are labels
+[[1192   23    2]
+ [  57 1920    0]
+ [ 857   19 1930]]
+Apparent error rate: 0.15966666666666668
+Transition matrix:
+[[420.87916667 683.7125     970.40833333]
+ [401.0015     651.4215     924.577     ]
+ [395.11933333 641.866      911.01466667]]
+############Experiment 148############
+Set: ss2
+Train Labels: nar14
+Test Labels: nar14
+              precision    recall  f1-score   support
+
+           0       0.97      0.98      0.97      2075
+           1       0.98      0.97      0.97      1977
+           2       1.00      0.99      0.99      1948
+
+    accuracy                           0.98      6000
+   macro avg       0.98      0.98      0.98      6000
+weighted avg       0.98      0.98      0.98      6000
+
+Columns are predictions, rows are labels
+[[2037   34    4]
+ [  57 1920    0]
+ [  12    8 1928]]
+True error rate: 0.019166666666666665
+############Experiment 149############
+Set: ss2
+Train Labels: nar15
+Test Labels: nar15
+              precision    recall  f1-score   support
+
+           0       0.54      0.95      0.69      1152
+           1       0.86      0.99      0.92      1977
+           2       1.00      0.60      0.75      2871
+
+    accuracy                           0.79      6000
+   macro avg       0.80      0.84      0.79      6000
+weighted avg       0.87      0.79      0.79      6000
+
+Columns are predictions, rows are labels
+[[1090   58    4]
+ [  17 1960    0]
+ [ 906  253 1712]]
+Apparent error rate: 0.20633333333333334
+Transition matrix:
+[[398.4    683.7125 992.8875]
+ [379.584  651.4215 945.9945]
+ [374.016  641.866  932.118 ]]
+############Experiment 150############
+Set: ss2
+Train Labels: nar15
+Test Labels: nar15
+              precision    recall  f1-score   support
+
+           0       0.98      0.95      0.97      2075
+           1       0.86      0.99      0.92      1977
+           2       0.99      0.88      0.93      1948
+
+    accuracy                           0.94      6000
+   macro avg       0.95      0.94      0.94      6000
+weighted avg       0.95      0.94      0.94      6000
+
+Columns are predictions, rows are labels
+[[1977   89    9]
+ [  17 1960    0]
+ [  19  222 1707]]
+True error rate: 0.059333333333333335
+############Experiment 151############
+Set: ss2
+Train Labels: nnar1
+Test Labels: nnar1
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      1.00      2075
+           1       1.00      0.99      1.00      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2072    2    1]
+ [  13 1964    0]
+ [   4    0 1944]]
+Apparent error rate: 0.0033333333333333335
+Transition matrix:
+[[717.60416667 683.7125     673.68333333]
+ [683.7125     651.4215     641.866     ]
+ [673.68333333 641.866      632.45066667]]
+############Experiment 152############
+Set: ss2
+Train Labels: nnar1
+Test Labels: nnar1
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      1.00      2075
+           1       1.00      0.99      1.00      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2072    2    1]
+ [  13 1964    0]
+ [   4    0 1944]]
+True error rate: 0.0033333333333333335
+############Experiment 153############
+Set: ss2
+Train Labels: nnar2
+Test Labels: nnar2
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99      2075
+           1       1.00      0.99      1.00      1977
+           2       1.00      0.99      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2073    2    0]
+ [  13 1964    0]
+ [  10    0 1938]]
+Apparent error rate: 0.004166666666666667
+Transition matrix:
+[[717.60416667 683.7125     673.68333333]
+ [683.7125     651.4215     641.866     ]
+ [673.68333333 641.866      632.45066667]]
+############Experiment 154############
+Set: ss2
+Train Labels: nnar2
+Test Labels: nnar2
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99      2075
+           1       1.00      0.99      1.00      1977
+           2       1.00      0.99      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2073    2    0]
+ [  13 1964    0]
+ [  10    0 1938]]
+True error rate: 0.004166666666666667
+############Experiment 155############
+Set: ss2
+Train Labels: nnar3
+Test Labels: nnar3
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2073
+           1       1.00      0.99      0.99      1977
+           2       1.00      1.00      1.00      1950
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2061    6    6]
+ [  27 1950    0]
+ [   4    0 1946]]
+Apparent error rate: 0.007166666666666667
+Transition matrix:
+[[716.9125 683.7125 674.375 ]
+ [683.0535 651.4215 642.525 ]
+ [673.034  641.866  633.1   ]]
+############Experiment 156############
+Set: ss2
+Train Labels: nnar3
+Test Labels: nnar3
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2075
+           1       1.00      0.99      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2063    6    6]
+ [  27 1950    0]
+ [   2    0 1946]]
+True error rate: 0.006833333333333334
+############Experiment 157############
+Set: ss2
+Train Labels: nnar4
+Test Labels: nnar4
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      1.00      2074
+           1       1.00      1.00      1.00      1977
+           2       1.00      1.00      1.00      1949
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2069    5    0]
+ [   8 1969    0]
+ [   5    0 1944]]
+Apparent error rate: 0.003
+Transition matrix:
+[[717.25833333 683.7125     674.02916667]
+ [683.383      651.4215     642.1955    ]
+ [673.35866667 641.866      632.77533333]]
+############Experiment 158############
+Set: ss2
+Train Labels: nnar4
+Test Labels: nnar4
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      1.00      2075
+           1       1.00      1.00      1.00      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2070    5    0]
+ [   8 1969    0]
+ [   4    0 1944]]
+True error rate: 0.0028333333333333335
+############Experiment 159############
+Set: ss2
+Train Labels: nnar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99      2072
+           1       1.00      0.98      0.99      1977
+           2       1.00      1.00      1.00      1951
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2070    2    0]
+ [  33 1944    0]
+ [   5    0 1946]]
+Apparent error rate: 0.006666666666666667
+Transition matrix:
+[[716.56666667 683.7125     674.72083333]
+ [682.724      651.4215     642.8545    ]
+ [672.70933333 641.866      633.42466667]]
+############Experiment 160############
+Set: ss2
+Train Labels: nnar5
+Test Labels: nnar5
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99      2075
+           1       1.00      0.98      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2073    2    0]
+ [  33 1944    0]
+ [   2    0 1946]]
+True error rate: 0.006166666666666667
+############Experiment 161############
+Set: ss2
+Train Labels: nnar6
+Test Labels: nnar6
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.99      2073
+           1       0.98      1.00      0.99      1977
+           2       1.00      0.99      1.00      1950
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2040   33    0]
+ [   4 1973    0]
+ [  10    0 1940]]
+Apparent error rate: 0.007833333333333333
+Transition matrix:
+[[716.9125 683.7125 674.375 ]
+ [683.0535 651.4215 642.525 ]
+ [673.034  641.866  633.1   ]]
+############Experiment 162############
+Set: ss2
+Train Labels: nnar6
+Test Labels: nnar6
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.99      2075
+           1       0.98      1.00      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2042   33    0]
+ [   4 1973    0]
+ [   8    0 1940]]
+True error rate: 0.0075
+############Experiment 163############
+Set: ss2
+Train Labels: nnar7
+Test Labels: nnar7
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.99      2068
+           1       0.98      1.00      0.99      1977
+           2       1.00      0.99      1.00      1955
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2022   46    0]
+ [   2 1975    0]
+ [  12    0 1943]]
+Apparent error rate: 0.01
+Transition matrix:
+[[715.18333333 683.7125     676.10416667]
+ [681.406      651.4215     644.1725    ]
+ [671.41066667 641.866      634.72333333]]
+############Experiment 164############
+Set: ss2
+Train Labels: nnar7
+Test Labels: nnar7
+              precision    recall  f1-score   support
+
+           0       1.00      0.98      0.99      2075
+           1       0.98      1.00      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2029   46    0]
+ [   2 1975    0]
+ [   5    0 1943]]
+True error rate: 0.008833333333333334
+############Experiment 165############
+Set: ss2
+Train Labels: nnar8
+Test Labels: nnar8
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99      2074
+           1       1.00      0.98      0.99      1977
+           2       1.00      1.00      1.00      1949
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2073    1    0]
+ [  41 1936    0]
+ [   1    0 1948]]
+Apparent error rate: 0.007166666666666667
+Transition matrix:
+[[717.25833333 683.7125     674.02916667]
+ [683.383      651.4215     642.1955    ]
+ [673.35866667 641.866      632.77533333]]
+############Experiment 166############
+Set: ss2
+Train Labels: nnar8
+Test Labels: nnar8
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99      2075
+           1       1.00      0.98      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2074    1    0]
+ [  41 1936    0]
+ [   0    0 1948]]
+True error rate: 0.007
+############Experiment 167############
+Set: ss2
+Train Labels: nnar9
+Test Labels: nnar9
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2072
+           1       0.99      1.00      0.99      1977
+           2       1.00      1.00      1.00      1951
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2052   20    0]
+ [   4 1973    0]
+ [   8    0 1943]]
+Apparent error rate: 0.005333333333333333
+Transition matrix:
+[[716.56666667 683.7125     674.72083333]
+ [682.724      651.4215     642.8545    ]
+ [672.70933333 641.866      633.42466667]]
+############Experiment 168############
+Set: ss2
+Train Labels: nnar9
+Test Labels: nnar9
+              precision    recall  f1-score   support
+
+           0       1.00      0.99      0.99      2075
+           1       0.99      1.00      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2055   20    0]
+ [   4 1973    0]
+ [   5    0 1943]]
+True error rate: 0.004833333333333334
+############Experiment 169############
+Set: ss2
+Train Labels: nnar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2066
+           1       1.00      0.99      0.99      1977
+           2       1.00      0.99      1.00      1957
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2055    9    2]
+ [  11 1966    0]
+ [  13    0 1944]]
+Apparent error rate: 0.005833333333333334
+Transition matrix:
+[[714.49166667 683.7125     676.79583333]
+ [680.747      651.4215     644.8315    ]
+ [670.76133333 641.866      635.37266667]]
+############Experiment 170############
+Set: ss2
+Train Labels: nnar10
+Test Labels: nnar10
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2075
+           1       1.00      0.99      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2064    9    2]
+ [  11 1966    0]
+ [   4    0 1944]]
+True error rate: 0.004333333333333333
+############Experiment 171############
+Set: ss2
+Train Labels: nnar11
+Test Labels: nnar11
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2064
+           1       0.99      0.99      0.99      1977
+           2       1.00      0.99      0.99      1959
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2037   21    6]
+ [  11 1966    0]
+ [  14    3 1942]]
+Apparent error rate: 0.009166666666666667
+Transition matrix:
+[[713.8    683.7125 677.4875]
+ [680.088  651.4215 645.4905]
+ [670.112  641.866  636.022 ]]
+############Experiment 172############
+Set: ss2
+Train Labels: nnar11
+Test Labels: nnar11
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2075
+           1       0.99      0.99      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2048   21    6]
+ [  11 1966    0]
+ [   3    3 1942]]
+True error rate: 0.007333333333333333
+############Experiment 173############
+Set: ss2
+Train Labels: nnar12
+Test Labels: nnar12
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.98      2068
+           1       0.98      0.99      0.99      1977
+           2       1.00      0.99      0.99      1955
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2033   35    0]
+ [  12 1965    0]
+ [  18    5 1932]]
+Apparent error rate: 0.011666666666666667
+Transition matrix:
+[[715.18333333 683.7125     676.10416667]
+ [681.406      651.4215     644.1725    ]
+ [671.41066667 641.866      634.72333333]]
+############Experiment 174############
+Set: ss2
+Train Labels: nnar12
+Test Labels: nnar12
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.99      2075
+           1       0.98      0.99      0.99      1977
+           2       1.00      0.99      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2040   35    0]
+ [  12 1965    0]
+ [  11    5 1932]]
+True error rate: 0.0105
+############Experiment 175############
+Set: ss2
+Train Labels: nnar13
+Test Labels: nnar13
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2071
+           1       0.99      1.00      0.99      1977
+           2       1.00      0.99      1.00      1952
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2060   11    0]
+ [   9 1968    0]
+ [  10    2 1940]]
+Apparent error rate: 0.005333333333333333
+Transition matrix:
+[[716.22083333 683.7125     675.06666667]
+ [682.3945     651.4215     643.184     ]
+ [672.38466667 641.866      633.74933333]]
+############Experiment 176############
+Set: ss2
+Train Labels: nnar13
+Test Labels: nnar13
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2075
+           1       0.99      1.00      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           1.00      6000
+   macro avg       1.00      1.00      1.00      6000
+weighted avg       1.00      1.00      1.00      6000
+
+Columns are predictions, rows are labels
+[[2064   11    0]
+ [   9 1968    0]
+ [   6    2 1940]]
+True error rate: 0.004666666666666667
+############Experiment 177############
+Set: ss2
+Train Labels: nnar14
+Test Labels: nnar14
+              precision    recall  f1-score   support
+
+           0       0.98      0.99      0.99      2064
+           1       0.99      0.99      0.99      1977
+           2       1.00      0.99      0.99      1959
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2047   17    0]
+ [  10 1967    0]
+ [  25    0 1934]]
+Apparent error rate: 0.008666666666666666
+Transition matrix:
+[[713.8    683.7125 677.4875]
+ [680.088  651.4215 645.4905]
+ [670.112  641.866  636.022 ]]
+############Experiment 178############
+Set: ss2
+Train Labels: nnar14
+Test Labels: nnar14
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2075
+           1       0.99      0.99      0.99      1977
+           2       1.00      0.99      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2058   17    0]
+ [  10 1967    0]
+ [  14    0 1934]]
+True error rate: 0.006833333333333334
+############Experiment 179############
+Set: ss2
+Train Labels: nnar15
+Test Labels: nnar15
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      2067
+           1       0.99      1.00      0.99      1977
+           2       1.00      0.99      1.00      1956
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2040   27    0]
+ [   4 1973    0]
+ [  11    1 1944]]
+Apparent error rate: 0.007166666666666667
+Transition matrix:
+[[714.8375 683.7125 676.45  ]
+ [681.0765 651.4215 644.502 ]
+ [671.086  641.866  635.048 ]]
+############Experiment 180############
+Set: ss2
+Train Labels: nnar15
+Test Labels: nnar15
+              precision    recall  f1-score   support
+
+           0       1.00      0.99      0.99      2075
+           1       0.99      1.00      0.99      1977
+           2       1.00      1.00      1.00      1948
+
+    accuracy                           0.99      6000
+   macro avg       0.99      0.99      0.99      6000
+weighted avg       0.99      0.99      0.99      6000
+
+Columns are predictions, rows are labels
+[[2048   27    0]
+ [   4 1973    0]
+ [   3    1 1944]]
+True error rate: 0.005833333333333334
+Summary of ss2
+Apparent Error Rates.
+Label Sets: ['ncar', 'nar', 'nnar']
+{'ss2ncar1': 0.021, 'ss2ncar2': 0.04066666666666666, 'ss2ncar3': 0.0475, 'ss2ncar4': 0.07333333333333333, 'ss2ncar5': 0.086, 'ss2ncar6': 0.0855, 'ss2ncar7': 0.08616666666666667, 'ss2ncar8': 0.10666666666666667, 'ss2ncar9': 0.11416666666666667, 'ss2ncar10': 0.1535, 'ss2ncar11': 0.178, 'ss2ncar12': 0.15983333333333333, 'ss2ncar13': 0.16266666666666665, 'ss2ncar14': 0.172, 'ss2ncar15': 0.2, 'ss2nar1': 0.020666666666666667, 'ss2nar2': 0.034166666666666665, 'ss2nar3': 0.0445, 'ss2nar4': 0.0525, 'ss2nar5': 0.0975, 'ss2nar6': 0.1035, 'ss2nar7': 0.087, 'ss2nar8': 0.09183333333333334, 'ss2nar9': 0.12516666666666668, 'ss2nar10': 0.1235, 'ss2nar11': 0.15233333333333332, 'ss2nar12': 0.14483333333333334, 'ss2nar13': 0.1495, 'ss2nar14': 0.15966666666666668, 'ss2nar15': 0.20633333333333334, 'ss2nnar1': 0.0033333333333333335, 'ss2nnar2': 0.004166666666666667, 'ss2nnar3': 0.007166666666666667, 'ss2nnar4': 0.003, 'ss2nnar5': 0.006666666666666667, 'ss2nnar6': 0.007833333333333333, 'ss2nnar7': 0.01, 'ss2nnar8': 0.007166666666666667, 'ss2nnar9': 0.005333333333333333, 'ss2nnar10': 0.005833333333333334, 'ss2nnar11': 0.009166666666666667, 'ss2nnar12': 0.011666666666666667, 'ss2nnar13': 0.005333333333333333, 'ss2nnar14': 0.008666666666666666, 'ss2nnar15': 0.007166666666666667}

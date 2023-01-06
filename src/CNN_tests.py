@@ -4,9 +4,8 @@
 #Train and test a CNN on the 6 datasets with their many label sets
 
 #TODO:
-#  -Test noise levels from 1-30%
+#  -Test noise levels from 1-15%
 #  -Test clean train labels too!
-#  -Tune up the CNN (consider pytorch)
 #  -Write the results as Pandas
 #  -Change the metrics
 
@@ -213,7 +212,7 @@ if __name__ == "__main__":
                 #Test on clean labels
                 print ('Experiment: ', counter, " Set: ", data_set, "Train Labels: ", noise_type+str(mlr), "Test Labels: Clean")
                 results_file.write('############Experiment {}############\n'.format(counter))
-                results_file.write('Set: {}\n'.format(data_set))
+                results_file.write('Set: clean')
                 results_file.write('Train Labels: {}{}\n'.format(noise_type, mlr))
                 results_file.write('Test Labels: {}{}\n'.format(noise_type, mlr))
                 #load the test attribute set
@@ -249,3 +248,4 @@ if __name__ == "__main__":
         
     results_file.close()
     readable_file.close()
+    print('CNN Tests complete')
